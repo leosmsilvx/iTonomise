@@ -10,9 +10,10 @@ public class Usuario {
 	private String senha;
 	private String email;
 	private String endereco;
+	private int idUsuario;
 	
 	public Usuario(String nome, String sobrenome, String cpf, String tel, String user, String senha, String email,
-			String endereco) {
+			String endereco, int idUsuario) {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
@@ -21,6 +22,7 @@ public class Usuario {
 		this.senha = senha;
 		this.email = email;
 		this.endereco = endereco;
+		this.idUsuario = idUsuario;
 	}
 
 	public String getNome() {
@@ -86,7 +88,12 @@ public class Usuario {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
-	
 
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 }

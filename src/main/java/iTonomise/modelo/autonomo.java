@@ -2,6 +2,7 @@ package iTonomise.modelo;
 
 public class Autonomo {
 	
+	
 	private String nome;
 	private String sobrenome;
 	private String cpf;
@@ -12,9 +13,10 @@ public class Autonomo {
 	private String desc;
 	private String tags;
 	private String endereco;
+	private int idAutonomo;
 	
 	public Autonomo(String nome, String sobrenome, String cpf, String tel, String user, String senha, String email,
-			String desc, String tags, String endereco) {
+			String desc, String tags, String endereco, int idAutonomo) {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
@@ -25,6 +27,7 @@ public class Autonomo {
 		this.desc = desc;
 		this.tags = tags;
 		this.endereco = endereco;
+		this.idAutonomo = idAutonomo;
 	}
 
 	public String getNome() {
@@ -106,8 +109,12 @@ public class Autonomo {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
-	
-	
-	
+
+	public int getIdAutonomo() {
+		return idAutonomo;
+	}
+
+	public void setIdAutonomo(int idAutonomo) {
+		this.idAutonomo = idAutonomo;
+	}
 }

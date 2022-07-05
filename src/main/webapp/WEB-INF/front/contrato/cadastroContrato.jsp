@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <head>
 <link
@@ -8,7 +8,7 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
 <meta charset="utf-8">
-<title>Cadastro Usuário</title>
+<title>Contrato de Serviço</title>
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -90,78 +90,30 @@
 		<main>
 			<div class="row g-5">
 				<div>
-					<h4 class="mb-4 py-4">Cadastro Usuário</h4>
+					<h4 class="mb-4 py-3">Contrato com Fulano</h4>
 					<form>
 						<div class="row g-3">
 
-							<div class="col-sm-6">
-								<label for="primeiro_nome" class="form-label">Primeiro
-									Nome</label> <input type="text" class="form-control"
-									name="primeiro_nome" placeholder="Nome">
-							</div>
-
-							<div class="col-6">
-								<label for="sobrenome" class="form-label">Sobrenome</label> <input
-									type="text" class="form-control" name="sobrenome"
-									placeholder="Sobrenome">
-							</div>
-
-							<div class="col-6">
-								<label for="cpf" class="form-label">CPF <span
-									class="text-muted">(Somente números)</span></label> <input
-									type="number" class="form-control" name="cpf"
-									placeholder="xxx.xxx.xxx-xx">
-							</div>
-
-							<div class="col-6">
-								<label for="telefone" class="form-label">Telefone <span
-									class="text-muted">(Somente números)</span></label> <input
-									type="number" class="form-control" name="telefone"
-									placeholder="(37) 98877-6655">
-							</div>
-
-							<div class="col-8">
-								<label for="usuario" class="form-label">Usuário</label>
-								<div class="input-group">
-									<span class="input-group-text">@</span> <input type="text"
-										class="form-control" name="usuario" placeholder="Usúario">
-								</div>
-							</div>
-
-							<div class="col-4">
-								<label for="senha" class="form-label">Senha</label> <input
-									type="password" class="form-control" name="senha"
-									placeholder="*******">
+							<div class="col-12">
+								<label for="titulo" class="form-label">Título</label>
+                                 <input type="text" class="form-control" name="titulo" placeholder="Título">
 							</div>
 
 							<div class="col-12">
-								<label for="email" class="form-label">Email</label> <input
-									type="email" class="form-control" name="email"
-									placeholder="iTonomise@exemplo.com">
+                                <label for="descricao" class="form-label">Descrição do contrato</label>
+                                <textarea class="form-control" name="email" rows="13" placeholder="Escreva o serviço que o Autonomo deve realizar, onde vai ser realizado o serviço, observações, etc..."></textarea>
+                            </div>
+
+							<div class="col-6">
+								<label for="valor" class="form-label">Valor do serviço</label>
+								<div class="input-group">
+									<span class="input-group-text">R$</span> <input type="number"
+										class="form-control" required name="valor" min="0" step="any" placeholder="100.00">
+								</div>
 							</div>
 
-							<div class="col-4">
-								<label for="pais" class="form-label">País</label> <select
-									class="form-select" name="pais">
-									<option value="">Selecionar...</option>
-									<option>Brasil</option>
-								</select>
-							</div>
-
-							<div class="col-4">
-								<label for="estado" class="form-label">Estado</label> <select
-									class="form-select" name="estado">
-									<option value="">Selecionar...</option>
-									<option>Minas Gerais</option>
-								</select>
-							</div>
-
-							<div class="col-4">
-								<label for="cidade" class="form-label">Cidade</label> <select
-									class="form-select" name="cidade">
-									<option value="">Selecionar...</option>
-									<option>Divinópolis</option>
-								</select>
+							<div class="col-6">
+								<label for="telefone" class="form-label">Telefone do autônomo</label><span class="input-group-text text-center">(37) 98877-6655</span>
 							</div>
 
 							<hr class="my-4">

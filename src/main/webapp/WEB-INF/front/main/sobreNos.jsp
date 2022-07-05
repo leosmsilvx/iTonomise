@@ -72,7 +72,7 @@
 			<div class="container d-flex flex-wrap">
 				<ul class="nav me-auto">
 					<li class="nav-item"><a href="#"
-						class="nav-link text-white px-2">Autonomos</a></li>
+						class="nav-link text-white px-2">Autônomos</a></li>
 					<li class="nav-item"><a href="#"
 						class="nav-link text-white px-2">Serviços</a></li>
 					<li class="nav-item"><a href="#"
@@ -109,7 +109,7 @@
 			<div class="container">
 				<ul class="nav justify-content-center border-bottom pb-3 mb-3">
 					<li class="nav-item"><a href="#"
-						class="nav-link px-2 text-white">Autonomos</a></li>
+						class="nav-link px-2 text-white">Autônomos</a></li>
 					<li class="nav-item"><a href="#"
 						class="nav-link px-2 text-white">Serviços</a></li>
 					<li class="nav-item"><a href="#"
