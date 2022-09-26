@@ -8,7 +8,7 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
 <meta charset="utf-8">
-<title>Login</title>
+<title>Login iTonomise</title>
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -100,29 +100,30 @@ body {
 
 	<main class="form-signin w-100 m-auto">
 		<form>
-			<img class="mb-4" src="a.png" alt="" width="100" height="100">
+			<a href="controller?action=index"><img class="mb-4" src="https://media.discordapp.net/attachments/911394611300270122/1021924837486239764/a.png" alt="" width="100" height="100"></a>
 			<h1 class="h3 mb-3 fw-normal">
 				Olá,<br>Digite seu Usuário e Senha
 			</h1>
-
-			<div class="form-floating">
-				<input type="text" class="form-control" name="user" id="usuario"
-					placeholder="Usuário"> <label for="usuario">Usuário</label>
-			</div>
-			<div class="form-floating">
-				<input type="password" class="form-control" name="senha" id="senha"
-					placeholder="Senha"> <label for="senha">Senha</label>
-			</div>
-      <div class="form-check" style="padding-left: 40%; text-align: left;">
-        <input class="form-check-input" type="checkbox" name="tipo" id="aut">
-        <label class="form-check-label" for="aut">
-          Sou autônomo
-        </label>
-      </div>
-      <div class="py-3">
-        <button class="w-100 btn btn-lg btn-dark" type="submit">Entrar</button>
-      </div>
-			<p class="mt-5 mb-3 text-muted">© 2022 iTonomise</p>
+			<form>
+				<div class="form-floating">
+					<input type="text" class="form-control" name="user" id="usuario"
+						placeholder="Usuário" style="border-radius: 5px 5px 0px 0px"> <label for="usuario">Usuário</label>
+				</div>
+				<div class="form-floating">
+					<input type="password" class="form-control" name="senha" id="senha"
+						placeholder="Senha" style="border-radius: 0px 0px 5px 5px; border-top: 0px"> <label for="senha">Senha</label>
+				</div>
+				<div class="form-check" style="padding-left: 40%; text-align: left;">
+		        	<input class="form-check-input" type="checkbox" name="tipo" id="aut">
+			        <label class="form-check-label" for="aut">
+			          Sou autônomo
+			        </label>
+		      	</div>
+		      	<div class="py-3">
+		        	<button class="w-100 btn btn-lg btn-dark" type="submit">Entrar</button>
+		      	</div>
+			</form>
+      		<a href="controller?action=index" class="nav-link text-white px-2"><p class="mt-5 mb-3 text-muted">© 2022 iTonomise</p></a>
 		</form>
 	</main>
 

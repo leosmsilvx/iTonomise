@@ -7,6 +7,7 @@
 	rel="stylesheet"
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
+	
 <meta charset="utf-8">
 <title>Contrato de Serviço</title>
 <style>
@@ -63,28 +64,30 @@
 }
 
 .container {
-	max-width: 960px;
+	max-width: 1100px;
 }
 </style>
 </head>
 <body>
-	<!-- Header -->
-	<nav class="py-2 bg-dark border-bottom">
-		<div class="container d-flex flex-wrap">
-			<ul class="nav me-auto">
-				<li class="nav-item"><a href="#" class="nav-link text-white"
-					style="font-size: 25;">iTonomise</a></li>
-			</ul>
-			<ul class="nav py-2">
-				<li class="nav-item"><a href="#"
-					class="nav-link text-white px-3">Autônomos</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link text-white px-3">Serviços</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link text-white px-3">Sobre</a></li>
-			</ul>
-		</div>
-	</nav>
+		<!-- Header -->
+		<nav class="py-2 bg-dark border-bottom">
+			<div class="d-flex flex-wrap">
+				<ul class="nav me-auto">
+					<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
+        				<a href="controller?action=index"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
+        				<a href="controller?action=index" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
+						</div></li>
+				</ul>
+				<ul class="nav" style="margin-right: 30px; margin-top: 5px">
+					<li class="nav-item"><a href="controller?action=guiaAuto"
+						class="nav-link text-white px-2">Autônomos</a></li>
+					<li class="nav-item"><a href="controller?action=guiaComum"
+						class="nav-link text-white px-2">Serviços</a></li>
+					<li class="nav-item"><a href="controller?action=sobreN"
+						class="nav-link text-white px-2">Sobre</a></li>
+				</ul>
+			</div>
+		</nav>
 
 	<div class="container">
 		<main>
@@ -123,20 +126,21 @@
 			</div>
 		</main>
 
-		<!--footer-->
-		<footer class="footer mt-auto">
-			<div class="container" style="position: absolute; bottom: 20;">
-				<ul class="nav justify-content-center border-bottom pb-3">
-					<li class="nav-item"><a href="#"
+	<div>
+		<footer class="mt-auto">
+			<div class="container">
+				<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+					<li class="nav-item"><a href="controller?action=guiaAuto"
 						class="nav-link px-2 text-muted">Autônomos</a></li>
-					<li class="nav-item"><a href="#"
+					<li class="nav-item"><a href="controller?action=guiaComum"
 						class="nav-link px-2 text-muted">Serviços</a></li>
-					<li class="nav-item"><a href="#"
+					<li class="nav-item"><a href="controller?action=sobreN"
 						class="nav-link px-2 text-muted">Sobre</a></li>
 				</ul>
-				<p class="text-center text-muted">© 2022 iTonomise</p>
+				<a href="controller?action=index" class="nav-link text-white px-2"><p class="text-center text-muted">© 2022 iTonomise</p></a>
 			</div>
 		</footer>
+	</div>
 	</div>
 
 	<script
