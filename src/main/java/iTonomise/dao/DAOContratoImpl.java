@@ -20,7 +20,7 @@ public class DAOContratoImpl implements DAOContrato{
 		try {
 			this.connection = (Connection) ConnectionFactory.getConnection();
 		} catch (Exception e) {
-			throw new DAOException("Erro na conexão: " + e.getMessage());
+			throw new DAOException("Erro na conexï¿½o: " + e.getMessage());
 		}
 	}
 
@@ -28,7 +28,7 @@ public class DAOContratoImpl implements DAOContrato{
 		try {
 			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm", "adm123");
 			
-			String sql = "INSERT INTO contrato(titulo, valor, descricao, status, avaliacao) VALUES (?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO contrato(titulo, valor, descricao, stats) VALUES (?, ?, ?, ?);";
 
 			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -36,7 +36,6 @@ public class DAOContratoImpl implements DAOContrato{
 			stmt.setString(2, contrato.getValor());
 			stmt.setString(3, contrato.getDescricao());
 			stmt.setString(4, contrato.getStatus());
-			stmt.setInt(5, contrato.getAvaliacao());
 
 			stmt.execute();
 
@@ -60,7 +59,7 @@ public class DAOContratoImpl implements DAOContrato{
 		try {			
 			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm", "adm123");
 			
-			String sql = "UPDATE contrato SET titulo = ?, valor = ?, descricao = ?, status = ?, avaliacao = ? WHERE idContrato = ?";
+			String sql = "UPDATE contrato SET titulo = ?, valor = ?, descricao = ?, status = ? WHERE idContrato = ?";
 
 			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -68,7 +67,6 @@ public class DAOContratoImpl implements DAOContrato{
 			stmt.setString(2, contrato.getValor());
 			stmt.setString(3, contrato.getDescricao());
 			stmt.setString(4, contrato.getStatus());
-			stmt.setInt(5, contrato.getAvaliacao());
 			stmt.setInt(6, contrato.getIdContrato());
 
 			stmt.executeUpdate();
@@ -103,7 +101,7 @@ public class DAOContratoImpl implements DAOContrato{
 			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm", "adm123");
 			Statement st = conexao.createStatement();
 
-			String sql = "SELECT idContrato, titulo, valor, descricao, status, avaliacao FROM contrato";
+			String sql = "SELECT idContrato, titulo, valor, descricao, status FROM contrato";
 
 			ResultSet rs = st.executeQuery(sql);
 
@@ -113,15 +111,13 @@ public class DAOContratoImpl implements DAOContrato{
 				String valor = rs.getString("valor");
 				String descricao = rs.getString("descricao");
 				String status = rs.getString("status");
-				int avaliacao = rs.getInt("avaliacao");
 
-				Contrato contrato = new Contrato(descricao, valor, titulo, status, avaliacao, idContrato);
+				Contrato contrato = new Contrato(descricao, valor, titulo, status, idContrato);
 				contrato.setIdContrato(idContrato);
 				contrato.setDescricao(descricao);
 				contrato.setValor(valor);
 				contrato.setTitulo(titulo);
 				contrato.setStatus(status);
-				contrato.setAvaliacao(avaliacao);
 
 				contratos.add(contrato);
 			}
@@ -151,9 +147,8 @@ public class DAOContratoImpl implements DAOContrato{
 				String valor = rs.getString("valor");
 				String descricao = rs.getString("descricao");
 				String status = rs.getString("status");
-				int avaliacao = rs.getInt("avaliacao");
 				
-				contrato = new Contrato(descricao, valor, titulo, status, avaliacao, idContrato);
+				contrato = new Contrato(descricao, valor, titulo, status, idContrato);
 
 				contrato.setIdContrato(idContrato);
 				contrato.setIdContrato(idContrato);
@@ -161,7 +156,6 @@ public class DAOContratoImpl implements DAOContrato{
 				contrato.setValor(valor);
 				contrato.setTitulo(titulo);
 				contrato.setStatus(status);
-				contrato.setAvaliacao(avaliacao);
 			}
 			
 			rs.close();

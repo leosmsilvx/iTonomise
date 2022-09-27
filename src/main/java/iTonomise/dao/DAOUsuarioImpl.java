@@ -23,7 +23,7 @@ public class DAOUsuarioImpl implements DAOUsuario{
 		try {
 			this.connection = (Connection) ConnectionFactory.getConnection();
 		} catch (Exception e) {
-			throw new DAOException("Erro na conexão: " + e.getMessage());
+			throw new DAOException("Erro na conexï¿½o: " + e.getMessage());
 		}
 	}
 
@@ -31,7 +31,7 @@ public class DAOUsuarioImpl implements DAOUsuario{
 		try {			
 			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
 			
-			String sql = "INSERT INTO usuario(nome, sobrenome cpf, tel, user, senha, email, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO usuario(nome, sobrenome cpf, tel, usuario, senha, email, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
@@ -110,7 +110,7 @@ public class DAOUsuarioImpl implements DAOUsuario{
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 
 		try {
-			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomite", "adm","adm123");
+			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
 			Statement st = conexao.createStatement();
 
 			String sql = "SELECT idUsuario, nome, sobrenome, cpf, tel, user, senha, email, endereco FROM usuario";

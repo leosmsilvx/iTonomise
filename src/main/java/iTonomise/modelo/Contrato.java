@@ -6,15 +6,13 @@ public class Contrato {
 	private String valor;
 	private String titulo;
 	private String status;
-	private int avaliacao;
 	private int idContrato;
 	
-	public Contrato(String descricao, String valor, String titulo, String status, int avaliacao, int idContrato) {
+	public Contrato(String descricao, String valor, String titulo, String status, int idContrato) {
 		this.descricao = descricao;
 		this.valor = valor;
 		this.titulo = titulo;
 		this.status = status;
-		this.avaliacao = avaliacao;
 		this.idContrato = idContrato;
 	}
 
@@ -48,14 +46,6 @@ public class Contrato {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public int getAvaliacao() {
-		return avaliacao;
-	}
-
-	public void setAvaliacao(int avaliacao) {
-		this.avaliacao = avaliacao;
 	}
 
 	public int getIdContrato() {

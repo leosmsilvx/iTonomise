@@ -23,7 +23,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		try {
 			this.connection = (Connection) ConnectionFactory.getConnection();
 		} catch (Exception e) {
-			throw new DAOException("Erro na conexão: " + e.getMessage());
+			throw new DAOException("Erro na conexï¿½o: " + e.getMessage());
 		}
 	}
 
@@ -31,7 +31,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		try {			
 			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
 			
-			String sql = "INSERT INTO autonomo(nome, sobrenome cpf, tel, user, senha, email, desc, tags, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO autonomo(nome, sobrenome cpf, tel, usuario, senha, email, descricao, tags, endereco, aval) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
@@ -45,6 +45,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			stmt.setString(8, autonomo.getDesc());
 			stmt.setString(9, autonomo.getTags());
 			stmt.setString(10, autonomo.getEndereco());
+			stmt.setInt(11, autonomo.getAval());
 
 			stmt.execute();
 
@@ -68,7 +69,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		try {
 			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
 			
-			String sql = "UPDATE autonomo SET nome = ?, sobrenome = ? cpf = ?, tel = ?, user = ?, senha = ?, email = ?, desc = ?, tags = ?, endereco = ? WHERE idAutonomo = ?";
+			String sql = "UPDATE autonomo SET nome = ?, sobrenome = ? cpf = ?, tel = ?, user = ?, senha = ?, email = ?, desc = ?, tags = ?, endereco = ?, aval = ? WHERE idAutonomo = ?";
 
 			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -82,7 +83,8 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			stmt.setString(8, autonomo.getDesc());
 			stmt.setString(9, autonomo.getTags());
 			stmt.setString(10, autonomo.getEndereco());
-			stmt.setInt(11, autonomo.getIdAutonomo());
+			stmt.setInt(11, autonomo.getAval());
+			stmt.setInt(12, autonomo.getIdAutonomo());
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -116,7 +118,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomite", "adm","adm123");
 			Statement st = conexao.createStatement();
 
-			String sql = "SELECT idAutonomo, nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco FROM autonomo";
+			String sql = "SELECT idAutonomo, nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval FROM autonomo";
 
 			ResultSet rs = st.executeQuery(sql);
 
@@ -132,9 +134,10 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				String desc = rs.getString("desc");
 				String tags = rs.getString("tags");
 				String endereco = rs.getString("endereco");
+				int aval = rs.getInt("aval");
 
 
-				Autonomo autonomo = new Autonomo(nome,  sobrenome,  cpf,  tel,  user,  senha,  email, desc, tags, endereco, idAutonomo);
+				Autonomo autonomo = new Autonomo(nome,  sobrenome,  cpf,  tel,  user,  senha,  email, desc, tags, endereco, aval, idAutonomo);
 				autonomo.setIdAutonomo(idAutonomo);
 				autonomo.setNome(nome);
 				autonomo.setSobrenome(sobrenome);
@@ -146,6 +149,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				autonomo.setDesc(desc);
 				autonomo.setTags(tags);
 				autonomo.setEndereco(endereco);
+				autonomo.setAval(aval);
 
 				autonomos.add(autonomo);
 			}
@@ -181,8 +185,9 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				String desc = rs.getString("desc");
 				String tags = rs.getString("tags");
 				String endereco = rs.getString("endereco");
+				int aval = rs.getInt("aval");
 				
-				autonomo = new Autonomo( nome,  sobrenome,  cpf,  tel,  user,  senha,  email, desc, tags,  endereco, idAutonomo);
+				autonomo = new Autonomo( nome,  sobrenome,  cpf,  tel,  user,  senha,  email, desc, tags,  endereco, aval, idAutonomo);
 				autonomo.setIdAutonomo(idAutonomo);
 				autonomo.setNome(nome);
 				autonomo.setSobrenome(sobrenome);
@@ -192,6 +197,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				autonomo.setSenha(senha);
 				autonomo.setEmail(email);
 				autonomo.setEndereco(endereco);
+				autonomo.setAval(aval);
 		}
 			
 			rs.close();
