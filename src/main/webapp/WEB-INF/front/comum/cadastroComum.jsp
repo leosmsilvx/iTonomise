@@ -38,6 +38,9 @@
 	width: 1.5rem;
 	height: 100vh;
 }
+body{
+	background-color: #EEEEEE;
+}
 
 .bi {
 	vertical-align: -.125em;
@@ -76,14 +79,6 @@
         				<a href="controller?action=index"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
         				<a href="controller?action=index" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
 						</div></li>
-				</ul>
-				<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-					<li class="nav-item"><a href="controller?action=guiaAuto"
-						class="nav-link text-white px-2">Autônomos</a></li>
-					<li class="nav-item"><a href="controller?action=guiaComum"
-						class="nav-link text-white px-2">Serviços</a></li>
-					<li class="nav-item"><a href="controller?action=sobreN"
-						class="nav-link text-white px-2">Sobre</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -177,15 +172,7 @@
 	<div class="py-5">
 		<footer class="mt-auto">
 			<div class="container">
-				<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-					<li class="nav-item"><a href="controller?action=guiaAuto"
-						class="nav-link px-2 text-muted">Autônomos</a></li>
-					<li class="nav-item"><a href="controller?action=guiaComum"
-						class="nav-link px-2 text-muted">Serviços</a></li>
-					<li class="nav-item"><a href="controller?action=sobreN"
-						class="nav-link px-2 text-muted">Sobre</a></li>
-				</ul>
-				<a href="controller?action=index" class="nav-link text-white px-2"><p class="text-center text-muted">© 2022 iTonomise</p></a>
+				<a href="controller?action=index" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
 			</div>
 		</footer>
 	</div>

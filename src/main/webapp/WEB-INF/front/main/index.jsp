@@ -25,6 +25,10 @@
 	}
 }
 
+body{
+	background-color: #EEE;
+}
+
 .b-example-divider {
 	height: 3rem;
 	background-color: rgba(0, 0, 0, .1);
@@ -76,12 +80,8 @@
 						</div></li>
 				</ul>
 				<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-					<li class="nav-item"><a href="controller?action=guiaAuto"
-						class="nav-link text-white px-2">Autônomos</a></li>
-					<li class="nav-item"><a href="controller?action=guiaComum"
-						class="nav-link text-white px-2">Serviços</a></li>
-					<li class="nav-item"><a href="controller?action=sobreN"
-						class="nav-link text-white px-2">Sobre</a></li>
+					<li class="nav-item"><a href="controller?action=login"
+						class="nav-link text-white px-2">Login</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -123,8 +123,8 @@
 						trabalhador certo para lhe indicar!
                         iTonomise é simples e dinâmico, para combinar
 						com a sua rotina.</p>
-					<a href="#nossosservicos" class="icon-link d-inline-flex align-items-center">
-						Ir para <svg class="bi" width="1em" height="1em">
+					<a href="#nossosservicos" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;">
+						Ir para<svg class="bi" width="1em" height="1em">
 							<use xlink:href="#seta"></use></svg>
 					</a>
 				</div>
@@ -141,7 +141,7 @@
 						tornar seu perfil mais atrativo aos seus clientes; Logo após será redirecionado para o cadastro,
                         sinta-se à vontade nos contando suas experiências passadas, sua preferencia
 						em atuação, entre outros!</p>
-					<a href="#souautonomo" class="icon-link d-inline-flex align-items-center">
+					<a href="#souautonomo" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;">
 						Ir para <svg class="bi" width="1em" height="1em">
 							<use xlink:href="#seta"></use></svg>
 					</a>
@@ -158,8 +158,8 @@
 						informação entre autônomo e contratante, visando sempre manter o
 						mercado em movimento. Sua ideia surgiu ao longo de diversas pesquisas sobre o
 						impacto da pandemia na vida dos trabalhadores autônomos, visando ajudar estes trabalhadores a iTonomise foi criada!</p>
-					<a href="#sobrenos" class="icon-link d-inline-flex align-items-center">
-						Ir para <svg class="bi" width="1em" height="1em">
+					<a href="#sobrenos" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;" 	>
+						Ir para <svg class="bi" width="1em" height="1em" style="text-decoration: none;">
 							<use xlink:href="#seta"></use></svg>
 					</a>
 				</div>
@@ -175,7 +175,7 @@
                           margin-left: 0.5em;
                           font-weight: bold;">Nossos serviços</a>
                           <p style="font-size: 1.5em">Esta é a sua área, autônomo! Aqui você encontrará um guia para ofertar seus serviços em nosso site, bem como dicas para tornar seu perfil mais atrativo aos seus clientes. Sinta-se à vontade nos contando suas experiências passadas, sua preferência em atuação, entre outros!</p>
-                          <a id="souautonomo" href="controller?action=pagCadComum" class="icon-link d-inline-flex align-items-center" style="font-size: 1em">
+                          <a id="souautonomo" href="controller?action=pagCadComum" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
                             Se cadastre agora
                             <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
                           </a>
@@ -183,7 +183,7 @@
                     </div>
                 </div>
                 <div class="feature col">
-                    <img src="https://media.discordapp.net/attachments/978088524526018570/1022834620884066374/ilustracao-em-vetor-conceito-abstrato-trabalho-freelancer-trabalho-remoto-trabalho-remoto-plataforma-freelance-on-line-autonomo-disponivel-para-contratacao-de-especialista-web-independente-metafora-abstrata_335657-6118.jpg?width=586&height=586">
+                    <img style="padding-top: 4em;" src="https://media.discordapp.net/attachments/911394611300270122/1024124231161741312/mulher.png">
                 </div>
             </div>
             
@@ -201,7 +201,7 @@
 	                            <svg class="bi" width="40px" height="40px"><use xlink:href="#autonomo"></use></svg>
 	                          </div>
 	                          <p style="font-size: 1.5em">Esta é a sua área, autônomo! Aqui você encontrará um guia para ofertar seus serviços em nosso site, bem como dicas para tornar seu perfil mais atrativo aos seus clientes. Sinta-se à vontade nos contando suas experiências passadas, sua preferência em atuação, entre outros!</p>
-	                          <a href="controller?action=pagCadAuto" class="icon-link d-inline-flex align-items-center" style="font-size: 1em">
+	                          <a href="controller?action=pagCadAuto" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
 	                            Se cadastre agora
 	                            <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
 	                          </a>
@@ -225,7 +225,7 @@
                     </div>
                 </div>
                 <div class="feature col">
-                    <img src="https://media.discordapp.net/attachments/978088524526018570/1022834620884066374/ilustracao-em-vetor-conceito-abstrato-trabalho-freelancer-trabalho-remoto-trabalho-remoto-plataforma-freelance-on-line-autonomo-disponivel-para-contratacao-de-especialista-web-independente-metafora-abstrata_335657-6118.jpg?width=586&height=586">
+                    <img src="https://media.discordapp.net/attachments/911394611300270122/1024122809150083192/pessoas.png?width=720&height=480">
                 </div>
             </div>
             </div>
@@ -234,15 +234,13 @@
 	<div>
 		<footer class="mt-auto">
 			<div class="container">
-				<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-					<li class="nav-item"><a href="controller?action=guiaAuto"
-						class="nav-link px-2 text-muted">Autônomos</a></li>
-					<li class="nav-item"><a href="controller?action=guiaComum"
-						class="nav-link px-2 text-muted">Serviços</a></li>
-					<li class="nav-item"><a href="controller?action=sobreN"
-						class="nav-link px-2 text-muted">Sobre</a></li>
+				<ul class="nav justify-content-center pb-3 mb-3">
+					<li class="nav-item">
+					<a class="nav-link px-2 text-center" style="font-size: 2em; font-weight: bold; color: #111">Já é usuário?</a>
+					<a href="controller?action=login"
+						class="nav-link px-2 text-muted text-center"><button class="w-100 btn btn-dark btn-lg" type="submit">Login</button></a></li>
 				</ul>
-				<a href="controller?action=index" class="nav-link text-white px-2"><p class="text-center text-muted">© 2022 iTonomise</p></a>
+				<a href="controller?action=index" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
 			</div>
 		</footer>
 	</div>

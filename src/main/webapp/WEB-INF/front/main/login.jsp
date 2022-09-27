@@ -71,7 +71,7 @@ body {
 	align-items: center;
 	padding-top: 40px;
 	padding-bottom: 40px;
-	background-color: #f5f5f5;
+	background-color: #EEEEEE;
 }
 
 .form-signin {
@@ -107,11 +107,11 @@ body {
 			<form>
 				<div class="form-floating">
 					<input type="text" class="form-control" name="user" id="usuario"
-						placeholder="Usuário" style="border-radius: 5px 5px 0px 0px"> <label for="usuario">Usuário</label>
+						placeholder="Usuário" style="border-radius: 5px 5px 0px 0px" required> <label for="usuario">Usuário</label>
 				</div>
 				<div class="form-floating">
 					<input type="password" class="form-control" name="senha" id="senha"
-						placeholder="Senha" style="border-radius: 0px 0px 5px 5px; border-top: 0px"> <label for="senha">Senha</label>
+						placeholder="Senha" style="border-radius: 0px 0px 5px 5px; border-top: 0px" required> <label for="senha">Senha</label>
 				</div>
 				<div class="form-check" style="padding-left: 40%; text-align: left;">
 		        	<input class="form-check-input" type="checkbox" name="tipo" id="aut">
