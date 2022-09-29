@@ -5,10 +5,11 @@ public class Contrato {
 	private String descricao;
 	private String valor;
 	private String titulo;
-	private String status;
+	private boolean status;
 	private int idContrato;
 	
-	public Contrato(String descricao, String valor, String titulo, String status, int idContrato) {
+	public Contrato(String descricao, String valor, String titulo, boolean status, int idContrato) {
+		super();
 		this.descricao = descricao;
 		this.valor = valor;
 		this.titulo = titulo;
@@ -40,11 +41,11 @@ public class Contrato {
 		this.titulo = titulo;
 	}
 
-	public String getStatus() {
+	public boolean isStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
@@ -54,5 +55,6 @@ public class Contrato {
 
 	public void setIdContrato(int idContrato) {
 		this.idContrato = idContrato;
-	}	
+	}
+	
 }

@@ -36,6 +36,10 @@ public class Controller extends HttpServlet{
 		try {
 			if (action.equals("index")) {
 				index(request, response);
+			} else if (action.equals("login")) { 
+				login(request, response);
+			} else if (action.equals("sobreN")) { 
+				sobreN(request, response);
 			} else if (action.equals("pagCadAuto")) { 
 				pagCadAuto(request, response);
 			} else if (action.equals("pagCadComum")) { 
@@ -46,10 +50,12 @@ public class Controller extends HttpServlet{
 				guiaAuto(request, response);
 			} else if (action.equals("guiaComum")) { 
 				guiaComum(request, response);
-			} else if (action.equals("login")) { 
-				login(request, response);
-			} else if (action.equals("sobreN")) { 
-				sobreN(request, response);
+			} else if (action.equals("cadastrarAutonomo")) { 
+				cadastrarAutonomo(request, response);
+			} else if (action.equals("cadastrarComum")) { 
+				cadastrarComum(request, response);
+			} else if (action.equals("cadastrarContrato")) { 
+				cadastrarContrato(request, response);
 			}
 			//else {				
 				//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/vendedor/erroVendedor.jsp"); 
@@ -57,7 +63,7 @@ public class Controller extends HttpServlet{
 			//}
 			
 			//TEM QUE USAR ISSO PARA O CONFIMAR O CADASTRO "| DAOException" LALALALLALAALALALALALALALLALAALALALALALALALLALAALALALALALALALLALAALALALA
-		} catch (ServletException | IOException e) {
+		} catch (ServletException | IOException | DAOException e) {
 			e.printStackTrace();
 		}		
 	} 
@@ -105,7 +111,7 @@ public class Controller extends HttpServlet{
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
 		rd.forward(request, response);
 	}
-	
+		
 	//Pagina Cadastro Comum
 	private void pagCadComum(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -131,6 +137,77 @@ public class Controller extends HttpServlet{
 	private void guiaComum(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/guiaComum.jsp");
+		rd.forward(request, response);
+	}
+	
+	//Cadastrar autonomo
+	private void cadastrarAutonomo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+		
+		String nome = request.getParameter("nome");
+		String sobrenome = request.getParameter("sobrenome");
+		String cpf = request.getParameter("cpf");
+		String tel = request.getParameter("tel");
+		String user = request.getParameter("user");
+		String senha = request.getParameter("senha");
+		String email = request.getParameter("email");
+		String desc = request.getParameter("desc");
+		String tags = request.getParameter("tags");
+		String endereco = request.getParameter("endereco");
+		int aval = 0;
+		int idAutonomo = 0;
+		
+		Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
+		
+		DAOAutonomo dao = new DAOAutonomoImpl();
+		dao.cadastrar(novoAutonomo);
+		request.setAttribute("autonomo", novoAutonomo);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+		rd.forward(request, response);
+	}
+	
+	//Cadastrar comum
+	private void cadastrarComum(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {		
+		
+		String nome = request.getParameter("nome");
+		String sobrenome = request.getParameter("sobrenome");
+		String cpf = request.getParameter("cpf");
+		String tel = request.getParameter("tel");
+		String user = request.getParameter("user");
+		String senha = request.getParameter("senha");
+		String email = request.getParameter("email");
+		String endereco = request.getParameter("endereco");
+		int idUsuario = 0;
+		
+		Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);
+		
+		DAOUsuario dao = new DAOUsuarioImpl();
+		dao.cadastrar(novoUsuario);
+		request.setAttribute("autonomo", novoUsuario);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+		rd.forward(request, response);
+	}
+	
+	//Cadastrar contrato
+	private void cadastrarContrato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {		
+		
+		String titulo = request.getParameter("titulo");
+		String valor = request.getParameter("valor");
+		String descricao = request.getParameter("descricao");
+		boolean status = false;
+		int idCont = 0;
+
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, status, idCont);
+		
+		DAOContrato dao = new DAOContratoImpl();
+		dao.cadastrar(novoContrato);
+		request.setAttribute("autonomo", novoContrato);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
 		rd.forward(request, response);
 	}
 }

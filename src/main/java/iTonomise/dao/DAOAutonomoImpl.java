@@ -31,7 +31,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		try {			
 			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
 			
-			String sql = "INSERT INTO autonomo(nome, sobrenome cpf, tel, usuario, senha, email, descricao, tags, endereco, aval) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO autonomo(nome, sobrenome, cpf, tel, usuario, senha, email, descricao, tags, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
@@ -45,7 +45,6 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			stmt.setString(8, autonomo.getDesc());
 			stmt.setString(9, autonomo.getTags());
 			stmt.setString(10, autonomo.getEndereco());
-			stmt.setInt(11, autonomo.getAval());
 
 			stmt.execute();
 
@@ -54,6 +53,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			if (rs.next()) {
 				int idAutonomo = rs.getInt(1);
 				autonomo.setIdAutonomo(idAutonomo);
+				autonomo.setAval(0);
 			}
 
 			rs.close();

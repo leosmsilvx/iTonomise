@@ -88,7 +88,7 @@ body{
 			<div class="row g-5">
 				<div>
 					<h4 class="mb-4 py-3">Contrato com Fulano</h4>
-					<form>
+					<form action="controller?action=cadastrarContrato" method="post">
 						<div class="row g-3">
 
 							<div class="col-12">
@@ -98,7 +98,7 @@ body{
 
 							<div class="col-12">
                                 <label for="descricao" class="form-label">Descrição do contrato</label>
-                                <textarea class="form-control" name="email" rows="13" placeholder="Escreva o serviço que o Autonomo deve realizar, onde vai ser realizado o serviço, observações, etc..."></textarea>
+                                <textarea class="form-control" name="descricao" rows="13" placeholder="Escreva o serviço que o Autonomo deve realizar, onde vai ser realizado o serviço, observações, etc..."></textarea>
                             </div>
 
 							<div class="col-6">
@@ -107,10 +107,6 @@ body{
 									<span class="input-group-text">R$</span> <input type="number"
 										class="form-control" required name="valor" min="0" step="any" placeholder="100.00">
 								</div>
-							</div>
-
-							<div class="col-6">
-								<label for="telefone" class="form-label">Telefone do autônomo</label><span class="input-group-text text-center">(37) 98877-6655</span>
 							</div>
 
 							<hr class="my-4">

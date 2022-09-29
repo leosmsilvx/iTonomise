@@ -88,13 +88,13 @@ body{
 			<div class="row g-5">
 				<div>
 					<h4 class="mb-4 py-4">Cadastro Usuário</h4>
-					<form>
+					<form action="controller?action=cadastrarComum" method="post">
 						<div class="row g-3">
 
 							<div class="col-sm-6">
-								<label for="primeiro_nome" class="form-label">Primeiro
+								<label for="nome" class="form-label">Primeiro
 									Nome</label> <input type="text" class="form-control"
-									name="primeiro_nome" placeholder="Nome">
+									name="nome" placeholder="Nome">
 							</div>
 
 							<div class="col-6">
@@ -111,17 +111,17 @@ body{
 							</div>
 
 							<div class="col-6">
-								<label for="telefone" class="form-label">Telefone <span
+								<label for="tel" class="form-label">Telefone <span
 									class="text-muted">(Somente números)</span></label> <input
-									type="number" class="form-control" name="telefone"
+									type="number" class="form-control" name="tel"
 									placeholder="(37) 98877-6655">
 							</div>
 
 							<div class="col-8">
-								<label for="usuario" class="form-label">Usuário</label>
+								<label for="user" class="form-label">Usuário</label>
 								<div class="input-group">
 									<span class="input-group-text">@</span> <input type="text"
-										class="form-control" name="usuario" placeholder="Usúario">
+										class="form-control" name="user" placeholder="Usúario">
 								</div>
 							</div>
 
@@ -136,29 +136,11 @@ body{
 									type="email" class="form-control" name="email"
 									placeholder="iTonomise@exemplo.com">
 							</div>
-
-							<div class="col-4">
-								<label for="pais" class="form-label">País</label> <select
-									class="form-select" name="pais">
-									<option value="">Selecionar...</option>
-									<option>Brasil</option>
-								</select>
-							</div>
-
-							<div class="col-4">
-								<label for="estado" class="form-label">Estado</label> <select
-									class="form-select" name="estado">
-									<option value="">Selecionar...</option>
-									<option>Minas Gerais</option>
-								</select>
-							</div>
-
-							<div class="col-4">
-								<label for="cidade" class="form-label">Cidade</label> <select
-									class="form-select" name="cidade">
-									<option value="">Selecionar...</option>
-									<option>Divinópolis</option>
-								</select>
+							
+							<div class="col-12">
+								<label for="endereco" class="form-label">Endereço</label>
+								<textarea class="form-control" name="endereco"
+									placeholder="Rua Bonita - nº 691 - Bairro legal - Divinópolis"></textarea>
 							</div>
 
 							<hr class="my-4">

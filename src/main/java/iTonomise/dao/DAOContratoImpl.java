@@ -35,7 +35,7 @@ public class DAOContratoImpl implements DAOContrato{
 			stmt.setString(1, contrato.getTitulo());
 			stmt.setString(2, contrato.getValor());
 			stmt.setString(3, contrato.getDescricao());
-			stmt.setString(4, contrato.getStatus());
+			stmt.setBoolean(4, contrato.isStatus());
 
 			stmt.execute();
 
@@ -66,7 +66,7 @@ public class DAOContratoImpl implements DAOContrato{
 			stmt.setString(1, contrato.getTitulo());
 			stmt.setString(2, contrato.getValor());
 			stmt.setString(3, contrato.getDescricao());
-			stmt.setString(4, contrato.getStatus());
+			stmt.setBoolean(4, contrato.isStatus());
 			stmt.setInt(6, contrato.getIdContrato());
 
 			stmt.executeUpdate();
@@ -110,7 +110,7 @@ public class DAOContratoImpl implements DAOContrato{
 				String titulo = rs.getString("titulo");
 				String valor = rs.getString("valor");
 				String descricao = rs.getString("descricao");
-				String status = rs.getString("status");
+				boolean status = rs.getBoolean("status");
 
 				Contrato contrato = new Contrato(descricao, valor, titulo, status, idContrato);
 				contrato.setIdContrato(idContrato);
@@ -146,7 +146,7 @@ public class DAOContratoImpl implements DAOContrato{
 				String titulo = rs.getString("titulo");
 				String valor = rs.getString("valor");
 				String descricao = rs.getString("descricao");
-				String status = rs.getString("status");
+				boolean status = rs.getBoolean("status");
 				
 				contrato = new Contrato(descricao, valor, titulo, status, idContrato);
 

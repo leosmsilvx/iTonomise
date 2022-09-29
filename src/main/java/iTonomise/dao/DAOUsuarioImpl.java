@@ -31,7 +31,7 @@ public class DAOUsuarioImpl implements DAOUsuario{
 		try {			
 			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
 			
-			String sql = "INSERT INTO usuario(nome, sobrenome cpf, tel, usuario, senha, email, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
