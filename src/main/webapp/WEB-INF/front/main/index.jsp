@@ -167,14 +167,14 @@ body{
 			
         <div class="container px-4 py-5" id="nossosservicos">
             <div class="row row-cols-1 row-cols-lg-2">
-                <div class="feature col" style="padding-top: 3em;">
+                <div class="feature col" style="padding-top: 5em;">
                     <div>
                         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2" style="border-radius: 6px; background-color: #212529;">
                             <svg class="bi" width="40px" height="40px"><use xlink:href="#servicos"></use></svg>
                           </div><a style="font-size: 2em;
                           margin-left: 0.5em;
                           font-weight: bold;">Nossos serviços</a>
-                          <p style="font-size: 1.5em">Esta é a sua área, autônomo! Aqui você encontrará um guia para ofertar seus serviços em nosso site, bem como dicas para tornar seu perfil mais atrativo aos seus clientes. Sinta-se à vontade nos contando suas experiências passadas, sua preferência em atuação, entre outros!</p>
+                          <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado à nossa página de cadastro. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
                           <a id="souautonomo" href="controller?action=pagCadComum" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
                             Se cadastre agora
                             <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
@@ -192,7 +192,7 @@ body{
 	            	<div class="feature col">
                     	<img src="https://media.discordapp.net/attachments/911394611300270122/1024081842967695360/unknown.png" width="100%" height="90%">
                 	</div>
-	                <div class="feature col">
+	                <div class="feature col" style="padding-top: 2em;">
 	                    <div style="text-align: right;">
 	                        <a style="font-size: 2em;
 	                          margin-right: 0.5em;
@@ -200,7 +200,7 @@ body{
 	                          <div class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2" style="border-radius: 6px; background-color: #212529;">
 	                            <svg class="bi" width="40px" height="40px"><use xlink:href="#autonomo"></use></svg>
 	                          </div>
-	                          <p style="font-size: 1.5em">Esta é a sua área, autônomo! Aqui você encontrará um guia para ofertar seus serviços em nosso site, bem como dicas para tornar seu perfil mais atrativo aos seus clientes. Sinta-se à vontade nos contando suas experiências passadas, sua preferência em atuação, entre outros!</p>
+	                          <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado à nossa página de cadastro. Faça parte da nossa equipe de trabalhadores autônomos, oferecendo seus serviços pelo nosso site!</p>
 	                          <a href="controller?action=pagCadAuto" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
 	                            Se cadastre agora
 	                            <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>

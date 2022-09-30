@@ -154,8 +154,9 @@ body{
 							</div>
 
 							<div class="col-12">
+								<label for="desc" class="form-label">Principal atividade</label>
 								<select class="form-select" aria-label="Default select example" name="tags">
-								  <option selected>Principal atividade</option>
+								  <option selected>Área de atuação</option>
 								  <option value="pintor">Pintor(a)</option>
 								  <option value="pedreiro">Pedreiro</option>
 								  <option value="eletricista">Eletricista</option>	

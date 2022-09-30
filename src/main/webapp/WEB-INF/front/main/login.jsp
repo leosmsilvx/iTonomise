@@ -99,23 +99,22 @@ body {
 <body class="text-center">
 
 	<main class="form-signin w-100 m-auto">
-		<form>
 			<a href="controller?action=index"><img class="mb-4" src="https://media.discordapp.net/attachments/911394611300270122/1021924837486239764/a.png" alt="" width="100" height="100"></a>
 			<h1 class="h3 mb-3 fw-normal">
 				Olá,<br>Digite seu Usuário e Senha
 			</h1>
-			<form>
-				<div class="form-floating">
-					<input type="text" class="form-control" name="user" id="usuario"
-						placeholder="Usuário" style="border-radius: 5px 5px 0px 0px" required> <label for="usuario">Usuário</label>
+			<form action="controller?action=confirmarLogin" method="post">
+				<div>
+					<input type="text" class="form-control" name="usuario" id="usuario"
+						placeholder="Usuário" style="border-radius: 5px 5px 0px 0px; height: 4em;" required>
 				</div>
-				<div class="form-floating">
+				<div>
 					<input type="password" class="form-control" name="senha" id="senha"
-						placeholder="Senha" style="border-radius: 0px 0px 5px 5px; border-top: 0px" required> <label for="senha">Senha</label>
+						placeholder="Senha" style="border-radius: 0px 0px 5px 5px; border-top: 0px; height: 4em;" required>
 				</div>
-				<div class="form-check" style="padding-left: 40%; text-align: left;">
-		        	<input class="form-check-input" type="checkbox" name="tipo" id="aut">
-			        <label class="form-check-label" for="aut">
+				<div style="padding-left: 30%; text-align: left;">
+		        	<input class="form-check-input" type="checkbox" name="souAut" id="souAut">
+			        <label class="form-check-label" for="souAut">
 			          Sou autônomo
 			        </label>
 		      	</div>
@@ -123,8 +122,8 @@ body {
 		        	<button class="w-100 btn btn-lg btn-dark" type="submit">Entrar</button>
 		      	</div>
 			</form>
-      		<a href="controller?action=index" class="nav-link text-white px-2"><p class="mt-5 mb-3 text-muted">© 2022 iTonomise</p></a>
-		</form>
+			<a href="controller?action=index" class="nav-link"><p class="text-muted">Não é usuário? Se cadastre agora!</p></a>
+      		<a href="controller?action=index" class="nav-link"><p class="mt-5 mb-3 text-muted">© 2022 iTonomise</p></a>
 	</main>
 
 
