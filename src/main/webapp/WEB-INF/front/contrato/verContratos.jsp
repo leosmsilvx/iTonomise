@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +68,7 @@ body{
 	-webkit-overflow-scrolling: touch;
 }
 .container{
-	max-width: 60%;
+	max-width: 70%;
 }
 </style>
 </head>
@@ -93,41 +94,47 @@ body{
 					</ul>
 				</div>
 			</nav>
-		<div class="container">
-			<div class="row">
-				<div class="col" style="padding: 5%;">
-					<div class="card">
-						<img src="https://media.discordapp.net/attachments/911394611300270122/1025473411977314334/contrato.jpg" height="400" width="225" class="card-img-top">
-						<div class="card-body border-top">
-						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Contrato</p>
-						  <p class="card-text">Clique e crie um contrato para aparecer na lista de contratos e ser achado por nossos usuários!</p>
-						  <div class="px-5 d-md-flex justify-content-md-center">
-							<a href="controller?action=pagCadCont" class="btn btn-dark">Criar contrato</a>
-						  </div>
-						</div>
-					</div>
+            <div class="container">
+                <div class="border-top border-2 py-5">
+                    <table class="table table-hover table-dark table-striped caption-top align-middle">
+                        <caption style="font-weight: bold;">Lista de contratos</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">Contrato de</th>
+                            <th scope="col">Título</th>
+                            <th scope="col" class="text-center">Valor</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <c:forEach var="contratosCadasatrados" items="${contratos}">
+                        <tbody class="table-group-divider">
+                          <tr>
+                            <td><c:forEach var="autonomosCadasatrados" items="${autonomos}">
+                            		<c:if test="${contratosCadasatrados.idAutonomo == autonomosCadasatrados.idAutonomo}">
+										@<c:out value="${autonomosCadasatrados.user}"/>
+									</c:if>
+								</c:forEach>
+								<c:forEach var="usuariosCadasatrados" items="${usuarios}">
+                            		<c:if test="${contratosCadasatrados.idUsuario == usuariosCadasatrados.idUsuario}">
+										@<c:out value="${usuariosCadasatrados.user}"/>
+									</c:if>
+								</c:forEach>
+							</td>
+                            <td>${contratosCadasatrados.titulo}</td>
+                            <td class="text-center">${contratosCadasatrados.valor}</td>
+                            <td class="text-center"><a href="controller?action=detalhesContrato&idContrato=${contratosCadasatrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Ver contrato</a></td>
+                          </tr>
+                        </c:forEach>
+                        </tbody>
+                      </table>
+                    </div>
+            <div class="border-top border-2">
 				</div>
-				<div class="col" style="padding: 5%;">
-					<div class="card">
-						<img src="https://media.discordapp.net/attachments/911394611300270122/1025473960772636743/lista.jpg" height="400" width="225" class="card-img-top">
-						<div class="card-body border-top">
-						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Lista</p>
-						  <p class="card-text">Clique e veja a lista completa de trabalhadores autonomos e contratos</p>
-						  <div class="gap-4 d-md-flex justify-content-md-center">
-							<a href="controller?action=verContratos" class="btn btn-dark">Ver contratos</a>
-							<a href="controller?action=verAutonomos" class="btn btn-dark">Ver Autonomos</a>
-						  </div>
-						</div>
-					</div>
+				<footer class="mt-auto">
+						<a href="controller?action=home" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
+				</footer>
 				</div>
-			  </div>
-
-			<div class="border-top border-2">
-			</div>
-			<footer class="mt-auto">
-					<a href="controller?action=home" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
-			</footer>
-			</div>
+            </div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +68,7 @@ body{
 	-webkit-overflow-scrolling: touch;
 }
 .container{
-	max-width: 60%;
+	max-width: 70%;
 }
 </style>
 </head>
@@ -93,34 +94,33 @@ body{
 					</ul>
 				</div>
 			</nav>
-		<div class="container">
-			<div class="row">
-				<div class="col" style="padding: 5%;">
-					<div class="card">
-						<img src="https://media.discordapp.net/attachments/911394611300270122/1025473411977314334/contrato.jpg" height="400" width="225" class="card-img-top">
-						<div class="card-body border-top">
-						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Contrato</p>
-						  <p class="card-text">Clique e crie um contrato para aparecer na lista de contratos e ser achado por nossos usuários!</p>
-						  <div class="px-5 d-md-flex justify-content-md-center">
-							<a href="controller?action=pagCadCont" class="btn btn-dark">Criar contrato</a>
-						  </div>
-						</div>
-					</div>
-				</div>
-				<div class="col" style="padding: 5%;">
-					<div class="card">
-						<img src="https://media.discordapp.net/attachments/911394611300270122/1025473960772636743/lista.jpg" height="400" width="225" class="card-img-top">
-						<div class="card-body border-top">
-						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Lista</p>
-						  <p class="card-text">Clique e veja a lista completa de trabalhadores autonomos e contratos</p>
-						  <div class="gap-4 d-md-flex justify-content-md-center">
-							<a href="controller?action=verContratos" class="btn btn-dark">Ver contratos</a>
-							<a href="controller?action=verAutonomos" class="btn btn-dark">Ver Autonomos</a>
-						  </div>
-						</div>
-					</div>
-				</div>
-			  </div>
+            <div class="container">
+                <div class="border-top border-2 py-5">
+                    <table class="table table-hover table-dark table-striped caption-top align-middle">
+                        <caption style="font-weight: bold;">Lista de autônomos</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">Usuário</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col" class="text-center">Valor</th>
+                            <th scope="col" class="text-center">Avaliação</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <c:forEach var="autonomosCadastrados" items="${autonomos}">
+                        <tbody class="table-group-divider">
+                          <tr>
+                            <td>${autonomosCadastrados.user}</td>
+                            <td>${autonomosCadastrados.nome} ${autonomosCadastrados.sobrenome}</td>
+                            <td class="text-center">${autonomosCadastrados.tags}</td>
+                            <td class="text-center">${autonomosCadastrados.aval}</td>
+                            <td class="text-center"><a href="controller?action=detalhesAutonomo&idAutonomo=${autonomosCadastrados.idAutonomo}" class="btn btn-light" style="text-decoration: none;">Ver contrato</a></td>
+                          </tr>
+                        </c:forEach>
+                        </tbody>
+                      </table>
+                    </div>
+            </div>
 
 			<div class="border-top border-2">
 			</div>

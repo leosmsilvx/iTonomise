@@ -90,17 +90,10 @@ body{
 					<h4 class="mb-4 py-3">Contrato com Fulano</h4>
 					<form action="controller?action=cadastrarContrato" method="post">
 						<div class="row g-3">
-
-							<div class="col-12">
+							<div class="col-6">
 								<label for="titulo" class="form-label">Título</label>
                                  <input type="text" class="form-control" name="titulo" placeholder="Título">
 							</div>
-
-							<div class="col-12">
-                                <label for="descricao" class="form-label">Descrição do contrato</label>
-                                <textarea class="form-control" name="descricao" rows="13" placeholder="Escreva o serviço que o Autonomo deve realizar, onde vai ser realizado o serviço, observações, etc..."></textarea>
-                            </div>
-
 							<div class="col-6">
 								<label for="valor" class="form-label">Valor do serviço</label>
 								<div class="input-group">
@@ -108,6 +101,11 @@ body{
 										class="form-control" required name="valor" min="0" step="any" placeholder="100.00">
 								</div>
 							</div>
+
+							<div class="col-12">
+                                <label for="descricao" class="form-label">Descrição do contrato</label>
+                                <textarea class="form-control" name="descricao" rows="13" placeholder="Escreva o serviço que o Autonomo deve realizar, onde vai ser realizado o serviço, observações, etc..."></textarea>
+                            </div>
 
 							<hr class="my-4">
 							<button class="w-100 btn btn-dark btn-lg" type="submit">Cadastrar</button>

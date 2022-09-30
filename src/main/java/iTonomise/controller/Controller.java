@@ -60,6 +60,10 @@ public class Controller extends HttpServlet{
 				confirmarLogin(request, response);
 			} else if (action.equals("home")) { 
 				home(request, response);
+			} else if (action.equals("verContratos")) { 
+				verContratos(request, response);
+			} else if (action.equals("verAutonomos")) { 
+				verAutonomos(request, response);
 			}
 			//else {				
 				//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/vendedor/erroVendedor.jsp"); 
@@ -94,9 +98,7 @@ public class Controller extends HttpServlet{
 			rd.forward(request, response);
 		}
 		else {
-			String msgErro = "Vocé á esté logado!";
-			session.setAttribute("msgErro", msgErro);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
 			rd.forward(request, response);
 		}
 	}
@@ -201,16 +203,25 @@ public class Controller extends HttpServlet{
 		String titulo = request.getParameter("titulo");
 		String valor = request.getParameter("valor");
 		String descricao = request.getParameter("descricao");
-		boolean status = false;
-		int idCont = 0;
-
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, status, idCont);
+		String status = null;
+		int idCont = 0;	
+		String idAutonomo = null;	
+		String idUsuario = null;	
+		
+		HttpSession session = request.getSession(true);	
+		if(session.getAttribute("usuario").equals("comum")) {
+			idUsuario = String.valueOf(session.getAttribute("id"));	
+		} else{
+			idAutonomo = String.valueOf(session.getAttribute("id"));
+		}
+		
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, status, idCont, idAutonomo, idUsuario);
 		
 		DAOContrato dao = new DAOContratoImpl();
 		dao.cadastrar(novoContrato);
 		request.setAttribute("autonomo", novoContrato);
 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
 		rd.forward(request, response);
 	}
 	
@@ -226,6 +237,7 @@ public class Controller extends HttpServlet{
 			{
 				if((usuarios.get(i).getSenha()).equals(request.getParameter("senha")) && (usuarios.get(i).getUser()).equals(request.getParameter("usuario"))) {
 					session.setAttribute("usuario", "comum");	
+					session.setAttribute("id", usuarios.get(i).getIdUsuario());
 					home(request,response);
 				}
 			}			
@@ -241,6 +253,7 @@ public class Controller extends HttpServlet{
 			{
 				if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getUser()).equals(request.getParameter("usuario"))) {
 					session.setAttribute("usuario", "autonomo");	
+					session.setAttribute("id", autonomos.get(i).getIdAutonomo());
 					home(request,response);
 				}
 			}			
@@ -248,11 +261,7 @@ public class Controller extends HttpServlet{
 			session.setAttribute("msgErro", msgErro);
 			((HttpServletResponse) response).sendRedirect("controller?action=login");
 			
-		} else {
-			//((HttpServletResponse) response).sendRedirect("controller?action=index");
-			
-		}
-		
+		} 		
 	}
 	
 	//Home page
@@ -261,4 +270,42 @@ public class Controller extends HttpServlet{
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
 		rd.forward(request, response);
 	}
+	
+	
+	private void verContratos(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException{
+		
+		DAOContrato dao = new DAOContratoImpl();
+		List<Contrato> contratos = dao.todosContratos();
+
+		request.setAttribute("contratos", contratos);
+		
+		DAOAutonomo dao2 = new DAOAutonomoImpl();
+		List<Autonomo> autonomos = dao2.todosAutonomos();
+
+		request.setAttribute("autonomos", autonomos);
+		
+		DAOUsuario dao3 = new DAOUsuarioImpl();
+		List<Usuario> usuarios = dao3.todosUsuarios();
+
+		request.setAttribute("usuarios", usuarios);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/verContratos.jsp");
+
+		rd.forward(request, response);
+	}
+	
+	private void verAutonomos(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException{
+		
+		DAOAutonomo dao = new DAOAutonomoImpl();
+		List<Autonomo> autonomos = dao.todosAutonomos();
+
+		request.setAttribute("autonomos", autonomos);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/verAutonomos.jsp");
+
+		rd.forward(request, response);
+	}	
+	
 }
