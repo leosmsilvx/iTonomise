@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import iTonomise.modelo.Usuario;
-import until.ConnectionFactory;
+import util.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,11 +29,11 @@ public class DAOUsuarioImpl implements DAOUsuario{
 
 	public void cadastrar(Usuario usuario) throws DAOException {
 		try {			
-			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
+			this.connection = ConnectionFactory.getConnection();
 			
 			String sql = "INSERT INTO usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
-			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getSobrenome());
@@ -65,11 +65,11 @@ public class DAOUsuarioImpl implements DAOUsuario{
 
 	public void atualizar(Usuario usuario) throws DAOException {
 		try {
-			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
+			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "UPDATE usuario SET nome = ?, sobrenome = ? cpf = ?, tel = ?, user = ?, senha = ?, email = ?, endereco = ? WHERE idUsuario = ?";
+			String sql = "UPDATE usuario SET nome = ?, sobrenome = ? cpf = ?, tel = ?, usuario = ?, senha = ?, email = ?, endereco = ? WHERE idUsuario = ?";
 
-			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getSobrenome());
@@ -90,11 +90,11 @@ public class DAOUsuarioImpl implements DAOUsuario{
 
 	public void remover(Usuario usuario) throws DAOException {
 		try {
-			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
+			this.connection = ConnectionFactory.getConnection();
 			
 			String sql = "DELETE FROM usuario WHERE idUsuario = ?";
 
-			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			stmt.setLong(1, usuario.getIdUsuario());
 
@@ -107,13 +107,13 @@ public class DAOUsuarioImpl implements DAOUsuario{
 
 	public List<Usuario> todosUsuarios() throws DAOException {
 
-		List<Usuario> usuarios = new ArrayList<Usuario>();
+		List<Usuario> comuns = new ArrayList<Usuario>();
 
 		try {
-			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm","adm123");
-			Statement st = conexao.createStatement();
+			this.connection = ConnectionFactory.getConnection();
+			Statement st = this.connection.createStatement();
 
-			String sql = "SELECT idUsuario, nome, sobrenome, cpf, tel, user, senha, email, endereco FROM usuario";
+			String sql = "SELECT idUsuario, nome, sobrenome, cpf, tel, usuario, senha, email, endereco FROM usuario";
 
 			ResultSet rs = st.executeQuery(sql);
 
@@ -123,36 +123,36 @@ public class DAOUsuarioImpl implements DAOUsuario{
 				String sobrenome = rs.getString("sobrenome");
 				String cpf = rs.getString("cpf");
 				String tel = rs.getString("tel");
-				String user = rs.getString("user");
+				String usuario = rs.getString("usuario");
 				String senha = rs.getString("senha");
 				String email = rs.getString("email");
 				String endereco = rs.getString("endereco");
 
 
-				Usuario usuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);
-				usuario.setIdUsuario(idUsuario);
-				usuario.setNome(email);
-				usuario.setSobrenome(senha);
-				usuario.setCpf(nome);
-				usuario.setTel(sobrenome);
-				usuario.setUser(user);
-				usuario.setSenha(tel);
-				usuario.setEmail(cpf);
-				usuario.setEndereco(endereco);
+				Usuario comum = new Usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco, idUsuario);
+				comum.setIdUsuario(idUsuario);
+				comum.setNome(nome);
+				comum.setSobrenome(sobrenome);
+				comum.setCpf(cpf);
+				comum.setTel(tel);
+				comum.setUser(usuario);
+				comum.setSenha(senha);
+				comum.setEmail(email);
+				comum.setEndereco(endereco);
 
-				usuarios.add(usuario);
+				comuns.add(comum);
 			}
 
 			rs.close();
 			st.close();
-			return usuarios;
+			return comuns;
 		} catch (Exception e) {
 			throw new DAOException("Erro ao buscar: " + e.getMessage());
 		}
 	}
 
 	public Usuario buscarUsuario(int idUsuario) throws DAOException {
-		Usuario usuario = null;
+		Usuario comum = null;
 		try {
 			
 			String sql = "SELECT * from usuario WHERE idUsuario = ?";
@@ -168,26 +168,26 @@ public class DAOUsuarioImpl implements DAOUsuario{
 				String sobrenome = rs.getString("sobrenome");
 				String cpf = rs.getString("cpf");
 				String tel = rs.getString("tel");
-				String user = rs.getString("user");
+				String usuario = rs.getString("usuario");
 				String senha = rs.getString("senha");
 				String email = rs.getString("email");
 				String endereco = rs.getString("endereco");
 				
-				usuario = new Usuario( nome,  sobrenome,  cpf,  tel,  user,  senha,  email,  endereco, idUsuario);
-				usuario.setIdUsuario(idUsuario);
-				usuario.setNome(nome);
-				usuario.setSobrenome(sobrenome);
-				usuario.setCpf(cpf);
-				usuario.setTel(tel);
-				usuario.setUser(user);
-				usuario.setSenha(senha);
-				usuario.setEmail(email);
-				usuario.setEndereco(endereco);
+				comum = new Usuario( nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email,  endereco, idUsuario);
+				comum.setIdUsuario(idUsuario);
+				comum.setNome(nome);
+				comum.setSobrenome(sobrenome);
+				comum.setCpf(cpf);
+				comum.setTel(tel);
+				comum.setUser(usuario);
+				comum.setSenha(senha);
+				comum.setEmail(email);
+				comum.setEndereco(endereco);
 			}
 			
 			rs.close();
 			stmt.close();
-			return usuario;
+			return comum;
 			
 		} catch (Exception e) {
 			throw new DAOException("Erro ao buscar: " + e.getMessage());

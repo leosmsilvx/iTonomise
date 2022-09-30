@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import iTonomise.modelo.Contrato;
-import until.ConnectionFactory;
+import util.ConnectionFactory;
 
 public class DAOContratoImpl implements DAOContrato{
 	
@@ -26,11 +26,11 @@ public class DAOContratoImpl implements DAOContrato{
 
 	public void cadastrar(Contrato contrato) throws DAOException {
 		try {
-			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm", "adm123");
+			this.connection = ConnectionFactory.getConnection();
 			
 			String sql = "INSERT INTO contrato(titulo, valor, descricao, stats) VALUES (?, ?, ?, ?);";
 
-			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			stmt.setString(1, contrato.getTitulo());
 			stmt.setString(2, contrato.getValor());
@@ -57,11 +57,11 @@ public class DAOContratoImpl implements DAOContrato{
 
 	public void atualizar(Contrato contrato) throws DAOException {
 		try {			
-			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm", "adm123");
+			this.connection = ConnectionFactory.getConnection();
 			
 			String sql = "UPDATE contrato SET titulo = ?, valor = ?, descricao = ?, status = ? WHERE idContrato = ?";
 
-			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			stmt.setString(1, contrato.getTitulo());
 			stmt.setString(2, contrato.getValor());
@@ -78,11 +78,11 @@ public class DAOContratoImpl implements DAOContrato{
 
 	public void remover(Contrato contrato) throws DAOException {
 		try {
-			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm", "adm123");
+			this.connection = ConnectionFactory.getConnection();
 			
 			String sql = "DELETE FROM contrato WHERE idContrato = ?";
 
-			PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			stmt.setLong(1, contrato.getIdContrato());
 
@@ -98,8 +98,8 @@ public class DAOContratoImpl implements DAOContrato{
 		List<Contrato> contratos = new ArrayList<Contrato>();
 
 		try {
-			Connection conexao = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm", "adm123");
-			Statement st = conexao.createStatement();
+			this.connection = ConnectionFactory.getConnection();
+			Statement st = this.connection.createStatement();
 
 			String sql = "SELECT idContrato, titulo, valor, descricao, status FROM contrato";
 

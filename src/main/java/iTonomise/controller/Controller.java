@@ -56,13 +56,14 @@ public class Controller extends HttpServlet{
 				cadastrarComum(request, response);
 			} else if (action.equals("cadastrarContrato")) { 
 				cadastrarContrato(request, response);
+			} else if (action.equals("confirmarLogin")) { 
+				confirmarLogin(request, response);
 			}
 			//else {				
 				//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/vendedor/erroVendedor.jsp"); 
 				//rd.forward(request, response);
 			//}
 			
-			//TEM QUE USAR ISSO PARA O CONFIMAR O CADASTRO "| DAOException" LALALALLALAALALALALALALALLALAALALALALALALALLALAALALALALALALALLALAALALALA
 		} catch (ServletException | IOException | DAOException e) {
 			e.printStackTrace();
 		}		
@@ -209,5 +210,46 @@ public class Controller extends HttpServlet{
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
 		rd.forward(request, response);
+	}
+	
+	//Confirmar login
+	private void confirmarLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException{
+		HttpSession session = request.getSession(true);	
+		if(request.getParameter("souAut") == null){
+			DAOUsuario dao = new DAOUsuarioImpl();
+			List<Usuario> usuarios = dao.todosUsuarios();
+			//HttpSession session = request.getSession(true);			
+			for(int i = 0; i < usuarios.size(); i++)
+			{
+				if((usuarios.get(i).getSenha()).equals(request.getParameter("senha")) && (usuarios.get(i).getUser()).equals(request.getParameter("usuario"))) {
+					session.setAttribute("usuario", "comum");	
+					pagCadAuto(request,response);
+				}
+			}			
+			String msgErro = "Senha e/ou usuario incorretos!";
+			session.setAttribute("msgErro", msgErro);
+			((HttpServletResponse) response).sendRedirect("controller?action=login");
+			
+		} else if(request.getParameter("souAut").equals("on")) {	
+			DAOAutonomo dao = new DAOAutonomoImpl();
+			List<Autonomo> autonomos = dao.todosAutonomos();
+			//HttpSession session = request.getSession(true);			
+			for(int i = 0; i < autonomos.size(); i++)
+			{
+				if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getUser()).equals(request.getParameter("usuario"))) {
+					session.setAttribute("usuario", "autonomo");	
+					pagCadCont(request,response);
+				}
+			}			
+			String msgErro = "Senha e/ou usuario incorretos!";
+			session.setAttribute("msgErro", msgErro);
+			((HttpServletResponse) response).sendRedirect("controller?action=login");
+			
+		} else {
+			//((HttpServletResponse) response).sendRedirect("controller?action=index");
+			
+		}
+		
 	}
 }
