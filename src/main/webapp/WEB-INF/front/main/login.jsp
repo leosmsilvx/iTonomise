@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
 <link
@@ -99,6 +100,7 @@ body {
 <body class="text-center">
 
 	<main class="form-signin w-100 m-auto">
+			<h5 class="text-danger"> ${msgErro} </h5>
 			<a href="controller?action=index"><img class="mb-4" src="https://media.discordapp.net/attachments/911394611300270122/1021924837486239764/a.png" alt="" width="100" height="100"></a>
 			<h1 class="h3 mb-3 fw-normal">
 				Olá,<br>Digite seu Usuário e Senha
@@ -110,7 +112,7 @@ body {
 				</div>
 				<div>
 					<input type="password" class="form-control" name="senha" id="senha"
-						placeholder="Senha" style="border-radius: 0px 0px 5px 5px; border-top: 0px; height: 4em;" required>
+						placeholder="Senha" style="border-radius: 0px 0px 5px 5px; height: 4em;" required>
 				</div>
 				<div style="padding-left: 30%; text-align: left;">
 		        	<input class="form-check-input" type="checkbox" name="souAut" id="souAut">

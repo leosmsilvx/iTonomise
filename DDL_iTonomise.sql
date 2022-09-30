@@ -45,3 +45,6 @@ CREATE TABLE IF NOT EXISTS contrato (
 	FOREIGN KEY (idAutonomo) REFERENCES autonomo(idAutonomo) ON DELETE CASCADE,
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE
 );
+
+SELECT * FROM usuario;
+SELECT * FROM autonomo;

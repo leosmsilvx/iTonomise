@@ -58,6 +58,8 @@ public class Controller extends HttpServlet{
 				cadastrarContrato(request, response);
 			} else if (action.equals("confirmarLogin")) { 
 				confirmarLogin(request, response);
+			} else if (action.equals("home")) { 
+				home(request, response);
 			}
 			//else {				
 				//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/vendedor/erroVendedor.jsp"); 
@@ -224,7 +226,7 @@ public class Controller extends HttpServlet{
 			{
 				if((usuarios.get(i).getSenha()).equals(request.getParameter("senha")) && (usuarios.get(i).getUser()).equals(request.getParameter("usuario"))) {
 					session.setAttribute("usuario", "comum");	
-					pagCadAuto(request,response);
+					home(request,response);
 				}
 			}			
 			String msgErro = "Senha e/ou usuario incorretos!";
@@ -239,7 +241,7 @@ public class Controller extends HttpServlet{
 			{
 				if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getUser()).equals(request.getParameter("usuario"))) {
 					session.setAttribute("usuario", "autonomo");	
-					pagCadCont(request,response);
+					home(request,response);
 				}
 			}			
 			String msgErro = "Senha e/ou usuario incorretos!";
@@ -251,5 +253,12 @@ public class Controller extends HttpServlet{
 			
 		}
 		
+	}
+	
+	//Home page
+	private void home(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+		rd.forward(request, response);
 	}
 }
