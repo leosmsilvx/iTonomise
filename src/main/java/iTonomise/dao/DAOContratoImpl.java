@@ -140,7 +140,7 @@ public class DAOContratoImpl implements DAOContrato{
 		Contrato contrato = null;
 		try {
 
-			String sql = "SELECT titulo, valor, descricao, stats, avaliacao, idAutonomo, idUsuario FROM contrato WHERE idContrato = ?";
+			String sql = "SELECT titulo, valor, descricao, stats, idAutonomo, idUsuario FROM contrato WHERE idContrato = ?";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 

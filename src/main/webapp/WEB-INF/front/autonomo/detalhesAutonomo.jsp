@@ -73,14 +73,6 @@ body{
 </style>
 </head>
 <body>
-	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-		<symbol id="pessoacirculo" viewBox="0 0 16 16">
-			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-		  </symbol>
-		  <symbol id="estrelilha" viewBox="0 0 16 16">
-			<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-		  </symbol>
 	</svg>
 			<!-- Header -->
 			<nav class="py-2 bg-dark border-bottom">
@@ -97,37 +89,54 @@ body{
 					</ul>
 				</div>
 			</nav>
-            <div class="container">
-                <div class="border-top border-2 py-5">
-                	<h4 class="mb-4 py-3">Lista de Autônomos</h4>
-                    <table class="table table-hover table-dark table-striped caption-top align-middle">
-                        <thead>
-                          <tr>
-                            <th scope="col">Usuário</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col" class="text-center">Valor</th>
-                            <th scope="col" class="text-center">Avaliação</th>
-                            <th scope="col"></th>
-                          </tr>
-                        </thead>
-                        <c:forEach var="autonomosCadastrados" items="${autonomos}">
-                        <tbody class="table-group-divider">
-                          <tr>
-                            <td>@${autonomosCadastrados.user}</td>
-                            <td>${autonomosCadastrados.nome} ${autonomosCadastrados.sobrenome}</td>
-                            <td class="text-center">${autonomosCadastrados.tags}</td>
-                            <td class="text-center">${autonomosCadastrados.aval} <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></td>
-                            <td class="text-end"><a href="controller?action=detalhesAutonomo&idAutonomo=${autonomosCadastrados.idAutonomo}" class="btn btn-light" style="text-decoration: none;">Visitar Perfil</a></td>
-                          </tr>
-                        </c:forEach>
-                        </tbody>
-                      </table>
-                    </div>
-
+			<div class="container">
+				<main>
+					<div class="row g-5">
+						<div>
+							<h4 class="mb-4 pt-4">Perfil do autônomo</h4>
+							<form>
+								<div class="row g-3">
+		
+									<div class="col-4 py-4">
+										<div class="card">
+											<img src="https://st.depositphotos.com/2818715/5102/i/600/depositphotos_51026865-stock-photo-serious-and-pensive-isolated-young.jpg" height="250" width="225" class="card-img-top">
+											<div class="card-body border-top">
+											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${autonomo.nome}</p>
+											</div>
+										</div>
+										<h6 class="text-muted text-end px-1">@${autonomo.user}</h6>	
+										<div class="d-grid py-3">
+											<a href="controller?action=pagCadCont" class="btn btn-dark">Propor Contrato</a>
+										</div>	
+									</div>
+		
+									<div class="col-8 px-4">
+										<label for="nome" class="form-label">Nome</label> <input
+											type="text" class="form-control" name="nome"
+											value="${autonomo.nome} ${autonomo.sobrenome}" disabled readonly>
+										<label for="telefone" class="form-label" style="padding-top: 2%;">Telefone</label> <input
+											type="text" class="form-control" name="telefone"
+											value="3${autonomo.tel}" disabled readonly>
+										<label for="email" class="form-label" style="padding-top: 2%;">E-mail</label> <input
+											type="text" class="form-control" name="email"
+											value="${autonomo.email}" disabled readonly>
+										<label for="descricao" class="form-label" style="padding-top: 2%;">Descrição</label>
+										<textarea class="form-control" rows="2" name="descricao" disabled readonly>${autonomo.desc}</textarea>
+										<label for="tags" class="form-label" style="padding-top: 2%;">Principal área de trabalho</label> <input
+											type="text" class="form-control" name="tags"
+											value="${autonomo.tags}" disabled readonly>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</main>
+	
 			<footer class="mt-auto border-top border-1">
 					<a href="controller?action=home" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
 			</footer>
-			</div>
+			</main>
+		</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

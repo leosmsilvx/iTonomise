@@ -64,6 +64,10 @@ public class Controller extends HttpServlet{
 				verContratos(request, response);
 			} else if (action.equals("verAutonomos")) { 
 				verAutonomos(request, response);
+			} else if (action.equals("detalhesAutonomo")) { 
+				detalhesAutonomo(request, response);
+			} else if (action.equals("detalhesContrato")) { 
+				detalhesContrato(request, response);
 			}
 			//else {				
 				//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/vendedor/erroVendedor.jsp"); 
@@ -190,7 +194,7 @@ public class Controller extends HttpServlet{
 		
 		DAOUsuario dao = new DAOUsuarioImpl();
 		dao.cadastrar(novoUsuario);
-		request.setAttribute("autonomo", novoUsuario);
+		request.setAttribute("comum", novoUsuario);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
 		rd.forward(request, response);
@@ -219,7 +223,7 @@ public class Controller extends HttpServlet{
 		
 		DAOContrato dao = new DAOContratoImpl();
 		dao.cadastrar(novoContrato);
-		request.setAttribute("autonomo", novoContrato);
+		request.setAttribute("contrato", novoContrato);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
 		rd.forward(request, response);
@@ -271,7 +275,7 @@ public class Controller extends HttpServlet{
 		rd.forward(request, response);
 	}
 	
-	
+	//Ver contratos
 	private void verContratos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException{
 		
@@ -295,6 +299,7 @@ public class Controller extends HttpServlet{
 		rd.forward(request, response);
 	}
 	
+	//Ver autonomos
 	private void verAutonomos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException{
 		
@@ -307,5 +312,31 @@ public class Controller extends HttpServlet{
 
 		rd.forward(request, response);
 	}	
+	
+	//Detalhes Autonomo
+	private void detalhesAutonomo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+		
+		DAOAutonomo dao = new DAOAutonomoImpl();
+		Autonomo autonomo = dao.buscarAutonomo(Integer.valueOf(request.getParameter("idAutonomo")));
+
+		request.setAttribute("autonomo", autonomo);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/detalhesAutonomo.jsp");
+		rd.forward(request, response);
+	}
+	
+	//Detalhes contrato
+	private void detalhesContrato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+		
+		DAOContrato dao = new DAOContratoImpl();
+		Contrato contrato = dao.buscarContrato(Integer.valueOf(request.getParameter("idContrato")));
+
+		request.setAttribute("contrato", contrato);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/detalhesContrato.jsp");
+		rd.forward(request, response);
+	}
 	
 }

@@ -96,8 +96,8 @@ body{
 			</nav>
             <div class="container">
                 <div class="border-top border-2 py-5">
+                	<h4 class="mb-4 py-3">Lista de Contratos</h4>
                     <table class="table table-hover table-dark table-striped caption-top align-middle">
-                        <caption style="font-weight: bold;">Lista de contratos</caption>
                         <thead>
                           <tr>
                             <th scope="col">Contrato de</th>
@@ -106,31 +106,31 @@ body{
                             <th scope="col"></th>
                           </tr>
                         </thead>
-                        <c:forEach var="contratosCadasatrados" items="${contratos}">
+                        <c:forEach var="contratosCadastrados" items="${contratos}">
+                        <c:if test="${contratosCadastrados.idAutonomo == null or  contratosCadastrados.idUsuario == null }">
                         <tbody class="table-group-divider">
                           <tr>
-                            <td><c:forEach var="autonomosCadasatrados" items="${autonomos}">
-                            		<c:if test="${contratosCadasatrados.idAutonomo == autonomosCadasatrados.idAutonomo}">
-										@<c:out value="${autonomosCadasatrados.user}"/>
+                            <td><c:forEach var="autonomosCadastrados" items="${autonomos}">
+                            		<c:if test="${contratosCadastrados.idAutonomo == autonomosCadastrados.idAutonomo}">
+										@<c:out value="${autonomosCadastrados.user}"/>
 									</c:if>
 								</c:forEach>
-								<c:forEach var="usuariosCadasatrados" items="${usuarios}">
-                            		<c:if test="${contratosCadasatrados.idUsuario == usuariosCadasatrados.idUsuario}">
-										@<c:out value="${usuariosCadasatrados.user}"/>
+								<c:forEach var="usuariosCadastrados" items="${usuarios}">
+                            		<c:if test="${contratosCadastrados.idUsuario == usuariosCadastrados.idUsuario}">
+										@<c:out value="${usuariosCadastrados.user}"/>
 									</c:if>
 								</c:forEach>
 							</td>
-                            <td>${contratosCadasatrados.titulo}</td>
-                            <td class="text-center">${contratosCadasatrados.valor}</td>
-                            <td class="text-center"><a href="controller?action=detalhesContrato&idContrato=${contratosCadasatrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Ver contrato</a></td>
+                            <td>${contratosCadastrados.titulo}</td>
+                            <td style="padding-left: 5%">R$ ${contratosCadastrados.valor}</td>
+                            <td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Ver contrato</a></td>
                           </tr>
+                          </c:if>
                         </c:forEach>
                         </tbody>
                       </table>
                     </div>
-            <div class="border-top border-2">
-				</div>
-				<footer class="mt-auto">
+				<footer class="mt-auto border-top border-1">
 						<a href="controller?action=home" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
 				</footer>
 				</div>

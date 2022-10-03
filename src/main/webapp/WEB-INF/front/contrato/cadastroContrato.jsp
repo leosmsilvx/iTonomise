@@ -87,7 +87,7 @@ body{
 		<main>
 			<div class="row g-5">
 				<div>
-					<h4 class="mb-4 py-3">Contrato com Fulano</h4>
+					<h4 class="mb-4 py-3">Contrato</h4>
 					<form action="controller?action=cadastrarContrato" method="post">
 						<div class="row g-3">
 							<div class="col-6">
