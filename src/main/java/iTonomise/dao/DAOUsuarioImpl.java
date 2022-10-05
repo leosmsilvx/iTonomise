@@ -67,7 +67,7 @@ public class DAOUsuarioImpl implements DAOUsuario{
 		try {
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "UPDATE usuario SET nome = ?, sobrenome = ? cpf = ?, tel = ?, usuario = ?, senha = ?, email = ?, endereco = ? WHERE idUsuario = ?";
+			String sql = "UPDATE usuario SET nome = ?, sobrenome = ?, cpf = ?, tel = ?, usuario = ?, senha = ?, email = ?, endereco = ? WHERE idUsuario = ?";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			

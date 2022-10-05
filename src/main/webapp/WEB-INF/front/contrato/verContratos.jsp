@@ -89,8 +89,8 @@ body{
 							</div></li>
 					</ul>
 					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-						<li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; "><svg class="bi" width="2em" height="2em"><use xlink:href="#pessoacirculo"></use></svg></a></li>
-						
+						<li class="nav-item text-white"><a href="controller?action=perfil" class="nav-link" style="text-decoration: none; color: white; ">Meu perfil</a></li>
+						<li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
 					</ul>
 				</div>
 			</nav>
@@ -131,7 +131,7 @@ body{
                       </table>
                     </div>
 				<footer class="mt-auto border-top border-1">
-						<a href="controller?action=home" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
+						<a href="controller?action=home" class="nav-link text-center text-muted px-2"style="padding-top: 2em;">© 2022 iTonomise</a>	
 				</footer>
 				</div>
             </div>

@@ -88,21 +88,23 @@ body{
 							</div></li>
 					</ul>
 					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-						<li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; "><svg class="bi" width="2em" height="2em"><use xlink:href="#pessoacirculo"></use></svg></a></li>
-						
+						<li class="nav-item text-white"><a href="controller?action=perfil" class="nav-link" style="text-decoration: none; color: white; ">Meu perfil</a></li>
+						<li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
 					</ul>
 				</div>
 			</nav>
 		<div class="container">
+			<h5 class="text-success text-center pt-4"> ${msgContrato} </h5>
 			<div class="row">
 				<div class="col" style="padding: 5%;">
 					<div class="card">
 						<img src="https://media.discordapp.net/attachments/911394611300270122/1025473411977314334/contrato.jpg" height="400" width="225" class="card-img-top">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Contrato</p>
-						  <p class="card-text">Clique e crie um contrato para aparecer na lista de contratos e ser achado por nossos usuários!</p>
-						  <div class="px-5 d-md-flex justify-content-md-center">
+						  <p class="card-text">Clique e crie um contrato ou veja todos os seus contratos já criados!</p>
+						  <div class="gap-4 px-5 d-md-flex justify-content-md-center">
 							<a href="controller?action=pagCadCont" class="btn btn-dark">Criar contrato</a>
+							<a href="#" class="btn btn-dark">Meus contratos</a>
 						  </div>
 						</div>
 					</div>
@@ -112,7 +114,7 @@ body{
 						<img src="https://media.discordapp.net/attachments/911394611300270122/1025473960772636743/lista.jpg" height="400" width="225" class="card-img-top">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Lista</p>
-						  <p class="card-text">Clique e veja a lista completa de trabalhadores autonomos e contratos</p>
+						  <p class="card-text">Clique e veja a lista completa de trabalhadores autonomos e contratos!</p>
 						  <div class="gap-4 d-md-flex justify-content-md-center">
 							<a href="controller?action=verContratos" class="btn btn-dark">Ver contratos</a>
 							<a href="controller?action=verAutonomos" class="btn btn-dark">Ver Autonomos</a>

@@ -108,6 +108,7 @@ body{
 
 
 		<div class="container px-4 py-5" id="featured-3">
+			<h5 class="text-success text-center"> ${msgConfirm} </h5>
 			<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 				<div class="feature col">
 					<div

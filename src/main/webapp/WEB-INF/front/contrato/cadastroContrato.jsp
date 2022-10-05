@@ -73,15 +73,19 @@ body{
 <body>
 		<!-- Header -->
 		<nav class="py-2 bg-dark border-bottom">
-			<div class="d-flex flex-wrap">
-				<ul class="nav me-auto">
-					<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
-        				<a href="controller?action=home"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
-        				<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
-						</div></li>
-				</ul>
-			</div>
-		</nav>
+				<div class="d-flex flex-wrap">
+					<ul class="nav me-auto">
+						<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
+							<a href="controller?action=home"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
+							<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
+							</div></li>
+					</ul>
+					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
+						<li class="nav-item text-white"><a href="controller?action=perfil" class="nav-link" style="text-decoration: none; color: white; ">Meu perfil</a></li>
+						<li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
+					</ul>
+				</div>
+			</nav>
 
 	<div class="container">
 		<main>
@@ -92,7 +96,7 @@ body{
 						<div class="row g-3">
 							<div class="col-6">
 								<label for="titulo" class="form-label">Título</label>
-                                 <input type="text" class="form-control" name="titulo" placeholder="Título">
+                                 <input type="text" class="form-control" name="titulo" placeholder="Título" required>
 							</div>
 							<div class="col-6">
 								<label for="valor" class="form-label">Valor do serviço</label>
@@ -104,11 +108,14 @@ body{
 
 							<div class="col-12">
                                 <label for="descricao" class="form-label">Descrição do contrato</label>
-                                <textarea class="form-control" name="descricao" rows="13" placeholder="Escreva o serviço que o Autonomo deve realizar, onde vai ser realizado o serviço, observações, etc..."></textarea>
+                                <textarea class="form-control" name="descricao" rows="13" placeholder="Escreva o serviço que o Autonomo deve realizar, onde vai ser realizado o serviço, observações, etc..." required></textarea>
                             </div>
-
-							<hr class="my-4">
-							<button class="w-100 btn btn-dark btn-lg" type="submit">Cadastrar</button>
+                           <div class="col-6">
+                           		<button class="w-100 btn btn-dark" type="submit">Cadastrar</button>
+                           </div>
+                           <div class="col-6 pb-4">
+                           		<a href="controller?action=home" class="btn btn-dark w-100">Voltar</a>
+                           	</div>
 					</form>
 				</div>
 			</div>

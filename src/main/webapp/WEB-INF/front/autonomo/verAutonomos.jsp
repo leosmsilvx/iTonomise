@@ -74,10 +74,6 @@ body{
 </head>
 <body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-		<symbol id="pessoacirculo" viewBox="0 0 16 16">
-			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-		  </symbol>
 		  <symbol id="estrelilha" viewBox="0 0 16 16">
 			<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
 		  </symbol>
@@ -92,8 +88,8 @@ body{
 							</div></li>
 					</ul>
 					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-						<li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; "><svg class="bi" width="2em" height="2em"><use xlink:href="#pessoacirculo"></use></svg></a></li>
-						
+						<li class="nav-item text-white"><a href="controller?action=perfil" class="nav-link" style="text-decoration: none; color: white; ">Meu perfil</a></li>
+						<li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
 					</ul>
 				</div>
 			</nav>
@@ -125,7 +121,7 @@ body{
                     </div>
 
 			<footer class="mt-auto border-top border-1">
-					<a href="controller?action=home" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
+						<a href="controller?action=home" class="nav-link text-center text-muted px-2"style="padding-top: 2em;">© 2022 iTonomise</a>	
 			</footer>
 			</div>
 	<script

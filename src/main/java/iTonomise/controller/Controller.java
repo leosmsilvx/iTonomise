@@ -66,13 +66,28 @@ public class Controller extends HttpServlet{
 				verAutonomos(request, response);
 			} else if (action.equals("detalhesAutonomo")) { 
 				detalhesAutonomo(request, response);
+			} else if (action.equals("detalhesUsuario")) { 
+				detalhesUsuario(request, response);
 			} else if (action.equals("detalhesContrato")) { 
 				detalhesContrato(request, response);
+			} else if (action.equals("perfil")) { 
+				perfil(request, response);
+			} else if (action.equals("meuPerfilAut")) { 
+				meuPerfilAut(request, response);
+			} else if (action.equals("meuPerfilCom")) { 
+				meuPerfilCom(request, response);
+			} else if (action.equals("pagAlterarPerfilAut")) { 
+				pagAlterarPerfilAut(request, response);
+			} else if (action.equals("alterarPerfilAut")) { 
+				alterarPerfilAut(request, response);
+			} else if (action.equals("pagAlterarPerfilCom")) { 
+				pagAlterarPerfilCom(request, response);
+			} else if (action.equals("alterarPerfilCom")) { 
+				alterarPerfilCom(request, response);
+			}else {				
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
+				rd.forward(request, response);
 			}
-			//else {				
-				//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/vendedor/erroVendedor.jsp"); 
-				//rd.forward(request, response);
-			//}
 			
 		} catch (ServletException | IOException | DAOException e) {
 			e.printStackTrace();
@@ -153,6 +168,7 @@ public class Controller extends HttpServlet{
 	private void cadastrarAutonomo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
 		
+		HttpSession session = request.getSession(true);	
 		String nome = request.getParameter("nome");
 		String sobrenome = request.getParameter("sobrenome");
 		String cpf = request.getParameter("cpf");
@@ -171,6 +187,9 @@ public class Controller extends HttpServlet{
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		dao.cadastrar(novoAutonomo);
 		request.setAttribute("autonomo", novoAutonomo);
+		
+		String msgConfirm = "Usuario cadastrado com sucesso!";
+		session.setAttribute("msgConfirm", msgConfirm);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
 		rd.forward(request, response);
@@ -178,8 +197,9 @@ public class Controller extends HttpServlet{
 	
 	//Cadastrar comum
 	private void cadastrarComum(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, DAOException {		
+			throws ServletException, IOException, DAOException {	
 		
+		HttpSession session = request.getSession(true);	
 		String nome = request.getParameter("nome");
 		String sobrenome = request.getParameter("sobrenome");
 		String cpf = request.getParameter("cpf");
@@ -195,6 +215,9 @@ public class Controller extends HttpServlet{
 		DAOUsuario dao = new DAOUsuarioImpl();
 		dao.cadastrar(novoUsuario);
 		request.setAttribute("comum", novoUsuario);
+		
+		String msgConfirm = "Usuario cadastrado com sucesso!";
+		session.setAttribute("msgConfirm", msgConfirm);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
 		rd.forward(request, response);
@@ -224,6 +247,9 @@ public class Controller extends HttpServlet{
 		DAOContrato dao = new DAOContratoImpl();
 		dao.cadastrar(novoContrato);
 		request.setAttribute("contrato", novoContrato);
+		
+		String msgContrato = "Contrato cadastrado com sucesso!";
+		session.setAttribute("msgContrato", msgContrato);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
 		rd.forward(request, response);
@@ -271,6 +297,9 @@ public class Controller extends HttpServlet{
 	//Home page
 	private void home(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession(true);	
+		session.setAttribute("msgContrato", "");
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
 		rd.forward(request, response);
 	}
@@ -326,6 +355,19 @@ public class Controller extends HttpServlet{
 		rd.forward(request, response);
 	}
 	
+	//Detalhes Usuario
+	private void detalhesUsuario(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+		
+		DAOUsuario dao = new DAOUsuarioImpl();
+		Usuario usuario = dao.buscarUsuario(Integer.valueOf(request.getParameter("idUsuario")));
+
+		request.setAttribute("comum",usuario);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/detalhesComum.jsp");
+		rd.forward(request, response);
+	}
+	
 	//Detalhes contrato
 	private void detalhesContrato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
@@ -339,4 +381,140 @@ public class Controller extends HttpServlet{
 		rd.forward(request, response);
 	}
 	
+	//Checar perfil
+	private void perfil(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+		
+		HttpSession session = request.getSession(true);
+        String usuario = (String) session.getAttribute("usuario");
+        
+        if(usuario.equals("comum")) {
+        	meuPerfilCom(request,response);
+        } else if(usuario.equals("autonomo")) {
+        	meuPerfilAut(request,response);
+        } else {
+        	String msgContrato = "Erro ao acessar seu perfil";
+    		session.setAttribute("msgContrato", msgContrato);
+        	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+    		rd.forward(request, response);
+        }
+ 
+	}
+	
+	//Meu perfil Autonomo
+	private void meuPerfilAut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+		
+		HttpSession session = request.getSession(true);
+        int id = (int) session.getAttribute("id");
+		
+		DAOAutonomo dao = new DAOAutonomoImpl();
+		Autonomo autonomo = dao.buscarAutonomo(id);
+
+		request.setAttribute("autonomo", autonomo);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/meuPerfilAut.jsp");
+		rd.forward(request, response);
+	}
+	
+	//Meu perfil Comum
+	private void meuPerfilCom(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+		
+		HttpSession session = request.getSession(true);
+        int id = (int) session.getAttribute("id");
+		
+		DAOUsuario dao = new DAOUsuarioImpl();
+		Usuario usuario = dao.buscarUsuario(id);
+
+		request.setAttribute("comum", usuario);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/meuPerfilCom.jsp");
+		rd.forward(request, response);
+	}
+
+	//Pagina alterar perfil autonomo
+	private void pagAlterarPerfilAut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+		
+		HttpSession session = request.getSession(true);
+        int id = (int) session.getAttribute("id");
+		
+		DAOAutonomo dao = new DAOAutonomoImpl();
+		Autonomo autonomo = dao.buscarAutonomo(id);
+
+		request.setAttribute("autonomo", autonomo);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/alterarPerfilAut.jsp");
+		rd.forward(request, response);
+	}
+	
+	//Alterar autonomo
+	private void alterarPerfilAut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+			
+		HttpSession session = request.getSession(true);	
+		String nome = request.getParameter("nome");
+		String sobrenome = request.getParameter("sobrenome");
+		String cpf = request.getParameter("cpf");
+		String tel = request.getParameter("tel");
+		String user = request.getParameter("user");
+		String senha = request.getParameter("senha");
+		String email = request.getParameter("email");
+		String desc = request.getParameter("desc");
+		String tags = request.getParameter("tags");
+		String endereco = request.getParameter("endereco");
+		int aval = 0;
+		if(request.getParameter("aval") != null)
+			aval = Integer.valueOf(request.getParameter("aval"));
+		int idAutonomo = (int) session.getAttribute("id");
+			
+		Autonomo atualizarAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
+			
+		DAOAutonomo dao = new DAOAutonomoImpl();
+		dao.atualizar(atualizarAutonomo);
+		request.setAttribute("autonomo", atualizarAutonomo);
+
+		perfil(request, response);
+	}	
+	
+	//Pagina alterar perfil comum
+	private void pagAlterarPerfilCom(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+		
+		HttpSession session = request.getSession(true);
+        int id = (int) session.getAttribute("id");
+		
+		DAOUsuario dao = new DAOUsuarioImpl();
+		Usuario usuario = dao.buscarUsuario(id);
+
+		request.setAttribute("comum", usuario);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/alterarPerfilCom.jsp");
+		rd.forward(request, response);
+	}
+	
+	//Alterar comum
+	private void alterarPerfilCom(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+			
+		HttpSession session = request.getSession(true);	
+		String nome = request.getParameter("nome");
+		String sobrenome = request.getParameter("sobrenome");
+		String cpf = request.getParameter("cpf");
+		String tel = request.getParameter("tel");
+		String user = request.getParameter("user");
+		String senha = request.getParameter("senha");
+		String email = request.getParameter("email");
+		String endereco = request.getParameter("endereco");
+		int idUsuario = (int) session.getAttribute("id");
+		
+		Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);
+		
+		DAOUsuario dao = new DAOUsuarioImpl();
+		dao.atualizar(novoUsuario);
+		request.setAttribute("comum", novoUsuario);
+
+		perfil(request, response);
+	}	
 }

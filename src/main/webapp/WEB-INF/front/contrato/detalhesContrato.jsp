@@ -76,19 +76,19 @@ body{
   </svg>
       <!-- Header -->
       <nav class="py-2 bg-dark border-bottom">
-        <div class="d-flex flex-wrap">
-          <ul class="nav me-auto">
-            <li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
-              <a href="controller?action=home"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
-              <a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
-              </div></li>
-          </ul>
-          <ul class="nav" style="margin-right: 30px; margin-top: 5px">
-            <li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; "><svg class="bi" width="2em" height="2em"><use xlink:href="#pessoacirculo"></use></svg></a></li>
-            
-          </ul>
-        </div>
-      </nav>
+				<div class="d-flex flex-wrap">
+					<ul class="nav me-auto">
+						<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
+							<a href="controller?action=home"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
+							<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
+							</div></li>
+					</ul>
+					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
+						<li class="nav-item text-white"><a href="controller?action=perfil" class="nav-link" style="text-decoration: none; color: white; ">Meu perfil</a></li>
+						<li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
+					</ul>
+				</div>
+			</nav>
     <div class="container">
         <div>
            <table width="100%">
@@ -98,7 +98,7 @@ body{
              <td>
              	<div class="d-grid py-3">
              		<c:if test="${contrato.idAutonomo == null}">
-						<a href="controller?action=detalhesAutonomo&idAutonomo=${contrato.idUsuario}" class="btn btn-dark">Perfil do contratante</a>
+						<a href="controller?action=detalhesUsuario&idUsuario=${contrato.idUsuario}" class="btn btn-dark">Perfil do contratante</a>
 					</c:if>
 					<c:if test="${contrato.idUsuario == null}">
 						<a href="controller?action=detalhesAutonomo&idAutonomo=${contrato.idAutonomo}" class="btn btn-dark">Perfil do contratante</a>
@@ -106,7 +106,7 @@ body{
 				</div>
              </td>
           </table>
-            <div class="row g-3">
+            <div class="row g-3 pb-4">
 
               <div class="col-6">
                 <label class="form-label">Título</label>
@@ -140,23 +140,15 @@ body{
                 </table>
 
               </div>
-              <hr class="my-4">           
+              
         </div>
 
         
       </div>
-    </main>
-
-  <div>
-
-
-
-
-
-    
+    </main>  
     <footer class="mt-auto border-top border-1">
                     <a href="controller?action=home" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
-     </foote'r> 
+     </footer> 
     </div>
 
   <script

@@ -69,7 +69,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		try {
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "UPDATE autonomo SET nome = ?, sobrenome = ? cpf = ?, tel = ?, usuario = ?, senha = ?, email = ?, descricao = ?, tags = ?, endereco = ?, aval = ? WHERE idAutonomo = ?";
+			String sql = "UPDATE autonomo SET nome = ?, sobrenome = ?, cpf = ?, tel = ?, usuario = ?, senha = ?, email = ?, descricao = ?, tags = ?, endereco = ?, aval = ? WHERE idAutonomo = ?";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
