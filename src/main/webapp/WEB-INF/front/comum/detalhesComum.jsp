@@ -70,6 +70,11 @@ body{
 .container{
 	max-width: 70%;
 }
+@media only screen and  ( max-width : 600px) {
+	.container{
+		max-width: 90%;
+	}
+}
 </style>
 </head>
 <body>

@@ -70,6 +70,11 @@ body{
 .container{
 	max-width: 70%;
 }
+@media only screen and  ( max-width : 600px) {
+	.container{
+		max-width: 90%;
+	}
+}
 </style>
 </head>
 <body>
@@ -101,7 +106,7 @@ body{
                           <tr>
                             <th scope="col">Usuário</th>
                             <th scope="col">Nome</th>
-                            <th scope="col" class="text-center">Valor</th>
+                            <th scope="col" class="text-center">Profissão</th>
                             <th scope="col" class="text-center">Avaliação</th>
                             <th scope="col"></th>
                           </tr>

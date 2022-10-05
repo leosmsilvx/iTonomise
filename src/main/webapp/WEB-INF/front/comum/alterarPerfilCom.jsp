@@ -70,6 +70,11 @@ body{
 .container{
 	max-width: 70%;
 }
+@media only screen and  ( max-width : 600px) {
+	.container{
+		max-width: 90%;
+	}
+}
 </style>
 </head>
 <body>
@@ -83,8 +88,8 @@ body{
 							</div></li>
 					</ul>
 					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-						<li class="nav-item text-white"><a href="controller?action=perfil" class="nav-link" style="text-decoration: none; color: white; ">Meu perfil</a></li>
 						<li class="nav-item text-white"><a href="#" class="nav-link" style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
+						<li class="nav-item nav-link"><a href="controller?action=logout" style="text-decoration: none; color: red;">Logout</a></li>
 					</ul>
 				</div>
 			</nav>

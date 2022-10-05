@@ -72,7 +72,12 @@ body{
 }
 
 .container {
-	max-width: 960px;
+	max-width: 70%;
+}
+@media only screen and  ( max-width : 600px) {
+	.container{
+		max-width: 90%;
+	}
 }
 </style>
 
@@ -157,13 +162,13 @@ body{
 								<label for="desc" class="form-label">Principal atividade</label>
 								<select class="form-select" aria-label="Default select example" name="tags">
 								  <option selected>Área de atuação</option>
-								  <option value="pintor">Pintor(a)</option>
-								  <option value="pedreiro">Pedreiro</option>
-								  <option value="eletricista">Eletricista</option>	
-								  <option value="encanador">Encanador(a)</option>							  
-								  <option value="faxineiro">Faxineiro(a)</option>
-								  <option value="baba">Babá</option>
-								  <option value="outro">Outro</option>
+								  <option value="Pintor(a)">Pintor(a)</option>
+								  <option value="Pedreiro">Pedreiro</option>
+								  <option value="Eletricista">Eletricista</option>	
+								  <option value="Encanador(a)">Encanador(a)</option>							  
+								  <option value="Faxineiro(a)">Faxineiro(a)</option>
+								  <option value="Babá">Babá</option>
+								  <option value="Outro">Outro</option>
 								</select>
 							</div>
 

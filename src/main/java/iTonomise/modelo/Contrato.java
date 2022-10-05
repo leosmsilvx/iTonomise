@@ -10,12 +10,12 @@ public class Contrato {
 	private String idAutonomo;
 	private String idUsuario;
 	
-	public Contrato(String descricao, String valor, String titulo, String status, int idContrato, String idAutonomo,
+	public Contrato(String titulo, String valor, String descricao, String status, int idContrato, String idAutonomo,
 			String idUsuario) {
 		super();
-		this.descricao = descricao;
-		this.valor = valor;
 		this.titulo = titulo;
+		this.valor = valor;
+		this.descricao = descricao;
 		this.status = status;
 		this.idContrato = idContrato;
 		this.idAutonomo = idAutonomo;

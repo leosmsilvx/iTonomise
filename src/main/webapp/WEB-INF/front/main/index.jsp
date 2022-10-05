@@ -80,8 +80,8 @@ body{
 						</div></li>
 				</ul>
 				<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-					<li class="nav-item"><a href="controller?action=login"
-						class="nav-link text-white px-2">Login</a></li>
+					<li class="nav-item"><a href="controller?action=login" class="nav-link px-2 text-muted text-center"><button class="w-1 btn btn-light btn-sm" type="submit">Login</button></a></li>			
+			</li>
 				</ul>
 			</div>
 		</nav>
@@ -109,7 +109,8 @@ body{
 
 		<div class="container px-4 py-5" id="featured-3">
 			<h5 class="text-success text-center"> ${msgConfirm} </h5>
-			<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+			<h1 style="font-size: 2em; font-weight: bold;" class="pb-3 pt-4 text-center">Bem vindo ao iTonomise!</h1>
+			<div class="row g-4 py-5 row-cols-1 row-cols-lg-3" style="text-align: justify; text-justify: inter-word;">
 				<div class="feature col">
 					<div
 						class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2 mb-3"
@@ -165,16 +166,17 @@ body{
 					</a>
 				</div>
 			</div>
-			
-        <div class="container px-4 py-5" id="nossosservicos">
+		<h1 style="font-size: 2em; font-weight: bold;" class="pt-4 pb-1 text-center">Cadastre-se agora!</h1>
+        <div class="container px-4" id="nossosservicos" style="text-align: justify; text-justify: inter-word;">
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="feature col" style="padding-top: 5em;">
                     <div>
+                    
                         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2" style="border-radius: 6px; background-color: #212529;">
                             <svg class="bi" width="40px" height="40px"><use xlink:href="#servicos"></use></svg>
                           </div><a style="font-size: 2em;
                           margin-left: 0.5em;
-                          font-weight: bold;">Nossos serviços</a>
+                          font-weight: bold;">Seja um contratante!</a>
                           <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado à nossa página de cadastro. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
                           <a id="souautonomo" href="controller?action=pagCadComum" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
                             Se cadastre agora
@@ -188,7 +190,7 @@ body{
                 </div>
             </div>
             
-            <div class="container px-4 py-5">
+            <div class="container px-4 py-5" >
 	            <div class="row row-cols-1 row-cols-lg-2">
 	            	<div class="feature col">
                     	<img src="https://media.discordapp.net/attachments/911394611300270122/1024081842967695360/unknown.png" width="100%" height="90%">
@@ -197,11 +199,11 @@ body{
 	                    <div style="text-align: right;">
 	                        <a style="font-size: 2em;
 	                          margin-right: 0.5em;
-	                          font-weight: bold;">Trabalhe com a gente!</a>
+	                          font-weight: bold;">Seja um autonomo!</a>
 	                          <div class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2" style="border-radius: 6px; background-color: #212529;">
 	                            <svg class="bi" width="40px" height="40px"><use xlink:href="#autonomo"></use></svg>
 	                          </div>
-	                          <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado à nossa página de cadastro. Faça parte da nossa equipe de trabalhadores autônomos, oferecendo seus serviços pelo nosso site!</p>
+	                          <p style="font-size: 1.5em; text-align: justify; text-justify: inter-word;">Clique no link abaixo para ser redirecionado à nossa página de cadastro. Faça parte da nossa equipe de trabalhadores autônomos, oferecendo seus serviços pelo nosso site!</p>
 	                          <a href="controller?action=pagCadAuto" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
 	                            Se cadastre agora
 	                            <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
@@ -220,7 +222,7 @@ body{
                             <svg class="bi" width="40px" height="40px"><use xlink:href="#sobre"></use></svg>
                           </div><a style="font-size: 2em;
                           margin-left: 0.5em;
-                          font-weight: bold;">Sobre nós</a>
+                          font-weight: bold;">Um pouco sobre nós!</a>
 						  <p style="font-size: 1.5em">Somos muito mais que um site. Somos um time de jovens estudantes preocupados com os impactos da pandemia no mercado de trabalho. E, como programadores, sabemos a dificuldade de encontrar trabalhos freelancer que não respaldados pela CLT, os famosos "bicos/biscates". Fundada em XX de 2022, a iTonomise começou como um projeto de TCC e se estabeleceu como o site que você está vendo. Nosso objetivo é facilita o acesso à informação entre os clientes, possibilitando que usuários aversos à interfaces complexas se sintam familiarizados.</p>
 
                     </div>

@@ -84,7 +84,7 @@ body {
 	z-index: 2;
 }
 
-.form-signin input[type="email"] {
+.form-signin input[type="text"] {
 	margin-bottom: -1px;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
@@ -108,11 +108,11 @@ body {
 			<form action="controller?action=confirmarLogin" method="post">
 				<div>
 					<input type="text" class="form-control" name="usuario" id="usuario"
-						placeholder="Usuário" style="border-radius: 5px 5px 0px 0px; height: 4em;" required>
+						placeholder="Usuário" style="border-radius: 5px 5px 5px 5px; height: 4em;" required>
 				</div>
 				<div>
 					<input type="password" class="form-control" name="senha" id="senha"
-						placeholder="Senha" style="border-radius: 0px 0px 5px 5px; height: 4em;" required>
+						placeholder="Senha" style="border-radius: 5px 5px 5px 5px; height: 4em;" required>
 				</div>
 				<div style="padding-left: 30%; text-align: left;">
 		        	<input class="form-check-input" type="checkbox" name="souAut" id="souAut">

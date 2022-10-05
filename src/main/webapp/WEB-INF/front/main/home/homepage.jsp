@@ -11,37 +11,8 @@
 <meta charset="utf-8">
 <title>iTonomise</title>
 <style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-
 body{
 	background-color: #EEE;
-}
-
-.b-example-divider {
-	height: 3rem;
-	background-color: rgba(0, 0, 0, .1);
-	border: solid rgba(0, 0, 0, .15);
-	border-width: 1px 0;
-	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em
-		rgba(0, 0, 0, .15);
-}
-
-.b-example-vr {
-	flex-shrink: 0;
-	width: 1.5rem;
-	height: 100vh;
 }
 
 .bi {
@@ -67,7 +38,13 @@ body{
 	-webkit-overflow-scrolling: touch;
 }
 .container{
-	max-width: 60%;
+	max-width: 70%;
+}
+
+@media only screen and  ( max-width : 600px) {
+	.container{
+		max-width: 90%;
+	}
 }
 </style>
 </head>
@@ -102,8 +79,8 @@ body{
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Contrato</p>
 						  <p class="card-text">Clique e crie um contrato ou veja todos os seus contratos já criados!</p>
-						  <div class="gap-4 px-5 d-md-flex justify-content-md-center">
-							<a href="controller?action=pagCadCont" class="btn btn-dark">Criar contrato</a>
+						  <div class="gap-4 d-flex justify-content-center">
+							<a href="controller?action=pagCadCont" class="btn btn-dark">Criar Contrato</a>
 							<a href="#" class="btn btn-dark">Meus contratos</a>
 						  </div>
 						</div>
@@ -115,7 +92,7 @@ body{
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Lista</p>
 						  <p class="card-text">Clique e veja a lista completa de trabalhadores autonomos e contratos!</p>
-						  <div class="gap-4 d-md-flex justify-content-md-center">
+						  <div class="gap-4 d-flex justify-content-center">
 							<a href="controller?action=verContratos" class="btn btn-dark">Ver contratos</a>
 							<a href="controller?action=verAutonomos" class="btn btn-dark">Ver Autonomos</a>
 						  </div>

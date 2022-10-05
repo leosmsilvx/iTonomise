@@ -38,6 +38,8 @@ public class Controller extends HttpServlet{
 				index(request, response);
 			} else if (action.equals("login")) { 
 				login(request, response);
+			} else if (action.equals("logout")) { 
+				logout(request, response);
 			} else if (action.equals("sobreN")) { 
 				sobreN(request, response);
 			} else if (action.equals("pagCadAuto")) { 
@@ -97,6 +99,9 @@ public class Controller extends HttpServlet{
 	//Index
 	private void index(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession(true);	
+		session.setAttribute("msgConfirm", "");
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
 		rd.forward(request, response);
 	}
@@ -126,7 +131,11 @@ public class Controller extends HttpServlet{
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		index(request,response);
+		session = request.getSession(true);
+		String msgConfirm = "Você foi deslogado!";
+		session.setAttribute("msgConfirm", msgConfirm);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+		rd.forward(request, response);
 	}
 	
 	//Pagina Cadastro Autonomo

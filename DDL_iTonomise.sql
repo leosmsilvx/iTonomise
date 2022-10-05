@@ -36,9 +36,9 @@ CREATE TABLE IF NOT EXISTS contrato (
     idContrato integer UNSIGNED NOT NULL AUTO_INCREMENT,
 	idAutonomo integer UNSIGNED,
     idUsuario integer UNSIGNED,
-    titulo varchar(100) NOT NULL,
+    titulo varchar(200) NOT NULL,
     valor varchar(100) NOT NULL,
-    descricao varchar(100) NOT NULL,
+    descricao varchar(200) NOT NULL,
     stats boolean,
     
     PRIMARY KEY (idContrato),
