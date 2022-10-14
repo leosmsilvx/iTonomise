@@ -111,7 +111,7 @@ body{
                 </div>
                 <div class="form-check">
 					  <input class="form-check-input" type="checkbox" id="checkValor" onclick="disableInput()">
-				  		<label class="form-check-label" for="checkNumero">
+				  		<label class="form-check-label" for="checkValor">
 				   		 A combinar
 				  		</label>
 				</div>
@@ -122,7 +122,7 @@ body{
                                  
                 <div class="form-check">
 					  <input class="form-check-input" type="checkbox" id="checkData" onclick="disableInput()">
-				  		<label class="form-check-label" for="checkNumero">
+				  		<label class="form-check-label" for="checkData">
 				   		 A combinar
 				  		</label>
 				</div>

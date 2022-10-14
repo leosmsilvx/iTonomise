@@ -138,55 +138,50 @@ body{
                                 <textarea class="form-control"  rows="7" name="descricao" disabled>${contrato.descricao}</textarea>
                             </div>
 
-                            <c:if test="${contrato.idUsuario == null and contrato.idAutonomo != id}">
-                            	<div class="col-6 pb-4">
+                            <c:if test="${contrato.idUsuario == null and usuario == 'comum'}">
+                            	<c:if test="${contrato.idUsuario != null}">
+								  <input type="hidden" class="form-control" name="idUsuario" value="${contrato.idUsuario}">
+							  </c:if>
+							  <c:if test="${contrato.idAutonomo != null}">
+								  <input type="hidden" class="form-control" name="idAutonomo" value="${contrato.idAutonomo}">
+							  </c:if>
+							  <input type="hidden" class="form-control" name="duracaoN" value="${contrato.duracaoN}">
+							  <input type="hidden" class="form-control" name="duracaoT" value="${contrato.duracaoT}"> 	  
+							  <input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
+							  <input type="hidden" class="form-control" name="titulo" value="${contrato.titulo}">  
+							  <input type="hidden" class="form-control" name="valor" value="${contrato.valor}">  
+							  <input type="hidden" class="form-control" name="dataInicio" value="${contrato.dataInicio}">  
+							  <input type="hidden" class="form-control" name="localizacao" value="${contrato.localizacao}">  
+							  <input type="hidden" class="form-control" name="descricao" value="${contrato.descricao}">  
+                            	<div class="col-12 pb-4">
 			  					<button type="submit" class="btn btn-dark w-100">Aceitar</button>
 			  					</div>
-			  					<div class="col-6 pb-4">
-                              <a href="controller?action=home" class="btn btn-dark w-100">Voltar</a>
-                            </div>
 		  					</c:if>
-		  					<c:if test="${contrato.idAutonomo == null and contrato.idUsuario != id}">
-                            	<div class="col-6 pb-4">
+		  					<c:if test="${contrato.idAutonomo == null and usuario == 'autonomo'}">
+		  					<c:if test="${contrato.idUsuario != null}">
+								  <input type="hidden" class="form-control" name="idUsuario" value="${contrato.idUsuario}">
+							  </c:if>
+							  <c:if test="${contrato.idAutonomo != null}">
+								  <input type="hidden" class="form-control" name="idAutonomo" value="${contrato.idAutonomo}">
+							  </c:if>
+							  <input type="hidden" class="form-control" name="duracaoN" value="${contrato.duracaoN}">
+							  <input type="hidden" class="form-control" name="duracaoT" value="${contrato.duracaoT}"> 	  
+							  <input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
+							  <input type="hidden" class="form-control" name="titulo" value="${contrato.titulo}">  
+							  <input type="hidden" class="form-control" name="valor" value="${contrato.valor}">  
+							  <input type="hidden" class="form-control" name="dataInicio" value="${contrato.dataInicio}">  
+							  <input type="hidden" class="form-control" name="localizacao" value="${contrato.localizacao}">  
+							  <input type="hidden" class="form-control" name="descricao" value="${contrato.descricao}"> 
+                            	<div class="col-12 pb-4">
 			  					<button type="submit" class="btn btn-dark w-100">Aceitar</button>
 			  					</div>
-			  					<div class="col-6 pb-4">
-                              <a href="controller?action=home" class="btn btn-dark w-100">Voltar</a>
-                            </div>
 		  					</c:if>
                            </div>
-                           <c:if test="${contrato.idUsuario != null and contrato.idAutonomo != null}">
-                           	<div class="col-12 py-4">
-                              <a href="controller?action=meusContratos" class="btn btn-dark w-100">Voltar</a>
+                           <div class="col-12 py-4">
+                              <a href="controller?action=home" class="btn btn-dark w-100">Voltar</a>
                              </div>
-		  					</c:if>
-		  					
-		  					<c:if test="${contrato.idUsuario == null and contrato.idAutonomo == id}">
-		  					<div class="col-12 py-4">
-                              <a href="controller?action=meusContratos" class="btn btn-dark w-100">Voltar</a>
-                             </div>
-                           </c:if>
-                           
-                           <c:if test="${contrato.idUsuario == id and contrato.idAutonomo == null}">
-		  					<div class="col-12 py-4">
-                              <a href="controller?action=meusContratos" class="btn btn-dark w-100">Voltar</a>
-                             </div>
-                           </c:if>
 
-          <c:if test="${contrato.idUsuario != null}">
-			  <input type="hidden" class="form-control" name="idUsuario" value="${contrato.idUsuario}">
-		  </c:if>
-		  <c:if test="${contrato.idAutonomo != null}">
-			  <input type="hidden" class="form-control" name="idAutonomo" value="${contrato.idAutonomo}">
-		  </c:if>
-		  <input type="hidden" class="form-control" name="duracaoN" value="${contrato.duracaoN}">
-		  <input type="hidden" class="form-control" name="duracaoT" value="${contrato.duracaoT}"> 	  
-		  <input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
-		  <input type="hidden" class="form-control" name="titulo" value="${contrato.titulo}">  
-		  <input type="hidden" class="form-control" name="valor" value="${contrato.valor}">  
-		  <input type="hidden" class="form-control" name="dataInicio" value="${contrato.dataInicio}">  
-		  <input type="hidden" class="form-control" name="localizacao" value="${contrato.localizacao}">  
-		  <input type="hidden" class="form-control" name="descricao" value="${contrato.descricao}">  
+          
         </form>
         </div>
       </div>
