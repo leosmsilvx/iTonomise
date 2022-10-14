@@ -101,53 +101,56 @@ body{
 			</nav>
             <div class="container">
                 <div class="border-top border-2 py-5">
-                	<h4 class="mb-4 py-3">Lista de Contratos</h4>
+                	<h4 class="mb-4 py-3">Meus Contratos</h4>
                     <table class="table table-hover table-dark table-striped caption-top align-middle">
                         <thead>
                           <tr>
                             <th scope="col">Contrato de</th>
                             <th scope="col">Título</th>
-                            <th scope="col" class="text-center">Valor</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Status</th>
                             <th scope="col"></th>
                           </tr>
                         </thead>
                         <c:forEach var="contratosCadastrados" items="${contratos}">
+                        <c:if test="${contratosCadastrados.idAutonomo == meuId or contratosCadastrados.idUsuario == meuId}">
                         <tbody class="table-group-divider">
-                        <c:if test="${usuario == 'comum'}">
-                        	<c:if test="${contratosCadastrados.idUsuario == null}">
-                        	<tr>
-	                            <td>
-	                            <c:forEach var="autonomosCadastrados" items="${autonomos}">
-	                            		<c:if test="${contratosCadastrados.idAutonomo == autonomosCadastrados.idAutonomo}">
-											@<c:out value="${autonomosCadastrados.user}"/>
+                          <tr>
+                            <td><c:forEach var="autonomosCadastrados" items="${autonomos}">
+                            		<c:if test="${contratosCadastrados.idAutonomo == autonomosCadastrados.idAutonomo}">
+										@<c:out value="${autonomosCadastrados.user}"/>
+									</c:if>
+								</c:forEach>
+								<c:forEach var="usuariosCadastrados" items="${usuarios}">
+                            		<c:if test="${contratosCadastrados.idUsuario == usuariosCadastrados.idUsuario}">
+										@<c:out value="${usuariosCadastrados.user}"/>
+									</c:if>
+								</c:forEach>
+							</td>
+                            <td>${contratosCadastrados.titulo}</td>
+                            <td>R$ ${contratosCadastrados.valor}</td>
+                            <td>
+                            		<c:if test="${contratosCadastrados.status == null}">
+										<c:out value="Não aceito"/>
+									</c:if>
+									<c:if test="${contratosCadastrados.status != null}">
+										<c:if test="${contratosCadastrados.status == false}">
+											<c:out value="Aceito"/>
 										</c:if>
-									</c:forEach>
-								</td>
-	                            <td>${contratosCadastrados.titulo}</td>
-	                            <td style="padding-left: 5%">R$ ${contratosCadastrados.valor}</td>
-	                            <td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Ver contrato</a></td>
-                          	</tr>
-                        
-                      	  </c:if>                 
-                        </c:if>
-                        <c:if test="${usuario == 'autonomo'}">
-                        	<c:if test="${contratosCadastrados.idAutonomo == null}">
-                        	<tr>
-	                            <td>
-	                            <c:forEach var="usuariosCadastrados" items="${usuarios}">
-	                            		<c:if test="${contratosCadastrados.idUsuario == usuariosCadastrados.idUsuario}">
-											@<c:out value="${usuariosCadastrados.user}"/>
+										<c:if test="${contratosCadastrados.status == true}">
+											<c:out value="Finalizado"/>
 										</c:if>
-									</c:forEach>
-								</td>
-	                            <td>${contratosCadastrados.titulo}</td>
-	                            <td style="padding-left: 5%">R$ ${contratosCadastrados.valor}</td>
-	                            <td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Ver contrato</a></td>
-                          	</tr>
-                        
-                      	  </c:if>                 
-                        </c:if>
-                          
+									</c:if>
+							</td>
+							<c:if test="${contratosCadastrados.status == null}">
+										<td class="text-end"><a href="controller?action=pagAtualizarContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Alterar contrato</a>
+										<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
+							</c:if>
+							<c:if test="${contratosCadastrados.status != null}">
+										<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
+							</c:if>
+                          </tr>
+                          </c:if>
                         </c:forEach>
                         </tbody>
                       </table>

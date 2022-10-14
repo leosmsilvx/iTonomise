@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
 <link
@@ -96,18 +97,18 @@ body{
     <main>
       <div class="row g-5">
         <div>
-          <h4 class="mb-4 py-3">Contrato</h4>
-          <form action="controller?action=cadastrarContrato" method="post">
+          <h4 class="mb-4 py-3">Alterar Contrato</h4>
+          <form action="controller?action=atualizarContrato" method="post">
             <div class="row g-3">
               <div class="col-6">
                 <label for="titulo" class="form-label">Título</label>
-                                 <input type="text" class="form-control" name="titulo" placeholder="Título" required>
+                                 <input type="text" class="form-control" name="titulo" value="${contrato.titulo}" required>
               </div>
               <div class="col-6">
                 <label for="valor" class="form-label">Valor do serviço</label>
                 <div class="input-group">
                   <span class="input-group-text">R$</span> <input id="input-valor" type="number"
-                    class="form-control" required name="valor" min="0" step="any" placeholder="100.00">
+                    class="form-control" required name="valor" min="0" step="any" value="${contrato.valor}">
                 </div>
                 <div class="form-check">
 					  <input class="form-check-input" type="checkbox" id="checkValor" onclick="disableInput()">
@@ -118,7 +119,7 @@ body{
               </div>
               <div class="col-6">
                 <label for="titulo" class="form-label">Data de Início</label>
-                                 <input type="date" id="input-data" class="form-control" name="dataInicio" required>
+                                 <input type="date" id="input-data" class="form-control" name="dataInicio" value="${contrato.dataInicio}" required>
                                  
                 <div class="form-check">
 					  <input class="form-check-input" type="checkbox" id="checkData" onclick="disableInput()">
@@ -136,8 +137,9 @@ body{
 
 
                     <span>
-                    <select class="form-select" id="input-numeroT" name="duracaoT" style="border-radius: 6px 0px 0px 6px;">
-                                  <option selected value="Horas">Horas</option>
+                    <select class="form-select" id="input-numeroT" name="duracaoT" style="border-radius: 6px 0px 0px 6px;" required>
+                                  <option selected value="${contrato.duracaoT}">${contrato.duracaoT}</option>                                  
+                                  <option value="Horas">Horas</option>
                                   <option value="Dias">Dias</option>
                                   <option value="Semanas">Semanas</option>
                                   <option value="Meses">Meses</option>
@@ -145,7 +147,7 @@ body{
                     </select>
                     </span>
 
-                  <input type="number" class="form-control" name="duracaoN" id="input-numeroN" required>
+                  <input type="number" class="form-control" name="duracaoN" id="input-numeroN" value="${contrato.duracaoN}" required>
                 </div>
                 <div class="form-check">
 					  <input class="form-check-input" type="checkbox" id="checkNumero" onclick="disableInput()">
@@ -154,18 +156,20 @@ body{
 				  		</label>
 				</div>
               </div>
+              
+              <input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
 
               <div class="col-12">
                 <label for="titulo" class="form-label">Localização</label>
-                                 <input type="text" class="form-control" name="localizacao" placeholder="Localização" required>
+                                 <input type="text" class="form-control" name="localizacao" value="${contrato.localizacao}" required>
               </div>
 
               <div class="col-12">
                                 <label for="descricao" class="form-label">Descrição do contrato</label>
-                                <textarea class="form-control" name="descricao" rows="7" placeholder="Escreva o serviço que o Autonomo deve realizar, assim como observações, e coisas que você quer pontuar." required></textarea>
+                                <textarea class="form-control" name="descricao" rows="7" required>${contrato.descricao}</textarea>
                             </div>
                            <div class="col-6">
-                              <button class="w-100 btn btn-dark" type="submit">Cadastrar</button>
+                              <button class="w-100 btn btn-dark" type="submit">Alterar</button>
                            </div>
                            <div class="col-6 pb-4">
                               <a href="controller?action=home" class="btn btn-dark w-100">Voltar</a>
@@ -184,7 +188,6 @@ body{
     </footer>
   </div>
   </div>
-	
   <script type="text/javascript">
   		function disableInput(){
   			var checkBoxNumero = document.getElementById("checkNumero");

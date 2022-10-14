@@ -39,6 +39,10 @@ CREATE TABLE IF NOT EXISTS contrato (
     titulo varchar(200) NOT NULL,
     valor varchar(100) NOT NULL,
     descricao varchar(200) NOT NULL,
+    dataInicio varchar(200) NOT NULL,
+    duracaoT varchar(200),
+	duracaoN varchar(200) NOT NULL,
+    localizacao varchar(200) NOT NULL,
     stats boolean,
     
     PRIMARY KEY (idContrato),

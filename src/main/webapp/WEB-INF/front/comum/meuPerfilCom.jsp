@@ -88,7 +88,7 @@ body{
 							</div></li>
 					</ul>
 					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-						<li class="nav-item text-white nav-link"><a href="#" 	style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
+						<li class="nav-item text-white nav-link"><a href="controller?action=meusContratos" 	style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
 						<li class="nav-item nav-link"><a href="controller?action=logout" style="text-decoration: none; color: red;">Logout</a></li>
 					</ul>
 				</div>

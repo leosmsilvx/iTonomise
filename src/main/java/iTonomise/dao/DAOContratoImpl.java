@@ -28,16 +28,20 @@ public class DAOContratoImpl implements DAOContrato{
 		try {
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "INSERT INTO contrato(titulo, valor, descricao, stats, idAutonomo, idUsuario) VALUES (?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, idAutonomo, idUsuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			stmt.setString(1, contrato.getTitulo());
 			stmt.setString(2, contrato.getValor());
 			stmt.setString(3, contrato.getDescricao());
-			stmt.setString(4, contrato.getStatus());
-			stmt.setString(5, contrato.getIdAutonomo());
-			stmt.setString(6, contrato.getIdUsuario());
+			stmt.setString(4, contrato.getDataInicio());
+			stmt.setString(5, contrato.getDuracaoT());
+			stmt.setString(6, contrato.getDuracaoN());
+			stmt.setString(7, contrato.getLocalizacao());
+			stmt.setString(8, contrato.getStatus());
+			stmt.setString(9, contrato.getIdAutonomo());
+			stmt.setString(10, contrato.getIdUsuario());
 
 			stmt.execute();
 
@@ -61,17 +65,28 @@ public class DAOContratoImpl implements DAOContrato{
 		try {			
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "UPDATE contrato SET titulo = ?, valor = ?, descricao = ?, stats = ?, idAutonomo = ?, idUsuario = ? WHERE idContrato = ?";
+			String sql = "UPDATE contrato SET titulo = ?, valor = ?, descricao = ?, dataInicio = ?, duracaoT = ?, duracaoN = ?, localizacao = ?, stats = ?, idAutonomo = ?, idUsuario = ? WHERE idContrato = ?";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			stmt.setString(1, contrato.getTitulo());
 			stmt.setString(2, contrato.getValor());
 			stmt.setString(3, contrato.getDescricao());
-			stmt.setString(4, contrato.getStatus());
-			stmt.setInt(6, contrato.getIdContrato());
-			stmt.setInt(4, Integer.valueOf(contrato.getIdAutonomo()));
-			stmt.setInt(4, Integer.valueOf(contrato.getIdUsuario()));
+			stmt.setString(4, contrato.getDataInicio());
+			stmt.setString(5, contrato.getDuracaoT());
+			stmt.setString(6, contrato.getDuracaoN());
+			stmt.setString(7, contrato.getLocalizacao());
+			if(contrato.getStatus() == null)
+				stmt.setString(8, null);
+			else if(contrato.getStatus().equals("false"))
+				stmt.setBoolean(8, false);
+			else if(contrato.getStatus().equals("true"))
+				stmt.setBoolean(8, true);
+	
+				
+			stmt.setString(9,contrato.getIdAutonomo());
+			stmt.setString(10,contrato.getIdUsuario());
+			stmt.setInt(11, Integer.valueOf(contrato.getIdContrato()));
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -105,7 +120,7 @@ public class DAOContratoImpl implements DAOContrato{
 			this.connection = ConnectionFactory.getConnection();
 			Statement st = this.connection.createStatement();
 
-			String sql = "SELECT idContrato, idAutonomo, idUsuario, titulo, valor, descricao, stats FROM contrato";
+			String sql = "SELECT idContrato, idAutonomo, idUsuario, titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats FROM contrato";
 
 			ResultSet rs = st.executeQuery(sql);
 
@@ -116,13 +131,21 @@ public class DAOContratoImpl implements DAOContrato{
 				String titulo = rs.getString("titulo");
 				String valor = rs.getString("valor");
 				String descricao = rs.getString("descricao");
+				String dataInicio = rs.getString("dataInicio");
+				String duracaoT = rs.getString("duracaoT");
+				String duracaoN = rs.getString("duracaoN");
+				String localizacao = rs.getString("localizacao");
 				String stats = rs.getString("stats");
 
-				Contrato contrato = new Contrato(descricao, valor, titulo, stats, idContrato, idAutonomo, idUsuario);
+				Contrato contrato = new Contrato(descricao, valor, titulo, dataInicio, duracaoT, duracaoN, localizacao, stats, idContrato, idAutonomo, idUsuario);
 				contrato.setIdContrato(idContrato);
 				contrato.setDescricao(descricao);
 				contrato.setValor(valor);
 				contrato.setTitulo(titulo);
+				contrato.setDataInicio(dataInicio);
+				contrato.setDuracaoT(duracaoT);
+				contrato.setDuracaoN(duracaoN);
+				contrato.setLocalizacao(localizacao);
 				contrato.setStatus(stats);
 
 				contratos.add(contrato);
@@ -140,7 +163,7 @@ public class DAOContratoImpl implements DAOContrato{
 		Contrato contrato = null;
 		try {
 
-			String sql = "SELECT titulo, valor, descricao, stats, idAutonomo, idUsuario FROM contrato WHERE idContrato = ?";
+			String sql = "SELECT titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, idAutonomo, idUsuario FROM contrato WHERE idContrato = ?";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 
@@ -154,14 +177,22 @@ public class DAOContratoImpl implements DAOContrato{
 				String titulo = rs.getString("titulo");
 				String valor = rs.getString("valor");
 				String descricao = rs.getString("descricao");
+				String dataInicio = rs.getString("dataInicio");
+				String duracaoT = rs.getString("duracaoT");
+				String duracaoN = rs.getString("duracaoN");
+				String localizacao = rs.getString("localizacao");
 				String stats = rs.getString("stats");
 				
-				contrato = new Contrato(descricao, valor, titulo, stats, idContrato, idAutonomo, idUsuario);
+				contrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, idContrato, idAutonomo, idUsuario);
 
 				contrato.setIdContrato(idContrato);
 				contrato.setDescricao(descricao);
 				contrato.setValor(valor);
 				contrato.setTitulo(titulo);
+				contrato.setDataInicio(dataInicio);
+				contrato.setDuracaoT(duracaoT);
+				contrato.setDuracaoN(duracaoN);
+				contrato.setLocalizacao(localizacao);
 				contrato.setStatus(stats);
 				contrato.setIdAutonomo(idAutonomo);
 				contrato.setIdUsuario(idUsuario);

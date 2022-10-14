@@ -14,6 +14,7 @@ public class Autonomo {
 	private String tags;
 	private String endereco;
 	private int aval;
+	private int idAutonomo;
 	
 	public Autonomo(String nome, String sobrenome, String cpf, String tel, String user, String senha, String email,
 			String desc, String tags, String endereco, int aval, int idAutonomo) {
@@ -104,6 +105,5 @@ public class Autonomo {
 	public void setIdAutonomo(int idAutonomo) {
 		this.idAutonomo = idAutonomo;
 	}
-	private int idAutonomo;
 	
 }

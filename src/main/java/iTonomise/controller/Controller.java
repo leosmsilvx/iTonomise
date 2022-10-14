@@ -86,6 +86,14 @@ public class Controller extends HttpServlet{
 				pagAlterarPerfilCom(request, response);
 			} else if (action.equals("alterarPerfilCom")) { 
 				alterarPerfilCom(request, response);
+			} else if (action.equals("meusContratos")) { 
+				meusContratos(request, response);
+			} else if (action.equals("aceitarContrato")) { 
+				aceitarContrato(request, response);
+			} else if (action.equals("pagAtualizarContrato")) { 
+				pagAtualizarContrato(request, response);
+			} else if (action.equals("atualizarContrato")) { 
+				atualizarContrato(request, response);
 			}else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
@@ -239,10 +247,26 @@ public class Controller extends HttpServlet{
 		String titulo = request.getParameter("titulo");
 		String valor = request.getParameter("valor");
 		String descricao = request.getParameter("descricao");
+		String dataInicio = request.getParameter("dataInicio");
+		String duracaoT = request.getParameter("duracaoT");
+		String duracaoN = request.getParameter("duracaoN");
+		String localizacao = request.getParameter("localizacao");
 		String status = null;
 		int idCont = 0;	
 		String idAutonomo = null;	
 		String idUsuario = null;	
+		
+		
+		if(dataInicio == null) {			
+			dataInicio = "Indefinido";
+		}
+		if(valor == null) {			
+			valor = "Indefinido";
+		}
+		if(duracaoN == null) {
+			duracaoT = null;
+			duracaoN = "Indefinido";
+		}
 		
 		HttpSession session = request.getSession(true);	
 		if(session.getAttribute("usuario").equals("comum")) {
@@ -251,7 +275,7 @@ public class Controller extends HttpServlet{
 			idAutonomo = String.valueOf(session.getAttribute("id"));
 		}
 		
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, status, idCont, idAutonomo, idUsuario);
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idCont, idAutonomo, idUsuario);
 		
 		DAOContrato dao = new DAOContratoImpl();
 		dao.cadastrar(novoContrato);
@@ -526,4 +550,121 @@ public class Controller extends HttpServlet{
 
 		perfil(request, response);
 	}	
+	
+	//Meus Contratos
+	private void meusContratos(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+			
+		HttpSession session = request.getSession(true);
+	    int id = (int) session.getAttribute("id");
+	    request.setAttribute("meuId", id);
+	        
+	    DAOContrato dao = new DAOContratoImpl();
+	    List<Contrato> contratos = dao.todosContratos();
+
+		request.setAttribute("contratos", contratos);
+			
+		DAOAutonomo dao2 = new DAOAutonomoImpl();
+		List<Autonomo> autonomos = dao2.todosAutonomos();
+
+		request.setAttribute("autonomos", autonomos);
+			
+		DAOUsuario dao3 = new DAOUsuarioImpl();
+		List<Usuario> usuarios = dao3.todosUsuarios();
+
+		request.setAttribute("usuarios", usuarios);    
+	        
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/meusContratos.jsp");
+		rd.forward(request, response);
+	}
+	
+	//Aceitar Contrato
+	private void aceitarContrato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+			
+		HttpSession session = request.getSession(true);	
+		int id = (int) session.getAttribute("id");
+		String titulo = request.getParameter("titulo");
+		String valor = request.getParameter("valor");
+		String descricao = request.getParameter("descricao");
+		String dataInicio = request.getParameter("dataInicio");
+		String duracaoT = request.getParameter("duracaoT");
+		String duracaoN = request.getParameter("duracaoN");
+		String localizacao = request.getParameter("localizacao");
+		String status = "false";
+		int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+		String idAutonomo = request.getParameter("idAutonomo");	
+		String idUsuario = request.getParameter("idUsuario");
+		
+		if(idAutonomo == null) {
+			idAutonomo = String.valueOf(id);
+		}
+		if(idUsuario == null) {
+			idUsuario = String.valueOf(id);
+		}
+		
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario);
+		
+		DAOContrato dao = new DAOContratoImpl();
+		dao.atualizar(novoContrato);
+		
+		meusContratos(request, response);
+	}
+	
+	//Pagina Atualizar Contrato
+		private void pagAtualizarContrato(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+						
+			DAOContrato dao = new DAOContratoImpl();
+			Contrato contrato = dao.buscarContrato(Integer.valueOf(request.getParameter("idContrato")));
+
+			request.setAttribute("contrato", contrato);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/alterarContrato.jsp");
+			rd.forward(request, response);
+		}
+	
+	//Atualizar Contrato
+		private void atualizarContrato(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+				
+			HttpSession session = request.getSession(true);	
+			String titulo = request.getParameter("titulo");
+			String valor = request.getParameter("valor");
+			String descricao = request.getParameter("descricao");
+			String dataInicio = request.getParameter("dataInicio");
+			String duracaoT = request.getParameter("duracaoT");
+			String duracaoN = request.getParameter("duracaoN");
+			String localizacao = request.getParameter("localizacao");
+			String status = null;
+			String idAutonomo = null;
+			String idUsuario = null;	
+			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+			
+			if(dataInicio == null) {			
+				dataInicio = "Indefinido";
+			}
+			if(valor == null) {			
+				valor = "Indefinido";
+			}
+			if(duracaoN == null) {
+				duracaoT = null;
+				duracaoN = "Indefinido";
+			}
+			
+			if(session.getAttribute("usuario").equals("comum")) {
+				idUsuario = String.valueOf(session.getAttribute("id"));	
+			} else{
+				idAutonomo = String.valueOf(session.getAttribute("id"));
+			}
+			
+
+			
+			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario);
+			
+			DAOContrato dao = new DAOContratoImpl();
+			dao.atualizar(novoContrato);
+			
+			meusContratos(request, response);
+		}
 }
