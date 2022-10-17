@@ -94,7 +94,9 @@ public class Controller extends HttpServlet{
 				pagAtualizarContrato(request, response);
 			} else if (action.equals("atualizarContrato")) { 
 				atualizarContrato(request, response);
-			}else {				
+			} else if (action.equals("atualizarPorCategoria")) { 
+				atualizarPorCategoria(request, response);
+			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
 			}
@@ -666,5 +668,20 @@ public class Controller extends HttpServlet{
 			dao.atualizar(novoContrato);
 			
 			meusContratos(request, response);
+		}
+		
+		//Atualiar por categoria
+		private void atualizarPorCategoria(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+			
+			String categoria = request.getParameter("filtro");
+			
+			if (categoria.equals("none")){
+				categoria = null;
+			}
+
+			request.setAttribute("categoria", categoria);
+			
+			verAutonomos(request,response);
 		}
 }

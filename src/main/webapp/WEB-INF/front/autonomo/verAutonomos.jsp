@@ -99,39 +99,67 @@ body{
 				</div>
 			</nav>
             <div class="container">
-                <div class="border-top border-2 py-5">
-                	<h4 class="mb-4 py-3">Lista de Autônomos</h4>
+            	<div class="py-5">					
+						<div class="pb-4 position-relative">	
+							<h4 class="mb-2"><a>Lista de Autônomos</a><a class="position-absolute top-0 end-0 text-end text-decoration-none text-dark">Categoria</a></h4>					
+							<div class="col-2 position-absolute top-50 end-0">								
+								<label for="filtro">Filtro</label>
+								<form action="controller?action=atualizarPorCategoria" method="post">
+									<select class="form-select bg-dark text-white text-center" name="filtro" onchange="this.form.submit()" required>
+										<option value="none">Filtrar por</option>
+										<option value="Pintor(a)">Pintor(a)</option>
+									  	<option value="Pedreiro">Pedreiro</option>
+									  	<option value="Eletricista">Eletricista</option>	
+									 	<option value="Encanador(a)">Encanador(a)</option>							  
+									 	<option value="Faxineiro(a)">Faxineiro(a)</option>
+									 	<option value="Babá">Babá</option>								 	
+									</select>
+									<button type="submit" class="btn btn-outline-dark btn-sm position-absolute top-80 end-0">Limpar Filtro</button>
+								</form>
+							</div>
+						</div>						
+				</div>	
+                <div class="py-5">
+                <c:set var="notEmpty" scope="session" value="${1}"/>
                     <table class="table table-hover table-dark table-striped caption-top align-middle">
                         <thead>
                           <tr>
                             <th scope="col">Usuário</th>
                             <th scope="col">Nome</th>
-                            <th scope="col" class="text-center">Profissão</th>
-                            <th scope="col" class="text-center">Avaliação</th>
+                            <th scope="col">Profissão</th>
+                            <th scope="col">Avaliação</th>
                             <th scope="col"></th>
                           </tr>
-                        </thead>
-                        <c:forEach var="autonomosCadastrados" items="${autonomos}">
-                        <tbody class="table-group-divider">
+                        </thead>                   
+                        <c:forEach var="autonomosCadastrados" items="${autonomos}">                        
+                        <c:if test="${autonomosCadastrados.tags == categoria or categoria == null}">
+                        <c:set var="notEmpty" scope="session" value="${2}"/>						
+                        <tbody class="table-group-divider">                        
                           <tr>
                             <td>@${autonomosCadastrados.user}</td>
                             <td>${autonomosCadastrados.nome} ${autonomosCadastrados.sobrenome}</td>
-                            <td class="text-center">${autonomosCadastrados.tags}</td>
-                            <td class="text-center">${autonomosCadastrados.aval} <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></td>
+                            <td class="text-warning">${autonomosCadastrados.tags}</td>
+                            <td>${autonomosCadastrados.aval} <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></td>
                             <td class="text-end"><a href="controller?action=detalhesAutonomo&idAutonomo=${autonomosCadastrados.idAutonomo}" class="btn btn-light" style="text-decoration: none;">Visitar Perfil</a></td>
-                          </tr>
-                        </c:forEach>
-                        </tbody>
+                          </tr>                
+                         </c:if>                   
+                        </c:forEach>   					
+                        </tbody>                        
                       </table>
+                      
+                      <c:if test="${notEmpty != 2 and categoria != null}">
+							<h4 class="text-center text-danger">Não há autonomos correspondentes ao filtro selecionado.</h4>
+                        </c:if>
                     </div>
 
 			<footer class="mt-auto border-top border-1">
 						<a href="controller?action=home" class="nav-link text-center text-muted px-2"style="padding-top: 2em;">© 2022 iTonomise</a>	
 			</footer>
-			</div>
+		</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous">
+	</script>
 </body>
 </html>

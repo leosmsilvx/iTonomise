@@ -153,7 +153,7 @@ body{
 							  <input type="hidden" class="form-control" name="dataInicio" value="${contrato.dataInicio}">  
 							  <input type="hidden" class="form-control" name="localizacao" value="${contrato.localizacao}">  
 							  <input type="hidden" class="form-control" name="descricao" value="${contrato.descricao}">  
-                            	<div class="col-12 py-2">
+                            	<div class="col-12 py-2" style="padding: 30%">
 			  					<button type="submit" class="btn btn-dark w-100">Aceitar</button>
 			  					</div>
 		  					</c:if>
@@ -172,12 +172,12 @@ body{
 							  <input type="hidden" class="form-control" name="dataInicio" value="${contrato.dataInicio}">  
 							  <input type="hidden" class="form-control" name="localizacao" value="${contrato.localizacao}">  
 							  <input type="hidden" class="form-control" name="descricao" value="${contrato.descricao}"> 
-                            	<div class="col-12 py-2">
+                            	<div class="col-12 py-2" style="padding: 30%">
 			  					<button type="submit" class="btn btn-dark w-100">Aceitar</button>
 			  					</div>
 		  					</c:if>
                            </div>
-                           <div class="col-12 py-4">
+                           <div class="col-12 py-4" style="padding: 30%">
                               <a href="controller?action=home" class="btn btn-dark w-100">Voltar</a>
                              </div>
 

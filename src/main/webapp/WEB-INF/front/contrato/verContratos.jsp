@@ -107,7 +107,7 @@ body{
                           <tr>
                             <th scope="col">Contrato de</th>
                             <th scope="col">Título</th>
-                            <th scope="col" class="text-center">Valor</th>
+                            <th scope="col">Valor</th>
                             <th scope="col"></th>
                           </tr>
                         </thead>
@@ -124,7 +124,7 @@ body{
 									</c:forEach>
 								</td>
 	                            <td>${contratosCadastrados.titulo}</td>
-	                            <td style="padding-left: 5%">R$ ${contratosCadastrados.valor}</td>
+	                            <td>R$ ${contratosCadastrados.valor}</td>
 	                            <td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Ver contrato</a></td>
                           	</tr>
                         
