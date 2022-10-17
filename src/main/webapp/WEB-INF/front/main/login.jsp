@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
@@ -103,12 +103,12 @@ body {
 			<h5 class="text-danger"> ${msgErro} </h5>
 			<a href="controller?action=index"><img class="mb-4" src="https://media.discordapp.net/attachments/911394611300270122/1021924837486239764/a.png" alt="" width="100" height="100"></a>
 			<h1 class="h3 mb-3 fw-normal">
-				Ol·,<br>Digite seu Usu·rio e Senha
+				Ol√°,<br>Digite seu Usu√°rio e Senha
 			</h1>
 			<form action="controller?action=confirmarLogin" method="post">
 				<div>
 					<input type="text" class="form-control" name="usuario" id="usuario"
-						placeholder="Usu·rio" style="border-radius: 5px 5px 5px 5px; height: 4em;" required>
+						placeholder="Usu√°rio" style="border-radius: 5px 5px 5px 5px; height: 4em;" required>
 				</div>
 				<div>
 					<input type="password" class="form-control" name="senha" id="senha"
@@ -117,15 +117,15 @@ body {
 				<div style="padding-left: 30%; text-align: left;">
 		        	<input class="form-check-input" type="checkbox" name="souAut" id="souAut">
 			        <label class="form-check-label" for="souAut">
-			          Sou autÙnomo
+			          Sou aut√¥nomo
 			        </label>
 		      	</div>
 		      	<div class="py-3">
 		        	<button class="w-100 btn btn-lg btn-dark" type="submit">Entrar</button>
 		      	</div>
 			</form>
-			<a href="controller?action=index" class="nav-link"><p class="text-muted">N„o È usu·rio? Se cadastre agora!</p></a>
-      		<a href="controller?action=index" class="nav-link"><p class="mt-5 mb-3 text-muted">© 2022 iTonomise</p></a>
+			<a href="controller?action=index" class="nav-link"><p class="text-muted">N√£o √© usu√°rio? Se cadastre agora!</p></a>
+      		<a href="controller?action=index" class="nav-link"><p class="mt-5 mb-3 text-muted">¬© 2022 iTonomise</p></a>
 	</main>
 
 

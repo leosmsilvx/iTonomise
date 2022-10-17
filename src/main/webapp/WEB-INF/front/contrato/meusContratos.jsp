@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -106,7 +106,7 @@ body{
                         <thead>
                           <tr>
                             <th scope="col">Contrato de</th>
-                            <th scope="col">Título</th>
+                            <th scope="col">TÃ­tulo</th>
                             <th scope="col">Valor</th>
                             <th scope="col">Status</th>
                             <th scope="col"></th>
@@ -121,14 +121,15 @@ body{
 								<c:forEach var="usuariosCadastrados" items="${usuarios}">
                             		<c:if test="${contratosCadastrados.idUsuario == usuariosCadastrados.idUsuario}">
 										@<c:out value="${usuariosCadastrados.user}"/>
-									</c:if>
-									<c:if test="${contratosCadastrados.status != null}">
+										<c:if test="${contratosCadastrados.status != null}">
 										<c:forEach var="autonomosCadastrados" items="${autonomos}">
 	                            		<c:if test="${contratosCadastrados.idAutonomo == autonomosCadastrados.idAutonomo}">
 											@<c:out value="${autonomosCadastrados.user}"/>
 										</c:if>
 										</c:forEach>
 									</c:if>
+									</c:if>
+									
 								</c:forEach>                           
 								
 							</td>
@@ -136,7 +137,7 @@ body{
                             <td>R$ ${contratosCadastrados.valor}</td>
                             <td>
                             		<c:if test="${contratosCadastrados.status == null}">
-										<c:out value="Não aceito"/>
+										<c:out value="NÃ£o aceito"/>
 									</c:if>
 									<c:if test="${contratosCadastrados.status != null}">
 										<c:if test="${contratosCadastrados.status == false}">
@@ -180,7 +181,7 @@ body{
                             <td>R$ ${contratosCadastrados.valor}</td>
                             <td>
                             		<c:if test="${contratosCadastrados.status == null}">
-										<c:out value="Não aceito"/>
+										<c:out value="NÃ£o aceito"/>
 									</c:if>
 									<c:if test="${contratosCadastrados.status != null}">
 										<c:if test="${contratosCadastrados.status == false}">
@@ -206,7 +207,7 @@ body{
                       </table>
                     </div>
 				<footer class="mt-auto border-top border-1">
-						<a href="controller?action=home" class="nav-link text-center text-muted px-2"style="padding-top: 2em;">© 2022 iTonomise</a>	
+						<a href="controller?action=home" class="nav-link text-center text-muted px-2"style="padding-top: 2em;">Â© 2022 iTonomise</a>	
 				</footer>
 				</div>
             </div>

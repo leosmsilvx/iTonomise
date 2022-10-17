@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
 <link
@@ -8,7 +8,7 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
 <meta charset="utf-8">
-<title>Cadastro Usuário</title>
+<title>Cadastro UsuÃ¡rio</title>
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -92,7 +92,7 @@ body{
 		<main>
 			<div class="row g-5">
 				<div>
-					<h4 class="mb-4 py-4">Cadastro Usuário</h4>
+					<h4 class="mb-4 py-4">Cadastro UsuÃ¡rio</h4>
 					<form action="controller?action=cadastrarComum" method="post">
 						<div class="row g-3">
 
@@ -110,23 +110,23 @@ body{
 
 							<div class="col-6">
 								<label for="cpf" class="form-label">CPF <span
-									class="text-muted">(Somente números)</span></label> <input
+									class="text-muted">(Somente nÃºmeros)</span></label> <input
 									type="number" class="form-control" name="cpf"
 									placeholder="xxx.xxx.xxx-xx">
 							</div>
 
 							<div class="col-6">
 								<label for="tel" class="form-label">Telefone <span
-									class="text-muted">(Somente números)</span></label> <input
+									class="text-muted">(Somente nÃºmeros)</span></label> <input
 									type="number" class="form-control" name="tel"
 									placeholder="(37) 98877-6655">
 							</div>
 
 							<div class="col-8">
-								<label for="user" class="form-label">Usuário</label>
+								<label for="user" class="form-label">UsuÃ¡rio</label>
 								<div class="input-group">
 									<span class="input-group-text">@</span> <input type="text"
-										class="form-control" name="user" placeholder="Usúario">
+										class="form-control" name="user" placeholder="UsÃºario">
 								</div>
 							</div>
 
@@ -143,9 +143,9 @@ body{
 							</div>
 							
 							<div class="col-12">
-								<label for="endereco" class="form-label">Endereço</label>
+								<label for="endereco" class="form-label">EndereÃ§o</label>
 								<textarea class="form-control" name="endereco"
-									placeholder="Rua Bonita - nº 691 - Bairro legal - Divinópolis"></textarea>
+									placeholder="Rua Bonita - nÂº 691 - Bairro legal - DivinÃ³polis"></textarea>
 							</div>
 
 							<hr class="my-4">
@@ -159,7 +159,7 @@ body{
 	<div class="py-5">
 		<footer class="mt-auto">
 			<div class="container">
-				<a href="controller?action=index" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
+				<a href="controller?action=index" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">Â© 2022 iTonomise</p></a>
 			</div>
 		</footer>
 	</div>

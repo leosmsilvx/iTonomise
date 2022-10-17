@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,9 +85,9 @@ body{
 			</nav>
     <div class="container">
         <div class="pt-5 pb-5">
-            <h1 class="text-start">Erro 404 - Página não encontrada</h1>
-            <h2 class="text-start">Parece que você tentou fazer algo que nosso sistema não estava esperando...</h2>
-            <a href="controller?action=home" style="font-size: 1.5em">Retornar para a página principal
+            <h1 class="text-start">Erro 404 - PÃ¡gina nÃ£o encontrada</h1>
+            <h2 class="text-start">Parece que vocÃª tentou fazer algo que nosso sistema nÃ£o estava esperando...</h2>
+            <a href="controller?action=home" style="font-size: 1.5em">Retornar para a pÃ¡gina principal
             <div class="text-center pt-4">
             	<img width=500 height=400 src="https://media.discordapp.net/attachments/911394611300270122/1027036821202423878/erro.png">
             </div> 
@@ -97,7 +97,7 @@ body{
 
     
     <footer class="mt-auto border-top border-1">
-                    <a href="controller?action=index" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
+                    <a href="controller?action=index" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">Â© 2022 iTonomise</p></a>
      </foote'r> 
     </div>
 

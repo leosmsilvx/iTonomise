@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -128,7 +128,7 @@ body{
                                         
                                     </div>             
                                     <div class="col-12">
-                                        <label class="form-label">Endereço</label>
+                                        <label class="form-label">EndereÃ§o</label>
                                         <textarea class="form-control" disabled>${comum.endereco}</textarea>
                                     </div>
                                     <div class="col-6 pt-4">
@@ -146,7 +146,7 @@ body{
             <div class="py-5">
                 <footer class="mt-auto">
                     <div class="container">
-                        <a href="controller?action=home" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
+                        <a href="controller?action=home" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">Â© 2022 iTonomise</p></a>
                     </div>
                 </footer>
             </div>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 	
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 
 
 <meta charset="utf-8">
-<title>Cadastro AutÙnomo</title>
+<title>Cadastro Aut√¥nomo</title>
 
 <style>
 .bd-placeholder-img {
@@ -100,7 +100,7 @@ body{
 		<main>
 			<div class="row g-5">
 				<div>
-					<h4 class="mb-4 py-4">Cadastro AutÙnomo</h4>
+					<h4 class="mb-4 py-4">Cadastro Aut√¥nomo</h4>
 					<form action="controller?action=cadastrarAutonomo" method="post">
 						<div class="row g-3">
 
@@ -118,23 +118,23 @@ body{
 
 							<div class="col-6">
 								<label for="cpf" class="form-label">CPF <span
-									class="text-muted">(Somente n˙meros)</span></label> <input
+									class="text-muted">(Somente n√∫meros)</span></label> <input
 									type="number" class="form-control" name="cpf"
 									placeholder="xxx.xxx.xxx-xx" required>
 							</div>
 
 							<div class="col-6">
 								<label for="tel" class="form-label">Telefone <span
-									class="text-muted">(Somente n˙meros)</span></label> <input
+									class="text-muted">(Somente n√∫meros)</span></label> <input
 									type="number" class="form-control" name="tel"
 									placeholder="(37) 98877-6655" required>
 							</div>
 
 							<div class="col-8">
-								<label for="user" class="form-label">Usu·rio</label>
+								<label for="user" class="form-label">Usu√°rio</label>
 								<div class="input-group">
 									<span class="input-group-text">@</span> <input type="text"
-										class="form-control" name="user" placeholder="Us˙ario"
+										class="form-control" name="user" placeholder="Us√∫ario"
 										required>
 								</div>
 							</div>
@@ -153,32 +153,32 @@ body{
 
 							<div class="col-12">
 								<label for="desc" class="form-label">Uma breve
-									descriÁ„o sua</label>
+									descri√ß√£o sua</label>
 								<textarea class="form-control" name="desc"
-									placeholder="Ol·, meu nome È Jo„o e eu trabalho com pintura!"></textarea>
+									placeholder="Ol√°, meu nome √© Jo√£o e eu trabalho com pintura!"></textarea>
 							</div>
 
 							<div class="col-12">
 								<label for="tag" class="form-label">Principal atividade</label>
 								<select class="form-select" name="tag" onchange="passTag(this);">
-								  <option selected>¡rea de atuaÁ„o</option>
+								  <option selected>√Årea de atua√ß√£o</option>
 								  <option value="Pintor(a)">Pintor(a)</option>
 								  <option value="Pedreiro">Pedreiro</option>
 								  <option value="Eletricista">Eletricista</option>	
 								  <option value="Encanador(a)">Encanador(a)</option>							  
 								  <option value="Faxineiro(a)">Faxineiro(a)</option>
-								  <option value="Bab·">Bab·</option>
+								  <option value="Bab√°">Bab√°</option>
 								  <option value="Outro">Outro</option>
 								</select>
 								<div class="pt-2" id="outro" style="display: none;">
-				                  <input id="tags" class="form-control" type="text" name="tags" placeholder="Digite outra profiss„o"/>
+				                  <input id="tags" class="form-control" type="text" name="tags" placeholder="Digite outra profiss√£o"/>
 				                </div>
 							</div>
 
 							<div class="col-12">
-								<label for="endereco" class="form-label">EndereÁo</label>
+								<label for="endereco" class="form-label">Endere√ßo</label>
 								<textarea class="form-control" name="endereco"
-									placeholder="Rua Bonita - n∫ 691 - Bairro legal - DivinÛpolis"></textarea>
+									placeholder="Rua Bonita - n¬∫ 691 - Bairro legal - Divin√≥polis"></textarea>
 							</div>
 
 							<hr class="my-4">
@@ -193,7 +193,7 @@ body{
 	<div class="py-5">
 		<footer class="mt-auto">
 			<div class="container">
-				<a href="controller?action=index" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
+				<a href="controller?action=index" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">¬© 2022 iTonomise</p></a>
 			</div>
 		</footer>
 	</div>

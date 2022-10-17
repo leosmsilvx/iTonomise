@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -133,7 +133,7 @@ body{
 						</div>
 			<div class="pt-4">
 			<footer class="mt-auto border-top border-1">
-						<a href="controller?action=home" class="nav-link text-center text-muted px-2"style="padding-top: 2em;">© 2022 iTonomise</a>	
+						<a href="controller?action=home" class="nav-link text-center text-muted px-2"style="padding-top: 2em;">Â© 2022 iTonomise</a>	
 			</footer>
 			
 			</div>

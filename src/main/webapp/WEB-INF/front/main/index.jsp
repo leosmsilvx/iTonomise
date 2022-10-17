@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,12 +118,12 @@ body{
 						<svg class="bi" width="40px" height="40px">
 							<use xlink:href="#servicos"></use></svg>
 					</div>
-					<h2 style="font-size: 2em">ServiÁos Oferecidos</h2>
-					<p style="font-size: 1.5em">iTonomise oferece serviÁos autÙnomos diversos, baseados no
+					<h2 style="font-size: 2em">Servi√ßos Oferecidos</h2>
+					<p style="font-size: 1.5em">iTonomise oferece servi√ßos aut√¥nomos diversos, baseados no
 						perfil de quem nos contata. Sua pia entupiu? Precisa pintar uma parede?
-                        Sua casa est· precisando de uma faxina? NÛs sabemos o
+                        Sua casa est√° precisando de uma faxina? N√≥s sabemos o
 						trabalhador certo para lhe indicar!
-                        iTonomise È simples e din‚mico, para combinar
+                        iTonomise √© simples e din√¢mico, para combinar
 						com a sua rotina.</p>
 					<a href="#nossosservicos" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;">
 						Ir para<svg class="bi" width="1em" height="1em">
@@ -137,12 +137,12 @@ body{
 						<svg class="bi" width="40px" height="40px">
 							<use xlink:href="#autonomo"></use></svg>
 					</div>
-					<h2 style="font-size: 2em">Sou autÙnomo</h2>
-					<p style="font-size: 1.5em">Esta È a sua ·rea, autÙnomo! Aqui vocÍ encontrar· um guia
-						para ofertar seus serviÁos em nosso site, bem como dicas para
-						tornar seu perfil mais atrativo aos seus clientes; Logo apÛs ser· redirecionado para o cadastro,
-                        sinta-se ‡ vontade nos contando suas experiÍncias passadas, sua preferencia
-						em atuaÁ„o, entre outros!</p>
+					<h2 style="font-size: 2em">Sou aut√¥nomo</h2>
+					<p style="font-size: 1.5em">Esta √© a sua √°rea, aut√¥nomo! Aqui voc√™ encontrar√° um guia
+						para ofertar seus servi√ßos em nosso site, bem como dicas para
+						tornar seu perfil mais atrativo aos seus clientes; Logo ap√≥s ser√° redirecionado para o cadastro,
+                        sinta-se √† vontade nos contando suas experi√™ncias passadas, sua preferencia
+						em atua√ß√£o, entre outros!</p>
 					<a href="#souautonomo" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;">
 						Ir para <svg class="bi" width="1em" height="1em">
 							<use xlink:href="#seta"></use></svg>
@@ -156,10 +156,10 @@ body{
 							<use xlink:href="#sobre"></use></svg>
 					</div>
 					<h2 style="font-size: 2em">Sobre iTonomise</h2>
-					<p style="font-size: 1.5em">A iTonomise È uma plataforma que facilita o acesso ‡
-						informaÁ„o entre autÙnomo e contratante, visando sempre manter o
+					<p style="font-size: 1.5em">A iTonomise √© uma plataforma que facilita o acesso √†
+						informa√ß√£o entre aut√¥nomo e contratante, visando sempre manter o
 						mercado em movimento. Sua ideia surgiu ao longo de diversas pesquisas sobre o
-						impacto da pandemia na vida dos trabalhadores autÙnomos, visando ajudar estes trabalhadores a iTonomise foi criada!</p>
+						impacto da pandemia na vida dos trabalhadores aut√¥nomos, visando ajudar estes trabalhadores a iTonomise foi criada!</p>
 					<a href="#sobrenos" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;" 	>
 						Ir para <svg class="bi" width="1em" height="1em" style="text-decoration: none;">
 							<use xlink:href="#seta"></use></svg>
@@ -177,7 +177,7 @@ body{
                           </div><a style="font-size: 2em;
                           margin-left: 0.5em;
                           font-weight: bold;">Seja um contratante!</a>
-                          <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado ‡ nossa p·gina de cadastro. Desfrute dos serviÁos ofertados pelos trabalhadores autonomos de sua regi„o, oferecidos pelo nosso site!</p>
+                          <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado √† nossa p√°gina de cadastro. Desfrute dos servi√ßos ofertados pelos trabalhadores autonomos de sua regi√£o, oferecidos pelo nosso site!</p>
                           <a id="souautonomo" href="controller?action=pagCadComum" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
                             Se cadastre agora
                             <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
@@ -203,7 +203,7 @@ body{
 	                          <div class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2" style="border-radius: 6px; background-color: #212529;">
 	                            <svg class="bi" width="40px" height="40px"><use xlink:href="#autonomo"></use></svg>
 	                          </div>
-	                          <p style="font-size: 1.5em; text-align: justify; text-justify: inter-word;">Clique no link abaixo para ser redirecionado ‡ nossa p·gina de cadastro. FaÁa parte da nossa equipe de trabalhadores autÙnomos, oferecendo seus serviÁos pelo nosso site!</p>
+	                          <p style="font-size: 1.5em; text-align: justify; text-justify: inter-word;">Clique no link abaixo para ser redirecionado √† nossa p√°gina de cadastro. Fa√ßa parte da nossa equipe de trabalhadores aut√¥nomos, oferecendo seus servi√ßos pelo nosso site!</p>
 	                          <a href="controller?action=pagCadAuto" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
 	                            Se cadastre agora
 	                            <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
@@ -222,8 +222,8 @@ body{
                             <svg class="bi" width="40px" height="40px"><use xlink:href="#sobre"></use></svg>
                           </div><a style="font-size: 2em;
                           margin-left: 0.5em;
-                          font-weight: bold;">Um pouco sobre nÛs!</a>
-						  <p style="font-size: 1.5em">Somos muito mais que um site. Somos um time de jovens estudantes preocupados com os impactos da pandemia no mercado de trabalho. E, como programadores, sabemos a dificuldade de encontrar trabalhos freelancer que n„o respaldados pela CLT, os famosos "bicos/biscates". Fundada em XX de 2022, a iTonomise comeÁou como um projeto de TCC e se estabeleceu como o site que vocÍ est· vendo. Nosso objetivo È facilita o acesso ‡ informaÁ„o entre os clientes, possibilitando que usu·rios aversos ‡ interfaces complexas se sintam familiarizados.</p>
+                          font-weight: bold;">Um pouco sobre n√≥s!</a>
+						  <p style="font-size: 1.5em">Somos muito mais que um site. Somos um time de jovens estudantes preocupados com os impactos da pandemia no mercado de trabalho. E, como programadores, sabemos a dificuldade de encontrar trabalhos freelancer que n√£o respaldados pela CLT, os famosos "bicos/biscates". Fundada em XX de 2022, a iTonomise come√ßou como um projeto de TCC e se estabeleceu como o site que voc√™ est√° vendo. Nosso objetivo √© facilita o acesso √† informa√ß√£o entre os clientes, possibilitando que usu√°rios aversos √† interfaces complexas se sintam familiarizados.</p>
 
                     </div>
                 </div>
@@ -239,11 +239,11 @@ body{
 			<div class="container">
 				<ul class="nav justify-content-center pb-3 mb-3">
 					<li class="nav-item">
-					<a class="nav-link px-2 text-center" style="font-size: 2em; font-weight: bold; color: #111">J· È usu·rio?</a>
+					<a class="nav-link px-2 text-center" style="font-size: 2em; font-weight: bold; color: #111">J√° √© usu√°rio?</a>
 					<a href="controller?action=login"
 						class="nav-link px-2 text-muted text-center"><button class="w-100 btn btn-dark btn-lg" type="submit">Login</button></a></li>
 				</ul>
-				<a href="controller?action=index" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
+				<a href="controller?action=index" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">¬© 2022 iTonomise</p></a>	
 			</div>
 		</footer>
 	</div>

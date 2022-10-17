@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS autonomo (
     usuario varchar(100) NOT NULL,
     senha varchar(100) NOT NULL,
     email varchar(100) NOT NULL,
-    descricao varchar(100),
+    descricao varchar(300),
     tags varchar(100) NOT NULL,
     endereco varchar(100) NOT NULL,
     aval integer UNSIGNED,

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@ body{
 						<img src="https://media.discordapp.net/attachments/911394611300270122/1025473411977314334/contrato.jpg" height="400" width="225" class="card-img-top">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Contrato</p>
-						  <p class="card-text pb-4">Clique e crie um contrato ou veja todos os seus contratos já criados!</p>
+						  <p class="card-text pb-4">Clique e crie um contrato ou veja todos os seus contratos jÃ¡ criados!</p>
 						  <div class="gap-4 d-flex justify-content-center">
 							<a href="controller?action=pagCadCont" class="btn btn-dark">Criar Contrato</a>
 							<a href="controller?action=meusContratos" class="btn btn-dark">Meus contratos</a>
@@ -104,7 +104,7 @@ body{
 			<div class="border-top border-2">
 			</div>
 			<footer class="mt-auto">
-					<a href="controller?action=home" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
+					<a href="controller?action=home" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">Â© 2022 iTonomise</p></a>	
 			</footer>
 			</div>
 	<script

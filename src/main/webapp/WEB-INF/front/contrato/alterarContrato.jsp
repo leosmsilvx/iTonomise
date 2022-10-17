@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
@@ -10,7 +10,7 @@
   crossorigin="anonymous">
   
 <meta charset="utf-8">
-<title>Contrato de Serviço</title>
+<title>Contrato de ServiÃ§o</title>
 <style>
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -101,11 +101,11 @@ body{
           <form action="controller?action=atualizarContrato" method="post">
             <div class="row g-3">
               <div class="col-6">
-                <label for="titulo" class="form-label">Título</label>
+                <label for="titulo" class="form-label">TÃ­tulo</label>
                                  <input type="text" class="form-control" name="titulo" value="${contrato.titulo}" required>
               </div>
               <div class="col-6">
-                <label for="valor" class="form-label">Valor do serviço</label>
+                <label for="valor" class="form-label">Valor do serviÃ§o</label>
                 <div class="input-group">
                   <span class="input-group-text">R$</span> <input id="input-valor" type="number"
                     class="form-control" required name="valor" min="0" step="any" value="${contrato.valor}">
@@ -118,7 +118,7 @@ body{
 				</div>
               </div>
               <div class="col-6">
-                <label for="titulo" class="form-label">Data de Início</label>
+                <label for="titulo" class="form-label">Data de InÃ­cio</label>
                                  <input type="date" id="input-data" class="form-control" name="dataInicio" value="${contrato.dataInicio}" required>
                                  
                 <div class="form-check">
@@ -131,7 +131,7 @@ body{
               
 
               <div class="col-6">
-                 <label for="titulo" class="form-label">Duração</label>
+                 <label for="titulo" class="form-label">DuraÃ§Ã£o</label>
 
                 <div class="input-group">
 
@@ -152,7 +152,7 @@ body{
                 <div class="form-check">
 					  <input class="form-check-input" type="checkbox" id="checkNumero" onclick="disableInput()">
 				  		<label class="form-check-label" for="checkNumero">
-				   		 Não definido
+				   		 NÃ£o definido
 				  		</label>
 				</div>
               </div>
@@ -160,12 +160,12 @@ body{
               <input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
 
               <div class="col-12">
-                <label for="titulo" class="form-label">Localização</label>
+                <label for="titulo" class="form-label">LocalizaÃ§Ã£o</label>
                                  <input type="text" class="form-control" name="localizacao" value="${contrato.localizacao}" required>
               </div>
 
               <div class="col-12">
-                                <label for="descricao" class="form-label">Descrição do contrato</label>
+                                <label for="descricao" class="form-label">DescriÃ§Ã£o do contrato</label>
                                 <textarea class="form-control" name="descricao" rows="7" required>${contrato.descricao}</textarea>
                             </div>
                            <div class="col-6">
@@ -183,7 +183,7 @@ body{
   <div>
     <footer class="mt-auto">
       <div class="container">
-        <a href="controller?action=home" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
+        <a href="controller?action=home" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">Â© 2022 iTonomise</p></a>
       </div>
     </footer>
   </div>

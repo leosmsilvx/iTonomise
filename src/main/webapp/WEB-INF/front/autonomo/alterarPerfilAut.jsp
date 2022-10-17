@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -128,7 +128,7 @@ body{
                                         
                                     </div>     
                                     <div class="col-12">
-                                        <label class="form-label">Descrição</label>
+                                        <label class="form-label">DescriÃ§Ã£o</label>
                                         <textarea class="form-control" name="desc">${autonomo.desc}</textarea>
                                     </div>
 
@@ -141,16 +141,16 @@ body{
 								  <option value="Eletricista">Eletricista</option>	
 								  <option value="Encanador(a)">Encanador(a)</option>							  
 								  <option value="Faxineiro(a)">Faxineiro(a)</option>
-								  <option value="Babá">Babá</option>
+								  <option value="BabÃ¡">BabÃ¡</option>
 								  <option value="Outro">Outro</option>
 								</select>
 								<div class="pt-2" id="outro" style="display: none;">
-				                  <input id="tags" class="form-control" type="text" name="tags" placeholder="Digite outra profissão"/>
+				                  <input id="tags" class="form-control" type="text" name="tags" value="${autonomo.tags}" placeholder="Digite outra profissÃ£o"/>
 				                </div>
 							</div>
         
                                     <div class="col-12">
-                                        <label class="form-label">Endereço</label>
+                                        <label class="form-label">EndereÃ§o</label>
                                         <textarea class="form-control" name="endereco">${autonomo.endereco}</textarea>
                                     </div>
                                     
@@ -174,7 +174,7 @@ body{
             <div class="py-5">
                 <footer class="mt-auto">
                     <div class="container">
-                        <a href="controller?action=home" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
+                        <a href="controller?action=home" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">Â© 2022 iTonomise</p></a>
                     </div>
                 </footer>
             </div>
