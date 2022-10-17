@@ -132,19 +132,22 @@ body{
                                         <textarea class="form-control" name="desc">${autonomo.desc}</textarea>
                                     </div>
 
-                                   <div class="col-12">
-									<label for="desc" class="form-label">Principal atividade</label>
-									<select class="form-select" aria-label="Default select example" name="tags">
-									  <option selected value="${autonomo.tags}">${autonomo.tags}</option>
-									  <option value="Pintor(a)">Pintor(a)</option>
-								  	  <option value="Pedreiro">Pedreiro</option>
-								  	  <option value="Eletricista">Eletricista</option>	
-								  	  <option value="Encanador(a)">Encanador(a)</option>							  
-								  	  <option value="Faxineiro(a)">Faxineiro(a)</option>
-								  	  <option value="Babá">Babá</option>
-								  	  <option value="Outro">Outro</option>
-									</select>
-								</div>
+								<div class="col-12">
+								<label for="tag" class="form-label">Principal atividade</label>
+								<select class="form-select" name="tag" onchange="passTag(this);">
+								  <option selected value="${autonomo.tags}">${autonomo.tags}</option>
+								  <option value="Pintor(a)">Pintor(a)</option>
+								  <option value="Pedreiro">Pedreiro</option>
+								  <option value="Eletricista">Eletricista</option>	
+								  <option value="Encanador(a)">Encanador(a)</option>							  
+								  <option value="Faxineiro(a)">Faxineiro(a)</option>
+								  <option value="Babá">Babá</option>
+								  <option value="Outro">Outro</option>
+								</select>
+								<div class="pt-2" id="outro" style="display: none;">
+				                  <input id="tags" class="form-control" type="text" name="tags" placeholder="Digite outra profissão"/>
+				                </div>
+							</div>
         
                                     <div class="col-12">
                                         <label class="form-label">Endereço</label>
@@ -176,6 +179,18 @@ body{
                 </footer>
             </div>
             </div>
+    <script>
+    function passTag(outrovar) {
+      var inputTag = document.getElementById("tags");
+      inputTag.value = outrovar.value;
+      if (outrovar.value == "Outro") {
+    	  inputTag.value = "";
+          document.getElementById("outro").style.display = "block";
+      } else {
+          document.getElementById("outro").style.display = "none";
+      }
+    }
+  </script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
