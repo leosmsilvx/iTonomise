@@ -98,8 +98,19 @@ body{
       <div class="row g-5">
         <div>
           <h4 class="mb-4 py-3">Contrato</h4>
+         
           <form action="controller?action=aceitarContrato" method="post">
             <div class="row g-3">
+		            <div class="col-6">
+		            <c:if test="${contrato.idUsuario != null}">
+			          		<a href="controller?action=detalhesUsuario&idUsuario=${contrato.idUsuario}" class="btn btn-dark w-100">Perfil do Usuario</a>
+			        </c:if>
+			        </div>
+			        <div class="col-6">
+			        <c:if test="${contrato.idAutonomo != null}">
+							<a href="controller?action=detalhesAutonomo&idAutonomo=${contrato.idAutonomo}" class="btn btn-dark w-100">Perfil do Autonomo</a>
+							</c:if>
+					</div>
               <div class="col-6">
                 <label for="titulo" class="form-label">Título</label>
                                  <input type="text" class="form-control" value="${contrato.titulo}" disabled>
@@ -139,9 +150,6 @@ body{
                             </div>
 
                             <c:if test="${contrato.idUsuario == null and usuario == 'comum'}">
-                            	<c:if test="${contrato.idUsuario != null}">
-								  <input type="hidden" class="form-control" name="idUsuario" value="${contrato.idUsuario}">
-							  </c:if>
 							  <c:if test="${contrato.idAutonomo != null}">
 								  <input type="hidden" class="form-control" name="idAutonomo" value="${contrato.idAutonomo}">
 							  </c:if>							  
@@ -155,15 +163,12 @@ body{
 							  <input type="hidden" class="form-control" name="localizacao" value="${contrato.localizacao}">  
 							  <input type="hidden" class="form-control" name="descricao" value="${contrato.descricao}">  
                             	<div class="col-12 py-2" style="padding: 30%">
-			  					<button type="submit" class="btn btn-dark w-100">Aceitar</button>
+			  						<button type="submit" class="btn btn-dark w-100">Aceitar</button>
 			  					</div>
 		  					</c:if>
 		  					<c:if test="${contrato.idAutonomo == null and usuario == 'autonomo'}">
 		  					<c:if test="${contrato.idUsuario != null}">
-								  <input type="hidden" class="form-control" name="idUsuario" value="${contrato.idUsuario}">
-							  </c:if>
-							  <c:if test="${contrato.idAutonomo != null}">
-								  <input type="hidden" class="form-control" name="idAutonomo" value="${contrato.idAutonomo}">
+								  <input type="hidden" class="form-control" name="idUsuario" value="${contrato.idUsuario}">s
 							  </c:if>
 							  <input type="hidden" class="form-control" name="tipoCriador" value="${contrato.tipoCriador}">
 							  <input type="hidden" class="form-control" name="duracaoN" value="${contrato.duracaoN}">
@@ -194,7 +199,7 @@ body{
 			  						<button type="submit" class="btn btn-dark w-100">Aceitar</button>
 			  					</div>
 		  					</c:if>
-                           </div>
+                           </div>                           
                            <div class="col-12 py-4" style="padding: 30%">
                               <a href="controller?action=home" class="btn btn-dark w-100">Home</a>
                              </div>
