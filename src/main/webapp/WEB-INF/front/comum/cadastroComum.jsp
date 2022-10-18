@@ -93,9 +93,8 @@ body{
 			<div class="row g-5">
 				<div>
 					<h4 class="mb-4 py-4">Cadastro Usuário</h4>
-					<form action="controller?action=cadastrarComum" method="post">
+					<form action="controller?action=cadastrarComum" method="post">						
 						<div class="row g-3">
-
 							<div class="col-sm-6">
 								<label for="nome" class="form-label">Primeiro
 									Nome</label> <input type="text" class="form-control"

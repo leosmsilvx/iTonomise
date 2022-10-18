@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS contrato (
 	duracaoN varchar(200) NOT NULL,
     localizacao varchar(200) NOT NULL,
     stats boolean,
+    tipoCriador varchar(100) NOT NULL,
     
     PRIMARY KEY (idContrato),
 	FOREIGN KEY (idAutonomo) REFERENCES autonomo(idAutonomo) ON DELETE CASCADE,

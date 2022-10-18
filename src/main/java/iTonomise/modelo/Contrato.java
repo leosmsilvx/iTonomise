@@ -13,9 +13,11 @@ public class Contrato {
 	private int idContrato;
 	private String idAutonomo;
 	private String idUsuario;
+	private String tipoCriador;
 	
 	public Contrato(String titulo, String valor, String descricao, String dataInicio, String duracaoT, String duracaoN,
-			String localizacao, String status, int idContrato, String idAutonomo, String idUsuario) {
+			String localizacao, String status, int idContrato, String idAutonomo, String idUsuario,
+			String tipoCriador) {
 		super();
 		this.titulo = titulo;
 		this.valor = valor;
@@ -28,14 +30,15 @@ public class Contrato {
 		this.idContrato = idContrato;
 		this.idAutonomo = idAutonomo;
 		this.idUsuario = idUsuario;
+		this.tipoCriador = tipoCriador;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getValor() {
@@ -46,12 +49,12 @@ public class Contrato {
 		this.valor = valor;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getDataInicio() {
@@ -117,7 +120,13 @@ public class Contrato {
 	public void setIdUsuario(String idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	
-	
+
+	public String getTipoCriador() {
+		return tipoCriador;
+	}
+
+	public void setTipoCriador(String tipoCriador) {
+		this.tipoCriador = tipoCriador;
+	}
 	
 }

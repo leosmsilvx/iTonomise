@@ -96,6 +96,8 @@ public class Controller extends HttpServlet{
 				atualizarContrato(request, response);
 			} else if (action.equals("atualizarPorCategoria")) { 
 				atualizarPorCategoria(request, response);
+			} else if (action.equals("proporContrato")) { 
+				proporContrato(request, response);
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
@@ -255,9 +257,9 @@ public class Controller extends HttpServlet{
 		String localizacao = request.getParameter("localizacao");
 		String status = null;
 		int idCont = 0;	
-		String idAutonomo = null;	
-		String idUsuario = null;	
-		
+		String idAutonomo = null;
+		String idUsuario = null;
+		String tipoCriador = request.getParameter("tipoCriador");;		
 		
 		if(dataInicio == null) {			
 			dataInicio = "Indefinido";
@@ -273,11 +275,18 @@ public class Controller extends HttpServlet{
 		HttpSession session = request.getSession(true);	
 		if(session.getAttribute("usuario").equals("comum")) {
 			idUsuario = String.valueOf(session.getAttribute("id"));	
+			idAutonomo = request.getParameter("idAutonomo");
+			if(idAutonomo != null)
+				status = "true";
 		} else{
 			idAutonomo = String.valueOf(session.getAttribute("id"));
 		}
 		
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idCont, idAutonomo, idUsuario);
+		if (tipoCriador == null) {
+			tipoCriador = String.valueOf(session.getAttribute("usuario"));
+		}
+		
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idCont, idAutonomo, idUsuario, tipoCriador);
 		
 		DAOContrato dao = new DAOContratoImpl();
 		dao.cadastrar(novoContrato);
@@ -597,6 +606,7 @@ public class Controller extends HttpServlet{
 		int idContrato = Integer.valueOf(request.getParameter("idContrato"));
 		String idAutonomo = request.getParameter("idAutonomo");	
 		String idUsuario = request.getParameter("idUsuario");
+		String tipoCriador = request.getParameter("tipoCriador");
 		
 		if(idAutonomo == null) {
 			idAutonomo = String.valueOf(id);
@@ -605,7 +615,7 @@ public class Controller extends HttpServlet{
 			idUsuario = String.valueOf(id);
 		}
 		
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario);
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador);
 		
 		DAOContrato dao = new DAOContratoImpl();
 		dao.atualizar(novoContrato);
@@ -640,7 +650,8 @@ public class Controller extends HttpServlet{
 			String localizacao = request.getParameter("localizacao");
 			String status = null;
 			String idAutonomo = null;
-			String idUsuario = null;	
+			String idUsuario = null;
+			String tipoCriador = request.getParameter("tipoCriador");
 			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
 			
 			if(dataInicio == null) {			
@@ -662,7 +673,7 @@ public class Controller extends HttpServlet{
 			
 
 			
-			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario);
+			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador);
 			
 			DAOContrato dao = new DAOContratoImpl();
 			dao.atualizar(novoContrato);
@@ -683,5 +694,27 @@ public class Controller extends HttpServlet{
 			request.setAttribute("categoria", categoria);
 			
 			verAutonomos(request,response);
+		}
+		
+		//Propor Contrato
+		private void proporContrato(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {			
+			
+			HttpSession session = request.getSession(true);		
+			if(session.getAttribute("usuario").equals("autonomo")) {
+				String msgContrato = "Não é possível propor um contrato para um autonomo, pois você também é um autonomo.";
+				session.setAttribute("msgContrato", msgContrato);
+
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+				rd.forward(request, response);
+			}
+			
+			int idAutonomo = Integer.valueOf(request.getParameter("idAutonomo"));
+			
+			request.setAttribute("idAutonomoPropor", idAutonomo);
+			
+			pagCadCont(request,response);
+			
+
 		}
 }

@@ -112,7 +112,7 @@ body{
                 </div>
                 <div class="form-check">
 					  <input class="form-check-input" type="checkbox" id="checkValor" onclick="disableInput()">
-				  		<label class="form-check-label" for="checkNumero">
+				  		<label class="form-check-label" for="checkValor">
 				   		 A combinar
 				  		</label>
 				</div>
@@ -123,7 +123,7 @@ body{
                                  
                 <div class="form-check">
 					  <input class="form-check-input" type="checkbox" id="checkData" onclick="disableInput()">
-				  		<label class="form-check-label" for="checkNumero">
+				  		<label class="form-check-label" for="checkData">
 				   		 A combinar
 				  		</label>
 				</div>
@@ -158,6 +158,7 @@ body{
               </div>
               
               <input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
+              <input type="hidden" class="form-control" name="tipoCriador" value="${contrato.tipoCriador}">
 
               <div class="col-12">
                 <label for="titulo" class="form-label">Localização</label>
@@ -172,7 +173,7 @@ body{
                               <button class="w-100 btn btn-dark" type="submit">Alterar</button>
                            </div>
                            <div class="col-6 pb-4">
-                              <a href="controller?action=home" class="btn btn-dark w-100">Voltar</a>
+                              <a href="controller?action=meusContratos" class="btn btn-dark w-100">Voltar</a>
                             </div>
           </div>
         </form>

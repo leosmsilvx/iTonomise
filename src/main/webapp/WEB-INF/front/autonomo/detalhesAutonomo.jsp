@@ -103,7 +103,7 @@ body{
 					<div class="row g-5">
 						<div>
 							<h4 class="mb-4 pt-4">Perfil do autônomo</h4>
-							<form>
+							<form action="controller?action=proporContrato" method="post">
 								<div class="row g-3">
 		
 									<div class="col-4">
@@ -116,7 +116,8 @@ body{
 										</div>		
 										<h6 class="text-body text-end px-3 py-2">${autonomo.aval}<svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></h6>	
 										<div class="d-grid">
-											<a href="controller?action=pagCadCont" class="btn btn-dark">Propor Contrato</a>
+										<input type="hidden" name="idAutonomo" value="${autonomo.idAutonomo}">
+											<button type="submit" class="btn btn-dark">Propor Contrato</button>
 										</div>	
 									</div>
 		

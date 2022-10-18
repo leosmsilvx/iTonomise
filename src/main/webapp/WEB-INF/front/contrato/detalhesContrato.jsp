@@ -144,7 +144,8 @@ body{
 							  </c:if>
 							  <c:if test="${contrato.idAutonomo != null}">
 								  <input type="hidden" class="form-control" name="idAutonomo" value="${contrato.idAutonomo}">
-							  </c:if>
+							  </c:if>							  
+							  <input type="hidden" class="form-control" name="tipoCriador" value="${contrato.tipoCriador}">
 							  <input type="hidden" class="form-control" name="duracaoN" value="${contrato.duracaoN}">
 							  <input type="hidden" class="form-control" name="duracaoT" value="${contrato.duracaoT}"> 	  
 							  <input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
@@ -164,6 +165,7 @@ body{
 							  <c:if test="${contrato.idAutonomo != null}">
 								  <input type="hidden" class="form-control" name="idAutonomo" value="${contrato.idAutonomo}">
 							  </c:if>
+							  <input type="hidden" class="form-control" name="tipoCriador" value="${contrato.tipoCriador}">
 							  <input type="hidden" class="form-control" name="duracaoN" value="${contrato.duracaoN}">
 							  <input type="hidden" class="form-control" name="duracaoT" value="${contrato.duracaoT}"> 	  
 							  <input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
@@ -176,9 +178,25 @@ body{
 			  					<button type="submit" class="btn btn-dark w-100">Aceitar</button>
 			  					</div>
 		  					</c:if>
+		  					<c:if test="${contrato.idAutonomo != null and contrato.idUsuario != null and contrato.status == 1 and contrato.tipoCriador != usuario}">
+		  						<input type="hidden" class="form-control" name="tipoCriador" value="${contrato.tipoCriador}">
+		  						<input type="hidden" class="form-control" name="idUsuario" value="${contrato.idUsuario}">
+		  						<input type="hidden" class="form-control" name="idAutonomo" value="${contrato.idAutonomo}">
+		  						<input type="hidden" class="form-control" name="duracaoN" value="${contrato.duracaoN}">
+							  	<input type="hidden" class="form-control" name="duracaoT" value="${contrato.duracaoT}"> 	  
+							 	<input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
+							 	<input type="hidden" class="form-control" name="titulo" value="${contrato.titulo}">  
+							 	<input type="hidden" class="form-control" name="valor" value="${contrato.valor}">  
+							 	<input type="hidden" class="form-control" name="dataInicio" value="${contrato.dataInicio}">  
+							 	<input type="hidden" class="form-control" name="localizacao" value="${contrato.localizacao}">  
+							 	<input type="hidden" class="form-control" name="descricao" value="${contrato.descricao}"> 
+			  					<div class="col-12 py-2" style="padding: 30%">
+			  						<button type="submit" class="btn btn-dark w-100">Aceitar</button>
+			  					</div>
+		  					</c:if>
                            </div>
                            <div class="col-12 py-4" style="padding: 30%">
-                              <a href="controller?action=home" class="btn btn-dark w-100">Voltar</a>
+                              <a href="controller?action=home" class="btn btn-dark w-100">Home</a>
                              </div>
 
           

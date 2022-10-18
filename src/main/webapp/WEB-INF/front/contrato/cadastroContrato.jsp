@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
 <link
@@ -97,7 +98,11 @@ body{
       <div class="row g-5">
         <div>
           <h4 class="mb-4 py-3">Contrato</h4>
-          <form action="controller?action=cadastrarContrato" method="post">
+          <form action="controller?action=cadastrarContrato" method="post">          	
+          	<c:if test="${idAutonomoPropor != null}">
+				<input type="hidden" class="form-control" name="idAutonomo" value="${idAutonomoPropor}">
+				<input type="hidden" class="form-control" name="tipoCriador" value="${usuario}">
+			</c:if>
             <div class="row g-3">
               <div class="col-6">
                 <label for="titulo" class="form-label">Título</label>
