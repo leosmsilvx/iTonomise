@@ -193,6 +193,49 @@ public class DAOUsuarioImpl implements DAOUsuario{
 			throw new DAOException("Erro ao buscar: " + e.getMessage());
 		}
 	}
+	
+	public Usuario buscarUsuarioPUser(String user) throws DAOException {
+		Usuario comum = null;
+		try {
+			
+			String sql = "SELECT * from usuario WHERE usuario = ?";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+
+			stmt.setString(1, user);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				int idUsuario = rs.getInt("idUsuario");
+				String nome = rs.getString("nome");
+				String sobrenome = rs.getString("sobrenome");
+				String cpf = rs.getString("cpf");
+				String tel = rs.getString("tel");
+				String senha = rs.getString("senha");
+				String email = rs.getString("email");
+				String endereco = rs.getString("endereco");
+				
+				comum = new Usuario( nome,  sobrenome,  cpf,  tel,  user,  senha,  email,  endereco, idUsuario);
+				comum.setIdUsuario(idUsuario);
+				comum.setNome(nome);
+				comum.setSobrenome(sobrenome);
+				comum.setCpf(cpf);
+				comum.setTel(tel);
+				comum.setUser(user);
+				comum.setSenha(senha);
+				comum.setEmail(email);
+				comum.setEndereco(endereco);
+			}
+			
+			rs.close();
+			stmt.close();
+			return comum;
+			
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar: " + e.getMessage());
+		}
+	}
 
 }
 	

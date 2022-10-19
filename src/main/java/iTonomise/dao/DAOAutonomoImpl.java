@@ -209,5 +209,53 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			throw new DAOException("Erro ao buscar: " + e.getMessage());
 		}
 	}
+	
+	public Autonomo buscarAutonomoPUser(String user) throws DAOException {
+		Autonomo autonomo = null;
+		try {
+			
+			String sql = "SELECT * from autonomo WHERE usuario = ?";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+
+			stmt.setString(1, user);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				int idAutonomo = rs.getInt("idAutonomo");
+				String nome = rs.getString("nome");
+				String sobrenome = rs.getString("sobrenome");
+				String cpf = rs.getString("cpf");
+				String tel = rs.getString("tel");
+				String senha = rs.getString("senha");
+				String email = rs.getString("email");
+				String descricao = rs.getString("descricao");
+				String tags = rs.getString("tags");
+				String endereco = rs.getString("endereco");
+				int aval = rs.getInt("aval");
+				
+				autonomo = new Autonomo( nome,  sobrenome,  cpf,  tel,  user,  senha,  email, descricao, tags,  endereco, aval, idAutonomo);
+				autonomo.setIdAutonomo(idAutonomo);
+				autonomo.setNome(nome);
+				autonomo.setSobrenome(sobrenome);
+				autonomo.setCpf(cpf);
+				autonomo.setTel(tel);
+				autonomo.setUser(user);
+				autonomo.setSenha(senha);
+				autonomo.setEmail(email);
+				autonomo.setEndereco(endereco);
+				autonomo.setAval(aval);
+				autonomo.setDesc(descricao);
+		}
+			
+			rs.close();
+			stmt.close();
+			return autonomo;
+			
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar: " + e.getMessage());
+		}
+	}
 
 }

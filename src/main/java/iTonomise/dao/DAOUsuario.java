@@ -14,5 +14,7 @@ public interface DAOUsuario {
 	public List<Usuario> todosUsuarios() throws DAOException;
 
 	public Usuario buscarUsuario(int idUsuario) throws DAOException;
+	
+	public Usuario buscarUsuarioPUser(String user) throws DAOException;
 
 }

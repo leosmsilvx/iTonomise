@@ -114,6 +114,7 @@ public class Controller extends HttpServlet{
 		
 		HttpSession session = request.getSession(true);	
 		session.setAttribute("msgConfirm", "");
+		session.setAttribute("msgErroCad", "");
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
 		rd.forward(request, response);
 	}
@@ -203,9 +204,19 @@ public class Controller extends HttpServlet{
 		int aval = 0;
 		int idAutonomo = 0;
 		
+		DAOAutonomo dao = new DAOAutonomoImpl();
+		Autonomo autonomoUser = dao.buscarAutonomoPUser(request.getParameter("user"));
+		
+		if(autonomoUser != null) {
+			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já existente!";
+			session.setAttribute("msgErroCad", msgErroCad);
+
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
+			rd.forward(request, response);
+		}
+		
 		Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
 		
-		DAOAutonomo dao = new DAOAutonomoImpl();
 		dao.cadastrar(novoAutonomo);
 		request.setAttribute("autonomo", novoAutonomo);
 		
@@ -231,9 +242,20 @@ public class Controller extends HttpServlet{
 		String endereco = request.getParameter("endereco");
 		int idUsuario = 0;
 		
+		DAOUsuario dao = new DAOUsuarioImpl();
+		Usuario usuarioUser = dao.buscarUsuarioPUser(request.getParameter("user"));
+		
+		if(usuarioUser != null) {
+			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já existente!";
+			session.setAttribute("msgErroCad", msgErroCad);
+
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
+			rd.forward(request, response);
+		}		
+		
 		Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);
 		
-		DAOUsuario dao = new DAOUsuarioImpl();
+		
 		dao.cadastrar(novoUsuario);
 		request.setAttribute("comum", novoUsuario);
 		

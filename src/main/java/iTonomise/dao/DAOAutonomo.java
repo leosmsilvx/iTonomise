@@ -14,5 +14,7 @@ public interface DAOAutonomo {
 	public List<Autonomo> todosAutonomos() throws DAOException;
 
 	public Autonomo buscarAutonomo(int idAutonomo) throws DAOException;
+	
+	public Autonomo buscarAutonomoPUser(String user) throws DAOException;
 
 }

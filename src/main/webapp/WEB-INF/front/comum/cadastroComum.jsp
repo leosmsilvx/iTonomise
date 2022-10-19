@@ -92,6 +92,7 @@ body{
 		<main>
 			<div class="row g-5">
 				<div>
+					<h5 class="text-danger text-center py-3"> ${msgErroCad} </h5>
 					<h4 class="mb-4 py-4">Cadastro Usuário</h4>
 					<form action="controller?action=cadastrarComum" method="post">						
 						<div class="row g-3">
