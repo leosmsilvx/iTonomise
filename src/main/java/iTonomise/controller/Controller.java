@@ -213,6 +213,7 @@ public class Controller extends HttpServlet{
 
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
 			rd.forward(request, response);
+			return;
 		}
 		
 		Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
@@ -251,6 +252,7 @@ public class Controller extends HttpServlet{
 
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
 			rd.forward(request, response);
+			return;
 		}		
 		
 		Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);

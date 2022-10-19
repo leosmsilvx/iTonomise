@@ -53,4 +53,4 @@ CREATE TABLE IF NOT EXISTS contrato (
 
 SELECT * FROM usuario;
 SELECT * FROM autonomo;
-SELECT * FROM contrato;	
+SELECT * FROM contrato;
