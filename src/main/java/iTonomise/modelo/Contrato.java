@@ -14,10 +14,12 @@ public class Contrato {
 	private String idAutonomo;
 	private String idUsuario;
 	private String tipoCriador;
+	private String finalAut;
+	private String finalUser;
 	
 	public Contrato(String titulo, String valor, String descricao, String dataInicio, String duracaoT, String duracaoN,
-			String localizacao, String status, int idContrato, String idAutonomo, String idUsuario,
-			String tipoCriador) {
+			String localizacao, String status, int idContrato, String idAutonomo, String idUsuario, String tipoCriador,
+			String finalAut, String finalUser) {
 		super();
 		this.titulo = titulo;
 		this.valor = valor;
@@ -31,8 +33,10 @@ public class Contrato {
 		this.idAutonomo = idAutonomo;
 		this.idUsuario = idUsuario;
 		this.tipoCriador = tipoCriador;
+		this.finalAut = finalAut;
+		this.finalUser = finalUser;
 	}
-
+	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -127,6 +131,22 @@ public class Contrato {
 
 	public void setTipoCriador(String tipoCriador) {
 		this.tipoCriador = tipoCriador;
+	}
+
+	public String getFinalAut() {
+		return finalAut;
+	}
+
+	public void setFinalAut(String finalAut) {
+		this.finalAut = finalAut;
+	}
+
+	public String getFinalUser() {
+		return finalUser;
+	}
+
+	public void setFinalUser(String finalUser) {
+		this.finalUser = finalUser;
 	}
 	
 }

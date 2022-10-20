@@ -79,9 +79,8 @@ body{
 </head>
 <body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-		<symbol id="pessoacirculo" viewBox="0 0 16 16">
-			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+		  <symbol id="estrelilha" viewBox="0 0 16 16">
+			<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
 		  </symbol>
 	</svg>
 			<!-- Header -->
@@ -136,15 +135,20 @@ body{
                             <td>${contratosCadastrados.titulo}</td>
                             <td>R$ ${contratosCadastrados.valor}</td>
                             <c:if test="${contratosCadastrados.status == null}">
-										<td class="text-warning"><c:out value="Não aceito"/></td>
+										<td class="text-danger"><c:out value="Não aceito"/></td>
 									</c:if>
 									<c:if test="${contratosCadastrados.status != null}">
 										<c:if test="${contratosCadastrados.status == 0}">
-											<td class="text-success"><c:out value="Aceito"/></td>
+											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1}">
+												<td class="text-success"><c:out value="Finalizado"/></td>
+											</c:if>
+											<c:if test="${contratosCadastrados.finalAut == 0 or contratosCadastrados.finalUser == 0}">
+												<td class="text-primary"><c:out value="Aceito"/></td>
+											</c:if>
 										</c:if>
 										<c:if test="${contratosCadastrados.status == 1}">
-											<td class="text-info"><c:out value="Pendente"/></td>
-										</c:if>
+											<td class="text-warning"><c:out value="Pendente"/></td>
+										</c:if>										
 									</c:if>
 							<c:if test="${contratosCadastrados.status == null}">
 										<td class="text-end"><a href="controller?action=pagAtualizarContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Alterar contrato</a>
@@ -157,7 +161,23 @@ body{
 										<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
 							</c:if>							
 							<c:if test="${contratosCadastrados.status == 0}">
-										<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
+										<td class="text-end">
+											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1}">
+												<div class="btn-group dropstart">
+													<button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+												    Avaliar
+												  	</button>
+												  	<ul class="dropdown-menu text-center">
+														<li><a class="dropdown-item" href="#">1 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
+														<li><a class="dropdown-item" href="#">2 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
+														<li><a class="dropdown-item" href="#">3 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
+														<li><a class="dropdown-item" href="#">4 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
+														<li><a class="dropdown-item" href="#">5 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
+													</ul>
+												</div>
+											</c:if>
+											<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a>
+										</td>
 							</c:if>
                           </tr>
                           </c:if>
@@ -184,15 +204,20 @@ body{
                             <td>${contratosCadastrados.titulo}</td>
                             <td>R$ ${contratosCadastrados.valor}</td>
                             		<c:if test="${contratosCadastrados.status == null}">
-										<td class="text-warning"><c:out value="Não aceito"/></td>
+										<td class="text-danger"><c:out value="Não aceito"/></td>
 									</c:if>
 									<c:if test="${contratosCadastrados.status != null}">
 										<c:if test="${contratosCadastrados.status == 0}">
-											<td class="text-success"><c:out value="Aceito"/></td>
+											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1}">
+												<td class="text-success"><c:out value="Finalizado"/></td>
+											</c:if>
+											<c:if test="${contratosCadastrados.finalAut == 0 or contratosCadastrados.finalUser == 0}">
+												<td class="text-primary"><c:out value="Aceito"/></td>
+											</c:if>
 										</c:if>
 										<c:if test="${contratosCadastrados.status == 1}">
-											<td class="text-info"><c:out value="Pendente"/></td>
-										</c:if>
+											<td class="text-warning"><c:out value="Pendente"/></td>
+										</c:if>										
 									</c:if>
 
 							<c:if test="${contratosCadastrados.status == null}">

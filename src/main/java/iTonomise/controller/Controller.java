@@ -98,6 +98,8 @@ public class Controller extends HttpServlet{
 				atualizarPorCategoria(request, response);
 			} else if (action.equals("proporContrato")) { 
 				proporContrato(request, response);
+			} else if (action.equals("finalizarContrato")) { 
+				finalizarContrato(request, response);
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
@@ -283,6 +285,8 @@ public class Controller extends HttpServlet{
 		int idCont = 0;	
 		String idAutonomo = null;
 		String idUsuario = null;
+		String finalAut = null;
+		String finalUser = null;
 		String tipoCriador = request.getParameter("tipoCriador");;		
 		
 		if(dataInicio == null) {			
@@ -301,7 +305,7 @@ public class Controller extends HttpServlet{
 			idUsuario = String.valueOf(session.getAttribute("id"));	
 			idAutonomo = request.getParameter("idAutonomo");
 			if(idAutonomo != null)
-				status = "true";
+				status = "1";
 		} else{
 			idAutonomo = String.valueOf(session.getAttribute("id"));
 		}
@@ -310,7 +314,7 @@ public class Controller extends HttpServlet{
 			tipoCriador = String.valueOf(session.getAttribute("usuario"));
 		}
 		
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idCont, idAutonomo, idUsuario, tipoCriador);
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idCont, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
 		
 		DAOContrato dao = new DAOContratoImpl();
 		dao.cadastrar(novoContrato);
@@ -329,8 +333,7 @@ public class Controller extends HttpServlet{
 		HttpSession session = request.getSession(true);	
 		if(request.getParameter("souAut") == null){
 			DAOUsuario dao = new DAOUsuarioImpl();
-			List<Usuario> usuarios = dao.todosUsuarios();
-			//HttpSession session = request.getSession(true);			
+			List<Usuario> usuarios = dao.todosUsuarios();		
 			for(int i = 0; i < usuarios.size(); i++)
 			{
 				if((usuarios.get(i).getSenha()).equals(request.getParameter("senha")) && (usuarios.get(i).getUser()).equals(request.getParameter("usuario"))) {
@@ -345,8 +348,7 @@ public class Controller extends HttpServlet{
 			
 		} else if(request.getParameter("souAut").equals("on")) {	
 			DAOAutonomo dao = new DAOAutonomoImpl();
-			List<Autonomo> autonomos = dao.todosAutonomos();
-			//HttpSession session = request.getSession(true);			
+			List<Autonomo> autonomos = dao.todosAutonomos();	
 			for(int i = 0; i < autonomos.size(); i++)
 			{
 				if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getUser()).equals(request.getParameter("usuario"))) {
@@ -626,11 +628,13 @@ public class Controller extends HttpServlet{
 		String duracaoT = request.getParameter("duracaoT");
 		String duracaoN = request.getParameter("duracaoN");
 		String localizacao = request.getParameter("localizacao");
-		String status = "false";
+		String status = "0";
 		int idContrato = Integer.valueOf(request.getParameter("idContrato"));
 		String idAutonomo = request.getParameter("idAutonomo");	
 		String idUsuario = request.getParameter("idUsuario");
 		String tipoCriador = request.getParameter("tipoCriador");
+		String finalAut = request.getParameter("finalAut");
+		String finalUser = request.getParameter("finalUser");
 		
 		if(idAutonomo == null) {
 			idAutonomo = String.valueOf(id);
@@ -639,7 +643,7 @@ public class Controller extends HttpServlet{
 			idUsuario = String.valueOf(id);
 		}
 		
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador);
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
 		
 		DAOContrato dao = new DAOContratoImpl();
 		dao.atualizar(novoContrato);
@@ -675,6 +679,8 @@ public class Controller extends HttpServlet{
 			String status = null;
 			String idAutonomo = null;
 			String idUsuario = null;
+			String finalAut = request.getParameter("finalAut");
+			String finalUser = request.getParameter("finalUser");
 			String tipoCriador = request.getParameter("tipoCriador");
 			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
 			
@@ -695,9 +701,7 @@ public class Controller extends HttpServlet{
 				idAutonomo = String.valueOf(session.getAttribute("id"));
 			}
 			
-
-			
-			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador);
+			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
 			
 			DAOContrato dao = new DAOContratoImpl();
 			dao.atualizar(novoContrato);
@@ -740,5 +744,53 @@ public class Controller extends HttpServlet{
 			pagCadCont(request,response);
 			
 
+		}
+		
+		// Finalizar Contrato
+		private void finalizarContrato(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+
+			HttpSession session = request.getSession(true);
+			String titulo = request.getParameter("titulo");
+			String valor = request.getParameter("valor");
+			String descricao = request.getParameter("descricao");
+			String dataInicio = request.getParameter("dataInicio");
+			String duracaoT = request.getParameter("duracaoT");
+			String duracaoN = request.getParameter("duracaoN");
+			String localizacao = request.getParameter("localizacao");
+			String status = request.getParameter("status");;
+			String idAutonomo = request.getParameter("idAutonomo");
+			String idUsuario = request.getParameter("idUsuario");
+			String finalAut = request.getParameter("finalAut");
+			String finalUser = request.getParameter("finalUser");
+			String tipoCriador = request.getParameter("tipoCriador");
+			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+			
+			if(dataInicio == null) {			
+				dataInicio = "Indefinido";
+			}
+			if(valor == null) {			
+				valor = "Indefinido";
+			}
+			if(duracaoN == null) {
+				duracaoT = null;
+				duracaoN = "Indefinido";
+			}
+			
+			if(session.getAttribute("usuario").equals("comum")){
+				finalUser = "1";
+								
+			} else if(session.getAttribute("usuario").equals("autonomo")){
+				finalAut = "1";
+	
+			} else {
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
+				rd.forward(request, response);
+				return;
+			}
+			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
+			DAOContrato dao = new DAOContratoImpl();
+			dao.atualizar(novoContrato);				
+			meusContratos(request, response);
 		}
 }

@@ -45,12 +45,23 @@ CREATE TABLE IF NOT EXISTS contrato (
     localizacao varchar(200) NOT NULL,
     stats boolean,
     tipoCriador varchar(100) NOT NULL,
+    finalAut boolean,
+    finalUser boolean,
     
     PRIMARY KEY (idContrato),
 	FOREIGN KEY (idAutonomo) REFERENCES autonomo(idAutonomo) ON DELETE CASCADE,
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE
 );
 
-SELECT * FROM usuario;
-SELECT * FROM autonomo;
-SELECT * FROM contrato;
+CREATE TABLE IF NOT EXISTS avaliacao (
+    idAvaliacao integer UNSIGNED NOT NULL AUTO_INCREMENT,
+	idAutonomo integer UNSIGNED,
+    idUsuario integer UNSIGNED,
+    idContrato integer UNSIGNED,
+	valor varchar(100) NOT NULL,
+    
+    PRIMARY KEY (idAvaliacao),
+	FOREIGN KEY (idAutonomo) REFERENCES autonomo(idAutonomo) ON DELETE CASCADE,
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
+    FOREIGN KEY (idContrato) REFERENCES contrato(idContrato) ON DELETE CASCADE
+);
