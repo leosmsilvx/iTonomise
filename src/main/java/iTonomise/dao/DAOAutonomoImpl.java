@@ -10,20 +10,16 @@ import iTonomise.modelo.Autonomo;
 import util.ConnectionFactory;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-
-
 
 public class DAOAutonomoImpl implements DAOAutonomo{
 
 	private Connection connection;
-	private Autonomo autonomo;
 
 	public DAOAutonomoImpl() throws DAOException {
 		try {
 			this.connection = (Connection) ConnectionFactory.getConnection();
 		} catch (Exception e) {
-			throw new DAOException("Erro na conex�o: " + e.getMessage());
+			throw new DAOException("Erro na conexão: " + e.getMessage());
 		}
 	}
 
@@ -83,7 +79,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			stmt.setString(8, autonomo.getDesc());
 			stmt.setString(9, autonomo.getTags());
 			stmt.setString(10, autonomo.getEndereco());
-			stmt.setInt(11, autonomo.getAval());
+			stmt.setDouble(11, autonomo.getAval());
 			stmt.setInt(12, autonomo.getIdAutonomo());
 
 			stmt.executeUpdate();
@@ -134,7 +130,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				String descricao = rs.getString("descricao");
 				String tags = rs.getString("tags");
 				String endereco = rs.getString("endereco");
-				int aval = rs.getInt("aval");
+				double aval = rs.getDouble("aval");
 
 
 				Autonomo autonomo = new Autonomo(nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email, descricao, tags, endereco, aval, idAutonomo);
@@ -185,7 +181,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				String descricao = rs.getString("descricao");
 				String tags = rs.getString("tags");
 				String endereco = rs.getString("endereco");
-				int aval = rs.getInt("aval");
+				double aval = rs.getDouble("aval");
 				
 				autonomo = new Autonomo( nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email, descricao, tags,  endereco, aval, idAutonomo);
 				autonomo.setIdAutonomo(idAutonomo);
@@ -233,7 +229,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				String descricao = rs.getString("descricao");
 				String tags = rs.getString("tags");
 				String endereco = rs.getString("endereco");
-				int aval = rs.getInt("aval");
+				double aval = rs.getDouble("aval");
 				
 				autonomo = new Autonomo( nome,  sobrenome,  cpf,  tel,  user,  senha,  email, descricao, tags,  endereco, aval, idAutonomo);
 				autonomo.setIdAutonomo(idAutonomo);
@@ -255,6 +251,24 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			
 		} catch (Exception e) {
 			throw new DAOException("Erro ao buscar: " + e.getMessage());
+		}
+	}
+	
+	public void atualizarMedia(double media, int idAutonomo) throws DAOException {
+		try {
+			this.connection = ConnectionFactory.getConnection();
+			
+			String sql = "UPDATE autonomo SET aval = ? WHERE idAutonomo = ?";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			stmt.setDouble(1, media);
+			stmt.setInt(2, idAutonomo);
+
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (Exception e) {
+			throw new DAOException("Erro ao atualizar media: " + e.getMessage());
 		}
 	}
 

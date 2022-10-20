@@ -99,7 +99,7 @@ body{
 				</div>
 			</nav>
             <div class="container">
-                <div class="border-top border-2 py-5">
+                <div class="border-top border-2 py-5">                	
                 	<h4 class="mb-4 py-3">Meus Contratos</h4>
                     <table class="table table-hover table-dark table-striped caption-top align-middle">
                         <thead>
@@ -113,7 +113,7 @@ body{
                         </thead>
                         <c:forEach var="contratosCadastrados" items="${contratos}">
                         <c:if test="${usuario == 'comum'}">
-                        <c:if test="${contratosCadastrados.idUsuario == meuId}">
+                        <c:if test="${contratosCadastrados.idUsuario == id}">
                         <tbody class="table-group-divider">
                           <tr>
                             <td>                            
@@ -134,13 +134,16 @@ body{
 							</td>
                             <td>${contratosCadastrados.titulo}</td>
                             <td>R$ ${contratosCadastrados.valor}</td>
-                            <c:if test="${contratosCadastrados.status == null}">
+                            		<c:if test="${contratosCadastrados.status == null}">
 										<td class="text-danger"><c:out value="Não aceito"/></td>
 									</c:if>
 									<c:if test="${contratosCadastrados.status != null}">
 										<c:if test="${contratosCadastrados.status == 0}">
-											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1}">
+											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1  and contratosCadastrados.foiAvaliado == 0}">
 												<td class="text-success"><c:out value="Finalizado"/></td>
+											</c:if>
+											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1 and contratosCadastrados.foiAvaliado == 1}">
+												<td class="text-info"><c:out value="Avaliado"/></td>
 											</c:if>
 											<c:if test="${contratosCadastrados.finalAut == 0 or contratosCadastrados.finalUser == 0}">
 												<td class="text-primary"><c:out value="Aceito"/></td>
@@ -162,17 +165,37 @@ body{
 							</c:if>							
 							<c:if test="${contratosCadastrados.status == 0}">
 										<td class="text-end">
-											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1}">
+											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1 and contratosCadastrados.foiAvaliado == 0}">
 												<div class="btn-group dropstart">
-													<button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-												    Avaliar
-												  	</button>
-												  	<ul class="dropdown-menu text-center">
-														<li><a class="dropdown-item" href="#">1 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
-														<li><a class="dropdown-item" href="#">2 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
-														<li><a class="dropdown-item" href="#">3 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
-														<li><a class="dropdown-item" href="#">4 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
-														<li><a class="dropdown-item" href="#">5 <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a></li>
+													<button type="button" class="btn btn-light dropdown-toggle"
+														data-bs-toggle="dropdown" aria-expanded="false">
+														Avaliar</button>
+													<ul class="dropdown-menu text-center">
+														<li><a class="dropdown-item"
+															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=1">1
+																<svg class="bi" width="1.1em" height="1.1em">
+																	<use xlink:href="#estrelilha"></use></svg>
+														</a></li>
+														<li><a class="dropdown-item"
+															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=2">2
+																<svg class="bi" width="1.1em" height="1.1em">
+																	<use xlink:href="#estrelilha"></use></svg>
+														</a></li>
+														<li><a class="dropdown-item"
+															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=3">3
+																<svg class="bi" width="1.1em" height="1.1em">
+																	<use xlink:href="#estrelilha"></use></svg>
+														</a></li>
+														<li><a class="dropdown-item"
+															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=4">4
+																<svg class="bi" width="1.1em" height="1.1em">
+																	<use xlink:href="#estrelilha"></use></svg>
+														</a></li>
+														<li><a class="dropdown-item"
+															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=5">5
+																<svg class="bi" width="1.1em" height="1.1em">
+																	<use xlink:href="#estrelilha"></use></svg>
+														</a></li>
 													</ul>
 												</div>
 											</c:if>
@@ -183,7 +206,7 @@ body{
                           </c:if>
                           </c:if>
                           <c:if test="${usuario == 'autonomo'}">
-                          <c:if test="${contratosCadastrados.idAutonomo == meuId}">
+                          <c:if test="${contratosCadastrados.idAutonomo == id}">
                           <tbody class="table-group-divider">
                           <tr>
                             <td> 

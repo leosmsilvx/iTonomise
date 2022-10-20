@@ -16,6 +16,13 @@ INSERT INTO usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco) 
 ('Ana', 'Clara', '86886595083', '3230028635', 'claraana', '123', 'claraana98@gmail.com', 'Rua Alagoas - nº 73 - Bairro Industrial - Divinópolis'),
 ('Guilherme', 'Rezende', '29061195047', '3532106964', 'guigui795', '123', 'guigui795@gmail.com', 'Rua Goias - nº 224 - Bairro Arapiraca - Divinópolis');
 
+INSERT INTO contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, tipoCriador, finalAut, finalUser, foiAvaliado, idAutonomo, idUsuario) VALUES
+("contrato1", "100", "123", "Indefinido", "Indefinido", "Indefinido", "123", 0, "comum", 1, 1, 0, 1, 1),
+("contrato2", "100", "123", "Indefinido", "Indefinido", "Indefinido", "123", 0, "comum", 1, 1, 0, 1, 1),
+("contrato3", "100", "123", "Indefinido", "Indefinido", "Indefinido", "123", 0, "comum", 1, 1, 0, 1, 1),
+("contrato4", "100", "123", "Indefinido", "Indefinido", "Indefinido", "123", 0, "comum", 1, 1, 0, 1, 1),
+("contrato5", "100", "123", "Indefinido", "Indefinido", "Indefinido", "123", 0, "comum", 1, 1, 0, 1, 1);
+
 SELECT * FROM usuario;
 
 SELECT * FROM autonomo;

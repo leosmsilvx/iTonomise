@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS autonomo (
     descricao varchar(300),
     tags varchar(100) NOT NULL,
     endereco varchar(100) NOT NULL,
-    aval integer UNSIGNED,
+    aval double,
     
     PRIMARY KEY (idAutonomo)
 );
@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS contrato (
     tipoCriador varchar(100) NOT NULL,
     finalAut boolean,
     finalUser boolean,
+    foiAvaliado varchar(100),
     
     PRIMARY KEY (idContrato),
 	FOREIGN KEY (idAutonomo) REFERENCES autonomo(idAutonomo) ON DELETE CASCADE,

@@ -1,7 +1,6 @@
 package iTonomise.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -14,13 +13,12 @@ import util.ConnectionFactory;
 public class DAOContratoImpl implements DAOContrato{
 	
 	private Connection connection;
-	private Contrato contrato;
 
 	public DAOContratoImpl() throws DAOException {
 		try {
 			this.connection = (Connection) ConnectionFactory.getConnection();
 		} catch (Exception e) {
-			throw new DAOException("Erro na conex�o: " + e.getMessage());
+			throw new DAOException("Erro na conexão: " + e.getMessage());
 		}
 	}
 
@@ -28,7 +26,7 @@ public class DAOContratoImpl implements DAOContrato{
 		try {
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "INSERT INTO contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, tipoCriador, finalAut, finalUser, idAutonomo, idUsuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, tipoCriador, finalAut, finalUser, foiAvaliado, idAutonomo, idUsuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
@@ -60,10 +58,11 @@ public class DAOContratoImpl implements DAOContrato{
 			else if(contrato.getFinalUser().equals("0"))
 				stmt.setBoolean(11, false);
 			else if(contrato.getFinalUser().equals("1"))
-				stmt.setBoolean(11, true);			
+				stmt.setBoolean(11, true);		
 			
-			stmt.setString(12, contrato.getIdAutonomo());
-			stmt.setString(13, contrato.getIdUsuario());
+			stmt.setString(12, "0");
+			stmt.setString(13, contrato.getIdAutonomo());
+			stmt.setString(14, contrato.getIdUsuario());
 
 			stmt.execute();
 
@@ -155,7 +154,7 @@ public class DAOContratoImpl implements DAOContrato{
 			this.connection = ConnectionFactory.getConnection();
 			Statement st = this.connection.createStatement();
 
-			String sql = "SELECT idContrato, idAutonomo, idUsuario, titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, tipoCriador, finalAut, finalUser FROM contrato";
+			String sql = "SELECT idContrato, idAutonomo, idUsuario, titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, tipoCriador, finalAut, finalUser, foiAvaliado FROM contrato";
 
 			ResultSet rs = st.executeQuery(sql);
 
@@ -174,8 +173,9 @@ public class DAOContratoImpl implements DAOContrato{
 				String tipoCriador = rs.getString("tipoCriador");
 				String finalAut = rs.getString("finalAut");
 				String finalUser = rs.getString("finalUser");
+				String foiAvaliado = rs.getString("foiAvaliado");
 
-				Contrato contrato = new Contrato(descricao, valor, titulo, dataInicio, duracaoT, duracaoN, localizacao, stats, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
+				Contrato contrato = new Contrato(descricao, valor, titulo, dataInicio, duracaoT, duracaoN, localizacao, stats, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
 				contrato.setIdContrato(idContrato);
 				contrato.setDescricao(descricao);
 				contrato.setValor(valor);
@@ -188,6 +188,7 @@ public class DAOContratoImpl implements DAOContrato{
 				contrato.setTipoCriador(tipoCriador);
 				contrato.setFinalAut(finalAut);
 				contrato.setFinalUser(finalUser);
+				contrato.setFoiAvaliado(foiAvaliado);
 
 				contratos.add(contrato);
 			}
@@ -204,7 +205,7 @@ public class DAOContratoImpl implements DAOContrato{
 		Contrato contrato = null;
 		try {
 
-			String sql = "SELECT titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser FROM contrato WHERE idContrato = ?";
+			String sql = "SELECT titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado FROM contrato WHERE idContrato = ?";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 
@@ -225,10 +226,11 @@ public class DAOContratoImpl implements DAOContrato{
 				String stats = rs.getString("stats");
 				String tipoCriador = rs.getString("tipoCriador");
 				String finalAut = rs.getString("finalAut");
-				String finalUser = rs.getString("finalUser");
+				String finalUser = rs.getString("finalUser");				
+				String foiAvaliado = rs.getString("foiAvaliado");
 
 				
-				contrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
+				contrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, stats, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
 
 				contrato.setIdContrato(idContrato);
 				contrato.setDescricao(descricao);
@@ -244,6 +246,7 @@ public class DAOContratoImpl implements DAOContrato{
 				contrato.setTipoCriador(tipoCriador);
 				contrato.setFinalAut(finalAut);
 				contrato.setFinalUser(finalUser);
+				contrato.setFoiAvaliado(foiAvaliado);
 			}
 			
 			rs.close();
@@ -254,5 +257,23 @@ public class DAOContratoImpl implements DAOContrato{
 			throw new DAOException("Erro ao buscar: " + e.getMessage());
 		}
 	}
+	
+	public void atualizarAval(int idContrato) throws DAOException {
+		try {			
+			this.connection = ConnectionFactory.getConnection();
+			
+			String sql = "UPDATE contrato SET foiAvaliado = ? WHERE idContrato = ?";
 
+			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			stmt.setString(1, "1");			
+			stmt.setInt(2, idContrato);
+
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (Exception e) {
+			throw new DAOException("Erro ao atualizar: " + e.getMessage());
+		}
+	}
+	
 }

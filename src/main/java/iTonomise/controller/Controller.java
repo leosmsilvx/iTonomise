@@ -100,6 +100,8 @@ public class Controller extends HttpServlet{
 				proporContrato(request, response);
 			} else if (action.equals("finalizarContrato")) { 
 				finalizarContrato(request, response);
+			} else if (action.equals("avaliar")) { 
+				avaliar(request, response);
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
@@ -203,7 +205,7 @@ public class Controller extends HttpServlet{
 		String desc = request.getParameter("desc");
 		String tags = request.getParameter("tags");
 		String endereco = request.getParameter("endereco");
-		int aval = 0;
+		double aval = 0;
 		int idAutonomo = 0;
 		
 		DAOAutonomo dao = new DAOAutonomoImpl();
@@ -287,7 +289,8 @@ public class Controller extends HttpServlet{
 		String idUsuario = null;
 		String finalAut = null;
 		String finalUser = null;
-		String tipoCriador = request.getParameter("tipoCriador");;		
+		String tipoCriador = request.getParameter("tipoCriador");
+		String foiAvaliado = "0";
 		
 		if(dataInicio == null) {			
 			dataInicio = "Indefinido";
@@ -314,7 +317,7 @@ public class Controller extends HttpServlet{
 			tipoCriador = String.valueOf(session.getAttribute("usuario"));
 		}
 		
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idCont, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idCont, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
 		
 		DAOContrato dao = new DAOContratoImpl();
 		dao.cadastrar(novoContrato);
@@ -534,7 +537,7 @@ public class Controller extends HttpServlet{
 		String desc = request.getParameter("desc");
 		String tags = request.getParameter("tags");
 		String endereco = request.getParameter("endereco");
-		int aval = 0;
+		double aval = 0;
 		if(request.getParameter("aval") != null)
 			aval = Integer.valueOf(request.getParameter("aval"));
 		int idAutonomo = (int) session.getAttribute("id");
@@ -591,10 +594,6 @@ public class Controller extends HttpServlet{
 	//Meus Contratos
 	private void meusContratos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-			
-		HttpSession session = request.getSession(true);
-	    int id = (int) session.getAttribute("id");
-	    request.setAttribute("meuId", id);
 	        
 	    DAOContrato dao = new DAOContratoImpl();
 	    List<Contrato> contratos = dao.todosContratos();
@@ -609,8 +608,13 @@ public class Controller extends HttpServlet{
 		DAOUsuario dao3 = new DAOUsuarioImpl();
 		List<Usuario> usuarios = dao3.todosUsuarios();
 
-		request.setAttribute("usuarios", usuarios);    
-	        
+		request.setAttribute("usuarios", usuarios);
+		
+		DAOAvaliacao dao4 = new DAOAvaliacaoImpl();
+		List<Avaliacao> avaliacoes = dao4.todasAvaliacoes();
+
+		request.setAttribute("avaliacoes", avaliacoes);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/meusContratos.jsp");
 		rd.forward(request, response);
 	}
@@ -635,6 +639,7 @@ public class Controller extends HttpServlet{
 		String tipoCriador = request.getParameter("tipoCriador");
 		String finalAut = request.getParameter("finalAut");
 		String finalUser = request.getParameter("finalUser");
+		String foiAvaliado = "0";
 		
 		if(idAutonomo == null) {
 			idAutonomo = String.valueOf(id);
@@ -643,7 +648,7 @@ public class Controller extends HttpServlet{
 			idUsuario = String.valueOf(id);
 		}
 		
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
+		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
 		
 		DAOContrato dao = new DAOContratoImpl();
 		dao.atualizar(novoContrato);
@@ -683,6 +688,7 @@ public class Controller extends HttpServlet{
 			String finalUser = request.getParameter("finalUser");
 			String tipoCriador = request.getParameter("tipoCriador");
 			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+			String foiAvaliado = "0";
 			
 			if(dataInicio == null) {			
 				dataInicio = "Indefinido";
@@ -701,7 +707,7 @@ public class Controller extends HttpServlet{
 				idAutonomo = String.valueOf(session.getAttribute("id"));
 			}
 			
-			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
+			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
 			
 			DAOContrato dao = new DAOContratoImpl();
 			dao.atualizar(novoContrato);
@@ -765,6 +771,7 @@ public class Controller extends HttpServlet{
 			String finalUser = request.getParameter("finalUser");
 			String tipoCriador = request.getParameter("tipoCriador");
 			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+			String foiAvaliado = "0";
 			
 			if(dataInicio == null) {			
 				dataInicio = "Indefinido";
@@ -788,9 +795,46 @@ public class Controller extends HttpServlet{
 				rd.forward(request, response);
 				return;
 			}
-			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser);
+			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
 			DAOContrato dao = new DAOContratoImpl();
 			dao.atualizar(novoContrato);				
+			meusContratos(request, response);
+		}
+		
+		// Avaliar
+		private void avaliar(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+
+			HttpSession session = request.getSession(true);
+			int idAvaliacao = 0;
+			int idAutonomo = Integer.valueOf(request.getParameter("idAutonomo"));
+			int idUsuario = (int) session.getAttribute("id");
+			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+			String valor = request.getParameter("valor");
+			
+			Avaliacao novaAvaliacao = new Avaliacao(idAvaliacao, idAutonomo, idUsuario, idContrato, valor);
+			
+			DAOAvaliacao dao = new DAOAvaliacaoImpl();
+			dao.cadastrar(novaAvaliacao);
+			
+			DAOContrato dao2 = new DAOContratoImpl();
+		    List<Contrato> contratos = dao2.todosContratos();
+			request.setAttribute("contratos", contratos);
+				
+			DAOAutonomo dao3 = new DAOAutonomoImpl();
+			List<Autonomo> autonomos = dao3.todosAutonomos();
+			request.setAttribute("autonomos", autonomos);
+				
+			DAOUsuario dao4 = new DAOUsuarioImpl();
+			List<Usuario> usuarios = dao4.todosUsuarios();
+			request.setAttribute("usuarios", usuarios);
+			
+			double media = dao.mediaAutonomo(idAutonomo);
+			media = (double) (Math.round(media*10.0)/10.0);
+			
+			dao3.atualizarMedia(media, idAutonomo);
+			dao2.atualizarAval(idContrato);
+
 			meusContratos(request, response);
 		}
 }

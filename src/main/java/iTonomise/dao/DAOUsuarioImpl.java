@@ -5,25 +5,19 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import iTonomise.modelo.Usuario;
 import util.ConnectionFactory;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
-
-
 
 public class DAOUsuarioImpl implements DAOUsuario{
 
 	private Connection connection;
-	private Usuario usuario;
 
 	public DAOUsuarioImpl() throws DAOException {
 		try {
 			this.connection = (Connection) ConnectionFactory.getConnection();
 		} catch (Exception e) {
-			throw new DAOException("Erro na conex�o: " + e.getMessage());
+			throw new DAOException("Erro na conexão: " + e.getMessage());
 		}
 	}
 

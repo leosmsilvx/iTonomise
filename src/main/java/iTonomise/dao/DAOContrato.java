@@ -15,4 +15,5 @@ public interface DAOContrato {
 
 	public Contrato buscarContrato(int idContrato) throws DAOException;
 
+	public void atualizarAval(int idContrato) throws DAOException;
 }
