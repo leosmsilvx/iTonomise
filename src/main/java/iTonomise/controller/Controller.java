@@ -539,7 +539,7 @@ public class Controller extends HttpServlet{
 		String endereco = request.getParameter("endereco");
 		double aval = 0;
 		if(request.getParameter("aval") != null)
-			aval = Integer.valueOf(request.getParameter("aval"));
+			aval = Double.valueOf(request.getParameter("aval"));
 		int idAutonomo = (int) session.getAttribute("id");
 			
 		Autonomo atualizarAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
