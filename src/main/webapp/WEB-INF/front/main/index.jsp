@@ -178,8 +178,8 @@ body{
                           margin-left: 0.5em;
                           font-weight: bold;">Seja um contratante!</a>
                           <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado à nossa página de cadastro. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
-                          <a id="souautonomo" href="controller?action=pagCadComum" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
-                            Se cadastre agora
+                          <a id="souautonomo" href="controller?action=pagCadComum" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
+                            Cadastre-se agora
                             <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
                           </a>
 
@@ -204,8 +204,8 @@ body{
 	                            <svg class="bi" width="40px" height="40px"><use xlink:href="#autonomo"></use></svg>
 	                          </div>
 	                          <p style="font-size: 1.5em; text-align: justify; text-justify: inter-word;">Clique no link abaixo para ser redirecionado à nossa página de cadastro. Faça parte da nossa equipe de trabalhadores autônomos, oferecendo seus serviços pelo nosso site!</p>
-	                          <a href="controller?action=pagCadAuto" class="icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
-	                            Se cadastre agora
+	                          <a href="controller?action=pagCadAuto" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
+	                            Cadastre-se agora
 	                            <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
 	                          </a>
 	
