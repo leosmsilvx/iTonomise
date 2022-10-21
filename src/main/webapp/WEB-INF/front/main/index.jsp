@@ -107,65 +107,52 @@ body{
         </svg>
 
 
-		<div class="container px-4 py-5" id="featured-3">
-			<h5 class="text-success text-center"> ${msgConfirm} </h5>
-			<h1 style="font-size: 2em; font-weight: bold;" class="pb-3 pt-4 text-center">Bem vindo ao iTonomise!</h1>
-			<div class="row g-4 py-5 row-cols-1 row-cols-lg-3" style="text-align: justify; text-justify: inter-word;">
-				<div class="feature col">
-					<div
-						class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2 mb-3"
-						style="border-radius: 6px; background-color: #212529;">
-						<svg class="bi" width="40px" height="40px">
-							<use xlink:href="#servicos"></use></svg>
-					</div>
-					<h2 style="font-size: 2em">Serviços Oferecidos</h2>
-					<p style="font-size: 1.5em">iTonomise oferece serviços autônomos diversos, baseados no
-						perfil de quem nos contata. Sua pia entupiu? Precisa pintar uma parede?
-                        Sua casa está precisando de uma faxina? Nós sabemos o
-						trabalhador certo para lhe indicar!
-                        iTonomise é simples e dinâmico, para combinar
-						com a sua rotina.</p>
-					<a href="#nossosservicos" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;">
-						Ir para<svg class="bi" width="1em" height="1em">
-							<use xlink:href="#seta"></use></svg>
-					</a>
-				</div>
-				<div class="feature col">
-					<div
-						class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2 mb-3"
-						style="border-radius: 6px; background-color: #212529;">
-						<svg class="bi" width="40px" height="40px">
-							<use xlink:href="#autonomo"></use></svg>
-					</div>
-					<h2 style="font-size: 2em">Sou autônomo</h2>
-					<p style="font-size: 1.5em">Esta é a sua área, autônomo! Aqui você encontrará um guia
-						para ofertar seus serviços em nosso site, bem como dicas para
-						tornar seu perfil mais atrativo aos seus clientes; Logo após será redirecionado para o cadastro,
-                        sinta-se à vontade nos contando suas experiências passadas, sua preferencia
-						em atuação, entre outros!</p>
-					<a href="#souautonomo" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;">
-						Ir para <svg class="bi" width="1em" height="1em">
-							<use xlink:href="#seta"></use></svg>
-					</a>
-				</div>
-				<div class="feature col">
-					<div
-						class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2 mb-3"
-						style="border-radius: 6px; background-color: #212529;">
-						<svg class="bi" width="40px" height="40px">
-							<use xlink:href="#sobre"></use></svg>
-					</div>
-					<h2 style="font-size: 2em">Sobre iTonomise</h2>
-					<p style="font-size: 1.5em">A iTonomise é uma plataforma que facilita o acesso à
-						informação entre autônomo e contratante, visando sempre manter o
-						mercado em movimento. Sua ideia surgiu ao longo de diversas pesquisas sobre o
-						impacto da pandemia na vida dos trabalhadores autônomos, visando ajudar estes trabalhadores a iTonomise foi criada!</p>
-					<a href="#sobrenos" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;" 	>
-						Ir para <svg class="bi" width="1em" height="1em" style="text-decoration: none;">
-							<use xlink:href="#seta"></use></svg>
-					</a>
-				</div>
-			</div>
+		<div class="container position-relative" id="featured-3">
+			<div id="carouselExampleCaptions" class="carousel carousel-dark slide rounded-5" style="width: 100%;margin-top: 2%; background-color: white;" data-bs-ride="false">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner w-50" style="margin-left: 25%;">
+                  <div class="carousel-item active">
+                    <a href="#nossosservicos" style="text-decoration: none; color: black;">
+                    <h3 class="text-center py-5">Sou contratante</h3>
+                    <img src="https://media.discordapp.net/attachments/911394611300270122/1033145654500937758/2.jpg" class="d-block w-100" style="margin-bottom: 30%;">
+                    <div class="carousel-caption d-none d-md-block">                      
+                      <p style="text-align: justify; text-justify: inter-word;">iTonomise oferece serviços autônomos diversos, baseados no perfil de quem nos contata. Sua pia entupiu? Precisa pintar uma parede? Sua casa está precisando de uma faxina? Nós sabemos o trabalhador certo para lhe indicar! iTonomise é simples e dinâmico, para combinar com a sua rotina.</p>
+                    </div>
+                    </a>
+                  </div>
+                  <div class="carousel-item">
+                    <a href="#souautonomo" style="text-decoration: none; color: black;">
+                    <h3 class="text-center py-5">Sou autônomo</h3>
+                    <img src="https://media.discordapp.net/attachments/911394611300270122/1033146140239081502/7.jpg" class="d-block w-100" style="margin-bottom: 30%;">
+                    <div class="carousel-caption d-none d-md-block">                      
+                      <p style="text-align: justify; text-justify: inter-word;">Esta é a sua área, autônomo! Aqui você encontrará um guia para ofertar seus serviços em nosso site, bem como dicas para tornar seu perfil mais atrativo aos seus clientes; Logo após será redirecionado para o cadastro, sinta-se à vontade nos contando suas experiências passadas, sua preferencia em atuação, entre outros!</p>
+                    </div>
+                    </a>
+                  </div>
+                  <div class="carousel-item">
+                    <a href="#sobrenos" style="text-decoration: none; color: black;">
+                    <h3 class="text-center py-5">Sobre iTonomise</h3>
+                    <img src="https://media.discordapp.net/attachments/911394611300270122/1033146397362503730/4.jpg" class="d-block w-100" style="margin-bottom: 30%;">
+                    <div class="carousel-caption d-none d-md-block">                      
+                      <p style="text-align: justify; text-justify: inter-word;">A iTonomise é uma plataforma que facilita o acesso à informação entre autônomo e contratante, visando sempre manter o mercado em movimento. Sua ideia surgiu ao longo de diversas pesquisas sobre o impacto da pandemia na vida dos trabalhadores autônomos, visando ajudar estes trabalhadores a iTonomise foi criada!</p>
+                    </div>
+                    </a>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+         </div>
 		<h1 style="font-size: 2em; font-weight: bold;" class="pt-4 pb-1 text-center">Cadastre-se agora!</h1>
         <div class="container px-4" id="nossosservicos" style="text-align: justify; text-justify: inter-word;">
             <div class="row row-cols-1 row-cols-lg-2">
