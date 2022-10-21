@@ -95,6 +95,7 @@ body{
 					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
 						<li class="nav-item text-white"><a href="controller?action=perfil" class="nav-link" style="text-decoration: none; color: white; ">Meu perfil</a></li>
 						<li class="nav-item text-white"><a href="controller?action=meusContratos" class="nav-link" style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
+						<li class="nav-item nav-link"><a href="controller?action=logout" style="text-decoration: none; color: red;">Logout</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -334,14 +335,14 @@ body{
                         <div class="row pt-4">
                         	<h5>Legenda: Status</h5>
 	                        <div class="col-6">					
-		                        <div class="py-2"><a class="btn btn-danger btn-sm w-25">Não aceito</a><a class="px-2" style="text-decoration: none; color: black;">Ninguém ainda aceitou o seu contrato :(</a></div>
-		                        <div class="py-2"><a class="btn btn-warning btn-sm w-25">Pendente</a><a class="px-2" style="text-decoration: none; color: black;">Ainda não aceitaram a proposta do seu contrato</a></div>
-		                        <div class="py-2"><a class="btn btn-primary btn-sm w-25">Aceito</a><a class="px-2" style="text-decoration: none; color: black;">O autonomo já aceitou seu contrato e já poderá realizar o serviço como combinado no contrato</a></div>
+		                        <div class="py-2"><a class="btn btn-danger w-25">Não aceito</a><a class="px-2" style="text-decoration: none; color: black;">Ninguém ainda aceitou o seu contrato :(</a></div>
+		                        <div class="py-2"><a class="btn btn-warning w-25">Pendente</a><a class="px-2" style="text-decoration: none; color: black;">Ainda não aceitaram a proposta do seu contrato</a></div>
+		                        <div class="py-2"><a class="btn btn-primary w-25">Aceito</a><a class="px-2" style="text-decoration: none; color: black;">O autonomo já aceitou seu contrato e já poderá realizar o serviço como combinado no contrato</a></div>
 		                    </div>
 		                    <div class="col-6">
-		                       	<div class="py-2"><a class="btn btn-primary btn-sm w-25">Finalizado 1/2</a><a class="px-2" style="text-decoration: none; color: black;">Somente uma pessoa finalizou o contrato</a></div>
-		                       	<div class="py-2"><a class="btn btn-success btn-sm w-25">Finalizado 2/2</a><a class="px-2" style="text-decoration: none; color: black;">As duas pessoas finalizaram o contrato</a></div>						
-								<div class="py-2"><a class="btn btn-info btn-sm w-25">Avaliado</a><a class="px-2" style="text-decoration: none; color: black;">O contrato já foi finalizado por ambas as partes e foi avaliado pelo contratante</a></div>
+		                       	<div class="py-2"><a class="btn btn-primary w-25">Finalizado 1/2</a><a class="px-2" style="text-decoration: none; color: black;">Somente uma pessoa finalizou o contrato</a></div>
+		                       	<div class="py-2"><a class="btn btn-success w-25">Finalizado 2/2</a><a class="px-2" style="text-decoration: none; color: black;">As duas pessoas finalizaram o contrato</a></div>						
+								<div class="py-2"><a class="btn btn-info w-25">Avaliado</a><a class="px-2" style="text-decoration: none; color: black;">O contrato já foi finalizado por ambas as partes e foi avaliado pelo contratante</a></div>
 	                    	</div>
                     	</div>
 				<footer class="mt-auto border-top border-1">
