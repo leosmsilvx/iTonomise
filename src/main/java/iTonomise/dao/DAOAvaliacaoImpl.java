@@ -138,20 +138,14 @@ public class DAOAvaliacaoImpl implements DAOAvaliacao{
 
 			ResultSet rs = stmt.executeQuery();
 			
-			System.out.println("oi eu sou o retorno: " + rs);
-			
 			while (rs.next()) {
 				quantidade = quantidade + 1;
-				System.out.println("oi eu sou a quantidade: " + quantidade);
 				double valor = Double.valueOf(rs.getString("valor"));
-				System.out.println("oi eu sou o valor: " + valor);
 				soma = soma + valor;
-				System.out.println("oi eu sou a soma: " + soma);
 			}			
 			
 			rs.close();
 			stmt.close();
-			System.out.println("oi eu sou a media: " + soma/quantidade);
 			return (soma/quantidade);
 			
 		} catch (Exception e) {

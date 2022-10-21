@@ -107,19 +107,13 @@ body {
 			</h1>
 			<form action="controller?action=confirmarLogin" method="post">
 				<div>
-					<input type="text" class="form-control" name="usuario" id="usuario"
-						placeholder="Usuário" style="border-radius: 5px 5px 5px 5px; height: 4em;" required>
+					<input type="text" class="form-control" name="email" id="email"
+						placeholder="Email" style="border-radius: 5px 5px 5px 5px; height: 4em;" required>
 				</div>
 				<div>
 					<input type="password" class="form-control" name="senha" id="senha"
 						placeholder="Senha" style="border-radius: 5px 5px 5px 5px; height: 4em;" required>
 				</div>
-				<div style="padding-left: 30%; text-align: left;">
-		        	<input class="form-check-input" type="checkbox" name="souAut" id="souAut">
-			        <label class="form-check-label" for="souAut">
-			          Sou autônomo
-			        </label>
-		      	</div>
 		      	<div class="py-3">
 		        	<button class="w-100 btn btn-lg btn-dark" type="submit">Entrar</button>
 		      	</div>

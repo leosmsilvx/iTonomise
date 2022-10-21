@@ -48,10 +48,6 @@ public class Controller extends HttpServlet{
 				pagCadComum(request, response);
 			} else if (action.equals("pagCadCont")) { 
 				pagCadCont(request, response);
-			} else if (action.equals("guiaAuto")) { 
-				guiaAuto(request, response);
-			} else if (action.equals("guiaComum")) { 
-				guiaComum(request, response);
 			} else if (action.equals("cadastrarAutonomo")) { 
 				cadastrarAutonomo(request, response);
 			} else if (action.equals("cadastrarComum")) { 
@@ -176,20 +172,6 @@ public class Controller extends HttpServlet{
 		rd.forward(request, response);
 	}
 	
-	//Pagina Guia do Autonomo
-	private void guiaAuto(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/guiaAutonomo.jsp");
-		rd.forward(request, response);
-	}
-	
-	//Pagina Guia do Comum
-	private void guiaComum(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/guiaComum.jsp");
-		rd.forward(request, response);
-	}
-	
 	//Cadastrar autonomo
 	private void cadastrarAutonomo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
@@ -210,9 +192,18 @@ public class Controller extends HttpServlet{
 		
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		Autonomo autonomoUser = dao.buscarAutonomoPUser(request.getParameter("user"));
+		String emailUser = dao.buscarEmailAutonomo(request.getParameter("email"));
 		
-		if(autonomoUser != null) {
-			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já existente!";
+		if(autonomoUser != null ) {
+			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já cadastrado!";
+			session.setAttribute("msgErroCad", msgErroCad);
+
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		if(emailUser != null) {
+			String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
 			session.setAttribute("msgErroCad", msgErroCad);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
@@ -249,9 +240,18 @@ public class Controller extends HttpServlet{
 		
 		DAOUsuario dao = new DAOUsuarioImpl();
 		Usuario usuarioUser = dao.buscarUsuarioPUser(request.getParameter("user"));
+		String emailUser = dao.buscarEmailUsuario(request.getParameter("email"));
 		
 		if(usuarioUser != null) {
-			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já existente!";
+			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já cadastrado!";
+			session.setAttribute("msgErroCad", msgErroCad);
+
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
+			rd.forward(request, response);
+			return;
+		}		
+		if(emailUser != null) {
+			String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
 			session.setAttribute("msgErroCad", msgErroCad);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
@@ -334,37 +334,30 @@ public class Controller extends HttpServlet{
 	private void confirmarLogin(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException{
 		HttpSession session = request.getSession(true);	
-		if(request.getParameter("souAut") == null){
-			DAOUsuario dao = new DAOUsuarioImpl();
-			List<Usuario> usuarios = dao.todosUsuarios();		
-			for(int i = 0; i < usuarios.size(); i++)
-			{
-				if((usuarios.get(i).getSenha()).equals(request.getParameter("senha")) && (usuarios.get(i).getUser()).equals(request.getParameter("usuario"))) {
-					session.setAttribute("usuario", "comum");	
-					session.setAttribute("id", usuarios.get(i).getIdUsuario());
-					home(request,response);
-				}
-			}			
-			String msgErro = "Senha e/ou usuario incorretos!";
-			session.setAttribute("msgErro", msgErro);
-			((HttpServletResponse) response).sendRedirect("controller?action=login");
-			
-		} else if(request.getParameter("souAut").equals("on")) {	
-			DAOAutonomo dao = new DAOAutonomoImpl();
-			List<Autonomo> autonomos = dao.todosAutonomos();	
-			for(int i = 0; i < autonomos.size(); i++)
-			{
-				if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getUser()).equals(request.getParameter("usuario"))) {
-					session.setAttribute("usuario", "autonomo");	
-					session.setAttribute("id", autonomos.get(i).getIdAutonomo());
-					home(request,response);
-				}
-			}			
-			String msgErro = "Senha e/ou usuario incorretos!";
-			session.setAttribute("msgErro", msgErro);
-			((HttpServletResponse) response).sendRedirect("controller?action=login");
-			
-		} 		
+		DAOUsuario daoU = new DAOUsuarioImpl();
+		List<Usuario> usuarios = daoU.todosUsuarios();
+		DAOAutonomo daoA = new DAOAutonomoImpl();
+		List<Autonomo> autonomos = daoA.todosAutonomos();	
+		for(int i = 0; i < autonomos.size(); i++)
+		{
+			if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getEmail()).equals(request.getParameter("email"))) {
+				session.setAttribute("usuario", "autonomo");	
+				session.setAttribute("id", autonomos.get(i).getIdAutonomo());
+				home(request,response);
+			}
+		}
+		for(int i = 0; i < usuarios.size(); i++)
+		{
+			if((usuarios.get(i).getSenha()).equals(request.getParameter("senha")) && (usuarios.get(i).getEmail()).equals(request.getParameter("email"))) {
+				session.setAttribute("usuario", "comum");	
+				session.setAttribute("id", usuarios.get(i).getIdUsuario());
+				home(request,response);
+			}
+		}
+		String msgErro = "Senha e/ou usuario incorretos!";
+		session.setAttribute("msgErro", msgErro);
+		((HttpServletResponse) response).sendRedirect("controller?action=login");
+		 		
 	}
 	
 	//Home page

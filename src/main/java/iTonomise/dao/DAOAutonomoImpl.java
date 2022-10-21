@@ -254,6 +254,31 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		}
 	}
 	
+	public String buscarEmailAutonomo(String email) throws DAOException {
+		String emailAut = null;
+		try {
+			
+			String sql = "SELECT * from autonomo WHERE email = ?";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+
+			stmt.setString(1, email);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				emailAut = rs.getString("email");
+		}
+			
+			rs.close();
+			stmt.close();
+			return emailAut;
+			
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar: " + e.getMessage());
+		}
+	}
+	
 	public void atualizarMedia(double media, int idAutonomo) throws DAOException {
 		try {
 			this.connection = ConnectionFactory.getConnection();
