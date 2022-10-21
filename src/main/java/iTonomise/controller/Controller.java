@@ -204,7 +204,7 @@ public class Controller extends HttpServlet{
 			rd.forward(request, response);
 			return;
 		}
-		if(emailUser != null && emailAutonomo != null) {
+		if(emailUser != null || emailAutonomo != null) {
 			String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
 			session.setAttribute("msgErroCad", msgErroCad);
 
@@ -213,16 +213,19 @@ public class Controller extends HttpServlet{
 			return;
 		}
 		
-		Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
-		
-		dao.cadastrar(novoAutonomo);
-		request.setAttribute("autonomo", novoAutonomo);
-		
-		String msgConfirm = "Usuario cadastrado com sucesso!";
-		session.setAttribute("msgConfirm", msgConfirm);
+		if(emailUser == null && emailAutonomo == null && autonomoUser == null) {
+			Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
+			
+			dao.cadastrar(novoAutonomo);
+			request.setAttribute("autonomo", novoAutonomo);
+			
+			String msgConfirm = "Usuario cadastrado com sucesso!";
+			session.setAttribute("msgConfirm", msgConfirm);
 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
-		rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+			rd.forward(request, response);
+		}		
+		
 	}
 	
 	//Cadastrar comum
@@ -254,25 +257,26 @@ public class Controller extends HttpServlet{
 			rd.forward(request, response);
 			return;
 		}		
-		if(emailUser != null && emailAutonomo != null) {
+		if(emailUser != null || emailAutonomo != null) {
 			String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
 			session.setAttribute("msgErroCad", msgErroCad);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
 			rd.forward(request, response);
 			return;
-		}		
-		
-		Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);		
-		
-		dao.cadastrar(novoUsuario);
-		request.setAttribute("comum", novoUsuario);
-		
-		String msgConfirm = "Usuario cadastrado com sucesso!";
-		session.setAttribute("msgConfirm", msgConfirm);
+		}
+		if(emailUser == null && emailAutonomo == null && usuarioUser == null) {
+			Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);		
+			
+			dao.cadastrar(novoUsuario);
+			request.setAttribute("comum", novoUsuario);
+			
+			String msgConfirm = "Usuario cadastrado com sucesso!";
+			session.setAttribute("msgConfirm", msgConfirm);
 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
-		rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Cadastrar contrato
