@@ -75,7 +75,7 @@ body{
 			<div class="d-flex flex-wrap">
 				<ul class="nav me-auto">
 					<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
-        				<a href="controller?action=index"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
+        				<a href="controller?action=index"><img src="/iTonomise/imgs/itonomise.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
         				<a href="controller?action=index" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
 						</div></li>
 				</ul>
@@ -118,7 +118,7 @@ body{
                   <div class="carousel-item active">
                     <a href="#nossosservicos" style="text-decoration: none; color: black;">
                     <h3 class="text-center py-5">Sou contratante</h3>
-                    <img src="https://media.discordapp.net/attachments/911394611300270122/1033145654500937758/2.jpg" class="d-block w-100" style="margin-bottom: 30%;">
+                    <img src="/iTonomise/imgs/contrato.jpg" class="d-block w-100" style="margin-bottom: 30%;">
                     <div class="carousel-caption d-none d-md-block">                      
                       <p style="text-align: justify; text-justify: inter-word;">iTonomise oferece serviços autônomos diversos, baseados no perfil de quem nos contata. Sua pia entupiu? Precisa pintar uma parede? Sua casa está precisando de uma faxina? Nós sabemos o trabalhador certo para lhe indicar! iTonomise é simples e dinâmico, para combinar com a sua rotina.</p>
                     </div>
@@ -127,7 +127,7 @@ body{
                   <div class="carousel-item">
                     <a href="#souautonomo" style="text-decoration: none; color: black;">
                     <h3 class="text-center py-5">Sou autônomo</h3>
-                    <img src="https://media.discordapp.net/attachments/911394611300270122/1033146140239081502/7.jpg" class="d-block w-100" style="margin-bottom: 30%;">
+                    <img src="/iTonomise/imgs/autonomo.jpg" class="d-block w-100" style="margin-bottom: 30%;">
                     <div class="carousel-caption d-none d-md-block">                      
                       <p style="text-align: justify; text-justify: inter-word;">Esta é a sua área, autônomo! Aqui você encontrará um guia para ofertar seus serviços em nosso site, bem como dicas para tornar seu perfil mais atrativo aos seus clientes; Logo após será redirecionado para o cadastro, sinta-se à vontade nos contando suas experiências passadas, sua preferencia em atuação, entre outros!</p>
                     </div>
@@ -136,7 +136,7 @@ body{
                   <div class="carousel-item">
                     <a href="#sobrenos" style="text-decoration: none; color: black;">
                     <h3 class="text-center py-5">Sobre iTonomise</h3>
-                    <img src="https://media.discordapp.net/attachments/911394611300270122/1033146397362503730/4.jpg" class="d-block w-100" style="margin-bottom: 30%;">
+                    <img src="/iTonomise/imgs/painel.jpg" class="d-block w-100" style="margin-bottom: 30%;">
                     <div class="carousel-caption d-none d-md-block">                      
                       <p style="text-align: justify; text-justify: inter-word;">A iTonomise é uma plataforma que facilita o acesso à informação entre autônomo e contratante, visando sempre manter o mercado em movimento. Sua ideia surgiu ao longo de diversas pesquisas sobre o impacto da pandemia na vida dos trabalhadores autônomos, visando ajudar estes trabalhadores a iTonomise foi criada!</p>
                     </div>
@@ -175,14 +175,14 @@ body{
                     </div>
                 </div>
                 <div class="feature col">
-                    <img style="padding-top: 4em;" src="https://media.discordapp.net/attachments/911394611300270122/1024124231161741312/mulher.png">
+                    <img style="padding-top: 4em;" src="/iTonomise/imgs/mulher.png">
                 </div>
             </div>
             
             <div class="container px-4 py-5" >
 	            <div class="row row-cols-1 row-cols-lg-2">
 	            	<div class="feature col">
-                    	<img src="https://media.discordapp.net/attachments/911394611300270122/1024081842967695360/unknown.png" width="100%" height="90%">
+                    	<img src="/iTonomise/imgs/homens.png" width="100%" height="90%">
                 	</div>
 	                <div class="feature col" style="padding-top: 2em;">
 	                    <div style="text-align: right;">
@@ -220,7 +220,7 @@ body{
                     </div>
                 </div>
                 <div class="feature col">
-                    <img src="https://media.discordapp.net/attachments/911394611300270122/1024122809150083192/pessoas.png?width=720&height=480">
+                    <img src="/iTonomise/imgs/lupa.png">
                 </div>
             </div>
             </div>

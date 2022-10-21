@@ -77,7 +77,7 @@ body{
 				<div class="d-flex flex-wrap">
 					<ul class="nav me-auto">
 						<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
-							<a href="controller?action=home"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
+							<a href="controller?action=home"><img src="/iTonomise/imgs/itonomise.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
 							<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
 							</div></li>
 					</ul>
@@ -89,7 +89,7 @@ body{
             <h2 class="text-start">Parece que você tentou fazer algo que nosso sistema não estava esperando...</h2>
             <a href="controller?action=home" style="font-size: 1.5em">Retornar para a página principal
             <div class="text-center pt-4">
-            	<img width=500 height=400 src="https://media.discordapp.net/attachments/911394611300270122/1027036821202423878/erro.png">
+            	<img width=500 height=400 src="/iTonomise/imgs/erro.png">
             </div> 
 			</a>          
          </div>
