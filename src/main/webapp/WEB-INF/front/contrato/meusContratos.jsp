@@ -88,7 +88,7 @@ body{
 				<div class="d-flex flex-wrap">
 					<ul class="nav me-auto">
 						<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
-							<a href="controller?action=home"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
+							<a href="controller?action=home"><img src="/iTonomise/imgs/itonomise.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
 							<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
 							</div></li>
 					</ul>
@@ -100,31 +100,13 @@ body{
 				</div>
 			</nav>
             <div class="container">
-            <div class="py-5">					
-						<!-- <div class="pb-4 position-relative">	
-							<h4 class="mb-2"><a>Meus Contratos</a><a class="position-absolute top-0 end-0 text-end text-decoration-none text-dark">Status</a></h4>					
-							<div class="col-2 position-absolute top-50 end-0">								
-								<label for="filtro">Filtro</label>
-								<form action="#" method="post">
-									<select class="form-select bg-dark text-white text-center" name="filtro" onchange="this.form.submit()" required>
-										<option value="none">Filtrar por</option>
-										<option value=null>Não aceito</option>
-									  	<option value=null>Pendente</option>
-									  	<option value="1">Aceito</option>	
-									 	<option value="0">Finalizado</option>							  
-									 	<option value="0">Avaliado</option>				 	
-									</select>
-									<button type="submit" class="btn btn-outline-dark btn-sm position-absolute top-80 end-0">Limpar Filtro</button>
-								</form>
-							</div>
-						</div>	
-						 -->
+            <div class="py-5">				
 						    
                 <h4>Meus Contratos</h4>					
 				</div>
                 <div class="py-2">     
                 <c:set var="notEmpty" scope="session" value="${1}"/>        	
-                    <table class="table table-hover table-dark table-striped caption-top align-middle">
+                    <table class="table table-hover table-dark table-striped align-middle">
                         <thead>
                           <tr>
                             <th scope="col">Contrato de</th>
@@ -205,7 +187,7 @@ body{
 											</td>
 											</c:if>
 											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1 and contratosCadastrados.foiAvaliado == 1}">
-												<td class="text-info"><c:out value="Avaliado"/></td>
+												<td style="color: #9865db;"><c:out value="Avaliado"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
 							
 											</c:if>
@@ -215,22 +197,22 @@ body{
 							
 											</c:if>
 											<c:if test="${(contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 0 and usuario == 'autonomo')}">
-												<td class="text-primary"><c:out value="Finalizado 1/2"/></td>
+												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
 							
 											</c:if>
 											<c:if test="${(contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 0 and usuario == 'comum')}">
-												<td class="text-primary"><c:out value="Finalizado 1/2"/></td>
+												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
 							
 											</c:if>
 											<c:if test="${ (contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 1 and usuario == 'comum')}">
-												<td class="text-primary"><c:out value="Finalizado 1/2"/></td>
+												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
 							
 											</c:if>
 											<c:if test="${ (contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 1 and usuario == 'autonomo')}">
-												<td class="text-primary"><c:out value="Finalizado 1/2"/></td>
+												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
 							
 											</c:if>
@@ -283,7 +265,7 @@ body{
 											</td>
 											</c:if>
 											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1 and contratosCadastrados.foiAvaliado == 1}">
-												<td class="text-info"><c:out value="Avaliado"/></td>
+												<td style="color: #9865db;"><c:out value="Avaliado"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
 							
 											</c:if>
@@ -335,14 +317,14 @@ body{
                         <div class="row pt-4">
                         	<h5>Legenda: Status</h5>
 	                        <div class="col-6">					
-		                        <div class="py-2"><a class="btn btn-danger btn-sm w-25">Não aceito</a><a class="px-2" style="text-decoration: none; color: black;">Ninguém ainda aceitou o seu contrato :(</a></div>
-		                        <div class="py-2"><a class="btn btn-warning btn-sm w-25">Pendente</a><a class="px-2" style="text-decoration: none; color: black;">Ainda não aceitaram a proposta do seu contrato</a></div>
-		                        <div class="py-2"><a class="btn btn-primary btn-sm w-25">Aceito</a><a class="px-2" style="text-decoration: none; color: black;">O autonomo já aceitou seu contrato e já poderá realizar o serviço como combinado no contrato</a></div>
+		                        <div class="py-2"><a class="btn btn-danger w-25">Não aceito</a><a class="px-2" style="text-decoration: none; color: black;">Ninguém ainda aceitou o seu contrato :(</a></div>
+		                        <div class="py-2"><a class="btn btn-warning w-25">Pendente</a><a class="px-2" style="text-decoration: none; color: black;">Ainda não aceitaram a proposta do seu contrato</a></div>
+		                        <div class="py-2"><a class="btn btn-primary w-25">Aceito</a><a class="px-2" style="text-decoration: none; color: black;">O autonomo já aceitou seu contrato e já poderá realizar o serviço como combinado</a></div>
 		                    </div>
 		                    <div class="col-6">
-		                       	<div class="py-2"><a class="btn btn-primary btn-sm w-25">Finalizado 1/2</a><a class="px-2" style="text-decoration: none; color: black;">Somente uma pessoa finalizou o contrato</a></div>
-		                       	<div class="py-2"><a class="btn btn-success btn-sm w-25">Finalizado 2/2</a><a class="px-2" style="text-decoration: none; color: black;">As duas pessoas finalizaram o contrato</a></div>						
-								<div class="py-2"><a class="btn btn-info btn-sm w-25">Avaliado</a><a class="px-2" style="text-decoration: none; color: black;">O contrato já foi finalizado por ambas as partes e foi avaliado pelo contratante</a></div>
+		                       	<div class="py-2"><a class="btn btn-info w-25">Finalizado 1/2</a><a class="px-2" style="text-decoration: none; color: black;">Somente uma pessoa finalizou o contrato</a></div>
+		                       	<div class="py-2"><a class="btn btn-success w-25">Finalizado 2/2</a><a class="px-2" style="text-decoration: none; color: black;">As duas pessoas finalizaram o contrato</a></div>						
+								<div class="py-2"><a class="btn btn-primary w-25" style="border-color: #9865db;background-color: #9865db;">Avaliado</a><a class="px-2" style="text-decoration: none; color: black;">O contrato já foi finalizado por ambas as partes e foi avaliado pelo contratante</a></div>
 	                    	</div>
                     	</div>
 				<footer class="mt-auto border-top border-1">

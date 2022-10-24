@@ -60,7 +60,7 @@ body{
 				<div class="d-flex flex-wrap">
 					<ul class="nav me-auto">
 						<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
-							<a href="controller?action=home"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
+							<a href="controller?action=home"><img src="/iTonomise/imgs/itonomise.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
 							<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
 							</div></li>
 					</ul>
@@ -76,7 +76,7 @@ body{
 			<div class="row">
 				<div class="col" style="padding: 5%;">
 					<div class="card">
-						<img src="https://media.discordapp.net/attachments/911394611300270122/1025473411977314334/contrato.jpg" height="400" width="225" class="card-img-top">
+						<img src="/iTonomise/imgs/contratoA.jpg" height="400" width="225" class="card-img-top">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Contrato</p>
 						  <p class="card-text pb-4">Clique e crie um contrato ou veja todos os seus contratos já criados!</p>
@@ -89,7 +89,7 @@ body{
 				</div>
 				<div class="col" style="padding: 5%;">
 					<div class="card">
-						<img src="https://media.discordapp.net/attachments/911394611300270122/1025473960772636743/lista.jpg" height="400" width="225" class="card-img-top">
+						<img src="/iTonomise/imgs/lista.jpg" height="400" width="225" class="card-img-top">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Lista</p>
 						  <p class="card-text">Clique e veja a lista completa de trabalhadores autonomos e contratos!</p>

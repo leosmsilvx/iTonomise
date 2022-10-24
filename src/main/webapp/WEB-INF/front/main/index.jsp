@@ -75,12 +75,12 @@ body{
 			<div class="d-flex flex-wrap">
 				<ul class="nav me-auto">
 					<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
-        				<a href="controller?action=index"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
+        				<a href="controller?action=index"><img src="/iTonomise/imgs/itonomise.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
         				<a href="controller?action=index" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
 						</div></li>
 				</ul>
 				<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-					<li class="nav-item"><a href="controller?action=login" class="nav-link px-2 text-muted text-center"><button class="w-1 btn btn-light btn-sm" type="submit">Login</button></a></li>			
+					<li class="nav-item"><a href="controller?action=login" class="nav-link px-2 text-muted text-center"><button class="w-1 btn btn-light" type="submit">Login</button></a></li>			
 			</li>
 				</ul>
 			</div>
@@ -107,65 +107,52 @@ body{
         </svg>
 
 
-		<div class="container px-4 py-5" id="featured-3">
-			<h5 class="text-success text-center"> ${msgConfirm} </h5>
-			<h1 style="font-size: 2em; font-weight: bold;" class="pb-3 pt-4 text-center">Bem vindo ao iTonomise!</h1>
-			<div class="row g-4 py-5 row-cols-1 row-cols-lg-3" style="text-align: justify; text-justify: inter-word;">
-				<div class="feature col">
-					<div
-						class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2 mb-3"
-						style="border-radius: 6px; background-color: #212529;">
-						<svg class="bi" width="40px" height="40px">
-							<use xlink:href="#servicos"></use></svg>
-					</div>
-					<h2 style="font-size: 2em">Serviços Oferecidos</h2>
-					<p style="font-size: 1.5em">iTonomise oferece serviços autônomos diversos, baseados no
-						perfil de quem nos contata. Sua pia entupiu? Precisa pintar uma parede?
-                        Sua casa está precisando de uma faxina? Nós sabemos o
-						trabalhador certo para lhe indicar!
-                        iTonomise é simples e dinâmico, para combinar
-						com a sua rotina.</p>
-					<a href="#nossosservicos" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;">
-						Ir para<svg class="bi" width="1em" height="1em">
-							<use xlink:href="#seta"></use></svg>
-					</a>
-				</div>
-				<div class="feature col">
-					<div
-						class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2 mb-3"
-						style="border-radius: 6px; background-color: #212529;">
-						<svg class="bi" width="40px" height="40px">
-							<use xlink:href="#autonomo"></use></svg>
-					</div>
-					<h2 style="font-size: 2em">Sou autônomo</h2>
-					<p style="font-size: 1.5em">Esta é a sua área, autônomo! Aqui você encontrará um guia
-						para ofertar seus serviços em nosso site, bem como dicas para
-						tornar seu perfil mais atrativo aos seus clientes; Logo após será redirecionado para o cadastro,
-                        sinta-se à vontade nos contando suas experiências passadas, sua preferencia
-						em atuação, entre outros!</p>
-					<a href="#souautonomo" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;">
-						Ir para <svg class="bi" width="1em" height="1em">
-							<use xlink:href="#seta"></use></svg>
-					</a>
-				</div>
-				<div class="feature col">
-					<div
-						class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2 mb-3"
-						style="border-radius: 6px; background-color: #212529;">
-						<svg class="bi" width="40px" height="40px">
-							<use xlink:href="#sobre"></use></svg>
-					</div>
-					<h2 style="font-size: 2em">Sobre iTonomise</h2>
-					<p style="font-size: 1.5em">A iTonomise é uma plataforma que facilita o acesso à
-						informação entre autônomo e contratante, visando sempre manter o
-						mercado em movimento. Sua ideia surgiu ao longo de diversas pesquisas sobre o
-						impacto da pandemia na vida dos trabalhadores autônomos, visando ajudar estes trabalhadores a iTonomise foi criada!</p>
-					<a href="#sobrenos" class="icon-link d-inline-flex align-items-center" style="text-decoration: none;" 	>
-						Ir para <svg class="bi" width="1em" height="1em" style="text-decoration: none;">
-							<use xlink:href="#seta"></use></svg>
-					</a>
-				</div>
-			</div>
+		<div class="container position-relative" id="featured-3">
+			<div id="carouselExampleCaptions" class="carousel carousel-dark slide rounded-5" style="width: 100%;margin-top: 2%; background-color: white;" data-bs-ride="false">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner w-50" style="margin-left: 25%;">
+                  <div class="carousel-item active">
+                    <a href="#nossosservicos" style="text-decoration: none; color: black;">
+                    <h3 class="text-center py-5">Sou contratante</h3>
+                    <img src="/iTonomise/imgs/contrato.jpg" class="d-block w-100" style="margin-bottom: 30%;">
+                    <div class="carousel-caption d-none d-md-block">                      
+                      <p style="text-align: justify; text-justify: inter-word;">iTonomise oferece serviços autônomos diversos, baseados no perfil de quem nos contata. Sua pia entupiu? Precisa pintar uma parede? Sua casa está precisando de uma faxina? Nós sabemos o trabalhador certo para lhe indicar! iTonomise é simples e dinâmico, para combinar com a sua rotina.</p>
+                    </div>
+                    </a>
+                  </div>
+                  <div class="carousel-item">
+                    <a href="#souautonomo" style="text-decoration: none; color: black;">
+                    <h3 class="text-center py-5">Sou autônomo</h3>
+                    <img src="/iTonomise/imgs/autonomo.jpg" class="d-block w-100" style="margin-bottom: 30%;">
+                    <div class="carousel-caption d-none d-md-block">                      
+                      <p style="text-align: justify; text-justify: inter-word;">Esta é a sua área, autônomo! Aqui você encontrará um guia para ofertar seus serviços em nosso site, bem como dicas para tornar seu perfil mais atrativo aos seus clientes; Logo após será redirecionado para o cadastro, sinta-se à vontade nos contando suas experiências passadas, sua preferencia em atuação, entre outros!</p>
+                    </div>
+                    </a>
+                  </div>
+                  <div class="carousel-item">
+                    <a href="#sobrenos" style="text-decoration: none; color: black;">
+                    <h3 class="text-center py-5">Sobre iTonomise</h3>
+                    <img src="/iTonomise/imgs/painel.jpg" class="d-block w-100" style="margin-bottom: 30%;">
+                    <div class="carousel-caption d-none d-md-block">                      
+                      <p style="text-align: justify; text-justify: inter-word;">A iTonomise é uma plataforma que facilita o acesso à informação entre autônomo e contratante, visando sempre manter o mercado em movimento. Sua ideia surgiu ao longo de diversas pesquisas sobre o impacto da pandemia na vida dos trabalhadores autônomos, visando ajudar estes trabalhadores a iTonomise foi criada!</p>
+                    </div>
+                    </a>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+         </div>
 		<h1 style="font-size: 2em; font-weight: bold;" class="pt-4 pb-1 text-center">Cadastre-se agora!</h1>
         <div class="container px-4" id="nossosservicos" style="text-align: justify; text-justify: inter-word;">
             <div class="row row-cols-1 row-cols-lg-2">
@@ -176,38 +163,43 @@ body{
                             <svg class="bi" width="40px" height="40px"><use xlink:href="#servicos"></use></svg>
                           </div><a style="font-size: 2em;
                           margin-left: 0.5em;
-                          font-weight: bold;">Seja um contratante!</a>
-                          <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado à nossa página de cadastro. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
+                          font-weight: bold;">Olá contratante!</a>
+                          <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
                           <a id="souautonomo" href="controller?action=pagCadComum" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
                             Cadastre-se agora
-                            <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
+                          </a>
+                          <a id="souautonomo" href="controller?action=login" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
+                            Fazer login
                           </a>
 
                     </div>
                 </div>
                 <div class="feature col">
-                    <img style="padding-top: 4em;" src="https://media.discordapp.net/attachments/911394611300270122/1024124231161741312/mulher.png">
+                    <img style="padding-top: 4em;" src="/iTonomise/imgs/mulher.png">
                 </div>
             </div>
             
             <div class="container px-4 py-5" >
 	            <div class="row row-cols-1 row-cols-lg-2">
 	            	<div class="feature col">
-                    	<img src="https://media.discordapp.net/attachments/911394611300270122/1024081842967695360/unknown.png" width="100%" height="90%">
+                    	<img src="/iTonomise/imgs/homens.png" width="100%" height="90%">
                 	</div>
 	                <div class="feature col" style="padding-top: 2em;">
 	                    <div style="text-align: right;">
 	                        <a style="font-size: 2em;
 	                          margin-right: 0.5em;
-	                          font-weight: bold;">Seja um autonomo!</a>
+	                          font-weight: bold;">Olá autonomo!</a>
 	                          <div class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2" style="border-radius: 6px; background-color: #212529;">
 	                            <svg class="bi" width="40px" height="40px"><use xlink:href="#autonomo"></use></svg>
 	                          </div>
-	                          <p style="font-size: 1.5em; text-align: justify; text-justify: inter-word;">Clique no link abaixo para ser redirecionado à nossa página de cadastro. Faça parte da nossa equipe de trabalhadores autônomos, oferecendo seus serviços pelo nosso site!</p>
+	                          <p style="font-size: 1.5em; text-align: justify; text-justify: inter-word;">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Faça parte da nossa equipe de trabalhadores autônomos, oferecendo seus serviços pelo nosso site!</p>
+	                          <a href="controller?action=login" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
+	                            Fazer login
+	                          </a>
 	                          <a href="controller?action=pagCadAuto" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
 	                            Cadastre-se agora
-	                            <svg class="bi" width="1em" height="1em"><use xlink:href="#seta"></use></svg>
 	                          </a>
+	                           
 	
 	                    	</div>
 	                	</div>
@@ -228,7 +220,7 @@ body{
                     </div>
                 </div>
                 <div class="feature col">
-                    <img src="https://media.discordapp.net/attachments/911394611300270122/1024122809150083192/pessoas.png?width=720&height=480">
+                    <img src="/iTonomise/imgs/lupa.png">
                 </div>
             </div>
             </div>

@@ -101,7 +101,7 @@ body {
 
 	<main class="form-signin w-100 m-auto">
 			<h5 class="text-danger"> ${msgErro} </h5>
-			<a href="controller?action=index"><img class="mb-4" src="https://media.discordapp.net/attachments/911394611300270122/1021924837486239764/a.png" alt="" width="100" height="100"></a>
+			<a href="controller?action=index"><img class="mb-4" src="/iTonomise/imgs/itonomiseD.png" alt="" width="100" height="100"></a>
 			<h1 class="h3 mb-3 fw-normal">
 				Olá,<br>Digite seu Usuário e Senha
 			</h1>
