@@ -119,6 +119,9 @@ body{
 										<div class="d-grid">
 										<input type="hidden" name="idAutonomo" value="${autonomo.idAutonomo}">
 											<button type="submit" class="btn btn-dark">Propor Contrato</button>
+											<div class="col-12 pt-4">
+                                    	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
+                                    </div>
 										</div>	
 									</div>
 		

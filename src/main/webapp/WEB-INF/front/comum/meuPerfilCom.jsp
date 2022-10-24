@@ -135,7 +135,7 @@ body{
                                         <button class="btn btn-dark w-100" type="submit">Alterar dados</button>
                                     </div>
                                     <div class="col-6 pt-4">
-                                        <a href="controller?action=home" class="btn btn-dark w-100">Home</a>
+                                    	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
                                     </div>
                                 </div>
                             </form>

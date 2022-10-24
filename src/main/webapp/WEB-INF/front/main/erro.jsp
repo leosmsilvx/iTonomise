@@ -85,13 +85,13 @@ body{
 			</nav>
     <div class="container">
         <div class="pt-5 pb-5">
-            <h1 class="text-start">Erro 404 - Página não encontrada</h1>
-            <h2 class="text-start">Parece que você tentou fazer algo que nosso sistema não estava esperando...</h2>
-            <a href="controller?action=home" style="font-size: 1.5em">Retornar para a página principal
+            <h1 class="text-start text-danger">Erro 404 - Página não encontrada</h1>
+            <h2 class="text-start pb-3">Parece que você tentou fazer algo que nosso sistema não estava esperando...</h2>
+            <a class="btn btn-dark" onclick="history.back()" style="font-size: 1.5em">Retornar para onde você estava!</a>  
             <div class="text-center pt-4">
             	<img width=500 height=400 src="/iTonomise/imgs/erro.png">
             </div> 
-			</a>          
+			        
          </div>
 
 

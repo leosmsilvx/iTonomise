@@ -195,8 +195,8 @@ body{
                               <button class="w-100 btn btn-dark" type="submit">Cadastrar</button>
                            </div>
                            <div class="col-6 pb-4">
-                              <a href="controller?action=home" class="btn btn-dark w-100">Voltar</a>
-                            </div>
+                                    	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
+                                    </div>
           </div>
         </form>
         </div>

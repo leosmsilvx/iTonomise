@@ -115,6 +115,9 @@ body{
 											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${comum.nome}</p>
 											</div>
 										</div>		
+										<div class="col-12 pt-4">
+                                    	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
+                                    </div>
 									</div>
 		
 									<div class="col-8 px-4">

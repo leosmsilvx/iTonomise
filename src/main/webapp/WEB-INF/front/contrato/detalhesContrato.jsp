@@ -220,8 +220,8 @@ body{
 			  				</form>
 		  					</c:if>
 		  					<div class="col-12 py-4" style="padding: 30%">
-                              <a href="controller?action=home" class="btn btn-dark w-100">Home</a>
-                            </div>
+		  					<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
+                             </div>
         </div>
       </div>
     </main>

@@ -166,7 +166,7 @@ body{
                                         <button class="w-100 btn btn-dark" type="submit">Alterar</button>
                                     </div>
                                     <div class="col-6 pt-4">
-                                        <a href="controller?action=perfil" class="btn btn-dark w-100">Voltar</a>
+                                    	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
                                     </div>
                                 </div>
 

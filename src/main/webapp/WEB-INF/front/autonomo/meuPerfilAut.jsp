@@ -146,9 +146,9 @@ body{
                                         <a href="controller?action=pagAlterarPerfilAut" class="btn btn-dark w-100" type="submit">Alterar dados</a>
                                     </div>
                                     <div class="col-6 pt-4">
-                                        <a href="controller?action=home" class="btn btn-dark w-100" type="submit">Home</a>
+                                    	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
                                     </div>
-                                </div>
+                                    
                             </form>
                     </div>
                 </main>
