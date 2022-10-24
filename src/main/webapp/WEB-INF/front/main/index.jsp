@@ -117,7 +117,7 @@ body{
                 <div class="carousel-inner w-50" style="margin-left: 25%;">
                   <div class="carousel-item active">
                     <a href="#nossosservicos" style="text-decoration: none; color: black;">
-                    <h3 class="text-center py-5">Sou contratante</h3>
+                    <h3 class="text-center pt-5">Sou contratante</h3>
                     <img src="/iTonomise/imgs/contrato.jpg" class="d-block w-100" style="margin-bottom: 30%;">
                     <div class="carousel-caption d-none d-md-block">                      
                       <p style="text-align: justify; text-justify: inter-word;">iTonomise oferece serviços autônomos diversos, baseados no perfil de quem nos contata. Sua pia entupiu? Precisa pintar uma parede? Sua casa está precisando de uma faxina? Nós sabemos o trabalhador certo para lhe indicar! iTonomise é simples e dinâmico, para combinar com a sua rotina.</p>
@@ -126,7 +126,7 @@ body{
                   </div>
                   <div class="carousel-item">
                     <a href="#souautonomo" style="text-decoration: none; color: black;">
-                    <h3 class="text-center py-5">Sou autônomo</h3>
+                    <h3 class="text-center pt-5">Sou autônomo</h3>
                     <img src="/iTonomise/imgs/autonomo.jpg" class="d-block w-100" style="margin-bottom: 30%;">
                     <div class="carousel-caption d-none d-md-block">                      
                       <p style="text-align: justify; text-justify: inter-word;">Esta é a sua área, autônomo! Aqui você encontrará um guia para ofertar seus serviços em nosso site, bem como dicas para tornar seu perfil mais atrativo aos seus clientes; Logo após será redirecionado para o cadastro, sinta-se à vontade nos contando suas experiências passadas, sua preferencia em atuação, entre outros!</p>
@@ -135,7 +135,7 @@ body{
                   </div>
                   <div class="carousel-item">
                     <a href="#sobrenos" style="text-decoration: none; color: black;">
-                    <h3 class="text-center py-5">Sobre iTonomise</h3>
+                    <h3 class="text-center pt-5">Sobre iTonomise</h3>
                     <img src="/iTonomise/imgs/painel.jpg" class="d-block w-100" style="margin-bottom: 30%;">
                     <div class="carousel-caption d-none d-md-block">                      
                       <p style="text-align: justify; text-justify: inter-word;">A iTonomise é uma plataforma que facilita o acesso à informação entre autônomo e contratante, visando sempre manter o mercado em movimento. Sua ideia surgiu ao longo de diversas pesquisas sobre o impacto da pandemia na vida dos trabalhadores autônomos, visando ajudar estes trabalhadores a iTonomise foi criada!</p>
