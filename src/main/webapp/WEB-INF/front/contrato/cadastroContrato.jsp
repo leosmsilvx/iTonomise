@@ -74,6 +74,14 @@ body{
     max-width: 90%;
   }
 }
+.form-control:focus {
+        border-color: #212529;
+        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
+} 
+.form-check-input:focus {
+        border-color: #212529;
+        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
+} 
 </style>
 </head>
 <body>
