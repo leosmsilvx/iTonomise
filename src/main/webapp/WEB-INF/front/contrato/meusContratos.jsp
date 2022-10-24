@@ -275,22 +275,22 @@ body{
 							
 											</c:if>
 											<c:if test="${(contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 0 and usuario == 'autonomo')}">
-												<td class="text-primary"><c:out value="Finalizado 1/2"/></td>
+												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
 							
 											</c:if>
 											<c:if test="${(contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 0 and usuario == 'comum')}">
-												<td class="text-primary"><c:out value="Finalizado 1/2"/></td>
+												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
 							
 											</c:if>
 											<c:if test="${ (contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 1 and usuario == 'comum')}">
-												<td class="text-primary"><c:out value="Finalizado 1/2"/></td>
+												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
 							
 											</c:if>
 											<c:if test="${ (contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 1 and usuario == 'autonomo')}">
-												<td class="text-primary"><c:out value="Finalizado 1/2"/></td>
+												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
 												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
 							
 											</c:if>

@@ -9,7 +9,7 @@ public interface DAOContrato {
 
 	public void atualizar(Contrato contrato) throws DAOException;
 
-	public void remover(Contrato contrato) throws DAOException;
+	public void remover(int idContrato) throws DAOException;
 
 	public List<Contrato> todosContratos() throws DAOException;
 

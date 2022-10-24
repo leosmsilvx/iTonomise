@@ -38,4 +38,4 @@ SELECT * FROM autonomo;
 
 SELECT * FROM contrato;
 
-SELECT * FROM avaliacao;
+SELECT * FROM avaliacao

@@ -58,6 +58,8 @@ public class Controller extends HttpServlet{
 				confirmarLogin(request, response);
 			} else if (action.equals("home")) { 
 				home(request, response);
+			} else if (action.equals("homeMensagem")) { 
+				homeMensagem(request, response);
 			} else if (action.equals("verContratos")) { 
 				verContratos(request, response);
 			} else if (action.equals("verAutonomos")) { 
@@ -98,6 +100,8 @@ public class Controller extends HttpServlet{
 				finalizarContrato(request, response);
 			} else if (action.equals("avaliar")) { 
 				avaliar(request, response);
+			} else if (action.equals("removerContrato")) { 
+				removerContrato(request, response);
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
@@ -230,8 +234,11 @@ public class Controller extends HttpServlet{
 			String msgConfirm = "Usuario cadastrado com sucesso!";
 			session.setAttribute("msgConfirm", msgConfirm);
 
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
-			rd.forward(request, response);
+			//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+			//rd.forward(request, response);
+			
+			String redirectURL = "controller?action=index";
+			response.sendRedirect(redirectURL);
 		}		
 		
 	}
@@ -281,9 +288,12 @@ public class Controller extends HttpServlet{
 			
 			String msgConfirm = "Usuario cadastrado com sucesso!";
 			session.setAttribute("msgConfirm", msgConfirm);
+			
+			String redirectURL = "controller?action=index";
+			response.sendRedirect(redirectURL);
 
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
-			rd.forward(request, response);
+			//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+			//rd.forward(request, response);
 		}
 	}
 	
@@ -338,11 +348,11 @@ public class Controller extends HttpServlet{
 		dao.cadastrar(novoContrato);
 		request.setAttribute("contrato", novoContrato);
 		
-		String msgContrato = "Contrato cadastrado com sucesso!";
-		session.setAttribute("msgContrato", msgContrato);
-
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
-		rd.forward(request, response);
+		String redirectURL = "controller?action=homeMensagem";
+		response.sendRedirect(redirectURL);
+		
+		//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+		//rd.forward(request, response);
 	}
 	
 	//Confirmar login
@@ -385,6 +395,16 @@ public class Controller extends HttpServlet{
 		rd.forward(request, response);
 	}
 	
+	//Home page
+	private void homeMensagem(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+			
+		HttpSession session = request.getSession(true);	
+		session.setAttribute("msgContrato", "Contrato cadastrado com sucesso!");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+		rd.forward(request, response);
+	}
+		
 	//Ver contratos
 	private void verContratos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException{
@@ -555,8 +575,9 @@ public class Controller extends HttpServlet{
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		dao.atualizar(atualizarAutonomo);
 		request.setAttribute("autonomo", atualizarAutonomo);
-
-		perfil(request, response);
+		
+		String redirectURL = "controller?action=perfil";
+		response.sendRedirect(redirectURL);
 	}	
 	
 	//Pagina alterar perfil comum
@@ -596,7 +617,8 @@ public class Controller extends HttpServlet{
 		dao.atualizar(novoUsuario);
 		request.setAttribute("comum", novoUsuario);
 
-		perfil(request, response);
+		String redirectURL = "controller?action=perfil";
+		response.sendRedirect(redirectURL);
 	}	
 	
 	//Meus Contratos
@@ -845,4 +867,17 @@ public class Controller extends HttpServlet{
 
 			meusContratos(request, response);
 		}
+		// Avaliar
+		private void removerContrato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+
+			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+								
+			DAOContrato dao = new DAOContratoImpl();
+			dao.remover(idContrato);
+			
+			meusContratos(request, response);
+		}
 }
+
+

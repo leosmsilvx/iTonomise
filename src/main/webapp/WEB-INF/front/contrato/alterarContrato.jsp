@@ -191,12 +191,15 @@ body{
                                 <label for="descricao" class="form-label">Descrição do contrato</label>
                                 <textarea class="form-control" name="descricao" rows="7" required>${contrato.descricao}</textarea>
                             </div>
-                           <div class="col-6">
+                           <div class="col-4">
                               <button class="w-100 btn btn-dark" type="submit">Alterar</button>
                            </div>
-                           <div class="col-6 pb-4">
-                                    	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
-                                    </div>
+                           <div class="col-4 pb-4">
+                          		<a href="controller?action=removerContrato&idContrato=${contrato.idContrato}" class="btn btn-danger w-100">Excluir contrato</a>	
+                           </div>
+                           <div class="col-4 pb-4">
+                          		<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
+                           </div>
           </div>
         </form>
         </div>

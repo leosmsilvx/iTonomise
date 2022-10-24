@@ -129,7 +129,7 @@ public class DAOContratoImpl implements DAOContrato{
 		}
 	}
 
-	public void remover(Contrato contrato) throws DAOException {
+	public void remover(int idContrato) throws DAOException {
 		try {
 			this.connection = ConnectionFactory.getConnection();
 			
@@ -137,7 +137,7 @@ public class DAOContratoImpl implements DAOContrato{
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			stmt.setLong(1, contrato.getIdContrato());
+			stmt.setLong(1, idContrato);
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -277,7 +277,6 @@ public class DAOContratoImpl implements DAOContrato{
 	}
 	
 	public String pegarLocalizacao(String tipoPessoa, int idPessoa) throws DAOException {
-		String tipoId = "idUsuario";
 		String localizacao = null;
 		String sql = "";
 		try {
