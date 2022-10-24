@@ -276,4 +276,36 @@ public class DAOContratoImpl implements DAOContrato{
 		}
 	}
 	
+	public String pegarLocalizacao(String tipoPessoa, int idPessoa) throws DAOException {
+		String tipoId = "idUsuario";
+		String localizacao = null;
+		String sql = "";
+		try {
+			if(tipoPessoa.equals("comum")) {
+				sql = "SELECT endereco FROM usuario WHERE idUsuario = ?";
+			}
+			else if(tipoPessoa.equals("autonomo")) {
+				sql = "SELECT endereco FROM autonomo WHERE idAUtonomo = ?";				
+			}
+			
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			
+			stmt.setInt(1, idPessoa);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				localizacao = rs.getString("endereco");
+			}
+			
+			rs.close();
+			stmt.close();
+			return localizacao;
+			
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar localizacao: " + e.getMessage());
+		}
+	}
+	
+	
 }

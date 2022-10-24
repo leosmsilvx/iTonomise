@@ -74,9 +74,21 @@ body{
     max-width: 90%;
   }
 }
+.form-control:focus {
+        border-color: #212529;
+        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
+} 
+.form-check-input:focus {
+        border-color: #212529;
+        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
+} 
+.form-select:focus {
+        border-color: #212529;
+        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
+} 
 </style>
 </head>
-<body>
+<body onload="checkNull()">
     <!-- Header -->
     <nav class="py-2 bg-dark border-bottom">
         <div class="d-flex flex-wrap">
@@ -161,9 +173,18 @@ body{
               <input type="hidden" class="form-control" name="idContrato" value="${contrato.idContrato}">
               <input type="hidden" class="form-control" name="tipoCriador" value="${contrato.tipoCriador}">
 
-              <div class="col-12">
-                <label for="titulo" class="form-label">Localização</label>
-                                 <input type="text" class="form-control" name="localizacao" value="${contrato.localizacao}" required>
+              <div class="col-11">
+                <label for="Localizacao" class="form-label">Localização</label>
+                				<input type="hidden" name="realLocalizacao" id="realLocalizacao" value="${localizacaoPerfil}">
+	                            <input type="text" class="form-control" name="localizacao" id="localizacao" placeholder="Localização" value="${contrato.localizacao}" required>
+              </div>
+              <div class="col-1">
+              	<label for="casinha" class="form-label">&ensp;</label><br>
+              	<button class="btn btn-dark" type="button" onclick="pegarLocalizacao()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+				  <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
+				  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
+				</svg>
+				</button>
               </div>
 
               <div class="col-12">
@@ -191,6 +212,8 @@ body{
   </div>
   </div>
   <script type="text/javascript">
+  		checkNull();
+  		disableInput();
   		function disableInput(){
   			var checkBoxNumero = document.getElementById("checkNumero");
   			var checkBoxData = document.getElementById("checkData");
@@ -216,6 +239,21 @@ body{
   			}
   			
   			
+  		}
+  		function pegarLocalizacao(){
+  			document.getElementById("localizacao").value = document.getElementById("realLocalizacao").value;;
+  		}
+  		
+  		function checkNull(){
+  			if(document.getElementById("input-valor").value.length == 0){
+  	  			document.getElementById("checkValor").checked = true;
+  			}
+  			if(document.getElementById("input-data").value.length == 0){
+  				document.getElementById("checkData").checked = true;	
+  			}
+  			if(document.getElementById("input-numeroT").value.length == 0){
+  	  			document.getElementById("checkNumero").checked = true;	
+  			}
   		}
   </script>
   <script

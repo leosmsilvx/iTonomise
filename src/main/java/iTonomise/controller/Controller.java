@@ -167,7 +167,15 @@ public class Controller extends HttpServlet{
 	
 	//Pagina Cadastro Contrato
 	private void pagCadCont(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, DAOException {
+		
+		DAOContrato dao = new DAOContratoImpl();
+		HttpSession session = request.getSession(true);
+		String usuario = (String) session.getAttribute("usuario");
+		int id = (int) session.getAttribute("id");
+		String localizacao = dao.pegarLocalizacao(usuario, id);
+		session.setAttribute("localizacaoPerfil", localizacao);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/cadastroContrato.jsp");
 		rd.forward(request, response);
 	}

@@ -82,6 +82,10 @@ body{
         border-color: #212529;
         box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
 } 
+.form-select:focus {
+        border-color: #212529;
+        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
+} 
 </style>
 </head>
 <body>
@@ -131,7 +135,7 @@ body{
 				</div>
               </div>
               <div class="col-6">
-                <label for="titulo" class="form-label">Data de Início</label>
+                <label for="dataInicio" class="form-label">Data de Início</label>
                                  <input type="date" id="input-data" class="form-control" name="dataInicio" required>
                                  
                 <div class="form-check">
@@ -144,7 +148,7 @@ body{
               
 
               <div class="col-6">
-                 <label for="titulo" class="form-label">Duração</label>
+                 <label for="duracao" class="form-label">Duração</label>
 
                 <div class="input-group">
 
@@ -169,9 +173,18 @@ body{
 				</div>
               </div>
 
-              <div class="col-12">
-                <label for="titulo" class="form-label">Localização</label>
-                                 <input type="text" class="form-control" name="localizacao" placeholder="Localização" required>
+              <div class="col-11">
+                <label for="Localizacao" class="form-label">Localização</label>
+                				<input type="hidden" name="realLocalizacao" id="realLocalizacao" value="${localizacaoPerfil}">
+	                                 <input type="text" class="form-control" name="localizacao" id="localizacao" placeholder="Localização" required>
+              </div>
+              <div class="col-1">
+              	<label for="casinha" class="form-label">&ensp;</label><br>
+              	<button class="btn btn-dark" type="button" onclick="pegarLocalizacao()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+				  <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
+				  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
+				</svg>
+				</button>
               </div>
 
               <div class="col-12">
@@ -222,9 +235,10 @@ body{
   				document.getElementById("input-valor").disabled = true;
   			} else {
   				document.getElementById("input-valor").disabled = false;
-  			}
-  			
-  			
+  			}  			
+  		}
+  		function pegarLocalizacao(){
+  			document.getElementById("localizacao").value = document.getElementById("realLocalizacao").value;;
   		}
   </script>
   <script

@@ -16,4 +16,6 @@ public interface DAOContrato {
 	public Contrato buscarContrato(int idContrato) throws DAOException;
 
 	public void atualizarAval(int idContrato) throws DAOException;
+	
+	public String pegarLocalizacao(String tipoPessoa, int idPessoa) throws DAOException;
 }
