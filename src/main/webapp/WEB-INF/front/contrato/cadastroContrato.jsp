@@ -74,18 +74,7 @@ body{
     max-width: 90%;
   }
 }
-.form-control:focus {
-        border-color: #212529;
-        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
-} 
-.form-check-input:focus {
-        border-color: #212529;
-        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
-} 
-.form-select:focus {
-        border-color: #212529;
-        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
-} 
+input[type=checkbox]{accent-color:#212529;}
 </style>
 </head>
 <body>
@@ -127,8 +116,8 @@ body{
                   <span class="input-group-text">R$</span> <input id="input-valor" type="number"
                     class="form-control" required name="valor" min="0" step="any" placeholder="100.00">
                 </div>
-                <div class="form-check">
-					  <input class="form-check-input" type="checkbox" id="checkValor" onclick="disableInput()">
+                <div class="">
+					  <input class="" type="checkbox" id="checkValor" onclick="disableInput()">
 				  		<label class="form-check-label" for="checkValor">
 				   		 A combinar
 				  		</label>
@@ -138,8 +127,8 @@ body{
                 <label for="dataInicio" class="form-label">Data de Início</label>
                                  <input type="date" id="input-data" class="form-control" name="dataInicio" required>
                                  
-                <div class="form-check">
-					  <input class="form-check-input" type="checkbox" id="checkData" onclick="disableInput()">
+                <div class="">
+					  <input class="=" type="checkbox" id="checkData" onclick="disableInput()">
 				  		<label class="form-check-label" for="checkData">
 				   		 A combinar
 				  		</label>
@@ -165,8 +154,8 @@ body{
 
                   <input type="number" class="form-control" name="duracaoN" id="input-numeroN" required>
                 </div>
-                <div class="form-check">
-					  <input class="form-check-input" type="checkbox" id="checkNumero" onclick="disableInput()">
+                <div class="">
+					  <input class="" type="checkbox" id="checkNumero" onclick="disableInput()">
 				  		<label class="form-check-label" for="checkNumero">
 				   		 Não definido
 				  		</label>
