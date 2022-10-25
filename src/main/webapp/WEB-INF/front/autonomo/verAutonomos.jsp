@@ -103,10 +103,11 @@ body{
 				</div>
 			</nav>
 	<div class="container">
-		<div class="py-5">
+		<div class="pt-4">
 		<form action="controller?action=buscarAutonomoPTag" method="post">
 			<div class="row g-3">
-				<div class="col-3">
+				
+				<div class="col-4">
 					<h4>Lista de Autonomos</h4>
 				</div>
 				<div class="col-4">					
@@ -143,22 +144,23 @@ body{
 							
 					
 				</div>
-				<div class="col-1" style="padding-top: 3px">
-					<label for="botao">&ensp;</label><br>
+				<div class="col-1" style="padding-top: 3px; text-align: center;">
+					<label for="botao">Buscar</label><br>
 					<button type="submit" class="btn btn-sm btn-dark w-100"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 					  	<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
 						</svg>
-					</button>					
+					</button>	
+											
 				</div>
-				<div class="col-1" style="padding-top: 3px">
-					<label for="limpar">&ensp;</label><br>
-					<a href="controller?action=verAutonomos" class="btn btn-sm btn-dark text-danger w-100">Limpar</a>
-				</div>
+				<a href="controller?action=verAutonomos" style="text-decoration: none;">
+						<p class="text-secondary text-end">Limpar filtros</p>
+					</a>
+				
 			</div>
 			</form>
 		</div>
 		
-	<div class="pt-2">
+	<div>
                     <table class="table table-hover table-dark table-striped caption-top align-middle">
                         <thead>
                           <tr>
