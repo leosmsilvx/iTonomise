@@ -302,7 +302,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		List<Autonomo> autonomos = new ArrayList<Autonomo>();
 		try {
 			
-			String sql = "SELECT * FROM autonomo WHERE tags LIKE ? AND (nome LIKE ? OR sobrenome LIKE ? OR usuario LIKE ?)";
+			String sql = "SELECT * FROM autonomo WHERE tags LIKE ? AND (nome LIKE ? OR sobrenome LIKE ? OR usuario LIKE ?) ORDER BY aval DESC";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 
