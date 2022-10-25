@@ -255,6 +255,31 @@ public class DAOUsuarioImpl implements DAOUsuario{
 			throw new DAOException("Erro ao buscar: " + e.getMessage());
 		}
 	}
+	
+	public int contarTodosContratos(int idUsuario) throws DAOException {
+		try {
+			int todos = 0;
+			this.connection = ConnectionFactory.getConnection();
+			
+			String sql = "SELECT COUNT(idAvaliacao) FROM avaliacao WHERE idUsuario = ?;";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			
+			stmt.setInt(1, idUsuario);
+
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				todos = rs.getInt("COUNT(idAvaliacao)");
+			}	
+				
+			rs.close();
+			stmt.close();
+			return todos;
+		} catch (Exception e) {
+			throw new DAOException("Erro ao contar contratos: " + e.getMessage());
+		}
+	}
 
 }
 	

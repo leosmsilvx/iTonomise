@@ -279,15 +279,15 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		}
 	}
 	
-	public void atualizarMedia(double media, int idAutonomo) throws DAOException {
+	public void atualizarMedia(int idAutonomo) throws DAOException {
 		try {
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "UPDATE autonomo SET aval = ? WHERE idAutonomo = ?";
+			String sql = "UPDATE autonomo SET aval = ROUND((SELECT AVG(valor) FROM avaliacao WHERE idAutonomo = ?), 2) WHERE idAutonomo = ?;";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			stmt.setDouble(1, media);
+			stmt.setInt(1, idAutonomo);
 			stmt.setInt(2, idAutonomo);
 
 			stmt.executeUpdate();
@@ -350,6 +350,31 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			
 		} catch (Exception e) {
 			throw new DAOException("Erro ao buscar autonomo p/ tag: " + e.getMessage());
+		}
+	}
+	
+	public int contarTodosContratos(int idAutonomo) throws DAOException {
+		try {
+			int todos = 0;
+			this.connection = ConnectionFactory.getConnection();
+			
+			String sql = "SELECT COUNT(idAvaliacao) FROM avaliacao WHERE idAutonomo = ?;";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			
+			stmt.setInt(1, idAutonomo);
+
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				todos = rs.getInt("COUNT(idAvaliacao)");
+			}	
+				
+			rs.close();
+			stmt.close();
+			return todos;
+		} catch (Exception e) {
+			throw new DAOException("Erro ao contar contratos: " + e.getMessage());
 		}
 	}
 

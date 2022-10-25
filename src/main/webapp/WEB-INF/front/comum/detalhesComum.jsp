@@ -114,7 +114,10 @@ body{
 											<div class="card-body border-top">
 											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${comum.nome}</p>
 											</div>
-										</div>		
+										</div>
+										<div class="col-12 row py-2">
+											<div class="col-8"><h6 class="text-start px-3 py-2">Total de contratos: ${todosContratosCom}</h6></div>
+											</div>	
 										<div class="col-12 pt-4">
                                     	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
                                     </div>

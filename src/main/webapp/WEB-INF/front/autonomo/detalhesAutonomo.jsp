@@ -105,8 +105,7 @@ body{
 						<div>
 							<h4 class="mb-4 pt-4">Perfil do autônomo</h4>
 							<form action="controller?action=proporContrato" method="post">
-								<div class="row g-3">
-		
+								<div class="row">		
 									<div class="col-4">
 										<h6 class="text-body text-start px-1">@${autonomo.user}</h6>	
 										<div class="card">
@@ -114,14 +113,17 @@ body{
 											<div class="card-body border-top">
 											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${autonomo.nome}</p>
 											</div>
-										</div>		
-										<h6 class="text-body text-end px-3 py-2">${autonomo.aval}<svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></h6>	
-										<div class="d-grid">
-										<input type="hidden" name="idAutonomo" value="${autonomo.idAutonomo}">
+										</div>
+										<div class="col-12 row py-2">
+											<div class="col-8"><h6 class="text-start px-3 py-2">Total de contratos: ${todosContratosAut}</h6></div>
+											<div class="col-4"><h6 class="text-end px-3 py-2">${autonomo.aval}<svg class="bi" width="1.1em" height="1.1em"> <use xlink:href="#estrelilha"></use></svg></h6></div>
+										</div>	
+											<div class="d-grid">
+											<input type="hidden" name="idAutonomo" value="${autonomo.idAutonomo}">
 											<button type="submit" class="btn btn-dark">Propor Contrato</button>
 											<div class="col-12 pt-4">
-                                    	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
-                                    </div>
+                                    			<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
+                                    		</div>
 										</div>	
 									</div>
 		

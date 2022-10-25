@@ -451,7 +451,9 @@ public class Controller extends HttpServlet{
 		
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		Autonomo autonomo = dao.buscarAutonomo(Integer.valueOf(request.getParameter("idAutonomo")));
-
+		int todosContratos = dao.contarTodosContratos(Integer.valueOf(request.getParameter("idAutonomo")));
+		
+		request.setAttribute("todosContratosAut", todosContratos);
 		request.setAttribute("autonomo", autonomo);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/detalhesAutonomo.jsp");
@@ -465,6 +467,10 @@ public class Controller extends HttpServlet{
 		DAOUsuario dao = new DAOUsuarioImpl();
 		Usuario usuario = dao.buscarUsuario(Integer.valueOf(request.getParameter("idUsuario")));
 
+		int todosContratos = dao.contarTodosContratos(Integer.valueOf(request.getParameter("idUsuario")));
+		
+		request.setAttribute("todosContratosCom", todosContratos);
+		
 		request.setAttribute("comum",usuario);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/detalhesComum.jsp");
@@ -860,11 +866,8 @@ public class Controller extends HttpServlet{
 			DAOUsuario dao4 = new DAOUsuarioImpl();
 			List<Usuario> usuarios = dao4.todosUsuarios();
 			request.setAttribute("usuarios", usuarios);
-			
-			double media = dao.mediaAutonomo(idAutonomo);
-			media = (double) (Math.round(media*10.0)/10.0);
-			
-			dao3.atualizarMedia(media, idAutonomo);
+						
+			dao3.atualizarMedia(idAutonomo);
 			dao2.atualizarAval(idContrato);
 
 			meusContratos(request, response);

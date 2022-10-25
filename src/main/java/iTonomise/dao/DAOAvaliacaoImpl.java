@@ -128,9 +128,8 @@ public class DAOAvaliacaoImpl implements DAOAvaliacao{
 	public double mediaAutonomo(int idAutonomo) throws DAOException {	
 		
 		try {
-			double soma = 0;
-			int quantidade = 0;
-			String sql = "SELECT valor from avaliacao WHERE idAutonomo = ?";
+			double valor = 0;
+			String sql = "SELECT AVG(valor) FROM avaliacao WHERE idAutonomo = ?;";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 
@@ -138,15 +137,13 @@ public class DAOAvaliacaoImpl implements DAOAvaliacao{
 
 			ResultSet rs = stmt.executeQuery();
 			
-			while (rs.next()) {
-				quantidade = quantidade + 1;
-				double valor = Double.valueOf(rs.getString("valor"));
-				soma = soma + valor;
+			if (rs.next()) {
+				valor = Double.valueOf(rs.getString("valor"));
 			}			
 			
 			rs.close();
 			stmt.close();
-			return (soma/quantidade);
+			return (valor);
 			
 		} catch (Exception e) {
 			throw new DAOException("Erro ao buscar: " + e.getMessage());
