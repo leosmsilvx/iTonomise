@@ -6,8 +6,7 @@ INSERT INTO autonomo(nome, sobrenome, cpf, tel, usuario, senha, email, descricao
 ('Ana Laura', 'Maia', '93336378001', '32930738051', 'anamaia', '123', 'anamaia18@gmail.com', 'Oi gentes, me chamo Ana e trabalho com redes eletricas, focada em casas e pequenos apartamentos.', 'Eletricista', 'Rua Pernambuco - nº 88 - Bairro Centro - Divinópolis', '0'),
 ('João', 'Eduardo', '76895119027', '35934419373', 'jeduardo', '123', 'joaoeduardo7gmail.com', 'Me chamo João, trabalho como pedreiro e realizo qualquer trabalho na região de Divinópolis.', 'Pedreiro', 'Rua Santo Antonio - nº 1717 - Bairro Pelotas - Divinópolis', '1.0'),	
 ('Pedro', 'Diniz', '36148374080', '34928384530', 'peper', '123', 'pepertrabalhas@gmail.com', 'Ohayo, me chamo Pedro, e trabalho com Cosplays de anime!', 'Cosplayer', 'Rua Liberdade - nº 39 - Bairro Luz - Divinópolis', '0'),
-('Thalisson', 'Santos', '99202860017', '31925665484', 'mthlssn', '123', 'mthlssn@gmail.com', 'Hello World, me chamo thalisson, trabalho como programador, atualmente estou desenvolvendo Cryptids, um jogo para PC.', 'Programador(a)', 'Rua Lavras - nº 761 - Bairro São José', '5.0'),
-('Thalisson', 'Santos', '99202860017', '31925665484', 'mthlssn', '123', 'mthlssn@gmail.com', 'Hello World, me chamo thalisson, trabalho como programador, atualmente estou desenvolvendo Cryptids, um jogo para PC.', 'Programador(a), Cozinheiro', 'Rua Lavras - nº 761 - Bairro São José', '5.0');
+('Thalisson', 'Santos', '99202860017', '31925665484', 'mthlssn', '123', 'mthlssn@gmail.com', 'Hello World, me chamo thalisson, trabalho como programador, atualmente estou desenvolvendo Cryptids, um jogo para PC.', 'Programador(a)', 'Rua Lavras - nº 761 - Bairro São José', '5.0');
 
 INSERT INTO usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco) VALUES
 ('Maria', 'Isabel', '92283575095', '38934426263', 'mabel', '123', 'mabel88@gmail.com', 'Rua Natal - nº 534 - Bairro Planalto - Divinópolis'),
