@@ -30,8 +30,7 @@ INSERT INTO contrato(idAutonomo, idUsuario, titulo, valor, descricao, dataInicio
 
 INSERT INTO avaliacao(idAutonomo, idUsuario, idContrato, valor) VALUES
 ('6', '1', '9', '1'),
-('8', '1', '10', '5'),
-('8', '1', '8', '2');
+('8', '1', '10', '5');
 
 SELECT * FROM usuario;
 
@@ -40,3 +39,5 @@ SELECT * FROM autonomo;
 SELECT * FROM contrato;
 
 SELECT * FROM avaliacao;
+
+SELECT COUNT(idAvaliacao) FROM avaliacao WHERE idAutonomo = 8;

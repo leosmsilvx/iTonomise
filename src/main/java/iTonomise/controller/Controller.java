@@ -204,6 +204,9 @@ public class Controller extends HttpServlet{
 		double aval = 0;
 		int idAutonomo = 0;
 		
+
+		System.out.print("oi eu sou as tags: "+tags);
+		
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		DAOUsuario dao2 = new DAOUsuarioImpl();
 		Autonomo autonomoUser = dao.buscarAutonomoPUser(request.getParameter("user"));
@@ -352,9 +355,6 @@ public class Controller extends HttpServlet{
 		
 		String redirectURL = "controller?action=homeMensagem";
 		response.sendRedirect(redirectURL);
-		
-		//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
-		//rd.forward(request, response);
 	}
 	
 	//Confirmar login
