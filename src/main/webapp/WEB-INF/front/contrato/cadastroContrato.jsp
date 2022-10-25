@@ -74,7 +74,7 @@ body{
     max-width: 90%;
   }
 }
-input[type=checkbox]{accent-color:#212529;}
+input[type=checkbox]{accent-color:#212529;transform : scale(1.2);}
 </style>
 </head>
 <body>
