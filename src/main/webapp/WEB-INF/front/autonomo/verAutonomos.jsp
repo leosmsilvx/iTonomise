@@ -110,11 +110,11 @@ body{
 					<h4>Lista de Autonomos</h4>
 				</div>
 				<div class="col-4">					
-						<label for="filtro">Buscar por nome</label> <input type="text"
+						<label for="filtro">Buscar</label> <input type="text"
 								class="form-control" name="nomeBuscar">
 				</div>
 				<div class="col-3">
-							<label for="filtro">Filtro</label> <select
+							<label for="filtro">Profissões</label> <select
 								class="form-select bg-dark text-white text-center"
 								name="tagBuscar" required>
 								<option value="nada">Filtrar por</option>
