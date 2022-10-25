@@ -75,6 +75,9 @@ body{
 		max-width: 90%;
 	}
 }
+.form-select{
+	border: 0px;
+}
 </style>
 </head>
 <body>
@@ -99,29 +102,63 @@ body{
 					</ul>
 				</div>
 			</nav>
-            <div class="container">
-            	<div class="py-5">					
-						<div class="pb-4 position-relative">	
-							<h4 class="mb-2"><a>Lista de Autônomos</a><a class="position-absolute top-0 end-0 text-end text-decoration-none text-dark">Categoria</a></h4>					
-							<div class="col-2 position-absolute top-50 end-0">								
-								<label for="filtro">Filtro</label>
-								<form action="controller?action=atualizarPorCategoria" method="post">
-									<select class="form-select bg-dark text-white text-center" name="filtro" onchange="this.form.submit()" required>
-										<option value="none">Filtrar por</option>
-										<option value="Pintor(a)">Pintor(a)</option>
-									  	<option value="Pedreiro">Pedreiro</option>
-									  	<option value="Eletricista">Eletricista</option>	
-									 	<option value="Encanador(a)">Encanador(a)</option>							  
-									 	<option value="Faxineiro(a)">Faxineiro(a)</option>
-									 	<option value="Babá">Babá</option>								 	
-									</select>
-									<button type="submit" class="btn btn-outline-dark btn-sm position-absolute top-80 end-0">Limpar Filtro</button>
-								</form>
-							</div>
-						</div>						
-				</div>	
-                <div class="py-5">
-                <c:set var="notEmpty" scope="session" value="${1}"/>
+	<div class="container">
+		<div class="py-5">
+		<form action="controller?action=buscarAutonomoPTag" method="post">
+			<div class="row g-3">
+				<div class="col-3">
+					<h4>Lista de Autonomos</h4>
+				</div>
+				<div class="col-4">					
+						<label for="filtro">Buscar por nome</label> <input type="text"
+								class="form-control" name="nomeBuscar">
+				</div>
+				<div class="col-3">
+							<label for="filtro">Filtro</label> <select
+								class="form-select bg-dark text-white text-center"
+								name="tagBuscar" required>
+								<option value="nada">Filtrar por</option>
+								<option value="Pintor(a)">Pintor(a)</option>
+								<option value="Pedreiro">Pedreiro</option>
+								<option value="Eletricista">Eletricista</option>
+								<option value="Encanador(a)">Encanador(a)</option>
+								<option value="Carpinteiro(a)">Carpinteiro(a)</option>
+								<option value="Jardineiro(a)">Jardineiro(a)</option>
+								<option value="Faxineiro(a)">Faxineiro(a)</option>
+								<option value="Costureiro(a)">Costureiro(a)</option>
+								<option value="Babá">Babá</option>
+								<option value="Programador(a)">Programador(a)</option>
+								<option value="Professor(a)">Professor(a)</option>
+								<option value="Barman">Barman</option>
+								<option value="Cumin">Cumin</option>
+								<option value="Dj">Dj</option>
+								<option value="Dançarino(a)">Dançarino(a)</option>
+								<option value="Fotógrafo(a)">Fotógrafo(a)</option>
+								<option value="Motorista">Motorista</option>
+								<option value="Editor(a)">Editor(a)</option>
+								<option value="Manicure">Manicure</option>
+								<option value="Massagista">Massagista</option>
+								<option value="Personal">Personal</option>
+							</select>
+							
+					
+				</div>
+				<div class="col-1" style="padding-top: 3px">
+					<label for="botao">&ensp;</label><br>
+					<button type="submit" class="btn btn-sm btn-dark w-100"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+					  	<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+						</svg>
+					</button>					
+				</div>
+				<div class="col-1" style="padding-top: 3px">
+					<label for="limpar">&ensp;</label><br>
+					<a href="controller?action=verAutonomos" class="btn btn-sm btn-dark text-danger w-100">Limpar</a>
+				</div>
+			</div>
+			</form>
+		</div>
+		
+	<div class="pt-2">
                     <table class="table table-hover table-dark table-striped caption-top align-middle">
                         <thead>
                           <tr>
@@ -132,9 +169,7 @@ body{
                             <th scope="col"></th>
                           </tr>
                         </thead>                   
-                        <c:forEach var="autonomosCadastrados" items="${autonomos}">                        
-                        <c:if test="${autonomosCadastrados.tags == categoria or categoria == null}">
-                        <c:set var="notEmpty" scope="session" value="${2}"/>						
+                        <c:forEach var="autonomosCadastrados" items="${autonomos}">                       				
                         <tbody class="table-group-divider">                        
                           <tr>
                             <td>@${autonomosCadastrados.user}</td>
@@ -142,19 +177,15 @@ body{
                             <td class="text-warning">${autonomosCadastrados.tags}</td>
                             <td>${autonomosCadastrados.aval} <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></td>
                             <td class="text-end"><a href="controller?action=detalhesAutonomo&idAutonomo=${autonomosCadastrados.idAutonomo}" class="btn btn-light" style="text-decoration: none;">Visitar Perfil</a></td>
-                          </tr>                
-                         </c:if>                   
+                          </tr>                                  
                         </c:forEach>   					
                         </tbody>                        
                       </table>
-                      
-                      <c:if test="${notEmpty != 2 and categoria != null}">
-							<h4 class="text-center text-danger">Não há autonomos correspondentes ao filtro selecionado.</h4>
-                        </c:if>
+					<h4 class="text-center text-danger">${msgNaoTem}</h4>
                     </div>
 
 			<footer class="mt-auto border-top border-1">
-						<a href="controller?action=home" class="nav-link text-center text-muted px-2"style="padding-top: 2em;">© 2022 iTonomise</a>	
+						<a href="controller?action=home" class="nav-link text-center text-muted px-2 "style="padding-top: 2em;">© 2022 iTonomise</a>	
 			</footer>
 		</div>
 	<script

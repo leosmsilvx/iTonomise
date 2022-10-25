@@ -188,7 +188,7 @@ body{
 	                    <div style="text-align: right;">
 	                        <a style="font-size: 2em;
 	                          margin-right: 0.5em;
-	                          font-weight: bold;">Olá autonomo!</a>
+	                          font-weight: bold;">Olá autônomo!</a>
 	                          <div class="feature-icon d-inline-flex align-items-center justify-content-center text-white fs-2" style="border-radius: 6px; background-color: #212529;">
 	                            <svg class="bi" width="40px" height="40px"><use xlink:href="#autonomo"></use></svg>
 	                          </div>

@@ -102,6 +102,8 @@ public class Controller extends HttpServlet{
 				avaliar(request, response);
 			} else if (action.equals("removerContrato")) { 
 				removerContrato(request, response);
+			} else if (action.equals("buscarAutonomoPTag")) { 
+				buscarAutonomoPTag(request, response);
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
@@ -867,7 +869,8 @@ public class Controller extends HttpServlet{
 
 			meusContratos(request, response);
 		}
-		// Avaliar
+		
+		// Excluir Contrato 
 		private void removerContrato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
 
@@ -877,6 +880,32 @@ public class Controller extends HttpServlet{
 			dao.remover(idContrato);
 			
 			meusContratos(request, response);
+		}
+		
+		// Buscar autonomo por tag
+		private void buscarAutonomoPTag(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+
+			String tagBuscar = request.getParameter("tagBuscar");
+			String nomeBuscar = request.getParameter("nomeBuscar");
+			
+			if(tagBuscar.equals("nada")) {
+				tagBuscar = "";
+			}
+										
+			DAOAutonomo dao = new DAOAutonomoImpl();
+			List<Autonomo> autonomos = dao.buscarAutonomoTag(tagBuscar, nomeBuscar);
+			
+			request.setAttribute("msgNaoTem", "");
+			
+			if(autonomos.isEmpty()) {
+				request.setAttribute("msgNaoTem", "Não há autonomos correspondentes ao filtro selecionado.");
+			}
+			
+			request.setAttribute("autonomos", autonomos);		
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/verAutonomos.jsp");
+			rd.forward(request, response);
 		}
 }
 

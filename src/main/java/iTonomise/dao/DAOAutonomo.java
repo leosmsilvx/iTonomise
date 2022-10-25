@@ -20,5 +20,7 @@ public interface DAOAutonomo {
 	public String buscarEmailAutonomo(String email) throws DAOException;
 	
 	public void atualizarMedia(double media, int idAutonomo) throws DAOException;
+	
+	public List<Autonomo> buscarAutonomoTag(String tagsBusca, String nomeBusca) throws DAOException;
 
 }

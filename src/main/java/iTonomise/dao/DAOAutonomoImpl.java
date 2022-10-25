@@ -296,5 +296,59 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			throw new DAOException("Erro ao atualizar media: " + e.getMessage());
 		}
 	}
+	
+	public List<Autonomo> buscarAutonomoTag(String tagsBusca, String nomeBusca) throws DAOException {
+		int idAutonomo = 0;
+		List<Autonomo> autonomos = new ArrayList<Autonomo>();
+		try {
+			
+			String sql = "SELECT * FROM autonomo WHERE tags LIKE ? AND nome LIKE ?";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+
+			stmt.setString(1, "%"+tagsBusca+"%");
+			stmt.setString(2, "%"+nomeBusca+"%");
+
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				String nome = rs.getString("nome");
+				String sobrenome = rs.getString("sobrenome");
+				String cpf = rs.getString("cpf");
+				String tel = rs.getString("tel");
+				String usuario = rs.getString("usuario");
+				String senha = rs.getString("senha");
+				String email = rs.getString("email");
+				String descricao = rs.getString("descricao");
+				String tags = rs.getString("tags");
+				String endereco = rs.getString("endereco");
+				double aval = rs.getDouble("aval");
+
+
+				Autonomo autonomo = new Autonomo(nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email, descricao, tags, endereco, aval, idAutonomo);
+				autonomo.setIdAutonomo(idAutonomo);
+				autonomo.setNome(nome);
+				autonomo.setSobrenome(sobrenome);
+				autonomo.setCpf(cpf);
+				autonomo.setTel(tel);
+				autonomo.setUser(usuario);
+				autonomo.setSenha(senha);
+				autonomo.setEmail(email);
+				autonomo.setDesc(descricao);
+				autonomo.setTags(tags);
+				autonomo.setEndereco(endereco);
+				autonomo.setAval(aval);
+
+				autonomos.add(autonomo);
+			}
+			
+			rs.close();
+			stmt.close();
+			return autonomos;
+			
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar autonomo p/ tag: " + e.getMessage());
+		}
+	}
 
 }
