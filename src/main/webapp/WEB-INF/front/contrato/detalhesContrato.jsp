@@ -167,23 +167,43 @@ body{
 							<input type="hidden" class="form-control" name="descricao" value="${contrato.descricao}">  
 							<input type="hidden" class="form-control" name="finalAut" value="${contrato.finalAut}">
 							<input type="hidden" class="form-control" name="finalUser" value="${contrato.finalUser}">
-							<!-- Aceitar Usuario Comum -->
-                            <c:if test="${contrato.idUsuario == null and usuario == 'comum'}">
-                            	<div class="col-12 py-2" style="padding: 30%">
-			  						<button type="submit" class="btn btn-dark w-100">Aceitar</button>
-			  					</div>
-		  					</c:if>
-		  					<!-- Aceitar Usuario Autonomo -->
-		  					<c:if test="${contrato.idAutonomo == null and usuario == 'autonomo'}">
-                            	<div class="col-12 py-2" style="padding: 30%">
-			  					<button type="submit" class="btn btn-dark w-100">Aceitar</button>
-			  					</div>
-		  					</c:if>
-		  					<!-- Aceitar Contrato Proposto -->
-		  					<c:if test="${contrato.idAutonomo != null and contrato.idUsuario != null and contrato.status == 1 and contrato.tipoCriador != usuario}">
-			  					<div class="col-12 py-2" style="padding: 30%">
-			  						<button type="submit" class="btn btn-dark w-100">Aceitar</button>
-			  					</div>
+							
+							
+							<!-- Modal -->
+							<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h1 class="modal-title fs-5" id="exampleModalLabel">iTonomise avisa!</h1>
+							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							      </div>
+							      <div class="modal-body">
+							        <p>
+							        O iTonomise só faz a <span class="text-primary">intermediação de contato</span> entre o Autonomo e o Contratante,
+							        não temos qualquer ligação com as pessoas relacionadas ao contrato, e não nos responsabilizamos
+							        por qualquer <span class="text-danger">dano ou imprevisto</span> que possa ocorrer.
+							        </p>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-success" onclick="aceitoOsTermos()" data-bs-dismiss="modal">Eu entendi!</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+						
+		  					<!-- Aceitar Contrato -->
+		  					<c:if test="${(contrato.idAutonomo != null and contrato.idUsuario != null and contrato.status == 1 and contrato.tipoCriador != usuario) or( contrato.idAutonomo == null and usuario == 'autonomo' ) or(contrato.idUsuario == null and usuario == 'comum')}">			  					
+				  					<div class="col-6 py-2" >
+				  						<!-- Botao modal Aceitar-->
+										<button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
+										  Termos & Compromisso
+										</button>
+				  					</div>
+				  					<div class="col-6 py-2">
+				  						<button type="submit" class="btn btn-dark w-100" id="aceitarBotao" disabled>Aceitar</button>
+				  						<span class="text-muted" id="textoTermos">Aceite os termos para continuar!</span>
+				  					</div>
+
 		  					</c:if>
 		  					
                            </div>                           
@@ -239,5 +259,11 @@ body{
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
+    <script>
+    function aceitoOsTermos(){
+    	document.getElementById("aceitarBotao").disabled = false;
+    	document.getElementById("textoTermos").style.display = "none";
+    }
+    </script>
 </body>
 </html>

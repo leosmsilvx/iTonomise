@@ -176,13 +176,46 @@ input[type=checkbox]{accent-color:#212529;transform : scale(1.2);}
 				</button>
               </div>
 
+					
+							<!-- Modal -->
+							<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h1 class="modal-title fs-5" id="exampleModalLabel">iTonomise avisa!</h1>
+							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							      </div>
+							      <div class="modal-body">
+							        <p>
+							        O iTonomise só faz a <span class="text-primary">intermediação de contato</span> entre o Autonomo e o Contratante,
+							        não temos qualquer ligação com as pessoas relacionadas ao contrato, e não nos responsabilizamos
+							        por qualquer <span class="text-danger">dano ou imprevisto</span> que possa ocorrer.
+							        </p>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-success" onclick="aceitoOsTermos()" data-bs-dismiss="modal">Eu entendi!</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+
+
               <div class="col-12">
                                 <label for="descricao" class="form-label">Descrição do contrato</label>
                                 <textarea class="form-control" name="descricao" rows="7" placeholder="Escreva o serviço que o Autonomo deve realizar, assim como observações, e coisas que você quer pontuar." required></textarea>
                             </div>
+                            <div class="col-6">
+                            <!-- Botao modal Aceitar-->
+										<button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
+										  Termos & Compromisso
+										</button>
+                            </div>
                            <div class="col-6">
-                              <button class="w-100 btn btn-dark" type="submit">Cadastrar</button>
+                              <button class="w-100 btn btn-dark" type="submit" id="aceitarBotao" disabled>Cadastrar</button>
+                              <span class="text-muted" id="textoTermos">Aceite os termos para continuar!</span>
                            </div>
+                            <div class="col-3 pb-4">
+                                    </div>
                            <div class="col-6 pb-4">
                                     	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
                                     </div>
@@ -201,7 +234,7 @@ input[type=checkbox]{accent-color:#212529;transform : scale(1.2);}
   </div>
   </div>
 	
-  <script type="text/javascript">
+  <script>
   		function disableInput(){
   			var checkBoxNumero = document.getElementById("checkNumero");
   			var checkBoxData = document.getElementById("checkData");
@@ -234,5 +267,11 @@ input[type=checkbox]{accent-color:#212529;transform : scale(1.2);}
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
+    <script>
+    function aceitoOsTermos(){
+    	document.getElementById("aceitarBotao").disabled = false;
+    	document.getElementById("textoTermos").style.display = "none";
+    }
+    </script>
 </body>
 </html>
