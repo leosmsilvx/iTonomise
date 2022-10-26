@@ -163,7 +163,7 @@ body{
                             <svg class="bi" width="40px" height="40px"><use xlink:href="#servicos"></use></svg>
                           </div><a style="font-size: 2em;
                           margin-left: 0.5em;
-                          font-weight: bold;">Olá contratante!</a>
+                          font-weight: bold;" id="cadastro">Olá contratante!</a>
                           <p style="font-size: 1.5em">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
                           <a id="souautonomo" href="controller?action=pagCadComum" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
                             Cadastre-se agora

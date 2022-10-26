@@ -113,7 +113,7 @@ body {
 			      	</div>
 				</form>
 			</div>
-			<a href="controller?action=index" class="nav-link text-muted pt-4" >Não é usuário? Se cadastre agora!</a>
+			<a href="controller?action=index#cadastro" class="nav-link text-muted pt-4" >Não é usuário? Se cadastre agora!</a>
       		<a href="controller?action=index" class="nav-link mt-5 mb-3 text-muted">© 2022 iTonomise</a>
 	</main>
 

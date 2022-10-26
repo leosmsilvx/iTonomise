@@ -339,7 +339,7 @@ transform : scale(1.2);
 								</table>
 							</fieldset>
 						</div>
-						<input type="hidden" id="tags" name="tags"
+						<input type="text" id="tags" name="tags"
 							value="${autonomo.tags}">
 					</div>
 					<input type="hidden" value="${autonomo.user}" name="user">
