@@ -101,77 +101,263 @@ body{
                 <main>
                     <div class="row g-3">
                             <h4 class="mb-4 pt-4">Alterar dados do perfil</h4>
-                            <form action="controller?action=alterarPerfilAut" method="post">
-                                <div class="row g-3">                                    
-                                    <div class="col-4">
-                                        <h6 class="text-body text-start px-1">@${autonomo.user}</h6>	
-										<div class="card">
-											<img src="https://st.depositphotos.com/2818715/5102/i/600/depositphotos_51026865-stock-photo-serious-and-pensive-isolated-young.jpg" height="250" width="225" class="card-img-top">
-											<div class="card-body border-top">
-											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${autonomo.nome}</p>
-											</div>
-										</div>
-									</div>
-        
-                                    <div class="col-8">
-                                        <label class="form-label">Primeiro Nome</label>
-                                        <input type="text" class="form-control"
-                                            value="${autonomo.nome}" name="nome">
-                                        <label class="form-label">Sobrenome</label>
-                                            <input type="text" class="form-control"
-                                                value="${autonomo.sobrenome}" name="sobrenome"> 
-                                        <label class="form-label">CPF</label>
-                                        <input type="text" class="form-control"
-                                            value="${autonomo.cpf}" name="cpf">
-                                        <label class="form-label">Telefone</label><input
-                                            type="text" class="form-control"
-                                            value="${autonomo.tel}" name="tel">
-                                        <label class="form-label">Email</label> <input
-                                            type="email" class="form-control"
-                                            value="${autonomo.email}" name="email">
-                                        
-                                    </div>     
-                                    <div class="col-12">
-                                        <label class="form-label">Descrição</label>
-                                        <textarea class="form-control" name="desc">${autonomo.desc}</textarea>
-                                    </div>
-
-								<div class="col-12">
-								<label for="tag" class="form-label">Principal atividade</label>
-								<select class="form-select" name="tag" onchange="passTag(this);">
-								  <option selected value="${autonomo.tags}">${autonomo.tags}</option>
-								  <option value="Pintor(a)">Pintor(a)</option>
-								  <option value="Pedreiro">Pedreiro</option>
-								  <option value="Eletricista">Eletricista</option>	
-								  <option value="Encanador(a)">Encanador(a)</option>							  
-								  <option value="Faxineiro(a)">Faxineiro(a)</option>
-								  <option value="Babá">Babá</option>
-								  <option value="Outro">Outro</option>
-								</select>
-								<div class="pt-2" id="outro" style="display: none;">
-				                  <input id="tags" class="form-control" type="text" name="tags" value="${autonomo.tags}" placeholder="Digite outra profissão"/>
-				                </div>
+				<form action="controller?action=alterarPerfilAut" method="post"
+					id="formulario" class="needs-validation">
+					<div class="row g-3">
+						<div class="col-4">
+							<h6 class="text-body text-start px-1">@${autonomo.user}</h6>
+							<div class="card">
+								<img
+									src="https://st.depositphotos.com/2818715/5102/i/600/depositphotos_51026865-stock-photo-serious-and-pensive-isolated-young.jpg"
+									height="250" width="225" class="card-img-top">
+								<div class="card-body border-top">
+									<p class="card-text"
+										style="font-weight: bold; font-size: larger; text-align: center;">${autonomo.nome}</p>
+								</div>
 							</div>
-        
-                                    <div class="col-12">
-                                        <label class="form-label">Endereço</label>
-                                        <textarea class="form-control" name="endereco">${autonomo.endereco}</textarea>
-                                    </div>
-                                    
-                                    <input type="hidden" value="${autonomo.user}" name="user">                                          
-                                	<input type="hidden" value="${autonomo.aval}" name="aval" >
-                               		<input type="hidden" value="${autonomo.senha}" name="senha">
-                               		
-                                    <div class="col-6 pt-4">
-                                        <button class="w-100 btn btn-dark" type="submit">Alterar</button>
-                                    </div>
-                                    <div class="col-6 pt-4">
-                                    	<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>	
-                                    </div>
-                                </div>
+						</div>
 
-                            </form>
-                    </div>
+						<div class="col-8">
+							<label class="form-label">Primeiro Nome</label> <input
+								type="text" class="form-control" value="${autonomo.nome}"
+								name="nome" required> <label class="form-label">Sobrenome</label>
+							<input type="text" class="form-control"
+								value="${autonomo.sobrenome}" name="sobrenome" required> <label
+								class="form-label">CPF</label> <input type="text"
+								class="form-control" value="${autonomo.cpf}" name="cpf" required>
+							<label class="form-label">Telefone</label><input type="text"
+								class="form-control" value="${autonomo.tel}" name="tel" required>
+							<label class="form-label">Email</label> <input type="email"
+								class="form-control" value="${autonomo.email}" name="email" required>
+
+						</div>
+						<div class="col-12">
+							<label class="form-label">Descrição</label>
+							<textarea class="form-control" name="desc" required>${autonomo.desc}</textarea>
+						</div>
+
+						<div class="col-12">
+							<label class="form-label">Endereço</label>
+							<textarea class="form-control" name="endereco" required>${autonomo.endereco}</textarea>
+						</div>
+						<div class="col-12">
+							<fieldset>
+								<legend>
+									Escolha sua(s) área(s) de atuação<font size="2">(max. 3)</font>
+								</legend>
+								<h5 id="mensagemProfissao" style="display: none;"><p class="text-center text-warning">Selecione uma opção!</p></h5>
+								<table class="px-5">
+									<tr>
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="pintor" name="tag"
+													value="Pintor(a)" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Pintor(a)"> Pintor(a)
+												</label>
+											</div>
+										</td>
+
+										<td style="width: 19%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="pedreiro" name="tag"
+													value="Pedreiro" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Pedreiro"> Pedreiro </label>
+											</div>
+										</td>
+
+										<td style="width: 20%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="eletricista" name="tag"
+													value="Eletricista" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Eletricista">
+													Eletricista </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="encanador" name="tag"
+													value="Encanador(a)" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Encanador(a)">
+													Encanador(a) </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="personal" name="tag"
+													value="Personal" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Personal"> Personal </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="dj" name="tag"
+													value="Dj" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Dj"> Dj </label>
+											</div>
+										</td>
+
+									</tr>
+									<tr>
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="jardineiro" name="tag"
+													value="Jardineiro(a)" onclick="pegarProfissoes()">
+												<label class="form-check-label" for="Jardineiro(a)">
+													Jardineiro(a) </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="faxineiro" name="tag"
+													value="Faxineiro(a)" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Faxineiro(a)">
+													Faxineiro(a) </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="costureiro" name="tag"
+													value="Costureiro(a)" onclick="pegarProfissoes()">
+												<label class="form-check-label" for="Costureiro(a)">
+													Costureiro(a) </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="programador" name="tag"
+													value="Programador(a)" onclick="pegarProfissoes()">
+												<label class="form-check-label" for="Programador(a)">
+													Programador(a) </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="massagista" name="tag"
+													value="Massagista" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Massagista">
+													Massagista </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="baba" name="tag"
+													value="Babá" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Babá"> Babá </label>
+											</div>
+										</td>
+
+									</tr>
+									<tr>
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="professor" name="tag"
+													value="Professor(a)" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Professor(a)">
+													Professor(a) </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="barman" name="tag"
+													value="Barman" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Barman"> Barman </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="fotografo" name="ta"
+													value="Fotógrafo(a)" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Fotógrafo(a)">
+													Fotógrafo(a) </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="carpinteiro" name="tag"
+													value="Carpinteiro(a)" onclick="pegarProfissoes()">
+												<label class="form-check-label" for="Carpinteiro(a)">
+													Carpinteiro(a) </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="dançarino" name="tag"
+													value="Dançarino(a)" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Dançarino(a)">
+													Dançarino(a) </label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="cumin" name="tag"
+													value="Cumin" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Cumin"> Cumin </label>
+											</div>
+										</td>
+
+									</tr>
+									<tr>
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="motorista" name="tag"
+													value="Motorista" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Motorista"> Motorista
+												</label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="editor" name="tag"
+													value="Editor(a)" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Editor(a)"> Editor(a)
+												</label>
+											</div>
+										</td>
+
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="manicure" name="tag"
+													value="Manicure" onclick="pegarProfissoes()"> <label
+													class="form-check-label" for="Manicure"> Manicure </label>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+						</div>
+						<input type="hidden" id="tags" name="tags"
+							value="${autonomo.tags}">
+					</div>
+					<input type="hidden" value="${autonomo.user}" name="user">
+					<input type="hidden" value="${autonomo.aval}" name="aval">
+					<input type="hidden" value="${autonomo.senha}" name="senha">
+					<button type="submit" id="botaoConfirmar" style="display: none;">SHHHH</button>
+					<div class="col-12 row">
+						<div class="col-6 pt-4">
+							<a class="w-100 btn btn-dark" id="botaoCadastrar"
+								onclick="validar()">Alterar</a>
+						</div>
+						<div class="col-6 pt-4">
+							<a class="btn btn-dark w-100" onclick="history.back()">Voltar</a>
+						</div>
+					</div>
+
+				</form>
+			</div>
                 </main>
         
                 <!--footer-->
@@ -184,15 +370,57 @@ body{
             </div>
             </div>
     <script>
-    function passTag(outrovar) {
-      var inputTag = document.getElementById("tags");
-      inputTag.value = outrovar.value;
-      if (outrovar.value == "Outro") {
-    	  inputTag.value = "";
-          document.getElementById("outro").style.display = "block";
-      } else {
-          document.getElementById("outro").style.display = "none";
-      }
+    setarProfissoes()
+    pegarProfissoes()
+    
+    function setarProfissoes(){
+    	var todasCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(:checked)');  
+    	var profissoes = document.getElementById("tags").value;    	
+    	var tagsSeparadas = profissoes.split(',');
+
+    	
+    	for(var i = 0, len = todasCheckboxes.length; i<len; i++){
+    		for(var j = 0, len2 = tagsSeparadas.length; j<len2; j++){
+    			if(todasCheckboxes[i].value == tagsSeparadas[j]){
+    				todasCheckboxes[i].checked = true;    				
+    			}
+    		}				
+    	}
+    }    
+    
+    function pegarProfissoes(){    	
+    	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');   
+    	var todasCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(:checked)');  
+    	if(checkboxes.length >= 4){ return false; }
+    	if(checkboxes.length >= 3){  
+    		for (var i = 0, len = todasCheckboxes.length; i<len; i++){
+    			todasCheckboxes[i].disabled = true;
+    		}
+    	}
+    	else{
+    		for (var i = 0, len = todasCheckboxes.length; i<len; i++){
+    			todasCheckboxes[i].disabled = false;
+    		}
+    	}
+    	
+    	var array = []        
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          array.push(checkboxes[i].value);
+        }
+    	document.getElementById("tags").value = array;			
+    }
+    
+    function validar(){
+    	var checkboxesAtivas = document.querySelectorAll('input[type=checkbox]:checked');  
+	    if(checkboxesAtivas.length == 0){
+	    	document.getElementById("mensagemProfissao").style.display = "block";
+	    }
+	    else{
+	    	document.getElementById("mensagemProfissao").style.display = "none";
+	    	document.getElementById("botaoConfirmar").click();
+	    }
+	   
     }
   </script>
 	<script

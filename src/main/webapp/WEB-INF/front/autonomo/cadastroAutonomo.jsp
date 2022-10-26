@@ -107,7 +107,7 @@ transform : scale(1.2);
         <div>
           <h5 class="text-danger text-center py-3"> ${msgErroCad} </h5>
           <h4 class="mb-4 py-4">Cadastro Autônomo</h4>
-          <form action="controller?action=cadastrarAutonomo" method="post">
+          <form action="controller?action=cadastrarAutonomo" method="post" id="formulario" class="needs-validation">
             <div class="row g-3">
 
               <div class="col-sm-6">
@@ -119,7 +119,7 @@ transform : scale(1.2);
               <div class="col-6">
                 <label for="sobrenome" class="form-label">Sobrenome</label> <input
                   type="text" class="form-control" name="sobrenome"
-                  placeholder="sobrenome" required>
+                  placeholder="Sobrenome" required>
               </div>
 
               <div class="col-6">
@@ -177,8 +177,10 @@ transform : scale(1.2);
               </div>
 
               <div class="col-12">
+              	
                 <fieldset>
-                  <legend> Escolha sua(s) área(s) de atuação<font size="2">(max 3)</font> </legend>
+                  <legend> Escolha sua(s) área(s) de atuação<font size="2">(max; 3)</font> </legend>
+                  <h5 id="mensagemProfissao" style="display: none;"><p class="text-center text-warning">Selecione uma opção!</p></h5>
                   <table class="px-5">
                     <tr>
                       <td style="width: 18%;">
@@ -340,8 +342,11 @@ transform : scale(1.2);
 
               
 			  <input type="hidden" id="tags" name="tags">
-              <hr class="my-4">
-              <button class="w-100 btn btn-dark btn-lg" type="submit">Cadastrar</button>
+				
+					  
+			  <hr class="my-4">
+			  <button type="submit" id="botaoConfirmar" style="display: none;">SHHHH</button>
+              <a class="w-100 btn btn-dark" id="botaoCadastrar" onclick="validar()">Cadastrar</a>
             </div>
           </form>
         </div>
@@ -363,17 +368,6 @@ transform : scale(1.2);
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
   <script>
-    function passTag(outrovar) {
-      var inputTag = document.getElementById("tags");
-      inputTag.value = outrovar.value;
-      if (outrovar.value == "Outro") {
-        inputTag.value = "";
-          document.getElementById("outro").style.display = "block";
-      } else {
-          document.getElementById("outro").style.display = "none";
-      }
-    }
-    
     function mostrarSenha() {
         var senha = document.getElementById("senha");
         if (senha.type === "password") {
@@ -403,8 +397,19 @@ transform : scale(1.2);
         for (var i = 0; i < checkboxes.length; i++) {
           array.push(checkboxes[i].value);
         }
-    	document.getElementById("tags").value = array;
-    			
+    	document.getElementById("tags").value = array;			
+    }
+    
+    function validar(){
+	    var checkboxesAtivas = document.querySelectorAll('input[type=checkbox]:checked');
+	    if(checkboxesAtivas.length == 0){
+	    	document.getElementById("mensagemProfissao").style.display = "block";
+	    }
+	    else{
+	    	document.getElementById("mensagemProfissao").style.display = "none";
+	    	document.getElementById("botaoConfirmar").click();
+	    }
+	   
     }
   </script>
 </body>

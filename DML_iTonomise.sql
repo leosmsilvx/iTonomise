@@ -39,5 +39,3 @@ SELECT * FROM autonomo;
 SELECT * FROM contrato;
 
 SELECT * FROM avaliacao;
-
-SELECT COUNT(idAvaliacao) FROM avaliacao WHERE idAutonomo = 8;

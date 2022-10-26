@@ -204,8 +204,6 @@ public class Controller extends HttpServlet{
 		double aval = 0;
 		int idAutonomo = 0;
 		
-
-		System.out.print("oi eu sou as tags: "+tags);
 		
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		DAOUsuario dao2 = new DAOUsuarioImpl();
