@@ -151,7 +151,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="pintor" name="tag"
-													value="Pintor(a)" onclick="pegarProfissoes()"> <label
+													value=" Pintor(a)" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Pintor(a)"> Pintor(a)
 												</label>
 											</div>
@@ -160,7 +160,7 @@ transform : scale(1.2);
 										<td style="width: 19%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="pedreiro" name="tag"
-													value="Pedreiro" onclick="pegarProfissoes()"> <label
+													value=" Pedreiro" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Pedreiro"> Pedreiro </label>
 											</div>
 										</td>
@@ -168,7 +168,7 @@ transform : scale(1.2);
 										<td style="width: 20%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="eletricista" name="tag"
-													value="Eletricista" onclick="pegarProfissoes()"> <label
+													value=" Eletricista" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Eletricista">
 													Eletricista </label>
 											</div>
@@ -177,7 +177,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="encanador" name="tag"
-													value="Encanador(a)" onclick="pegarProfissoes()"> <label
+													value=" Encanador(a)" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Encanador(a)">
 													Encanador(a) </label>
 											</div>
@@ -186,7 +186,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="personal" name="tag"
-													value="Personal" onclick="pegarProfissoes()"> <label
+													value=" Personal" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Personal"> Personal </label>
 											</div>
 										</td>
@@ -194,7 +194,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="dj" name="tag"
-													value="Dj" onclick="pegarProfissoes()"> <label
+													value=" Dj" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Dj"> Dj </label>
 											</div>
 										</td>
@@ -204,7 +204,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="jardineiro" name="tag"
-													value="Jardineiro(a)" onclick="pegarProfissoes()">
+													value=" Jardineiro(a)" onclick="pegarProfissoes()">
 												<label class="form-check-label" for="Jardineiro(a)">
 													Jardineiro(a) </label>
 											</div>
@@ -213,7 +213,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="faxineiro" name="tag"
-													value="Faxineiro(a)" onclick="pegarProfissoes()"> <label
+													value=" Faxineiro(a)" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Faxineiro(a)">
 													Faxineiro(a) </label>
 											</div>
@@ -222,7 +222,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="costureiro" name="tag"
-													value="Costureiro(a)" onclick="pegarProfissoes()">
+													value=" Costureiro(a)" onclick="pegarProfissoes()">
 												<label class="form-check-label" for="Costureiro(a)">
 													Costureiro(a) </label>
 											</div>
@@ -231,7 +231,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="programador" name="tag"
-													value="Programador(a)" onclick="pegarProfissoes()">
+													value=" Programador(a)" onclick="pegarProfissoes()">
 												<label class="form-check-label" for="Programador(a)">
 													Programador(a) </label>
 											</div>
@@ -240,7 +240,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="massagista" name="tag"
-													value="Massagista" onclick="pegarProfissoes()"> <label
+													value=" Massagista" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Massagista">
 													Massagista </label>
 											</div>
@@ -249,7 +249,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="baba" name="tag"
-													value="Babá" onclick="pegarProfissoes()"> <label
+													value=" Babá" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Babá"> Babá </label>
 											</div>
 										</td>
@@ -259,7 +259,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="professor" name="tag"
-													value="Professor(a)" onclick="pegarProfissoes()"> <label
+													value=" Professor(a)" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Professor(a)">
 													Professor(a) </label>
 											</div>
@@ -268,7 +268,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="barman" name="tag"
-													value="Barman" onclick="pegarProfissoes()"> <label
+													value=" Barman" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Barman"> Barman </label>
 											</div>
 										</td>
@@ -276,7 +276,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="fotografo" name="ta"
-													value="Fotógrafo(a)" onclick="pegarProfissoes()"> <label
+													value=" Fotógrafo(a)" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Fotógrafo(a)">
 													Fotógrafo(a) </label>
 											</div>
@@ -285,7 +285,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="carpinteiro" name="tag"
-													value="Carpinteiro(a)" onclick="pegarProfissoes()">
+													value=" Carpinteiro(a)" onclick="pegarProfissoes()">
 												<label class="form-check-label" for="Carpinteiro(a)">
 													Carpinteiro(a) </label>
 											</div>
@@ -294,7 +294,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="dançarino" name="tag"
-													value="Dançarino(a)" onclick="pegarProfissoes()"> <label
+													value=" Dançarino(a)" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Dançarino(a)">
 													Dançarino(a) </label>
 											</div>
@@ -303,7 +303,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="cumin" name="tag"
-													value="Cumin" onclick="pegarProfissoes()"> <label
+													value=" Cumin" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Cumin"> Cumin </label>
 											</div>
 										</td>
@@ -313,7 +313,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="motorista" name="tag"
-													value="Motorista" onclick="pegarProfissoes()"> <label
+													value=" Motorista" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Motorista"> Motorista
 												</label>
 											</div>
@@ -322,7 +322,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="editor" name="tag"
-													value="Editor(a)" onclick="pegarProfissoes()"> <label
+													value=" Editor(a)" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Editor(a)"> Editor(a)
 												</label>
 											</div>
@@ -331,7 +331,7 @@ transform : scale(1.2);
 										<td style="width: 18%;">
 											<div class="pb-2">
 												<input class="" type="checkbox" id="manicure" name="tag"
-													value="Manicure" onclick="pegarProfissoes()"> <label
+													value=" Manicure" onclick="pegarProfissoes()"> <label
 													class="form-check-label" for="Manicure"> Manicure </label>
 											</div>
 										</td>
