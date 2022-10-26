@@ -123,9 +123,9 @@ body{
 								name="nome" required> <label class="form-label">Sobrenome</label>
 							<input type="text" class="form-control"
 								value="${autonomo.sobrenome}" name="sobrenome" required> <label
-								class="form-label">CPF</label> <input type="text"
+								class="form-label">CPF</label> <input type="number"
 								class="form-control" value="${autonomo.cpf}" name="cpf" required>
-							<label class="form-label">Telefone</label><input type="text"
+							<label class="form-label">Telefone</label><input type="number"
 								class="form-control" value="${autonomo.tel}" name="tel" required>
 							<label class="form-label">Email</label> <input type="email"
 								class="form-control" value="${autonomo.email}" name="email" required>

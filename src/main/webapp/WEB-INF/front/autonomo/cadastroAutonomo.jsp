@@ -126,14 +126,14 @@ transform : scale(1.2);
                 <label for="cpf" class="form-label">CPF <span
                   class="text-muted">(Somente números)</span></label> <input
                   type="number" class="form-control" name="cpf"
-                  placeholder="xxx.xxx.xxx-xx" required>
+                  placeholder="12345678901" required>
               </div>
 
               <div class="col-6">
-                <label for="tel" class="form-label">Telefone <span
-                  class="text-muted">(Somente números)</span></label> <input
+                <label for="tel" class="form-label">Telefone com ddd<span
+                  class="text-muted"> (Somente números)</span></label> <input
                   type="number" class="form-control" name="tel"
-                  placeholder="(37) 98877-6655" required>
+                  placeholder="37988776655" required>
               </div>
 
               <div class="col-8">

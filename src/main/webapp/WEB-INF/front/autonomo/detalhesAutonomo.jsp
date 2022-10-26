@@ -127,21 +127,36 @@ body{
 										</div>	
 									</div>
 		
-									<div class="col-8 px-4">
+									<div class="col-8">
+									<div class="row col-12">
 										<label for="nome" class="form-label">Nome</label> <input
 											type="text" class="form-control" name="nome"
 											value="${autonomo.nome} ${autonomo.sobrenome}" disabled readonly>
-										<label for="telefone" class="form-label" style="padding-top: 2%;">Telefone</label> <input
-											type="text" class="form-control" name="telefone"
-											value="3${autonomo.tel}" disabled readonly>
-										<label for="email" class="form-label" style="padding-top: 2%;">E-mail</label> <input
+									</div>
+									<div class="row col-12">
+										<div class=" row col-8">
+											<label for="telefone" class="form-label" style="padding-top: 2%;">Telefone</label> <input
+												type="text" class="form-control" name="telefone"
+												value="${autonomo.tel}" disabled readonly>
+										</div>
+										<div class="col-4" style="padding-top: 4.5%; margin-left: 3%">
+											<a class="pt-2 pb-3" aria-label="Chat on WhatsApp" href="https://wa.me/55${autonomo.tel}?text=Olá%20${autonomo.nome}!%20Estou%20entrando%20em%20contato%20pelo%20iTonomise,%20tenho%20interesse%20no%20seu%20serviço!" target="_blank"> <img alt="Chat on WhatsApp" src="/iTonomise/imgs/wpp.png" width="90%" /> </a>
+										</div>
+									</div>
+									<div class="row col-12">
+										<label for="email" class="form-label">E-mail</label> <input
 											type="text" class="form-control" name="email"
 											value="${autonomo.email}" disabled readonly>
+									</div>
+									<div class="row col-12">
 										<label for="descricao" class="form-label" style="padding-top: 2%;">Descrição</label>
 										<textarea class="form-control" rows="2" name="descricao" disabled readonly>${autonomo.desc}</textarea>
+									</div>
+									<div class="row col-12">
 										<label for="tags" class="form-label" style="padding-top: 2%;">Principal área de trabalho</label> <input
 											type="text" class="form-control" name="tags"
 											value="${autonomo.tags}" disabled readonly>
+									</div>
 									</div>
 								</div>
 							</form>
