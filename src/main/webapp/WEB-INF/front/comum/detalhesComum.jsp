@@ -101,7 +101,6 @@ body{
 			</nav>
 			<div class="container">
 				<main>
-					<div class="row g-5">
 						<div>
 							<h4 class="mb-4 pt-4">Perfil do contratante</h4>
 							<form>
@@ -124,19 +123,45 @@ body{
 									</div>
 		
 									<div class="col-8 px-4">
-										<label for="nome" class="form-label">Nome</label> <input
+										<div class="row col-12">
+											<label for="nome" class="form-label">Nome</label> <input
 											type="text" class="form-control" name="nome"
-											value="${comum.nome} ${comum.sobrenome}" disabled readonly>
-										<label for="telefone" class="form-label" style="padding-top: 2%;">Telefone</label> <input
-											type="text" class="form-control" name="telefone"
-											value="3${comum.tel}" disabled readonly>
-										<label for="email" class="form-label" style="padding-top: 2%;">E-mail</label> <input
-											type="text" class="form-control" name="email"
-											value="${comum.email}" disabled readonly>
+											value="${comum.nome} ${comum.sobrenome}" disabled readonly>										
+										</div>
+										<div class="row col-12">
+											<div class=" row col-12">
+												<label for="telefone" class="form-label" style="padding-top: 2%;">Telefone</label> 
+											</div>
+											<div class="row col-8">
+											<input
+												type="text" class="form-control" name="telefone"
+												value="${comum.tel}" disabled readonly>
+											
+											</div>
+											<div class="col-4" style="margin-left: 3%">
+												<a class="pt-2" aria-label="Chat on WhatsApp" href="https://wa.me/55${comum.tel}?text=Olá%20${comum.nome}!%20Estou%20entrando%20em%20contato%20pelo%20iTonomise,%20tenho%20interesse%20no%20seu%20serviço!" target="_blank"> <img alt="Chat on WhatsApp" src="/iTonomise/imgs/wpp.png" width="100%" /> </a>
+											</div>
+										
+											<div class="row col-12">
+												<label for="email" class="form-label" style="padding-top: 2%;">E-mail</label>
+											</div>
+											<div class="row col-11">
+												<input type="text" class="form-control" name="email"
+												value="${comum.email}" disabled readonly>
+											</div>								
+										
+											<div class="col-1" style="margin-left: 3%"> 
+												<a class="btn btn-dark" href="mailto:${comum.email}" target="_blank">
+											        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+											  			 	 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"></path>
+													</svg>
+              									</a>
+											</div>
 										</div>										
 									</div>
 								</div>
 							</form>
+						
 						</div>
 			<div class="pt-4">
 			<footer class="mt-auto border-top border-1">
