@@ -397,6 +397,8 @@ transform : scale(1.2);
         for (var i = 0; i < checkboxes.length; i++) {
           array.push(checkboxes[i].value);
         }
+
+    	document.getElementById("mensagemProfissao").style.display = "none";
     	document.getElementById("tags").value = array;			
     }
     

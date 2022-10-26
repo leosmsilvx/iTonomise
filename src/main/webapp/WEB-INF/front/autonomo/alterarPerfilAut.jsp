@@ -75,10 +75,10 @@ body{
 		max-width: 90%;
 	}
 }
-.form-control:focus {
-        border-color: #212529;
-        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.2);
-} 
+input[type=checkbox]{
+accent-color:#212529;
+transform : scale(1.2);
+}
 </style>
 </head>
 <body>
@@ -408,6 +408,8 @@ body{
         for (var i = 0; i < checkboxes.length; i++) {
           array.push(checkboxes[i].value);
         }
+
+    	document.getElementById("mensagemProfissao").style.display = "none";
     	document.getElementById("tags").value = array;			
     }
     
