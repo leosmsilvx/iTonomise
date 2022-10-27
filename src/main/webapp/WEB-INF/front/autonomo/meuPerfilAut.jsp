@@ -134,7 +134,7 @@ body{
 
                                     <div class="col-12">
                                         <label class="form-label">Principal atividade</label> <input
-                                            type="email" class="form-control"
+                                            type="text" class="form-control"
                                             value="${autonomo.tags}" disabled>
                                     </div>
         
