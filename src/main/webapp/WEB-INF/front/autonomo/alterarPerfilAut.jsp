@@ -335,12 +335,21 @@ transform : scale(1.2);
 													class="form-check-label" for="Manicure"> Manicure </label>
 											</div>
 										</td>
+										<td style="width: 18%;">
+											<div class="pb-2">
+												<input class="" type="checkbox" id="outro" name="tag"
+													onclick="outroA()"> <label
+													class="form-check-label" for="outro"> Outro </label>
+											</div>
+										</td>
 									</tr>
 								</table>
 							</fieldset>
 						</div>
-						<input type="hidden" id="tags" name="tags"
-							value="${autonomo.tags}">
+						<div class="col-12" id="outroDiv" style="display: none;">
+			              	<input class="form-control" type="text" id="tags" name="tags" value="${autonomo.tags }">
+			              </div>
+						
 					</div>
 					<input type="hidden" value="${autonomo.user}" name="user">
 					<input type="hidden" value="${autonomo.aval}" name="aval">
@@ -372,10 +381,12 @@ transform : scale(1.2);
     <script>
     var array = []
     setarProfissoes()
+    outroA()
     pegarProfissoes("naoEntrarIf")
     
     function setarProfissoes(){
     	var todasCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(:checked)');  
+    	var checkboxOutro = document.getElementById("outro");    	
     	var profissoes = document.getElementById("tags").value;    	
     	var tagsSeparadas = profissoes.split(',');
 
@@ -431,6 +442,35 @@ transform : scale(1.2);
 	    	document.getElementById("botaoConfirmar").click();
 	    }
 	   
+    }
+    function outroA(){
+    	var checkboxOutro = document.getElementById("outro");    	   
+    	var checkBoxesN = document.querySelectorAll('input[type="checkbox"]'); 
+	    var checkboxesAtivas = document.querySelectorAll('input[type=checkbox]:checked');
+	    if(checkboxesAtivas.length == 0){
+	    	for (var i = 0, len = checkBoxesN.length; i<len; i++){
+    			checkBoxesN[i].disabled = true;
+    		}
+    		checkboxOutro.disabled = false;
+    		checkboxOutro.checked = true;
+    		document.getElementById("outroDiv").style.display = "block";
+    		return false;
+	    }
+    	
+    	if(checkboxOutro.checked == true){
+    		for (var i = 0, len = checkBoxesN.length; i<len; i++){
+    			checkBoxesN[i].disabled = true;
+    		}
+    		checkboxOutro.disabled = false;
+    		document.getElementById("outroDiv").style.display = "block";
+    	}
+    	else{
+    		for (var i = 0, len = checkBoxesN.length; i<len; i++){
+    			checkBoxesN[i].disabled = false;
+    			checkBoxesN[i].checked = false;
+    		}
+    		document.getElementById("outroDiv").style.display = "none";
+    	}
     }
   </script>
 	<script

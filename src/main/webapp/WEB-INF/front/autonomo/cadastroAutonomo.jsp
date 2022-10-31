@@ -185,42 +185,42 @@ transform : scale(1.2);
                     <tr>
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="pintor" name="tag" value=" Pintor(a)" onclick="pegarProfissoes(' Pintor(a)')">
+                          <input class="" type="checkbox" id="pintor" name="tag" onclick="pegarProfissoes(' Pintor(a)')">
                           <label class="form-check-label" for="Pintor(a)"> Pintor(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 19%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="pedreiro" name="tag" value=" Pedreiro" onclick="pegarProfissoes(' Pedreiro')">
+                          <input class="" type="checkbox" id="pedreiro" name="tag" onclick="pegarProfissoes(' Pedreiro')">
                           <label class="form-check-label" for="Pedreiro"> Pedreiro </label>
                         </div>
                       </td>
                       
                       <td style="width: 20%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="eletricista" name="tag" value=" Eletricista" onclick="pegarProfissoes(' Eletricista')">
+                          <input class="" type="checkbox" id="eletricista" name="tag" onclick="pegarProfissoes(' Eletricista')">
                           <label class="form-check-label" for="Eletricista"> Eletricista </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="encanador" name="tag" value=" Encanador(a)" onclick="pegarProfissoes(' Encanador(a)')">
+                          <input class="" type="checkbox" id="encanador" name="tag" onclick="pegarProfissoes(' Encanador(a)')">
                           <label class="form-check-label" for="Encanador(a)"> Encanador(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="personal" name="tag" value=" Personal" onclick="pegarProfissoes(' Personal')">
+                          <input class="" type="checkbox" id="personal" name="tag" onclick="pegarProfissoes(' Personal')">
                           <label class="form-check-label" for="Personal"> Personal </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="dj" name="tag" value=" Dj" onclick="pegarProfissoes(' Dj')">
+                          <input class="" type="checkbox" id="dj" name="tag" onclick="pegarProfissoes(' Dj')">
                           <label class="form-check-label" for="Dj"> Dj </label>
                         </div>
                       </td>
@@ -229,42 +229,42 @@ transform : scale(1.2);
                     <tr>
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="jardineiro" name="tag" value=" Jardineiro(a)" onclick="pegarProfissoes(' Jardineiro(a)')">
+                          <input class="" type="checkbox" id="jardineiro" name="tag" onclick="pegarProfissoes(' Jardineiro(a)')">
                           <label class="form-check-label" for="Jardineiro(a)"> Jardineiro(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="faxineiro" name="tag" value=" Faxineiro(a)" onclick="pegarProfissoes(' Faxineiro(a)')">
+                          <input class="" type="checkbox" id="faxineiro" name="tag" onclick="pegarProfissoes(' Faxineiro(a)')">
                           <label class="form-check-label" for="Faxineiro(a)"> Faxineiro(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="costureiro" name="tag" value=" Costureiro(a)" onclick="pegarProfissoes(' Costureiro(a)')">
+                          <input class="" type="checkbox" id="costureiro" name="tag" onclick="pegarProfissoes(' Costureiro(a)')">
                           <label class="form-check-label" for="Costureiro(a)"> Costureiro(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="programador" name="tag" value=" Programador(a)" onclick="pegarProfissoes(' Programador(a)')">
+                          <input class="" type="checkbox" id="programador" name="tag" onclick="pegarProfissoes(' Programador(a)')">
                           <label class="form-check-label" for="Programador(a)"> Programador(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="massagista" name="tag" value=" Massagista" onclick="pegarProfissoes(' Massagista')">
+                          <input class="" type="checkbox" id="massagista" name="tag" onclick="pegarProfissoes(' Massagista')">
                           <label class="form-check-label" for="Massagista"> Massagista </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="baba" name="tag" value=" Babá" onclick="pegarProfissoes(' Babá')">
+                          <input class="" type="checkbox" id="baba" name="tag" onclick="pegarProfissoes(' Babá')">
                           <label class="form-check-label" for="Babá"> Babá </label>
                         </div>
                       </td>
@@ -273,42 +273,42 @@ transform : scale(1.2);
                     <tr>
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="professor" name="tag" value=" Professor(a)" onclick="pegarProfissoes(' Professor(a)')">
+                          <input class="" type="checkbox" id="professor" name="tag" onclick="pegarProfissoes(' Professor(a)')">
                           <label class="form-check-label" for="Professor(a)"> Professor(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="barman" name="tag" value=" Barman" onclick="pegarProfissoes(' Barman')">
+                          <input class="" type="checkbox" id="barman" name="tag" onclick="pegarProfissoes(' Barman')">
                           <label class="form-check-label" for="Barman"> Barman </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="fotografo" name="ta" value=" Fotógrafo(a)" onclick="pegarProfissoes(' Fotógrafo(a)')">
+                          <input class="" type="checkbox" id="fotografo" name="ta" onclick="pegarProfissoes(' Fotógrafo(a)')">
                           <label class="form-check-label" for="Fotógrafo(a)"> Fotógrafo(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="carpinteiro" name="tag" value=" Carpinteiro(a)" onclick="pegarProfissoes(' Carpinteiro(a)')">
+                          <input class="" type="checkbox" id="carpinteiro" name="tag" onclick="pegarProfissoes(' Carpinteiro(a)')">
                           <label class="form-check-label" for="Carpinteiro(a)"> Carpinteiro(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="dançarino" name="tag" value=" Dançarino(a)" onclick="pegarProfissoes(' Dançarino(a)')">
+                          <input class="" type="checkbox" id="dançarino" name="tag" onclick="pegarProfissoes(' Dançarino(a)')">
                           <label class="form-check-label" for="Dançarino(a)"> Dançarino(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="cumim" name="tag" value=" Cumim" onclick="pegarProfissoes(' Cumim')">
+                          <input class="" type="checkbox" id="cumim" name="tag" onclick="pegarProfissoes(' Cumim')">
                           <label class="form-check-label" for="Cumim"> Cumim </label>
                         </div>
                       </td>
@@ -317,22 +317,29 @@ transform : scale(1.2);
                     <tr>
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="motorista" name="tag" value=" Motorista" onclick="pegarProfissoes(' Motorista')">
+                          <input class="" type="checkbox" id="motorista" name="tag" onclick="pegarProfissoes(' Motorista')">
                           <label class="form-check-label" for="Motorista"> Motorista </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="editor" name="tag" value=" Editor(a)" onclick="pegarProfissoes(' Editor(a)')" >
+                          <input class="" type="checkbox" id="editor" name="tag" onclick="pegarProfissoes(' Editor(a)')" >
                           <label class="form-check-label" for="Editor(a)"> Editor(a) </label>
                         </div>
                       </td>
                       
                       <td style="width: 18%;">
                         <div class="pb-2">
-                          <input class="" type="checkbox" id="manicure" name="tag" value=" Manicure" onclick="pegarProfissoes(' Manicure')">
+                          <input class="" type="checkbox" id="manicure" name="tag" onclick="pegarProfissoes(' Manicure')">
                           <label class="form-check-label" for="Manicure"> Manicure </label>
+                        </div>
+                      </td>
+                      
+                      <td style="width: 18%;">
+                        <div class="pb-2">
+                          <input class="" type="checkbox" id="outro" name="tag" onclick="outroA()">
+                          <label class="form-check-label" for="Outro"> Outro </label>
                         </div>
                       </td>                      
                     </tr>
@@ -340,9 +347,10 @@ transform : scale(1.2);
                 </fieldset>
               </div>
 
-              
-			  <input type="hidden" id="tags" name="tags">
-				
+              <div class="col-12" id="outroDiv" style="display: none;">
+              	<input class="form-control" type="text" id="tags" name="tags">
+              </div>
+			  
 					  
 			  <hr class="my-4">
 			  <button type="submit" id="botaoConfirmar" style="display: none;">SHHHH</button>
@@ -370,7 +378,8 @@ transform : scale(1.2);
   <script>
   
 
-	var array = []    
+	var array = []  
+	var outro = null;
     function mostrarSenha() {
         var senha = document.getElementById("senha");
         if (senha.type === "password") {
@@ -382,7 +391,7 @@ transform : scale(1.2);
 	
     function pegarProfissoes(valorCheck){    	
     	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');   
-    	var todasCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(:checked)'); 
+    	var todasCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(:checked)');
     	
     	if(checkboxes.length >= 4){ return false; }
     	if(checkboxes.length >= 3){  
@@ -417,6 +426,27 @@ transform : scale(1.2);
 	    	document.getElementById("botaoConfirmar").click();
 	    }
 	   
+    }
+    
+    function outroA(){
+    	var checkboxOutro = document.getElementById("outro");    	   
+    	var checkBoxesN = document.querySelectorAll('input[type="checkbox"]'); 
+    	
+    	if(checkboxOutro.checked == true){
+    		for (var i = 0, len = checkBoxesN.length; i<len; i++){
+    			checkBoxesN[i].disabled = true;
+    		}
+    		checkboxOutro.disabled = false;
+    		document.getElementById("outroDiv").style.display = "block";
+    	}
+    	else{
+    		for (var i = 0, len = checkBoxesN.length; i<len; i++){
+    			checkBoxesN[i].disabled = false;
+    			checkBoxesN[i].checked = false;
+    		}
+    		document.getElementById("tags").value = "";
+    		document.getElementById("outroDiv").style.display = "none";
+    	}
     }
   </script>
 </body>

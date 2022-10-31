@@ -79,7 +79,7 @@ body{
 						<img src="/iTonomise/imgs/contratoA.jpg" height="400" width="225" class="card-img-top">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Contrato</p>
-						  <p class="card-text pb-4">Clique e crie um contrato ou veja todos os seus contratos já criados!</p>
+						  <p class="card-text">Clique e crie um contrato ou veja todos os seus contratos já criados!</p>
 						  <div class="gap-4 d-flex justify-content-center">
 							<a href="controller?action=pagCadCont" class="btn btn-dark">Criar Contrato</a>
 							<a href="controller?action=meusContratos" class="btn btn-dark">Meus contratos</a>
