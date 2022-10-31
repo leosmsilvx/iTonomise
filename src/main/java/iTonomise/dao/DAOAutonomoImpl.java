@@ -254,8 +254,8 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		}
 	}
 	
-	public String buscarEmailAutonomo(String email) throws DAOException {
-		String emailAut = null;
+	public int buscarEmailAutonomo(String email) throws DAOException {
+		int id = 0;
 		try {
 			
 			String sql = "SELECT * from autonomo WHERE email = ?";
@@ -267,12 +267,12 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				emailAut = rs.getString("email");
+				id = rs.getInt("idAutonomo");
 		}
 			
 			rs.close();
 			stmt.close();
-			return emailAut;
+			return id;
 			
 		} catch (Exception e) {
 			throw new DAOException("Erro ao buscar: " + e.getMessage());
@@ -302,7 +302,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		List<Autonomo> autonomos = new ArrayList<Autonomo>();
 		try {
 			
-			String sql = "SELECT * FROM autonomo WHERE tags LIKE ? AND (nome LIKE ? OR sobrenome LIKE ? OR usuario LIKE ?) ORDER BY aval DESC";
+			String sql = "SELECT * FROM autonomo WHERE tags LIKE ? AND (nome LIKE ? OR sobrenome LIKE ? OR usuario LIKE ? OR tags LIKE ?) ORDER BY aval DESC";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 
@@ -310,6 +310,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			stmt.setString(2, "%"+nomeBusca+"%");
 			stmt.setString(3, "%"+nomeBusca+"%");
 			stmt.setString(4, "%"+nomeBusca+"%");
+			stmt.setString(5, "%"+nomeBusca+"%");
 
 			ResultSet rs = stmt.executeQuery();
 			

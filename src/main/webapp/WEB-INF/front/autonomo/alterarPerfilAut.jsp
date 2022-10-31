@@ -100,7 +100,8 @@ transform : scale(1.2);
 			<div class="container">
                 <main>
                     <div class="row g-3">
-                            <h4 class="mb-4 pt-4">Alterar dados do perfil</h4>
+                            <h4 class="mb-4 pt-4">Alterar dados do perfil</h4>                            
+                            <a class="text-center text-danger" style="text-decoration: none;"> ${msgErroAtu} </a>
 				<form action="controller?action=alterarPerfilAut" method="post"
 					id="formulario" class="needs-validation">
 					<div class="row g-3">

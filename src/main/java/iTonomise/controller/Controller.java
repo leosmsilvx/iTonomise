@@ -208,8 +208,8 @@ public class Controller extends HttpServlet{
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		DAOUsuario dao2 = new DAOUsuarioImpl();
 		Autonomo autonomoUser = dao.buscarAutonomoPUser(request.getParameter("user"));
-		String emailAutonomo = dao.buscarEmailAutonomo(request.getParameter("email"));
-		String emailUser = dao2.buscarEmailUsuario(request.getParameter("email"));
+		int emailAutonomo = dao.buscarEmailAutonomo(request.getParameter("email"));
+		int emailUser = dao2.buscarEmailUsuario(request.getParameter("email"));
 		
 		if(autonomoUser != null ) {
 			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já cadastrado!";
@@ -219,7 +219,7 @@ public class Controller extends HttpServlet{
 			rd.forward(request, response);
 			return;
 		}
-		if(emailUser != null || emailAutonomo != null) {
+		if(emailUser != 0 || emailAutonomo != 0) {
 			String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
 			session.setAttribute("msgErroCad", msgErroCad);
 
@@ -228,7 +228,7 @@ public class Controller extends HttpServlet{
 			return;
 		}
 		
-		if(emailUser == null && emailAutonomo == null && autonomoUser == null) {
+		if(emailUser == 0 && emailAutonomo == 0 && autonomoUser == null) {
 			Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
 			
 			dao.cadastrar(novoAutonomo);
@@ -236,9 +236,6 @@ public class Controller extends HttpServlet{
 			
 			String msgConfirm = "Usuario cadastrado com sucesso!";
 			session.setAttribute("msgConfirm", msgConfirm);
-
-			//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
-			//rd.forward(request, response);
 			
 			String redirectURL = "controller?action=index";
 			response.sendRedirect(redirectURL);
@@ -264,8 +261,8 @@ public class Controller extends HttpServlet{
 		DAOUsuario dao = new DAOUsuarioImpl();
 		DAOAutonomo dao2 = new DAOAutonomoImpl();
 		Usuario usuarioUser = dao.buscarUsuarioPUser(request.getParameter("user"));
-		String emailAutonomo = dao2.buscarEmailAutonomo(request.getParameter("email"));
-		String emailUser = dao.buscarEmailUsuario(request.getParameter("email"));
+		int emailAutonomo = dao2.buscarEmailAutonomo(request.getParameter("email"));
+		int emailUser = dao.buscarEmailUsuario(request.getParameter("email"));
 		
 		if(usuarioUser != null) {
 			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já cadastrado!";
@@ -275,7 +272,7 @@ public class Controller extends HttpServlet{
 			rd.forward(request, response);
 			return;
 		}		
-		if(emailUser != null || emailAutonomo != null) {
+		if(emailUser != 0 || emailAutonomo != 0) {
 			String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
 			session.setAttribute("msgErroCad", msgErroCad);
 
@@ -283,7 +280,7 @@ public class Controller extends HttpServlet{
 			rd.forward(request, response);
 			return;
 		}
-		if(emailUser == null && emailAutonomo == null && usuarioUser == null) {
+		if(emailUser == 0 && emailAutonomo == 0 && usuarioUser == null) {
 			Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);		
 			
 			dao.cadastrar(novoUsuario);
@@ -294,9 +291,6 @@ public class Controller extends HttpServlet{
 			
 			String redirectURL = "controller?action=index";
 			response.sendRedirect(redirectURL);
-
-			//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
-			//rd.forward(request, response);
 		}
 	}
 	
@@ -579,11 +573,26 @@ public class Controller extends HttpServlet{
 		Autonomo atualizarAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
 			
 		DAOAutonomo dao = new DAOAutonomoImpl();
-		dao.atualizar(atualizarAutonomo);
-		request.setAttribute("autonomo", atualizarAutonomo);
+		DAOUsuario dao2 = new DAOUsuarioImpl();
 		
-		String redirectURL = "controller?action=perfil";
-		response.sendRedirect(redirectURL);
+		int idAutonomoEmail = dao.buscarEmailAutonomo(email);
+		int idUsuarioEmail = dao2.buscarEmailUsuario(email);
+		
+		if(idUsuarioEmail != 0 || idAutonomoEmail != 0 && idAutonomoEmail != ((int) session.getAttribute("id"))) {
+			String msgErroAtu = "Não foi possivel fazer a alteração, email já cadastrado!";
+			session.setAttribute("msgErroAtu", msgErroAtu);
+
+			pagAlterarPerfilAut(request, response);
+			return;
+		} else {
+			session.setAttribute("msgErroAtu", "");
+			dao.atualizar(atualizarAutonomo);
+			request.setAttribute("autonomo", atualizarAutonomo);
+			
+			String redirectURL = "controller?action=perfil";
+			response.sendRedirect(redirectURL);
+		}		
+		
 	}	
 	
 	//Pagina alterar perfil comum
@@ -619,12 +628,29 @@ public class Controller extends HttpServlet{
 		
 		Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);
 		
-		DAOUsuario dao = new DAOUsuarioImpl();
-		dao.atualizar(novoUsuario);
-		request.setAttribute("comum", novoUsuario);
+		DAOAutonomo dao = new DAOAutonomoImpl();
+		DAOUsuario dao2 = new DAOUsuarioImpl();
+		
+		int idAutonomoEmail = dao.buscarEmailAutonomo(email);
+		int idUsuarioEmail = dao2.buscarEmailUsuario(email);
+		
+		System.out.print("Oi eu sou o idUsuario = "+idUsuarioEmail);
+		System.out.print("Oi eu sou o idAutonomo = "+idAutonomoEmail);
+		
+		if(idAutonomoEmail != 0 || idUsuarioEmail != 0 && idUsuarioEmail != ((int) session.getAttribute("id"))) {
+			String msgErroAtu = "Não foi possivel fazer a alteração, email já cadastrado!";
+			session.setAttribute("msgErroAtu", msgErroAtu);
 
-		String redirectURL = "controller?action=perfil";
-		response.sendRedirect(redirectURL);
+			pagAlterarPerfilCom(request, response);
+			return;
+		} else {
+			session.setAttribute("msgErroAtu", "");
+			dao2.atualizar(novoUsuario);
+			request.setAttribute("comum", novoUsuario);
+	
+			String redirectURL = "controller?action=perfil";
+			response.sendRedirect(redirectURL);
+		}
 	}	
 	
 	//Meus Contratos

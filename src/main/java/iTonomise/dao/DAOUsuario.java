@@ -15,7 +15,7 @@ public interface DAOUsuario {
 
 	public Usuario buscarUsuario(int idUsuario) throws DAOException;
 	
-	public String buscarEmailUsuario(String email) throws DAOException;
+	public int buscarEmailUsuario(String email) throws DAOException;
 	
 	public Usuario buscarUsuarioPUser(String user) throws DAOException;
 	

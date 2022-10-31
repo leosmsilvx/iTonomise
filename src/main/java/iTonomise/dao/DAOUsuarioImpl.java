@@ -231,8 +231,8 @@ public class DAOUsuarioImpl implements DAOUsuario{
 		}
 	}
 	
-	public String buscarEmailUsuario(String email) throws DAOException {
-		String emailUser = null;
+	public int buscarEmailUsuario(String email) throws DAOException {
+		int id = 0;
 		try {
 			
 			String sql = "SELECT * from usuario WHERE email = ?";
@@ -244,12 +244,12 @@ public class DAOUsuarioImpl implements DAOUsuario{
 			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				emailUser = rs.getString("email");
+				id = rs.getInt("idUsuario");
 			}
 			
 			rs.close();
 			stmt.close();
-			return emailUser;
+			return id;
 			
 		} catch (Exception e) {
 			throw new DAOException("Erro ao buscar: " + e.getMessage());
