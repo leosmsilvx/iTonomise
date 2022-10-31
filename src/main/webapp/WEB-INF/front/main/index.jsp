@@ -81,7 +81,6 @@ body{
 				</ul>
 				<ul class="nav" style="margin-right: 30px; margin-top: 5px">
 					<li class="nav-item"><a href="controller?action=login" class="nav-link px-2 text-muted text-center"><button class="w-1 btn btn-light" type="submit">Login</button></a></li>			
-			</li>
 				</ul>
 			</div>
 		</nav>

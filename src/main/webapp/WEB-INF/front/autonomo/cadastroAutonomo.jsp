@@ -97,6 +97,9 @@ transform : scale(1.2);
                 <a href="controller?action=index" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
             </div></li>
         </ul>
+        				<ul class="nav" style="margin-right: 30px; margin-top: 5px">
+					<li class="nav-item"><a href="controller?action=login" class="nav-link px-2 text-muted text-center"><button class="w-1 btn btn-light" type="submit">Login</button></a></li>			
+				</ul>
 
       </div>
     </nav>
@@ -335,20 +338,19 @@ transform : scale(1.2);
                           <label class="form-check-label" for="Manicure"> Manicure </label>
                         </div>
                       </td>
-                      
-                      <td style="width: 18%;">
-                        <div class="pb-2">
-                          <input class="" type="checkbox" id="outro" name="tag" onclick="outroA()">
-                          <label class="form-check-label" for="Outro"> Outro </label>
-                        </div>
-                      </td>                      
+                                         
                     </tr>
                    </table>
                 </fieldset>
               </div>
 
+			  <span class="text-muted text-end">Não achou sua profissão?</span>
+			  <div class="pb-2 text-end" style="margin-top: 0px">	
+					<label class="form-check-label" for="outro"> Outro </label>						
+					<input class="" type="checkbox" id="outro" name="tag"  onclick="outroA()">							
+			  </div>
               <div class="col-12" id="outroDiv" style="display: none;">
-              	<input class="form-control" type="text" id="tags" name="tags">
+              	<input class="form-control" type="text" id="tags" name="tags" required>
               </div>
 			  
 					  
@@ -435,8 +437,11 @@ transform : scale(1.2);
     	if(checkboxOutro.checked == true){
     		for (var i = 0, len = checkBoxesN.length; i<len; i++){
     			checkBoxesN[i].disabled = true;
+    			checkBoxesN[i].checked = false;
     		}
     		checkboxOutro.disabled = false;
+    		checkboxOutro.checked = true;
+    		document.getElementById("tags").value = "";
     		document.getElementById("outroDiv").style.display = "block";
     	}
     	else{

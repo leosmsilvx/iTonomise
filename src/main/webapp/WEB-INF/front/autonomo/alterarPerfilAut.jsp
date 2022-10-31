@@ -335,19 +335,17 @@ transform : scale(1.2);
 													class="form-check-label" for="Manicure"> Manicure </label>
 											</div>
 										</td>
-										<td style="width: 18%;">
-											<div class="pb-2">
-												<input class="" type="checkbox" id="outro" name="tag"
-													onclick="outroA()"> <label
-													class="form-check-label" for="outro"> Outro </label>
-											</div>
-										</td>
 									</tr>
 								</table>
 							</fieldset>
 						</div>
+						<span class="text-muted text-end">Não achou sua profissão?</span>
+						<div class="pb-2 text-end" style="margin-top: 0px">	
+							<label class="form-check-label" for="outro"> Outro </label>						
+							<input class="" type="checkbox" id="outro" name="tag"  onclick="outroA()">							
+						</div>
 						<div class="col-12" id="outroDiv" style="display: none;">
-			              	<input class="form-control" type="text" id="tags" name="tags" value="${autonomo.tags }">
+			              	<input class="form-control" type="text" id="tags" name="tags" value="${autonomo.tags }" required>
 			              </div>
 						
 					</div>
@@ -379,10 +377,9 @@ transform : scale(1.2);
             </div>
             </div>
     <script>
-    var array = []
-    setarProfissoes()
-    outroA()
-    pegarProfissoes("naoEntrarIf")
+    var array = [];
+    setarProfissoes();
+    pegarProfissoes("naoEntrarIf");
     
     function setarProfissoes(){
     	var todasCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(:checked)');  
@@ -399,14 +396,26 @@ transform : scale(1.2);
     			}
     		}				
     	}
+    	    	
+    	var checkboxesMarcadas = document.querySelectorAll('input[type=checkbox]:checked');   
+    	
+    	if(checkboxesMarcadas.length == 0){
+    		for(var i = 0, len = todasCheckboxes.length; i<len; i++){	
+	    		todasCheckboxes[i].disabled = true;
+    		}
+    		checkboxOutro.disabled = false;
+    		checkboxOutro.checked = true;
+    		document.getElementById("outroDiv").style.display = "block";
+    	}
     }    
     
-    function pegarProfissoes(valorCheck){    	
+    function pegarProfissoes(valorCheck){   
+    	var checkboxOutro = document.getElementById("outro");   
     	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');   
     	var todasCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(:checked)'); 
     	
     	if(checkboxes.length >= 4){ return false; }
-    	if(checkboxes.length >= 3){  
+    	if(checkboxes.length >= 3  ||  checkboxOutro.checked == true){  
     		for (var i = 0, len = todasCheckboxes.length; i<len; i++){
     			todasCheckboxes[i].disabled = true;
     		}
@@ -443,25 +452,20 @@ transform : scale(1.2);
 	    }
 	   
     }
+    
     function outroA(){
     	var checkboxOutro = document.getElementById("outro");    	   
     	var checkBoxesN = document.querySelectorAll('input[type="checkbox"]'); 
 	    var checkboxesAtivas = document.querySelectorAll('input[type=checkbox]:checked');
-	    if(checkboxesAtivas.length == 0){
-	    	for (var i = 0, len = checkBoxesN.length; i<len; i++){
-    			checkBoxesN[i].disabled = true;
-    		}
-    		checkboxOutro.disabled = false;
-    		checkboxOutro.checked = true;
-    		document.getElementById("outroDiv").style.display = "block";
-    		return false;
-	    }
     	
     	if(checkboxOutro.checked == true){
     		for (var i = 0, len = checkBoxesN.length; i<len; i++){
     			checkBoxesN[i].disabled = true;
+    			checkBoxesN[i].checked = false;
     		}
     		checkboxOutro.disabled = false;
+    		checkboxOutro.checked = true;
+    		document.getElementById("tags").value = "";	
     		document.getElementById("outroDiv").style.display = "block";
     	}
     	else{
@@ -469,6 +473,8 @@ transform : scale(1.2);
     			checkBoxesN[i].disabled = false;
     			checkBoxesN[i].checked = false;
     		}
+    		array = [];
+    		document.getElementById("tags").value = "";	
     		document.getElementById("outroDiv").style.display = "none";
     	}
     }
