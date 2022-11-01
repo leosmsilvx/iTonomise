@@ -9,7 +9,7 @@ public class ConnectionFactory {
 	
 	public static Connection getConnection() throws DAOException {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/itonomise", "adm", "adm123");
 			return connection;
 		} catch (Exception e) {

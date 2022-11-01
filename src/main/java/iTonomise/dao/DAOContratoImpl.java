@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import iTonomise.modelo.Autonomo;
 import iTonomise.modelo.Contrato;
 import util.ConnectionFactory;
 

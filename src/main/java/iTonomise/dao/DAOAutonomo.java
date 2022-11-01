@@ -1,10 +1,7 @@
 package iTonomise.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 import iTonomise.modelo.*;
-import util.ConnectionFactory;
 
 public interface DAOAutonomo {
 	

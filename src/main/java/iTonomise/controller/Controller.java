@@ -2,6 +2,7 @@ package iTonomise.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import iTonomise.dao.*;
 import iTonomise.modelo.*;
+import util.JavaxMail;
 import util.UploadFile;
 
 
@@ -106,6 +108,10 @@ public class Controller extends HttpServlet{
 				buscarAutonomoPTag(request, response);
 			} else if (action.equals("buscarContratoPStatus")) { 
 				buscarContratoPStatus(request, response);
+			} else if (action.equals("pagRecuperarSenha")) { 
+				pagRecuperarSenha(request, response);
+			}  else if (action.equals("recuperarSenha")) { 
+				recuperarSenha(request, response);
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
@@ -397,7 +403,7 @@ public class Controller extends HttpServlet{
 				home(request,response);
 			}
 		}
-		String msgErro = "Senha e/ou usuario incorretos!";
+		String msgErro = "Senha e/ou usuario incorretos!<br><a style='color: red;' href='controller?action=pagRecuperarSenha'>Clique aqui para recuperar senha</a>";
 		session.setAttribute("msgErro", msgErro);
 		((HttpServletResponse) response).sendRedirect("controller?action=login");
 		 		
@@ -997,5 +1003,54 @@ public class Controller extends HttpServlet{
 					
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/meusContratos.jsp");
 			rd.forward(request, response);
+		}
+		
+		//Pagina recuperar senha
+		private void pagRecuperarSenha(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarEmail.jsp");
+			rd.forward(request, response);
+		}	
+		
+		private void recuperarSenha(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+				
+			String email = request.getParameter("email");
+			
+			DAOAutonomo daoAut = new DAOAutonomoImpl();
+			int idAutonomo = daoAut.buscarEmailAutonomo(email);
+			
+			DAOUsuario daoUsuario = new DAOUsuarioImpl();
+			int idUsuario = daoUsuario.buscarEmailUsuario(email);
+			
+			if(idUsuario != 0 || idAutonomo != 0) {
+				Random gerador = new Random();
+				int codigo = gerador.nextInt((999999 - 100000) + 1) + 100000;
+				
+				request.setAttribute("codigoRecuperar", codigo);
+				
+				JavaxMail.enviarEmail(email, codigo);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
+				rd.forward(request, response);
+			} else {
+				request.setAttribute("mensagemEmail", "Este e-mail não está cadastrado em nosso site.");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarEmail.jsp");
+				rd.forward(request, response);
+			}
+		}
+		
+		private void conferirCodigoSenha(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
+				rd.forward(request, response);			
+		}
+		
+		private void recuperarNovaSenha(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
+				rd.forward(request, response);			
 		}
 }
