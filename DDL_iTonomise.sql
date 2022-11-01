@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS contrato (
     duracaoT varchar(200),
 	duracaoN varchar(200) NOT NULL,
     localizacao varchar(200) NOT NULL,
-    stats boolean,
+    stats varchar(100),
     tipoCriador varchar(100) NOT NULL,
     finalAut boolean,
     finalUser boolean,
@@ -65,4 +65,4 @@ CREATE TABLE IF NOT EXISTS avaliacao (
 	FOREIGN KEY (idAutonomo) REFERENCES autonomo(idAutonomo) ON DELETE CASCADE,
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
     FOREIGN KEY (idContrato) REFERENCES contrato(idContrato) ON DELETE CASCADE
-);
+); 

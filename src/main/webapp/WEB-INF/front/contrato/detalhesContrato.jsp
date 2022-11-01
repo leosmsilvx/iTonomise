@@ -192,7 +192,7 @@ body{
 							</div>
 						
 		  					<!-- Aceitar Contrato -->
-		  					<c:if test="${(contrato.idAutonomo != null and contrato.idUsuario != null and contrato.status == 1 and contrato.tipoCriador != usuario) or( contrato.idAutonomo == null and usuario == 'autonomo' ) or(contrato.idUsuario == null and usuario == 'comum')}">			  					
+		  					<c:if test="${(contrato.idAutonomo != null and contrato.idUsuario != null and contrato.status == 'Pendente' and contrato.tipoCriador != usuario) or( contrato.idAutonomo == null and usuario == 'autonomo' ) or(contrato.idUsuario == null and usuario == 'comum')}">			  					
 				  					<div class="col-6 py-2" >
 				  						<!-- Botao modal Aceitar-->
 										<button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -211,7 +211,7 @@ body{
           
         </form>
         <!-- Finalizar Contrato Usuario -->
-		  					<c:if test="${contrato.idAutonomo != null and contrato.idUsuario != null and contrato.status == 0}">
+		  					<c:if test="${contrato.idAutonomo != null and contrato.idUsuario != null and contrato.status == 'Finalizado' or contrato.status == 'Aceito'}">
 		  					<form action="controller?action=finalizarContrato" method="post">
 								<input type="hidden" class="form-control" name="idAutonomo" value="${contrato.idAutonomo}">
 								<input type="hidden" class="form-control" name="idUsuario" value="${contrato.idUsuario}">

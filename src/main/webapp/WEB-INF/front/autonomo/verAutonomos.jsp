@@ -152,9 +152,7 @@ body{
 					</button>	
 											
 				</div>
-				<a href="controller?action=verAutonomos" style="text-decoration: none;">
-						<p class="text-secondary text-end">Limpar filtros</p>
-					</a>
+						<p class="text-end"><a href="controller?action=verAutonomos" class="text-secondary" style="text-decoration: none;">Limpar filtros</a></p>
 				
 			</div>
 			</form>

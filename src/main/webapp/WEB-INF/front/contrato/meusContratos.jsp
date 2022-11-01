@@ -100,12 +100,28 @@ body{
 				</div>
 			</nav>
             <div class="container">
-            <div class="py-5">	
+            <div class="row g-3">
+            	<div class="pt-5 col-9">	
    
-                <h4>Meus Contratos</h4>					
+                	<h4>Meus Contratos</h4>					
 				</div>
-                <div class="py-2">     
-                <c:set var="notEmpty" scope="session" value="${1}"/>        	
+				
+                <div class="pt-5 col-3">
+                <form action="controller?action=buscarContratoPStatus" method="post">
+							<label for="status">Filtrar por</label> <select
+								class="form-select bg-dark text-white text-center"
+								name="status" onchange='this.form.submit()' required>
+								<option>Status</option>
+								<option value="Não aceito">Não aceitos</option>
+								<option value="Pendente">Pendentes</option>
+								<option value="Aceito">Aceitos</option>
+								<option value="Finalizado">Finalizados</option>
+								<option value="Avaliado">Avaliados</option>
+							</select>	
+							</form>
+				</div>
+				
+				<p class="text-end"><a href="controller?action=meusContratos" class="text-secondary" style="text-decoration: none;">Limpar filtro</a></p>	
                     <table class="table table-hover table-dark table-striped align-middle">
                         <thead>
                           <tr>
@@ -117,8 +133,7 @@ body{
                           </tr>
                         </thead>
                         <c:forEach var="contratosCadastrados" items="${contratos}">                               
-                        <c:if test="${contratosCadastrados.status == status or status == null}">
-                        <c:set var="notEmpty" scope="session" value="${2}"/>						
+                        <c:if test="${contratosCadastrados.status == status or status == null}">					
                         <c:if test="${usuario == 'comum'}">
                         <c:if test="${contratosCadastrados.idUsuario == id}">
                         <tbody class="table-group-divider">
@@ -140,92 +155,94 @@ body{
 							</td>
                             <td>${contratosCadastrados.titulo}</td>
                             <td>R$ ${contratosCadastrados.valor}</td>
-                            		<c:if test="${contratosCadastrados.status == null}">
-										<td class="text-danger"><c:out value="Não aceito"/></td>
-										<td class="text-end"><a href="controller?action=pagAtualizarContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Alterar contrato</a>
-										<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
+                            		<c:if test="${contratosCadastrados.status == 'Não aceito'}">
+										<td class="text-danger">${contratosCadastrados.status}</td>
+										<td class="text-end"><a href="controller?action=pagAtualizarContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">
+												Alterar contrato
+											</a>
+											<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">
+												Rever contrato
+											</a>
+										</td>
 							
 									</c:if>
-									<c:if test="${contratosCadastrados.status != null}">
-										<c:if test="${contratosCadastrados.status == 0}">
-											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1  and contratosCadastrados.foiAvaliado == 0}">
-												<td class="text-success"><c:out value="Finalizado 2/2"/></td>
-												<td class="text-end">
-												<div class="btn-group dropstart">
-													<button type="button" class="btn btn-light dropdown-toggle"
-														data-bs-toggle="dropdown" aria-expanded="false">
-														Avaliar</button>
-													<ul class="dropdown-menu text-center">
-														<li><a class="dropdown-item"
-															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=1">1
-																<svg class="bi" width="1.1em" height="1.1em">
-																	<use xlink:href="#estrelilha"></use></svg>
-														</a></li>
-														<li><a class="dropdown-item"
-															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=2">2
-																<svg class="bi" width="1.1em" height="1.1em">
-																	<use xlink:href="#estrelilha"></use></svg>
-														</a></li>
-														<li><a class="dropdown-item"
-															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=3">3
-																<svg class="bi" width="1.1em" height="1.1em">
-																	<use xlink:href="#estrelilha"></use></svg>
-														</a></li>
-														<li><a class="dropdown-item"
-															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=4">4
-																<svg class="bi" width="1.1em" height="1.1em">
-																	<use xlink:href="#estrelilha"></use></svg>
-														</a></li>
-														<li><a class="dropdown-item"
-															href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=5">5
-																<svg class="bi" width="1.1em" height="1.1em">
-																	<use xlink:href="#estrelilha"></use></svg>
-														</a></li>
-													</ul>
-												</div>
-												<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Rever contrato</a>
+									<c:if test="${contratosCadastrados.status == 'Pendente'}">
+											<td class="text-warning"><c:out value="Pendente"/></td>
+											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">
+													<c:if test="${usuario == 'comum'}">Rever Contrato</c:if>
+													<c:if test="${usuario == 'autonomo'}">Aceitar Contrato</c:if>
+												</a>
 											</td>
-											</c:if>
-											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1 and contratosCadastrados.foiAvaliado == 1}">
-												<td style="color: #9865db;"><c:out value="Avaliado"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
-							
-											</c:if>
-											<c:if test="${contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 0}">
-												<td class="text-primary"><c:out value="Aceito"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
-							
-											</c:if>
-											<c:if test="${(contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 0 and usuario == 'autonomo')}">
-												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
-							
-											</c:if>
-											<c:if test="${(contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 0 and usuario == 'comum')}">
-												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
-							
-											</c:if>
-											<c:if test="${ (contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 1 and usuario == 'comum')}">
-												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
-							
-											</c:if>
-											<c:if test="${ (contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 1 and usuario == 'autonomo')}">
-												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
-							
-											</c:if>
-										</c:if>
-										<c:if test="${contratosCadastrados.status == 1 and usuario == 'comum'}">
-											<td class="text-warning"><c:out value="Pendente"/></td>
-											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
-										</c:if>
-										<c:if test="${contratosCadastrados.status == 1 and usuario == 'autonomo'}">
-											<td class="text-warning"><c:out value="Pendente"/></td>
-											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Aceitar contrato</a></td>
-										</c:if>												
 									</c:if>
+									<c:if test="${contratosCadastrados.status == 'Aceito'}">
+											<td class="text-primary">${contratosCadastrados.status}</td>
+											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">
+													Finalizar Contrato
+												</a>
+											</td>
+									</c:if>
+									<c:if test="${contratosCadastrados.status == 'Finalizado'}">
+										<c:if test="${(contratosCadastrados.finalUser == 1  and contratosCadastrados.finalAut == 0) or (contratosCadastrados.finalUser == 0  and contratosCadastrados.finalAut == 1)}">
+											<td class="text-info">Finalizado 1/2</td>
+											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">
+												<c:if test="${contratosCadastrados.finalUser == 1 and usuario == 'comum'}">
+													Rever Contrato
+												</c:if>
+												<c:if test="${contratosCadastrados.finalUser == 1 and usuario == 'autonomo'}">
+													Finalizar Contrato
+												</c:if>
+												<c:if test="${contratosCadastrados.finalAut == 1 and usuario == 'autonomo'}">
+													Rever Contrato
+												</c:if>
+												<c:if test="${contratosCadastrados.finalAut == 1 and usuario == 'comum'}">
+													Finalizarr Contrato
+												</c:if>
+												</a>
+											</td>
+										</c:if>
+										<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1}">									
+											<td class="text-success">Finalizado 2/2</td>
+												<td class="text-end">
+													<div class="btn-group dropstart">
+														<button type="button" class="btn btn-light dropdown-toggle"
+															data-bs-toggle="dropdown" aria-expanded="false">
+															Avaliar</button>
+														<ul class="dropdown-menu text-center">
+															<li><a class="dropdown-item"
+																href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=1">1
+																	<svg class="bi" width="1.1em" height="1.1em">
+																		<use xlink:href="#estrelilha"></use></svg>
+															</a></li>
+															<li><a class="dropdown-item"
+																href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=2">2
+																	<svg class="bi" width="1.1em" height="1.1em">
+																		<use xlink:href="#estrelilha"></use></svg>
+															</a></li>
+															<li><a class="dropdown-item"
+																href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=3">3
+																	<svg class="bi" width="1.1em" height="1.1em">
+																		<use xlink:href="#estrelilha"></use></svg>
+															</a></li>
+															<li><a class="dropdown-item"
+																href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=4">4
+																	<svg class="bi" width="1.1em" height="1.1em">
+																		<use xlink:href="#estrelilha"></use></svg>
+															</a></li>
+															<li><a class="dropdown-item"
+																href="controller?action=avaliar&idContrato=${contratosCadastrados.idContrato}&idAutonomo=${contratosCadastrados.idAutonomo}&valor=5">5
+																	<svg class="bi" width="1.1em" height="1.1em">
+																		<use xlink:href="#estrelilha"></use></svg>
+															</a></li>
+														</ul>
+													</div>
+													<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Rever contrato</a>
+												</td>										
+										</c:if>
+									</c:if>
+									<c:if test="${contratosCadastrados.status == 'Avaliado'}">
+										<td style="color: #9865db;"><c:out value="Avaliado"/></td>
+										<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>	
+									</c:if>									
                           </tr>
                           </c:if>
                           </c:if>
@@ -250,60 +267,63 @@ body{
 							</td>
                             <td>${contratosCadastrados.titulo}</td>
                             <td>R$ ${contratosCadastrados.valor}</td>
-                            		<c:if test="${contratosCadastrados.status == null}">
-										<td class="text-danger"><c:out value="Não aceito"/></td>
-										<td class="text-end"><a href="controller?action=pagAtualizarContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Alterar contrato</a>
-										<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
+                            		<c:if test="${contratosCadastrados.status == 'Não aceito'}">
+										<td class="text-danger">${contratosCadastrados.status}</td>
+										<td class="text-end"><a href="controller?action=pagAtualizarContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">
+												Alterar contrato
+											</a>
+											<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">
+												Rever contrato
+											</a>
+										</td>
 							
 									</c:if>
-									<c:if test="${contratosCadastrados.status != null}">
-										<c:if test="${contratosCadastrados.status == 0}">
-											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1  and contratosCadastrados.foiAvaliado == 0}">
-												<td class="text-success"><c:out value="Finalizado 2/2"/></td>
-												<td class="text-end">
-												<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Rever contrato</a>
+									<c:if test="${contratosCadastrados.status == 'Pendente'}">
+											<td class="text-warning"><c:out value="Pendente"/></td>
+											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">
+													<c:if test="${usuario == 'comum'}">Rever Contrato</c:if>
+													<c:if test="${usuario == 'autonomo'}">Aceitar Contrato</c:if>
+												</a>
 											</td>
-											</c:if>
-											<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1 and contratosCadastrados.foiAvaliado == 1}">
-												<td style="color: #9865db;"><c:out value="Avaliado"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
-							
-											</c:if>
-											<c:if test="${contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 0}">
-												<td class="text-primary"><c:out value="Aceito"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
-							
-											</c:if>
-											<c:if test="${(contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 0 and usuario == 'autonomo')}">
-												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
-							
-											</c:if>
-											<c:if test="${(contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 0 and usuario == 'comum')}">
-												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
-							
-											</c:if>
-											<c:if test="${ (contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 1 and usuario == 'comum')}">
-												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
-							
-											</c:if>
-											<c:if test="${ (contratosCadastrados.finalAut == 0 and contratosCadastrados.finalUser == 1 and usuario == 'autonomo')}">
-												<td class="text-info"><c:out value="Finalizado 1/2"/></td>
-												<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Finalizar contrato</a></td>
-							
-											</c:if>
-										</c:if>
-										<c:if test="${contratosCadastrados.status == 1 and usuario == 'comum'}">
-											<td class="text-warning"><c:out value="Pendente"/></td>
-											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>
-										</c:if>
-										<c:if test="${contratosCadastrados.status == 1 and usuario == 'autonomo'}">
-											<td class="text-warning"><c:out value="Pendente"/></td>
-											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Aceitar contrato</a></td>
-										</c:if>												
 									</c:if>
+									<c:if test="${contratosCadastrados.status == 'Aceito'}">
+											<td class="text-primary">${contratosCadastrados.status}</td>
+											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">
+													Finalizar Contrato
+												</a>
+											</td>
+									</c:if>
+									<c:if test="${contratosCadastrados.status == 'Finalizado'}">
+										<c:if test="${(contratosCadastrados.finalUser == 1  and contratosCadastrados.finalAut == 0) or (contratosCadastrados.finalUser == 0  and contratosCadastrados.finalAut == 1)}">
+											<td class="text-info">Finalizado 1/2</td>
+											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">
+												<c:if test="${contratosCadastrados.finalUser == 1 and usuario == 'comum'}">
+													Rever Contrato
+												</c:if>
+												<c:if test="${contratosCadastrados.finalUser == 1 and usuario == 'autonomo'}">
+													Finalizar Contrato
+												</c:if>
+												<c:if test="${contratosCadastrados.finalAut == 1 and usuario == 'autonomo'}">
+													Rever Contrato
+												</c:if>
+												<c:if test="${contratosCadastrados.finalAut == 1 and usuario == 'comum'}">
+													Finalizarr Contrato
+												</c:if>
+												</a>
+											</td>
+										</c:if>
+										<c:if test="${contratosCadastrados.finalAut == 1 and contratosCadastrados.finalUser == 1}">									
+											<td class="text-success">Finalizado 2/2</td>
+												<td class="text-end">
+												
+													<a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Rever contrato</a>
+												</td>										
+										</c:if>
+									</c:if>
+									<c:if test="${contratosCadastrados.status == 'Avaliado'}">
+										<td style="color: #9865db;"><c:out value="Avaliado"/></td>
+										<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>	
+									</c:if>		
                           </tr>                                         
                          </c:if>
                           </c:if>
@@ -311,9 +331,7 @@ body{
                         </c:forEach>
                         </tbody>
                       </table>
-                      <c:if test="${notEmpty != 2 and status != null}">
-							<h4 class="text-center text-danger">Não há autonomos correspondentes ao filtro selecionado.</h4>
-                        </c:if>
+                      <h4 class="text-center text-danger">${msgNaoTem}</h4>
                         <div class="row pt-4">
                         	<h5>Legenda: Status</h5>
 	                        <div class="col-6">					

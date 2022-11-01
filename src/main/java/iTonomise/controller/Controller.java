@@ -92,8 +92,6 @@ public class Controller extends HttpServlet{
 				pagAtualizarContrato(request, response);
 			} else if (action.equals("atualizarContrato")) { 
 				atualizarContrato(request, response);
-			} else if (action.equals("atualizarPorCategoria")) { 
-				atualizarPorCategoria(request, response);
 			} else if (action.equals("proporContrato")) { 
 				proporContrato(request, response);
 			} else if (action.equals("finalizarContrato")) { 
@@ -104,6 +102,8 @@ public class Controller extends HttpServlet{
 				removerContrato(request, response);
 			} else if (action.equals("buscarAutonomoPTag")) { 
 				buscarAutonomoPTag(request, response);
+			} else if (action.equals("buscarContratoPStatus")) { 
+				buscarContratoPStatus(request, response);
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
@@ -305,7 +305,7 @@ public class Controller extends HttpServlet{
 		String duracaoT = request.getParameter("duracaoT");
 		String duracaoN = request.getParameter("duracaoN");
 		String localizacao = request.getParameter("localizacao");
-		String status = null;
+		String status = "Não aceito";
 		int idCont = 0;	
 		String idAutonomo = null;
 		String idUsuario = null;
@@ -330,7 +330,7 @@ public class Controller extends HttpServlet{
 			idUsuario = String.valueOf(session.getAttribute("id"));	
 			idAutonomo = request.getParameter("idAutonomo");
 			if(idAutonomo != null)
-				status = "1";
+				status = "Pendente";
 		} else{
 			idAutonomo = String.valueOf(session.getAttribute("id"));
 		}
@@ -672,11 +672,6 @@ public class Controller extends HttpServlet{
 
 		request.setAttribute("usuarios", usuarios);
 		
-		DAOAvaliacao dao4 = new DAOAvaliacaoImpl();
-		List<Avaliacao> avaliacoes = dao4.todasAvaliacoes();
-
-		request.setAttribute("avaliacoes", avaliacoes);
-		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/meusContratos.jsp");
 		rd.forward(request, response);
 	}
@@ -694,7 +689,7 @@ public class Controller extends HttpServlet{
 		String duracaoT = request.getParameter("duracaoT");
 		String duracaoN = request.getParameter("duracaoN");
 		String localizacao = request.getParameter("localizacao");
-		String status = "0";
+		String status = "Aceito";
 		int idContrato = Integer.valueOf(request.getParameter("idContrato"));
 		String idAutonomo = request.getParameter("idAutonomo");	
 		String idUsuario = request.getParameter("idUsuario");
@@ -743,7 +738,7 @@ public class Controller extends HttpServlet{
 			String duracaoT = request.getParameter("duracaoT");
 			String duracaoN = request.getParameter("duracaoN");
 			String localizacao = request.getParameter("localizacao");
-			String status = null;
+			String status = "Não aceito";
 			String idAutonomo = null;
 			String idUsuario = null;
 			String finalAut = request.getParameter("finalAut");
@@ -775,21 +770,6 @@ public class Controller extends HttpServlet{
 			dao.atualizar(novoContrato);
 			
 			meusContratos(request, response);
-		}
-		
-		//Atualiar por categoria
-		private void atualizarPorCategoria(HttpServletRequest request, HttpServletResponse response)
-				throws ServletException, IOException, DAOException {
-			
-			String categoria = request.getParameter("filtro");
-			
-			if (categoria.equals("none")){
-				categoria = null;
-			}
-
-			request.setAttribute("categoria", categoria);
-			
-			verAutonomos(request,response);
 		}
 		
 		//Propor Contrato
@@ -826,7 +806,7 @@ public class Controller extends HttpServlet{
 			String duracaoT = request.getParameter("duracaoT");
 			String duracaoN = request.getParameter("duracaoN");
 			String localizacao = request.getParameter("localizacao");
-			String status = request.getParameter("status");;
+			String status = "Finalizado";
 			String idAutonomo = request.getParameter("idAutonomo");
 			String idUsuario = request.getParameter("idUsuario");
 			String finalAut = request.getParameter("finalAut");
@@ -932,6 +912,37 @@ public class Controller extends HttpServlet{
 			request.setAttribute("autonomos", autonomos);		
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/verAutonomos.jsp");
+			rd.forward(request, response);
+		}
+		
+		// Buscar contrato por status
+		private void buscarContratoPStatus(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, DAOException {
+
+			String status = request.getParameter("status");
+												
+			DAOContrato dao = new DAOContratoImpl();
+			List<Contrato> contratos = dao.buscarContratoPStatus(status);
+					
+			request.setAttribute("msgNaoTem", "");
+				
+			if(contratos.isEmpty()) {
+				request.setAttribute("msgNaoTem", "Não há autonomos correspondentes ao filtro selecionado.");
+			}
+					
+			request.setAttribute("contratos", contratos);
+			
+			DAOAutonomo dao2 = new DAOAutonomoImpl();
+			List<Autonomo> autonomos = dao2.todosAutonomos();
+
+			request.setAttribute("autonomos", autonomos);
+				
+			DAOUsuario dao3 = new DAOUsuarioImpl();
+			List<Usuario> usuarios = dao3.todosUsuarios();
+
+			request.setAttribute("usuarios", usuarios);
+					
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/meusContratos.jsp");
 			rd.forward(request, response);
 		}
 }
