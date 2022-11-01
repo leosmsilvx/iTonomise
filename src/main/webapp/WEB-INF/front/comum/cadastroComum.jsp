@@ -97,7 +97,7 @@ body{
 				<div>
 					<h5 class="text-danger text-center py-3"> ${msgErroCad} </h5>
 					<h4 class="mb-4 py-4">Cadastro Usuário</h4>
-					<form action="controller?action=cadastrarComum" method="post">						
+					<form action="controller?action=cadastrarComum" method="post" enctype="multipart/form-data">						
 						<div class="row g-3">
 							<div class="col-sm-6">
 								<label for="nome" class="form-label">Primeiro
@@ -145,11 +145,15 @@ body{
 								</div>
 							</div>
 
-							<div class="col-12">
+							<div class="col-8">
 								<label for="email" class="form-label">Email</label> <input
 									type="email" class="form-control" name="email"
 									placeholder="iTonomise@exemplo.com">
 							</div>
+							<div class="col-4">
+				                <label for="foto" class="form-label">Foto</label> <input
+				                  type="file" class="form-control" name="nomeImg" required>
+				              </div>
 							
 							<div class="col-12">
 								<label for="endereco" class="form-label">Endereço</label>

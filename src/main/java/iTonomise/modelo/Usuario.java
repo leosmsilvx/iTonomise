@@ -10,10 +10,12 @@ public class Usuario {
 	private String senha;
 	private String email;
 	private String endereco;
+	private String nomeImg;
 	private int idUsuario;
 	
 	public Usuario(String nome, String sobrenome, String cpf, String tel, String user, String senha, String email,
-			String endereco, int idUsuario) {
+			String endereco, String nomeImg, int idUsuario) {
+		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
@@ -22,6 +24,7 @@ public class Usuario {
 		this.senha = senha;
 		this.email = email;
 		this.endereco = endereco;
+		this.nomeImg = nomeImg;
 		this.idUsuario = idUsuario;
 	}
 
@@ -89,6 +92,14 @@ public class Usuario {
 		this.endereco = endereco;
 	}
 
+	public String getNomeImg() {
+		return nomeImg;
+	}
+
+	public void setNomeImg(String nomeImg) {
+		this.nomeImg = nomeImg;
+	}
+
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -96,4 +107,6 @@ public class Usuario {
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
+	
+	
 }

@@ -14,10 +14,11 @@ public class Autonomo {
 	private String tags;
 	private String endereco;
 	private double aval;
+	private String nomeImg;
 	private int idAutonomo;
 	
 	public Autonomo(String nome, String sobrenome, String cpf, String tel, String user, String senha, String email,
-			String desc, String tags, String endereco, double aval, int idAutonomo) {
+			String desc, String tags, String endereco, double aval, String nomeImg, int idAutonomo) {
 		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -30,6 +31,7 @@ public class Autonomo {
 		this.tags = tags;
 		this.endereco = endereco;
 		this.aval = aval;
+		this.nomeImg = nomeImg;
 		this.idAutonomo = idAutonomo;
 	}
 
@@ -121,6 +123,14 @@ public class Autonomo {
 		this.aval = aval;
 	}
 
+	public String getNomeImg() {
+		return nomeImg;
+	}
+
+	public void setNomeImg(String nomeImg) {
+		this.nomeImg = nomeImg;
+	}
+
 	public int getIdAutonomo() {
 		return idAutonomo;
 	}
@@ -128,5 +138,6 @@ public class Autonomo {
 	public void setIdAutonomo(int idAutonomo) {
 		this.idAutonomo = idAutonomo;
 	}
-		
+	
+	
 }

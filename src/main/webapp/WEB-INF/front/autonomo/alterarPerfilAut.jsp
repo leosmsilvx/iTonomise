@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -103,17 +103,19 @@ transform : scale(1.2);
                             <h4 class="mb-4 pt-4">Alterar dados do perfil</h4>                            
                             <a class="text-center text-danger" style="text-decoration: none;"> ${msgErroAtu} </a>
 				<form action="controller?action=alterarPerfilAut" method="post"
-					id="formulario" class="needs-validation">
+					id="formulario" class="needs-validation" enctype="multipart/form-data">
 					<div class="row g-3">
 						<div class="col-4">
 							<h6 class="text-body text-start px-1">@${autonomo.user}</h6>
 							<div class="card">
 								<img
-									src="https://st.depositphotos.com/2818715/5102/i/600/depositphotos_51026865-stock-photo-serious-and-pensive-isolated-young.jpg"
+									src="${autonomo.nomeImg}"
 									height="250" width="225" class="card-img-top">
 								<div class="card-body border-top">
 									<p class="card-text"
 										style="font-weight: bold; font-size: larger; text-align: center;">${autonomo.nome}</p>
+										<input type="hidden" class="form-control" value="${autonomo.nomeImg}" name="imagem">
+									<input type="file" class="form-control" value="${autonomo.nomeImg}" name="nomeImg">
 								</div>
 							</div>
 						</div>

@@ -25,7 +25,7 @@ public class DAOUsuarioImpl implements DAOUsuario{
 		try {			
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "INSERT INTO usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco, nomeImg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
@@ -37,7 +37,7 @@ public class DAOUsuarioImpl implements DAOUsuario{
 			stmt.setString(6, usuario.getSenha());
 			stmt.setString(7, usuario.getEmail());
 			stmt.setString(8, usuario.getEndereco());
-			
+			stmt.setString(9, usuario.getNomeImg());
 
 			stmt.execute();
 
@@ -61,7 +61,7 @@ public class DAOUsuarioImpl implements DAOUsuario{
 		try {
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "UPDATE usuario SET nome = ?, sobrenome = ?, cpf = ?, tel = ?, usuario = ?, senha = ?, email = ?, endereco = ? WHERE idUsuario = ?";
+			String sql = "UPDATE usuario SET nome = ?, sobrenome = ?, cpf = ?, tel = ?, usuario = ?, senha = ?, email = ?, endereco = ?, nomeImg = ? WHERE idUsuario = ?";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
@@ -73,7 +73,8 @@ public class DAOUsuarioImpl implements DAOUsuario{
 			stmt.setString(6, usuario.getSenha());
 			stmt.setString(7, usuario.getEmail());
 			stmt.setString(8, usuario.getEndereco());
-			stmt.setInt(9, usuario.getIdUsuario());
+			stmt.setString(9, usuario.getNomeImg());
+			stmt.setInt(10, usuario.getIdUsuario());
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -121,9 +122,9 @@ public class DAOUsuarioImpl implements DAOUsuario{
 				String senha = rs.getString("senha");
 				String email = rs.getString("email");
 				String endereco = rs.getString("endereco");
+				String nomeImg = null;
 
-
-				Usuario comum = new Usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco, idUsuario);
+				Usuario comum = new Usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco, nomeImg, idUsuario);
 				comum.setIdUsuario(idUsuario);
 				comum.setNome(nome);
 				comum.setSobrenome(sobrenome);
@@ -166,8 +167,9 @@ public class DAOUsuarioImpl implements DAOUsuario{
 				String senha = rs.getString("senha");
 				String email = rs.getString("email");
 				String endereco = rs.getString("endereco");
+				String nomeImg = rs.getString("nomeImg");
 				
-				comum = new Usuario( nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email,  endereco, idUsuario);
+				comum = new Usuario( nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email,  endereco, nomeImg, idUsuario);
 				comum.setIdUsuario(idUsuario);
 				comum.setNome(nome);
 				comum.setSobrenome(sobrenome);
@@ -209,8 +211,9 @@ public class DAOUsuarioImpl implements DAOUsuario{
 				String senha = rs.getString("senha");
 				String email = rs.getString("email");
 				String endereco = rs.getString("endereco");
+				String nomeImg = null;
 				
-				comum = new Usuario( nome,  sobrenome,  cpf,  tel,  user,  senha,  email,  endereco, idUsuario);
+				comum = new Usuario( nome,  sobrenome,  cpf,  tel,  user,  senha,  email,  endereco, nomeImg, idUsuario); 
 				comum.setIdUsuario(idUsuario);
 				comum.setNome(nome);
 				comum.setSobrenome(sobrenome);

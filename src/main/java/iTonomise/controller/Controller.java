@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import iTonomise.dao.*;
 import iTonomise.modelo.*;
+import util.UploadFile;
 
 
 @WebServlet("/controller")
@@ -191,18 +193,29 @@ public class Controller extends HttpServlet{
 			throws ServletException, IOException, DAOException {
 		
 		HttpSession session = request.getSession(true);	
-		String nome = request.getParameter("nome");
-		String sobrenome = request.getParameter("sobrenome");
-		String cpf = request.getParameter("cpf");
-		String tel = request.getParameter("tel");
-		String user = request.getParameter("user");
-		String senha = request.getParameter("senha");
-		String email = request.getParameter("email");
-		String desc = request.getParameter("desc");
-		String tags = request.getParameter("tags");
-		String endereco = request.getParameter("endereco");
+		UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
+		upload.setEncoding("UTF-8");
+		
+		String nome = upload.getParameter(request,"nome");
+		String sobrenome = upload.getParameter(request,"sobrenome");
+		String cpf = upload.getParameter(request,"cpf");
+		String tel = upload.getParameter(request,"tel");
+		String user = upload.getParameter(request,"user");
+		String senha = upload.getParameter(request,"senha");
+		String email = upload.getParameter(request,"email");
+		String desc = upload.getParameter(request,"desc");
+		String tags = upload.getParameter(request,"tags");
+		String endereco = upload.getParameter(request,"endereco");
 		double aval = 0;
-		int idAutonomo = 0;
+		int idAutonomo = 0;	
+
+		String nomeimg = null;
+		
+		ServletContext application = getServletContext(); 
+
+		if(upload.doUploadParameter(request, application, "nomeImg", user)){
+			nomeimg = upload.getNomeArquivo();
+		}
 		
 		
 		DAOAutonomo dao = new DAOAutonomoImpl();
@@ -229,7 +242,7 @@ public class Controller extends HttpServlet{
 		}
 		
 		if(emailUser == 0 && emailAutonomo == 0 && autonomoUser == null) {
-			Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
+			Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, nomeimg, idAutonomo);
 			
 			dao.cadastrar(novoAutonomo);
 			request.setAttribute("autonomo", novoAutonomo);
@@ -248,15 +261,26 @@ public class Controller extends HttpServlet{
 			throws ServletException, IOException, DAOException {	
 		
 		HttpSession session = request.getSession(true);	
-		String nome = request.getParameter("nome");
-		String sobrenome = request.getParameter("sobrenome");
-		String cpf = request.getParameter("cpf");
-		String tel = request.getParameter("tel");
-		String user = request.getParameter("user");
-		String senha = request.getParameter("senha");
-		String email = request.getParameter("email");
-		String endereco = request.getParameter("endereco");
+		UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
+		upload.setEncoding("UTF-8");
+		
+		String nome = upload.getParameter(request,"nome");
+		String sobrenome = upload.getParameter(request,"sobrenome");
+		String cpf = upload.getParameter(request,"cpf");
+		String tel = upload.getParameter(request,"tel");
+		String user = upload.getParameter(request,"user");
+		String senha = upload.getParameter(request,"senha");
+		String email = upload.getParameter(request,"email");
+		String endereco = upload.getParameter(request,"endereco");
 		int idUsuario = 0;
+
+		String nomeimg = null;
+		
+		ServletContext application = getServletContext(); 
+
+		if(upload.doUploadParameter(request, application, "nomeImg", user)){
+			nomeimg = upload.getNomeArquivo();
+		}
 		
 		DAOUsuario dao = new DAOUsuarioImpl();
 		DAOAutonomo dao2 = new DAOAutonomoImpl();
@@ -281,7 +305,7 @@ public class Controller extends HttpServlet{
 			return;
 		}
 		if(emailUser == 0 && emailAutonomo == 0 && usuarioUser == null) {
-			Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);		
+			Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, nomeimg, idUsuario);		
 			
 			dao.cadastrar(novoUsuario);
 			request.setAttribute("comum", novoUsuario);
@@ -555,22 +579,38 @@ public class Controller extends HttpServlet{
 			throws ServletException, IOException, DAOException {
 			
 		HttpSession session = request.getSession(true);	
-		String nome = request.getParameter("nome");
-		String sobrenome = request.getParameter("sobrenome");
-		String cpf = request.getParameter("cpf");
-		String tel = request.getParameter("tel");
-		String user = request.getParameter("user");
-		String senha = request.getParameter("senha");
-		String email = request.getParameter("email");
-		String desc = request.getParameter("desc");
-		String tags = request.getParameter("tags");
-		String endereco = request.getParameter("endereco");
+		UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
+		upload.setEncoding("UTF-8");
+
+		String nome = upload.getParameter(request,"nome");
+		String sobrenome = upload.getParameter(request,"sobrenome");
+		String cpf = upload.getParameter(request,"cpf");
+		String tel = upload.getParameter(request,"tel");
+		String user = upload.getParameter(request,"user");
+		String senha = upload.getParameter(request,"senha");
+		String email = upload.getParameter(request,"email");
+		String desc = upload.getParameter(request,"desc");
+		String tags = upload.getParameter(request,"tags");
+		String endereco = upload.getParameter(request,"endereco");
 		double aval = 0;
 		if(request.getParameter("aval") != null)
-			aval = Double.valueOf(request.getParameter("aval"));
-		int idAutonomo = (int) session.getAttribute("id");
+			aval = Double.valueOf(upload.getParameter(request,"aval"));
+		
+		int idAutonomo = (int) session.getAttribute("id");	
+	
+		String nomeimg = null;
+		
+		ServletContext application = getServletContext(); 
+
+		if(upload.doUploadParameter(request, application, "nomeImg", user)){
+			nomeimg = upload.getNomeArquivo();
+		}
+		
+		if(nomeimg == null) {
+			nomeimg = upload.getParameter(request,"imagem");
+		}	
 			
-		Autonomo atualizarAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, idAutonomo);
+		Autonomo atualizarAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, nomeimg, idAutonomo);
 			
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		DAOUsuario dao2 = new DAOUsuarioImpl();
@@ -615,27 +655,39 @@ public class Controller extends HttpServlet{
 	private void alterarPerfilCom(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
 			
-		HttpSession session = request.getSession(true);	
-		String nome = request.getParameter("nome");
-		String sobrenome = request.getParameter("sobrenome");
-		String cpf = request.getParameter("cpf");
-		String tel = request.getParameter("tel");
-		String user = request.getParameter("user");
-		String senha = request.getParameter("senha");
-		String email = request.getParameter("email");
-		String endereco = request.getParameter("endereco");
-		int idUsuario = (int) session.getAttribute("id");
+		HttpSession session = request.getSession(true);			
+		UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
+		upload.setEncoding("UTF-8");
 		
-		Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, idUsuario);
+		String nome = upload.getParameter(request,"nome");
+		String sobrenome = upload.getParameter(request,"sobrenome");
+		String cpf = upload.getParameter(request,"cpf");
+		String tel = upload.getParameter(request,"tel");
+		String user = upload.getParameter(request,"user");
+		String senha = upload.getParameter(request,"senha");
+		String email = upload.getParameter(request,"email");
+		String endereco = upload.getParameter(request,"endereco");
+		int idUsuario = (int) session.getAttribute("id");
+
+		String nomeimg = null;
+		
+		ServletContext application = getServletContext(); 		
+
+		if(upload.doUploadParameter(request, application, "nomeImg", user)){
+			nomeimg = upload.getNomeArquivo();
+		}
+		
+		if(nomeimg == null) {
+			nomeimg = upload.getParameter(request,"imagem");
+		}		
+		
+		Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, nomeimg, idUsuario);
 		
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		DAOUsuario dao2 = new DAOUsuarioImpl();
 		
 		int idAutonomoEmail = dao.buscarEmailAutonomo(email);
 		int idUsuarioEmail = dao2.buscarEmailUsuario(email);
-		
-		System.out.print("Oi eu sou o idUsuario = "+idUsuarioEmail);
-		System.out.print("Oi eu sou o idAutonomo = "+idAutonomoEmail);
 		
 		if(idAutonomoEmail != 0 || idUsuarioEmail != 0 && idUsuarioEmail != ((int) session.getAttribute("id"))) {
 			String msgErroAtu = "Não foi possivel fazer a alteração, email já cadastrado!";
@@ -920,6 +972,7 @@ public class Controller extends HttpServlet{
 			throws ServletException, IOException, DAOException {
 
 			String status = request.getParameter("status");
+			request.setAttribute("status", status);
 												
 			DAOContrato dao = new DAOContratoImpl();
 			List<Contrato> contratos = dao.buscarContratoPStatus(status);

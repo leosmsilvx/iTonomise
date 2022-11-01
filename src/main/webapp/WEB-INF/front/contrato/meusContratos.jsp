@@ -111,12 +111,18 @@ body{
 							<label for="status">Filtrar por</label> <select
 								class="form-select bg-dark text-white text-center"
 								name="status" onchange='this.form.submit()' required>
-								<option>Status</option>
-								<option value="Não aceito">Não aceitos</option>
-								<option value="Pendente">Pendentes</option>
-								<option value="Aceito">Aceitos</option>
-								<option value="Finalizado">Finalizados</option>
-								<option value="Avaliado">Avaliados</option>
+								<c:if test="${status == null}">
+									<option>Status</option>
+								</c:if>
+								<c:if test="${status != null}">
+									<option><c:out value="${status}"/></option>
+								</c:if>
+								
+								<option value="Não aceito">Não aceito</option>
+								<option value="Pendente">Pendente</option>
+								<option value="Aceito">Aceito</option>
+								<option value="Finalizado">Finalizado</option>
+								<option value="Avaliado">Avaliado</option>
 							</select>	
 							</form>
 				</div>
@@ -132,8 +138,7 @@ body{
                             <th scope="col"></th>
                           </tr>
                         </thead>
-                        <c:forEach var="contratosCadastrados" items="${contratos}">                               
-                        <c:if test="${contratosCadastrados.status == status or status == null}">					
+                        <c:forEach var="contratosCadastrados" items="${contratos}">                               			
                         <c:if test="${usuario == 'comum'}">
                         <c:if test="${contratosCadastrados.idUsuario == id}">
                         <tbody class="table-group-divider">
@@ -326,7 +331,6 @@ body{
 									</c:if>		
                           </tr>                                         
                          </c:if>
-                          </c:if>
                           </c:if>
                         </c:forEach>
                         </tbody>

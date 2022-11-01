@@ -27,7 +27,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		try {			
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "INSERT INTO autonomo(nome, sobrenome, cpf, tel, usuario, senha, email, descricao, tags, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO autonomo(nome, sobrenome, cpf, tel, usuario, senha, email, descricao, tags, endereco, nomeImg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
@@ -41,6 +41,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			stmt.setString(8, autonomo.getDesc());
 			stmt.setString(9, autonomo.getTags());
 			stmt.setString(10, autonomo.getEndereco());
+			stmt.setString(11, autonomo.getNomeImg());
 
 			stmt.execute();
 
@@ -65,7 +66,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 		try {
 			this.connection = ConnectionFactory.getConnection();
 			
-			String sql = "UPDATE autonomo SET nome = ?, sobrenome = ?, cpf = ?, tel = ?, usuario = ?, senha = ?, email = ?, descricao = ?, tags = ?, endereco = ?, aval = ? WHERE idAutonomo = ?";
+			String sql = "UPDATE autonomo SET nome = ?, sobrenome = ?, cpf = ?, tel = ?, usuario = ?, senha = ?, email = ?, descricao = ?, tags = ?, endereco = ?, aval = ?, nomeImg = ? WHERE idAutonomo = ?";
 
 			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -80,7 +81,8 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			stmt.setString(9, autonomo.getTags());
 			stmt.setString(10, autonomo.getEndereco());
 			stmt.setDouble(11, autonomo.getAval());
-			stmt.setInt(12, autonomo.getIdAutonomo());
+			stmt.setString(12, autonomo.getNomeImg());
+			stmt.setInt(13, autonomo.getIdAutonomo());
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -131,9 +133,9 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				String tags = rs.getString("tags");
 				String endereco = rs.getString("endereco");
 				double aval = rs.getDouble("aval");
+				String nomeImg = null;
 
-
-				Autonomo autonomo = new Autonomo(nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email, descricao, tags, endereco, aval, idAutonomo);
+				Autonomo autonomo = new Autonomo(nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email, descricao, tags, endereco, aval, nomeImg,idAutonomo);
 				autonomo.setIdAutonomo(idAutonomo);
 				autonomo.setNome(nome);
 				autonomo.setSobrenome(sobrenome);
@@ -182,8 +184,9 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				String tags = rs.getString("tags");
 				String endereco = rs.getString("endereco");
 				double aval = rs.getDouble("aval");
+				String nomeImg = rs.getString("nomeImg");
 				
-				autonomo = new Autonomo( nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email, descricao, tags,  endereco, aval, idAutonomo);
+				autonomo = new Autonomo( nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email, descricao, tags,  endereco, aval, nomeImg, idAutonomo);
 				autonomo.setIdAutonomo(idAutonomo);
 				autonomo.setNome(nome);
 				autonomo.setSobrenome(sobrenome);
@@ -195,6 +198,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				autonomo.setEndereco(endereco);
 				autonomo.setAval(aval);
 				autonomo.setDesc(descricao);
+				autonomo.setNomeImg(nomeImg);
 		}
 			
 			rs.close();
@@ -230,8 +234,9 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				String tags = rs.getString("tags");
 				String endereco = rs.getString("endereco");
 				double aval = rs.getDouble("aval");
+				String nomeImg = null;
 				
-				autonomo = new Autonomo( nome,  sobrenome,  cpf,  tel,  user,  senha,  email, descricao, tags,  endereco, aval, idAutonomo);
+				autonomo = new Autonomo( nome,  sobrenome,  cpf,  tel,  user,  senha,  email, descricao, tags,  endereco, aval, nomeImg, idAutonomo);
 				autonomo.setIdAutonomo(idAutonomo);
 				autonomo.setNome(nome);
 				autonomo.setSobrenome(sobrenome);
@@ -326,9 +331,10 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 				String tags = rs.getString("tags");
 				String endereco = rs.getString("endereco");
 				double aval = rs.getDouble("aval");
+				String nomeImg = null;
 
 
-				Autonomo autonomo = new Autonomo(nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email, descricao, tags, endereco, aval, idAutonomo);
+				Autonomo autonomo = new Autonomo(nome,  sobrenome,  cpf,  tel,  usuario,  senha,  email, descricao, tags, endereco, aval, nomeImg, idAutonomo);
 				autonomo.setIdAutonomo(idAutonomo);
 				autonomo.setNome(nome);
 				autonomo.setSobrenome(sobrenome);

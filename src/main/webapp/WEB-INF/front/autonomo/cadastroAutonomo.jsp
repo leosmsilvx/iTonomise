@@ -110,7 +110,7 @@ transform : scale(1.2);
         <div>
           <h5 class="text-danger text-center py-3"> ${msgErroCad} </h5>
           <h4 class="mb-4 py-4">Cadastro Autônomo</h4>
-          <form action="controller?action=cadastrarAutonomo" method="post" id="formulario" class="needs-validation">
+          <form action="controller?action=cadastrarAutonomo" method="post" id="formulario" enctype="multipart/form-data" class="needs-validation">
             <div class="row g-3">
 
               <div class="col-sm-6">
@@ -160,10 +160,14 @@ transform : scale(1.2);
                 </div>
               </div>
 
-              <div class="col-12">
+              <div class="col-8">
                 <label for="email" class="form-label">Email</label> <input
                   type="email" class="form-control" name="email"
                   placeholder="iTonomise@exemplo.com" required>
+              </div>
+              <div class="col-4">
+                <label for="foto" class="form-label">Foto</label> <input
+                  type="file" class="form-control" name="nomeImg" required>
               </div>
 
               <div class="col-12">
