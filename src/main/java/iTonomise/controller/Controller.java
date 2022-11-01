@@ -999,5 +999,3 @@ public class Controller extends HttpServlet{
 			rd.forward(request, response);
 		}
 }
-
-

@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS autonomo (
     tags varchar(100) NOT NULL,
     endereco varchar(100) NOT NULL,
     aval double,
+    nomeImg varchar(300),
     
     PRIMARY KEY (idAutonomo)
 );
@@ -28,6 +29,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     senha varchar(100) NOT NULL,
     email varchar(100) NOT NULL,
     endereco varchar(100),
+    nomeImg varchar(300),
     
     PRIMARY KEY (idUsuario)
 );
