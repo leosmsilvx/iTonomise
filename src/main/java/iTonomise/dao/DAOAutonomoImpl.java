@@ -384,5 +384,23 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			throw new DAOException("Erro ao contar contratos: " + e.getMessage());
 		}
 	}
+	
+	public void alterarSenha(int id, String novaSenha) throws DAOException {
+		try {
+			this.connection = ConnectionFactory.getConnection();
+			
+			String sql = "UPDATE autonomo SET senha = ? WHERE idAutonomo = ?;";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			stmt.setString(1, novaSenha);
+			stmt.setInt(2, id);
+
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (Exception e) {
+			throw new DAOException("Erro ao atualizar a senha: " + e.getMessage());
+		}
+	}
 
 }

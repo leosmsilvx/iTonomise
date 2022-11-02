@@ -21,4 +21,6 @@ public interface DAOUsuario {
 	
 	public int contarTodosContratos(int idUsuario) throws DAOException;
 
+	public void alterarSenha(int id, String novaSenha) throws DAOException;
+
 }

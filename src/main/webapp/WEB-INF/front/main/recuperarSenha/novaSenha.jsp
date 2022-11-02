@@ -97,7 +97,7 @@ body{
 					</div>				
 					<div class="py-3 row">
 						<div style="padding-left: 10%; padding-right: 10%;">
-								<form>
+								<form action="controller?action=recuperarNovaSenha" method="post">
 									<label >Nova senha</label>
 									<div class="py-2 input-group">										
 										<input class="text-center border border-secondary form-control" type="password" name="senha" id="senha" placeholder="Nova senha" required>

@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import iTonomise.dao.*;
 import iTonomise.modelo.*;
-import util.JavaxMail;
 import util.UploadFile;
+import util.sendEmail;
 
 
 @WebServlet("/controller")
@@ -112,6 +112,12 @@ public class Controller extends HttpServlet{
 				pagRecuperarSenha(request, response);
 			}  else if (action.equals("recuperarSenha")) { 
 				recuperarSenha(request, response);
+			} else if (action.equals("conferirCodigoSenha")) { 
+				conferirCodigoSenha(request, response);
+			} else if (action.equals("recuperarNovaSenha")) { 
+				recuperarNovaSenha(request, response);
+			} else if (action.equals("reenviarCodigo")) { 
+				reenviarCodigo(request, response);
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
@@ -391,7 +397,7 @@ public class Controller extends HttpServlet{
 		{
 			if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getEmail()).equals(request.getParameter("email"))) {
 				session.setAttribute("usuario", "autonomo");	
-				session.setAttribute("id", autonomos.get(i).getIdAutonomo());
+				session.setAttribute("id", autonomos.get(i).getIdAutonomo());			
 				home(request,response);
 			}
 		}
@@ -403,7 +409,7 @@ public class Controller extends HttpServlet{
 				home(request,response);
 			}
 		}
-		String msgErro = "Senha e/ou usuario incorretos!<br><a style='color: red;' href='controller?action=pagRecuperarSenha'>Clique aqui para recuperar senha</a>";
+		String msgErro = "Senha e/ou usuario incorretos!";
 		session.setAttribute("msgErro", msgErro);
 		((HttpServletResponse) response).sendRedirect("controller?action=login");
 		 		
@@ -1008,6 +1014,11 @@ public class Controller extends HttpServlet{
 		//Pagina recuperar senha
 		private void pagRecuperarSenha(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
+			
+			HttpSession session = request.getSession(true);	
+			String msgErro = "";
+			session.setAttribute("msgErro", msgErro);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarEmail.jsp");
 			rd.forward(request, response);
 		}	
@@ -1027,9 +1038,11 @@ public class Controller extends HttpServlet{
 				Random gerador = new Random();
 				int codigo = gerador.nextInt((999999 - 100000) + 1) + 100000;
 				
-				request.setAttribute("codigoRecuperar", codigo);
+				HttpSession session = request.getSession(true);
+				session.setAttribute("codigoSessao", codigo);
+				session.setAttribute("emailRecuperar", email);
 				
-				JavaxMail.enviarEmail(email, codigo);
+				sendEmail.mandarEmail(email, codigo);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
 				rd.forward(request, response);
@@ -1043,14 +1056,73 @@ public class Controller extends HttpServlet{
 		private void conferirCodigoSenha(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
 				
+				HttpSession session = request.getSession(true);				
+				String codigoSessao = String.valueOf(session.getAttribute("codigoSessao"));
+				
+				String codigoRecebido = request.getParameter("codigo");
+			
+				if(codigoRecebido.equals(codigoSessao)) {					
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
+					rd.forward(request, response);	
+					
+				} else {
+					request.setAttribute("mensagemCodigo", "Codigo incorreto, confira e tente novamente!");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
+					rd.forward(request, response);
+					
+				}
+				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
 				rd.forward(request, response);			
 		}
 		
 		private void recuperarNovaSenha(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
+			
+				DAOAutonomo daoAut = new DAOAutonomoImpl();
+				DAOUsuario daoUsuario = new DAOUsuarioImpl();				
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
-				rd.forward(request, response);			
+				HttpSession session = request.getSession(true);	
+				String emailRecuperar = String.valueOf(session.getAttribute("emailRecuperar"));
+				
+				String novaSenha = request.getParameter("senha");
+				
+				int idAutonomo = daoAut.buscarEmailAutonomo(emailRecuperar);
+				
+				int idUsuario = daoUsuario.buscarEmailUsuario(emailRecuperar);
+				
+				System.out.print("oi eu sou o idUsuario = "+idUsuario);
+				
+				if(idUsuario != 0) {
+					daoUsuario.alterarSenha(idUsuario, novaSenha);
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
+					rd.forward(request, response);
+				} else if (idAutonomo != 0) {
+					daoAut.alterarSenha(idAutonomo, novaSenha);
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
+					rd.forward(request, response);
+				} else {
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
+					rd.forward(request, response);	
+				}
+						
+		}
+		
+		private void reenviarCodigo(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+				
+				HttpSession session = request.getSession(true);				
+				String emailRecuperar = String.valueOf(session.getAttribute("emailRecuperar"));
+				
+				Random gerador = new Random();
+				int codigo = gerador.nextInt((999999 - 100000) + 1) + 100000;
+			
+				session.setAttribute("codigoSessao", codigo);
+				
+				sendEmail.mandarEmail(emailRecuperar, codigo);				
+				
+				request.setAttribute("mensagemCodigo", "Foi enviado um novo código para o seu email.");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
+				rd.forward(request, response);		
 		}
 }

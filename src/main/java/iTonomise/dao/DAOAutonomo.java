@@ -24,6 +24,8 @@ public interface DAOAutonomo {
 	public List<Autonomo> buscarAutonomoTag(String tagsBusca, String nomeBusca) throws DAOException;
 	
 	public int contarTodosContratos(int idAutonomo) throws DAOException;
+	
+	public void alterarSenha(int id, String novaSenha) throws DAOException;
 
 
 }

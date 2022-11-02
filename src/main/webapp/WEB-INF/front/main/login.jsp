@@ -111,6 +111,9 @@ body {
 			      	<div class="py-2">
 			        	<button class="w-100 btn btn-lg btn-dark" type="submit">Entrar</button>
 			      	</div>
+			      	<div class="py-2">
+			        	<a class="text-muted" href='controller?action=pagRecuperarSenha'>Esqueceu a senha?</a>
+			      	</div>
 				</form>
 			</div>
 			<a href="controller?action=index#cadastro" class="nav-link text-muted pt-4" >Não é usuário? Se cadastre agora!</a>

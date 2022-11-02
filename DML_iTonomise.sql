@@ -9,7 +9,7 @@ INSERT INTO autonomo(nome, sobrenome, cpf, tel, usuario, senha, email, descricao
 ('Thalisson', 'Santos', '99202860017', '31925665484', 'mthlssn', '123', 'mthlssn@gmail.com', 'Hello World, me chamo thalisson, trabalho como programador, atualmente estou desenvolvendo Cryptids, um jogo para PC.', ' Programador(a)', 'Rua Lavras - nº 761 - Bairro São José', '5.0');
 
 INSERT INTO usuario(nome, sobrenome, cpf, tel, usuario, senha, email, endereco) VALUES
-('Maria', 'Isabel', '92283575095', '38934426263', 'mabel', '123', 'mabel88@gmail.com', 'Rua Natal - nº 534 - Bairro Planalto - Divinópolis'),
+('Hugo', 'Souza', '92283575095', '38934426263', 'hugosouza', '123', 'hsousasantos03@gmail.com', 'Rua Natal - nº 534 - Bairro Planalto - Divinópolis'),
 ('Rafael', 'Santos', '52945273080', '35922425222', 'rafasantos', '123', 'rafasantos1@gmail.com', 'Rua São Luiz - nº 653 - Bairro Flores - Divinópolis'),
 ('Suelane', 'Soares', '35349887017', '31928685045', 'suelane.soares', '123', 'suelane.soares@gmail.com', 'Rua Santo Antônio - nº 11 - Bairro São Francisco - Divinópolis'),
 ('Bruno', 'Silva', '50710831080', '32934974794', 'brunosmsilva', '123', 'brunosmsilva@gmail.com', 'Rua Parnamirim - nº 100 - Bairro Boa Vista - Divinópolis'),
@@ -39,3 +39,7 @@ SELECT * FROM autonomo;
 SELECT * FROM contrato;
 
 SELECT * FROM avaliacao;
+
+UPDATE autonomo SET senha = '321' WHERE idAutonomo = 1;
+
+UPDATE usuario SET senha = ? WHERE idUsuario = ?;

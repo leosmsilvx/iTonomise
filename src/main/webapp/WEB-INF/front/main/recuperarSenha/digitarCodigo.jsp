@@ -97,18 +97,18 @@ body{
 							Pode levar alguns minutos para aparecer em sua caixa de entrada.<br>Não se esqueça de verificar as pastas de spam e promoções, por garantia!</p>
 					</div>
 					<div class="py-2">
-						<p class="text-center text-danger px-4" style="font-size: larger; font-weight: bolder;">Codigo incorreto, confira e tente novamente!</p>
+						<p class="text-center text-danger px-4" style="font-size: larger; font-weight: bolder;">${mensagemCodigo}</p>
 					</div>
 					<div class="px-4">
 						<h5 class="text-center">Digite o código aqui</h5>
 					</div>
 					<div class="py-3 row">
 						<div style="padding-left: 20%; padding-right: 20%;">
-								<form action="" method="post">
+								<form action="controller?action=conferirCodigoSenha" method="post">
 									<input class="text-center border border-secondary rounded-3 form-control-lg w-100" type="text" maxlength="6" name="codigo" required>
 									<div style="padding-top: 1%;">
 										<div>
-											<a href="#" class="text-decoration-none text-dark">Reenviar código?</a>
+											<a href="controller?action=reenviarCodigo" class="text-decoration-none text-dark">Reenviar código?</a>
 										</div>
 										<div style="padding-top: 3%;">
 											<button type="submit" class="btn btn-dark">Conferir</button>			
