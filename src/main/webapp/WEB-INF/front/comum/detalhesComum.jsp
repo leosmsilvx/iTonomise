@@ -109,8 +109,8 @@ body{
 									<div class="col-4">
 										<h6 class="text-body text-start px-1">@${comum.user}</h6>	
 										<div class="card">
-											<img src="https://st.depositphotos.com/2818715/5102/i/600/depositphotos_51026865-stock-photo-serious-and-pensive-isolated-young.jpg" height="250" width="225" class="card-img-top">
-											<div class="card-body border-top">
+										<img src="${comum.nomeImg}" height="250" width="225" class="card-img-top">
+										<div class="card-body border-top">
 											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${comum.nome}</p>
 											</div>
 										</div>
