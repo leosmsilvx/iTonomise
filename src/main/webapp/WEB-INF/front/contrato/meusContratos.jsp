@@ -344,8 +344,8 @@ body{
 		                        <div class="py-2"><a class="btn btn-primary w-25">Aceito</a><a class="px-2" style="text-decoration: none; color: black;">O autonomo já aceitou seu contrato e já poderá realizar o serviço como combinado</a></div>
 		                    </div>
 		                    <div class="col-6">
-		                       	<div class="py-2"><a class="btn btn-info w-25">Finalizado 1/2</a><a class="px-2" style="text-decoration: none; color: black;">Somente uma pessoa finalizou o contrato</a></div>
-		                       	<div class="py-2"><a class="btn btn-success w-25">Finalizado 2/2</a><a class="px-2" style="text-decoration: none; color: black;">As duas pessoas finalizaram o contrato</a></div>						
+		                       	<div class="py-2"><a class="btn btn-info">Finalizado 1/2</a><a class="px-2" style="text-decoration: none; color: black;">Somente uma pessoa finalizou o contrato</a></div>
+		                       	<div class="py-2"><a class="btn btn-success">Finalizado 2/2</a><a class="px-2" style="text-decoration: none; color: black;">As duas pessoas finalizaram o contrato</a></div>						
 								<div class="py-2"><a class="btn btn-primary w-25" style="border-color: #9865db;background-color: #9865db;">Avaliado</a><a class="px-2" style="text-decoration: none; color: black;">O contrato já foi finalizado por ambas as partes e foi avaliado pelo contratante</a></div>
 	                    	</div>
                     	</div>
