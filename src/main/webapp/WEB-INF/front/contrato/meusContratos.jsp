@@ -78,18 +78,17 @@
                         <tbody class="table-group-divider">
                           <tr>
                             <td>                            
-								<c:forEach var="usuariosCadastrados" items="${usuarios}">
-                            		<c:if test="${contratosCadastrados.idUsuario == usuariosCadastrados.idUsuario}">
-										@<c:out value="${usuariosCadastrados.user}"/>
-										<c:if test="${contratosCadastrados.status != 'Não aceito'}">
+										<c:forEach var="usuariosCadastrados" items="${usuarios}">
+                            				<c:if test="${usuariosCadastrados.idUsuario == contratosCadastrados.idUsuario}">
+												<a style="text-decoration: none; color: white;" href="controller?action=detalhesUsuario&idUsuario=${contratosCadastrados.idUsuario}">@<c:out value="${usuariosCadastrados.user}"/></a>
+											</c:if>
+										</c:forEach>  	
 										<c:forEach var="autonomosCadastrados" items="${autonomos}">
-	                            		<c:if test="${contratosCadastrados.idAutonomo == autonomosCadastrados.idAutonomo}">
-											<a style="text-decoration: none; color: white;" href="controller?action=detalhesAutonomo&idAutonomo=${contratosCadastrados.idAutonomo}">@<c:out value="${autonomosCadastrados.user}"/></a>
-										</c:if>
-										</c:forEach>
-									</c:if>
-									</c:if>									
-								</c:forEach>  
+	                            			<c:if test="${autonomosCadastrados.idAutonomo == contratosCadastrados.idAutonomo}">
+												<a style="text-decoration: none; color: white;" href="controller?action=detalhesAutonomo&idAutonomo=${contratosCadastrados.idAutonomo}">@<c:out value="${autonomosCadastrados.user}"/></a>
+											</c:if>
+										</c:forEach>						
+								
 							</td>
                             <td>${contratosCadastrados.titulo}</td>
                             <td>R$ ${contratosCadastrados.valor}</td>
@@ -217,7 +216,6 @@
 	    
 	    select.form.submit();
 	}
-
 	</script>
 		</body>
 </html>

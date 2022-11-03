@@ -4,8 +4,8 @@ import org.apache.commons.mail.*;
 
 public class sendEmail {
 	public static void mandarEmail(String email, int codigo) {
-		String pagHtml = ("\"\r\n"
-				+ "				<!DOCTYPE html>\r\n"
+		String pagHtml = (
+				"				<!DOCTYPE html>\r\n"
 				+ "				<html>\r\n"
 				+ "				<head>\r\n"
 				+ "				<meta charset=\"UTF-8\"/>\r\n"
@@ -50,7 +50,7 @@ public class sendEmail {
 				+ "				            </div>\r\n"
 				+ "				        </div>\r\n"
 				+ "				        </body>\r\n"
-				+ "				</html>\"");		
+				+ "				</html>");		
 		try {
 			HtmlEmail javax = new HtmlEmail();
 			javax.setHostName("smtp.office365.com");
