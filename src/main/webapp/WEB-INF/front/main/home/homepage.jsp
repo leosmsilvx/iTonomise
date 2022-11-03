@@ -10,43 +10,7 @@
 	crossorigin="anonymous">
 <meta charset="utf-8">
 <title>iTonomise</title>
-<style>
-body{
-	background-color: #EEE;
-}
-
-.bi {
-	vertical-align: -.125em;
-	fill: currentColor;
-}
-
-.nav-scroller {
-	position: relative;
-	z-index: 2;
-	height: 2.75rem;
-	overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-	display: flex;
-	flex-wrap: nowrap;
-	padding-bottom: 1rem;
-	margin-top: -1px;
-	overflow-x: auto;
-	text-align: center;
-	white-space: nowrap;
-	-webkit-overflow-scrolling: touch;
-}
-.container{
-	max-width: 70%;
-}
-
-@media only screen and  ( max-width : 600px) {
-	.container{
-		max-width: 90%;
-	}
-}
-</style>
+<link rel="stylesheet" href="/iTonomise/css/style.css">
 </head>
 <body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">

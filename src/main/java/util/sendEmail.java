@@ -53,12 +53,12 @@ public class sendEmail {
 				+ "				</html>\"");		
 		try {
 			HtmlEmail javax = new HtmlEmail();
-			javax.setHostName("smtp.gmail.com");
-			javax.setSmtpPort(465);
-			javax.setAuthentication("iTonomise@gmail.com", "xsvxtrsdqskdwhvp");
+			javax.setHostName("smtp.office365.com");
+			javax.setSmtpPort(587);
+			javax.setAuthentication("iTonomise@hotmail.com", "A%3x!GYRqUt|Gy7N");
 			javax.setCharset("UTF-8");
-			javax.setSSLOnConnect(true);
-			javax.setFrom("iTonomise@gmail.com");
+			javax.setStartTLSEnabled(true);
+			javax.setFrom("iTonomise@hotmail.com");
 			javax.addTo(email);
 			javax.setSubject("Código de recuperação de senha");
 			javax.setHtmlMsg(pagHtml);
