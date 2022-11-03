@@ -1091,8 +1091,6 @@ public class Controller extends HttpServlet{
 				
 				int idUsuario = daoUsuario.buscarEmailUsuario(emailRecuperar);
 				
-				System.out.print("oi eu sou o idUsuario = "+idUsuario);
-				
 				if(idUsuario != 0) {
 					daoUsuario.alterarSenha(idUsuario, novaSenha);
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");

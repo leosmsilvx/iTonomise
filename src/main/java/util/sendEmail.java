@@ -59,7 +59,7 @@ public class sendEmail {
 			javax.setStartTLSEnabled(true);
 			javax.setFrom("iTonomise@hotmail.com");
 			javax.addTo(email);
-			javax.setSubject("Código de recuperação iTonomise");
+			javax.setSubject("Código de recuperação de senha");
 			javax.setHtmlMsg(pagHtml);
 			javax.send();			
 		} catch(EmailException e) {
