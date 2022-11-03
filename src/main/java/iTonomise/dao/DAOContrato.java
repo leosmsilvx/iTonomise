@@ -18,6 +18,4 @@ public interface DAOContrato {
 	public void atualizarAval(int idContrato) throws DAOException;
 	
 	public String pegarLocalizacao(String tipoPessoa, int idPessoa) throws DAOException;
-	
-	public List<Contrato> buscarContratoPStatus(String status) throws DAOException;
 }

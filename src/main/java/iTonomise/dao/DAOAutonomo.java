@@ -26,6 +26,12 @@ public interface DAOAutonomo {
 	public int contarTodosContratos(int idAutonomo) throws DAOException;
 	
 	public void alterarSenha(int id, String novaSenha) throws DAOException;
+	
+	public List<Contrato> meusContratos(int id) throws DAOException;	
+
+	public List<Contrato> buscarContratoPStatus(String status, int id) throws DAOException;
+
+	public List<Autonomo> todosUsuariosAutonomo() throws DAOException;
 
 
 }

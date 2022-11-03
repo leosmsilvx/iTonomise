@@ -23,4 +23,10 @@ public interface DAOUsuario {
 
 	public void alterarSenha(int id, String novaSenha) throws DAOException;
 
+	public List<Contrato> meusContratos(int id) throws DAOException;
+	
+	public List<Contrato> buscarContratoPStatus(String status, int id) throws DAOException;
+
+	public List<Usuario> todosUsuariosComuns() throws DAOException;
+
 }

@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import iTonomise.modelo.Contrato;
 import iTonomise.modelo.Usuario;
 import util.ConnectionFactory;
 import java.sql.Connection;
@@ -299,6 +301,152 @@ public class DAOUsuarioImpl implements DAOUsuario{
 			stmt.close();
 		} catch (Exception e) {
 			throw new DAOException("Erro ao atualizar a senha: " + e.getMessage());
+		}
+	}
+	
+	public List<Contrato> meusContratos(int id) throws DAOException {
+
+		List<Contrato> contratos = new ArrayList<Contrato>();
+
+		try {
+			this.connection = ConnectionFactory.getConnection();
+
+			String sql = "SELECT * FROM contrato WHERE idUsuario = ?";
+			
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+
+			stmt.setInt(1, id);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				int idContrato = rs.getInt("idContrato");
+				String idAutonomo = rs.getString("idAutonomo");
+				String idUsuario = rs.getString("idUsuario");
+				String titulo = rs.getString("titulo");
+				String valor = rs.getString("valor");
+				String descricao = rs.getString("descricao");
+				String dataInicio = rs.getString("dataInicio");
+				String duracaoT = rs.getString("duracaoT");
+				String duracaoN = rs.getString("duracaoN");
+				String localizacao = rs.getString("localizacao");
+				String stats = rs.getString("stats");
+				String tipoCriador = rs.getString("tipoCriador");
+				String finalAut = rs.getString("finalAut");
+				String finalUser = rs.getString("finalUser");
+				String foiAvaliado = rs.getString("foiAvaliado");
+
+				Contrato contrato = new Contrato(descricao, valor, titulo, dataInicio, duracaoT, duracaoN, localizacao, stats, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
+				contrato.setIdContrato(idContrato);
+				contrato.setDescricao(descricao);
+				contrato.setValor(valor);
+				contrato.setTitulo(titulo);
+				contrato.setDataInicio(dataInicio);
+				contrato.setDuracaoT(duracaoT);
+				contrato.setDuracaoN(duracaoN);
+				contrato.setLocalizacao(localizacao);
+				contrato.setStatus(stats);
+				contrato.setTipoCriador(tipoCriador);
+				contrato.setFinalAut(finalAut);
+				contrato.setFinalUser(finalUser);
+				contrato.setFoiAvaliado(foiAvaliado);
+
+				contratos.add(contrato);
+			}
+
+			rs.close();
+			stmt.close();
+			return contratos;
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar: " + e.getMessage());
+		}
+	}
+	
+	public List<Contrato> buscarContratoPStatus(String status, int id) throws DAOException {
+		List<Contrato> contratos = new ArrayList<Contrato>();
+		try {
+			
+			String sql = "SELECT * FROM contrato WHERE stats LIKE ? AND idUsuario = ?";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+
+			stmt.setString(1, status);
+			stmt.setInt(2, id);
+
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				int idContrato = rs.getInt("idContrato");
+				String idAutonomo = rs.getString("idAutonomo");
+				String idUsuario = rs.getString("idUsuario");
+				String titulo = rs.getString("titulo");
+				String valor = rs.getString("valor");
+				String descricao = rs.getString("descricao");
+				String dataInicio = rs.getString("dataInicio");
+				String duracaoT = rs.getString("duracaoT");
+				String duracaoN = rs.getString("duracaoN");
+				String localizacao = rs.getString("localizacao");
+				String stats = rs.getString("stats");
+				String tipoCriador = rs.getString("tipoCriador");
+				String finalAut = rs.getString("finalAut");
+				String finalUser = rs.getString("finalUser");
+				String foiAvaliado = rs.getString("foiAvaliado");
+
+				Contrato contrato = new Contrato(descricao, valor, titulo, dataInicio, duracaoT, duracaoN, localizacao, stats, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
+				contrato.setIdContrato(idContrato);
+				contrato.setDescricao(descricao);
+				contrato.setValor(valor);
+				contrato.setTitulo(titulo);
+				contrato.setDataInicio(dataInicio);
+				contrato.setDuracaoT(duracaoT);
+				contrato.setDuracaoN(duracaoN);
+				contrato.setLocalizacao(localizacao);
+				contrato.setStatus(stats);
+				contrato.setTipoCriador(tipoCriador);
+				contrato.setFinalAut(finalAut);
+				contrato.setFinalUser(finalUser);
+				contrato.setFoiAvaliado(foiAvaliado);
+
+				contratos.add(contrato);
+			}
+			
+			rs.close();
+			stmt.close();
+			return contratos;
+			
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar contrato p/ status: " + e.getMessage());
+		}
+	}
+	
+	public List<Usuario> todosUsuariosComuns() throws DAOException {
+
+		List<Usuario> comuns = new ArrayList<Usuario>();
+
+		try {
+			this.connection = ConnectionFactory.getConnection();
+			Statement st = this.connection.createStatement();
+
+			String sql = "SELECT idUsuario, usuario FROM usuario";
+
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				int idUsuario = rs.getInt("idUsuario");
+				String usuario = rs.getString("usuario");
+
+				Usuario comum = new Usuario(null, null, null, null, usuario, null, null, null, null, idUsuario);
+				comum.setIdUsuario(idUsuario);
+				comum.setUser(usuario);
+
+				comuns.add(comum);
+			}
+
+			rs.close();
+			st.close();
+			return comuns;
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar: " + e.getMessage());
 		}
 	}
 }

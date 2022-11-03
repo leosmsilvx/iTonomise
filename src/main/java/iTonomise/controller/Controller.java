@@ -721,20 +721,33 @@ public class Controller extends HttpServlet{
 	private void meusContratos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
 	        
-	    DAOContrato dao = new DAOContratoImpl();
-	    List<Contrato> contratos = dao.todosContratos();
 
-		request.setAttribute("contratos", contratos);
+		HttpSession session = request.getSession(true);			
+		int id = (int) session.getAttribute("id");
+		String tipoUsuario = String.valueOf(session.getAttribute("usuario"));
+		DAOAutonomo daoAut = new DAOAutonomoImpl();
+		DAOUsuario daoUsuario = new DAOUsuarioImpl();
+		
+		if(tipoUsuario.equals("comum")) {			
+			List<Contrato> contratos = daoUsuario.meusContratos(id);			
+			List<Autonomo> autonomos = daoAut.todosUsuariosAutonomo();
+			List<Usuario> usuarios = daoUsuario.todosUsuariosComuns();
 			
-		DAOAutonomo dao2 = new DAOAutonomoImpl();
-		List<Autonomo> autonomos = dao2.todosAutonomos();
-
-		request.setAttribute("autonomos", autonomos);
+			request.setAttribute("contratos", contratos);
+			request.setAttribute("usuarios", usuarios);
+			request.setAttribute("autonomos", autonomos);
 			
-		DAOUsuario dao3 = new DAOUsuarioImpl();
-		List<Usuario> usuarios = dao3.todosUsuarios();
-
-		request.setAttribute("usuarios", usuarios);
+		} else if(tipoUsuario.endsWith("autonomo")) {			
+			List<Contrato> contratos = daoAut.meusContratos(id);
+			List<Autonomo> autonomos = daoAut.todosUsuariosAutonomo();
+			List<Usuario> usuarios = daoUsuario.todosUsuariosComuns();
+			
+			request.setAttribute("contratos", contratos);
+			request.setAttribute("usuarios", usuarios);
+			request.setAttribute("autonomos", autonomos);
+		} else {
+			return;
+		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/meusContratos.jsp");
 		rd.forward(request, response);
@@ -984,27 +997,39 @@ public class Controller extends HttpServlet{
 			throws ServletException, IOException, DAOException {
 
 			String status = request.getParameter("status");
-			request.setAttribute("status", status);
-												
-			DAOContrato dao = new DAOContratoImpl();
-			List<Contrato> contratos = dao.buscarContratoPStatus(status);
-					
+			request.setAttribute("status", status);			
+			
 			request.setAttribute("msgNaoTem", "");
-				
+
+			HttpSession session = request.getSession(true);
+			int id = (int) session.getAttribute("id");
+			String tipoUsuario = String.valueOf(session.getAttribute("usuario"));
+
+			DAOAutonomo daoAut = new DAOAutonomoImpl();
+			DAOUsuario daoUsuario = new DAOUsuarioImpl();
+			
+			List<Contrato> contratos = null;
+			
+			if(tipoUsuario.equals("comum")) {
+				contratos = daoUsuario.buscarContratoPStatus(status, id);
+				request.setAttribute("contratos", contratos);				
+			} else if (tipoUsuario.equals("autonomo")) {
+				contratos = daoAut.buscarContratoPStatus(status, id);
+				request.setAttribute("contratos", contratos);				
+			} else {
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
+		
 			if(contratos.isEmpty()) {
-				request.setAttribute("msgNaoTem", "Não há autonomos correspondentes ao filtro selecionado.");
+				request.setAttribute("msgNaoTem", "Não há contratos correspondentes ao filtro selecionado.");
 			}
 					
-			request.setAttribute("contratos", contratos);
 			
-			DAOAutonomo dao2 = new DAOAutonomoImpl();
-			List<Autonomo> autonomos = dao2.todosAutonomos();
-
+			List<Autonomo> autonomos = daoAut.todosUsuariosAutonomo();
 			request.setAttribute("autonomos", autonomos);
 				
-			DAOUsuario dao3 = new DAOUsuarioImpl();
-			List<Usuario> usuarios = dao3.todosUsuarios();
-
+			List<Usuario> usuarios = daoUsuario.todosUsuariosComuns();
 			request.setAttribute("usuarios", usuarios);
 					
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/meusContratos.jsp");
