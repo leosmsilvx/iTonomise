@@ -15,14 +15,7 @@
 <body>
       <!-- Header -->
       <nav class="py-2 bg-dark border-bottom">
-				<div class="d-flex flex-wrap">
-					<ul class="nav me-auto">
-						<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
-							<a href="controller?action=home"><img src="/iTonomise/imgs/itonomise.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
-							<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
-							</div></li>
-					</ul>
-				</div>
+
 			</nav>
     <div class="container">
         <div class="pt-5 pb-5">
@@ -38,7 +31,7 @@
 
     
     <footer class="mt-auto border-top border-1">
-                    <a href="controller?action=index" class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
+                    <a class="nav-link text-white px-2"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>
      </foote'r> 
     </div>
 

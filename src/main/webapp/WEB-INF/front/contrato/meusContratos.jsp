@@ -132,7 +132,7 @@
 													Rever Contrato
 												</c:if>
 												<c:if test="${contratosCadastrados.finalAut == 1 and usuario == 'comum'}">
-													Finalizarr Contrato
+													Finalizar Contrato
 												</c:if>
 												</a>
 											</td>

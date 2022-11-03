@@ -44,8 +44,6 @@ public class Controller extends HttpServlet{
 				login(request, response);
 			} else if (action.equals("logout")) { 
 				logout(request, response);
-			} else if (action.equals("sobreN")) { 
-				sobreN(request, response);
 			} else if (action.equals("pagCadAuto")) { 
 				pagCadAuto(request, response);
 			} else if (action.equals("pagCadComum")) { 
@@ -121,8 +119,7 @@ public class Controller extends HttpServlet{
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
-			}
-			
+			}			
 		} catch (ServletException | IOException | DAOException e) {
 			e.printStackTrace();
 		}		
@@ -136,13 +133,6 @@ public class Controller extends HttpServlet{
 		session.setAttribute("msgConfirm", "");
 		session.setAttribute("msgErroCad", "");
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
-		rd.forward(request, response);
-	}
-	
-	//Sobre Nós
-	private void sobreN(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/sobreNos.jsp");
 		rd.forward(request, response);
 	}
 	
@@ -164,9 +154,7 @@ public class Controller extends HttpServlet{
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		session = request.getSession(true);
-		String msgConfirm = "Você foi deslogado!";
-		session.setAttribute("msgConfirm", msgConfirm);
+
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
 		rd.forward(request, response);
 	}
@@ -399,6 +387,7 @@ public class Controller extends HttpServlet{
 				session.setAttribute("usuario", "autonomo");	
 				session.setAttribute("id", autonomos.get(i).getIdAutonomo());			
 				home(request,response);
+				return;
 			}
 		}
 		for(int i = 0; i < usuarios.size(); i++)
@@ -407,11 +396,13 @@ public class Controller extends HttpServlet{
 				session.setAttribute("usuario", "comum");	
 				session.setAttribute("id", usuarios.get(i).getIdUsuario());
 				home(request,response);
+				return;
 			}
 		}
 		String msgErro = "Senha e/ou usuario incorretos!";
 		session.setAttribute("msgErro", msgErro);
 		((HttpServletResponse) response).sendRedirect("controller?action=login");
+		return;
 		 		
 	}
 	
@@ -758,36 +749,43 @@ public class Controller extends HttpServlet{
 			throws ServletException, IOException, DAOException {
 			
 		HttpSession session = request.getSession(true);	
-		int id = (int) session.getAttribute("id");
-		String titulo = request.getParameter("titulo");
-		String valor = request.getParameter("valor");
-		String descricao = request.getParameter("descricao");
-		String dataInicio = request.getParameter("dataInicio");
-		String duracaoT = request.getParameter("duracaoT");
-		String duracaoN = request.getParameter("duracaoN");
-		String localizacao = request.getParameter("localizacao");
-		String status = "Aceito";
-		int idContrato = Integer.valueOf(request.getParameter("idContrato"));
-		String idAutonomo = request.getParameter("idAutonomo");	
-		String idUsuario = request.getParameter("idUsuario");
-		String tipoCriador = request.getParameter("tipoCriador");
-		String finalAut = request.getParameter("finalAut");
-		String finalUser = request.getParameter("finalUser");
-		String foiAvaliado = "0";
-		
-		if(idAutonomo == null) {
-			idAutonomo = String.valueOf(id);
+		if(request.getParameter("idContrato") == null) {
+			session.setAttribute("msgContrato", "É necessario um contrato aceitavel!");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+			rd.forward(request, response);
+			return;
+		} else {
+			int id = (int) session.getAttribute("id");
+			String titulo = request.getParameter("titulo");
+			String valor = request.getParameter("valor");
+			String descricao = request.getParameter("descricao");
+			String dataInicio = request.getParameter("dataInicio");
+			String duracaoT = request.getParameter("duracaoT");
+			String duracaoN = request.getParameter("duracaoN");
+			String localizacao = request.getParameter("localizacao");
+			String status = "Aceito";
+			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+			String idAutonomo = request.getParameter("idAutonomo");	
+			String idUsuario = request.getParameter("idUsuario");
+			String tipoCriador = request.getParameter("tipoCriador");
+			String finalAut = request.getParameter("finalAut");
+			String finalUser = request.getParameter("finalUser");
+			String foiAvaliado = "0";
+			
+			if(idAutonomo == null) {
+				idAutonomo = String.valueOf(id);
+			}
+			if(idUsuario == null) {
+				idUsuario = String.valueOf(id);
+			}
+			
+			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
+			
+			DAOContrato dao = new DAOContratoImpl();
+			dao.atualizar(novoContrato);
+			
+			meusContratos(request, response);
 		}
-		if(idUsuario == null) {
-			idUsuario = String.valueOf(id);
-		}
-		
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
-		
-		DAOContrato dao = new DAOContratoImpl();
-		dao.atualizar(novoContrato);
-		
-		meusContratos(request, response);
 	}
 	
 	//Pagina Atualizar Contrato
@@ -860,6 +858,7 @@ public class Controller extends HttpServlet{
 
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
 				rd.forward(request, response);
+				return;
 			}
 			
 			int idAutonomo = Integer.valueOf(request.getParameter("idAutonomo"));
@@ -876,48 +875,55 @@ public class Controller extends HttpServlet{
 				throws ServletException, IOException, DAOException {
 
 			HttpSession session = request.getSession(true);
-			String titulo = request.getParameter("titulo");
-			String valor = request.getParameter("valor");
-			String descricao = request.getParameter("descricao");
-			String dataInicio = request.getParameter("dataInicio");
-			String duracaoT = request.getParameter("duracaoT");
-			String duracaoN = request.getParameter("duracaoN");
-			String localizacao = request.getParameter("localizacao");
-			String status = "Finalizado";
-			String idAutonomo = request.getParameter("idAutonomo");
-			String idUsuario = request.getParameter("idUsuario");
-			String finalAut = request.getParameter("finalAut");
-			String finalUser = request.getParameter("finalUser");
-			String tipoCriador = request.getParameter("tipoCriador");
-			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
-			String foiAvaliado = "0";
-			
-			if(dataInicio == null) {			
-				dataInicio = "Indefinido";
-			}
-			if(valor == null) {			
-				valor = "Indefinido";
-			}
-			if(duracaoN == null) {
-				duracaoT = null;
-				duracaoN = "Indefinido";
-			}
-			
-			if(session.getAttribute("usuario").equals("comum")){
-				finalUser = "1";
-								
-			} else if(session.getAttribute("usuario").equals("autonomo")){
-				finalAut = "1";
-	
-			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
+			if(request.getParameter("idContrato") == null) {
+				session.setAttribute("msgContrato", "É necessario um contrato finalizavel!");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
 				rd.forward(request, response);
 				return;
+			} else {
+				String titulo = request.getParameter("titulo");
+				String valor = request.getParameter("valor");
+				String descricao = request.getParameter("descricao");
+				String dataInicio = request.getParameter("dataInicio");
+				String duracaoT = request.getParameter("duracaoT");
+				String duracaoN = request.getParameter("duracaoN");
+				String localizacao = request.getParameter("localizacao");
+				String status = "Finalizado";
+				String idAutonomo = request.getParameter("idAutonomo");
+				String idUsuario = request.getParameter("idUsuario");
+				String finalAut = request.getParameter("finalAut");
+				String finalUser = request.getParameter("finalUser");
+				String tipoCriador = request.getParameter("tipoCriador");
+				int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+				String foiAvaliado = "0";
+				
+				if(dataInicio == null) {			
+					dataInicio = "Indefinido";
+				}
+				if(valor == null) {			
+					valor = "Indefinido";
+				}
+				if(duracaoN == null) {
+					duracaoT = null;
+					duracaoN = "Indefinido";
+				}
+				
+				if(session.getAttribute("usuario").equals("comum")){
+					finalUser = "1";
+									
+				} else if(session.getAttribute("usuario").equals("autonomo")){
+					finalAut = "1";
+		
+				} else {
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
+					rd.forward(request, response);
+					return;
+				}
+				Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
+				DAOContrato dao = new DAOContratoImpl();
+				dao.atualizar(novoContrato);				
+				meusContratos(request, response);
 			}
-			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
-			DAOContrato dao = new DAOContratoImpl();
-			dao.atualizar(novoContrato);				
-			meusContratos(request, response);
 		}
 		
 		// Avaliar
@@ -925,33 +931,40 @@ public class Controller extends HttpServlet{
 				throws ServletException, IOException, DAOException {
 
 			HttpSession session = request.getSession(true);
-			int idAvaliacao = 0;
-			int idAutonomo = Integer.valueOf(request.getParameter("idAutonomo"));
-			int idUsuario = (int) session.getAttribute("id");
-			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
-			String valor = request.getParameter("valor");
-			
-			Avaliacao novaAvaliacao = new Avaliacao(idAvaliacao, idAutonomo, idUsuario, idContrato, valor);
-			
-			DAOAvaliacao dao = new DAOAvaliacaoImpl();
-			dao.cadastrar(novaAvaliacao);
-			
-			DAOContrato dao2 = new DAOContratoImpl();
-		    List<Contrato> contratos = dao2.todosContratos();
-			request.setAttribute("contratos", contratos);
+			if(request.getParameter("idAutonomo") == null || request.getParameter("idContrato") == null) {
+				session.setAttribute("msgContrato", "É necessário escolher um contrato avaliavel!");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+				rd.forward(request, response);
+				return;
+			} else {
+				int idAvaliacao = 0;
+				int idAutonomo = Integer.valueOf(request.getParameter("idAutonomo"));
+				int idUsuario = (int) session.getAttribute("id");
+				int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+				String valor = request.getParameter("valor");
 				
-			DAOAutonomo dao3 = new DAOAutonomoImpl();
-			List<Autonomo> autonomos = dao3.todosAutonomos();
-			request.setAttribute("autonomos", autonomos);
+				Avaliacao novaAvaliacao = new Avaliacao(idAvaliacao, idAutonomo, idUsuario, idContrato, valor);
 				
-			DAOUsuario dao4 = new DAOUsuarioImpl();
-			List<Usuario> usuarios = dao4.todosUsuarios();
-			request.setAttribute("usuarios", usuarios);
-						
-			dao3.atualizarMedia(idAutonomo);
-			dao2.atualizarAval(idContrato);
-
-			meusContratos(request, response);
+				DAOAvaliacao dao = new DAOAvaliacaoImpl();
+				dao.cadastrar(novaAvaliacao);
+				
+				DAOContrato dao2 = new DAOContratoImpl();
+			    List<Contrato> contratos = dao2.todosContratos();
+				request.setAttribute("contratos", contratos);
+					
+				DAOAutonomo dao3 = new DAOAutonomoImpl();
+				List<Autonomo> autonomos = dao3.todosAutonomos();
+				request.setAttribute("autonomos", autonomos);
+					
+				DAOUsuario dao4 = new DAOUsuarioImpl();
+				List<Usuario> usuarios = dao4.todosUsuarios();
+				request.setAttribute("usuarios", usuarios);
+							
+				dao3.atualizarMedia(idAutonomo);
+				dao2.atualizarAval(idContrato);
+	
+				meusContratos(request, response);
+			}
 		}
 		
 		// Excluir Contrato 
@@ -1081,24 +1094,29 @@ public class Controller extends HttpServlet{
 		private void conferirCodigoSenha(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
 				
-				HttpSession session = request.getSession(true);				
-				String codigoSessao = String.valueOf(session.getAttribute("codigoSessao"));
+				HttpSession session = request.getSession(true);	
 				
-				String codigoRecebido = request.getParameter("codigo");
-			
-				if(codigoRecebido.equals(codigoSessao)) {					
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
+				if(session.getAttribute("codigoSessao") == null) {
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
 					rd.forward(request, response);	
-					
 				} else {
-					request.setAttribute("mensagemCodigo", "Codigo incorreto, confira e tente novamente!");
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
-					rd.forward(request, response);
-					
-				}
+					String codigoSessao = String.valueOf(session.getAttribute("codigoSessao"));
+					String codigoRecebido = request.getParameter("codigo");
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
-				rd.forward(request, response);			
+					if(codigoRecebido.equals(codigoSessao)) {					
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
+						rd.forward(request, response);	
+						
+					} else {
+						request.setAttribute("mensagemCodigo", "Codigo incorreto, confira e tente novamente!");
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
+						rd.forward(request, response);
+						
+					}
+					
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
+					rd.forward(request, response);		
+				}
 		}
 		
 		private void recuperarNovaSenha(HttpServletRequest request, HttpServletResponse response)
@@ -1108,25 +1126,30 @@ public class Controller extends HttpServlet{
 				DAOUsuario daoUsuario = new DAOUsuarioImpl();				
 				
 				HttpSession session = request.getSession(true);	
-				String emailRecuperar = String.valueOf(session.getAttribute("emailRecuperar"));
 				
-				String novaSenha = request.getParameter("senha");
-				
-				int idAutonomo = daoAut.buscarEmailAutonomo(emailRecuperar);
-				
-				int idUsuario = daoUsuario.buscarEmailUsuario(emailRecuperar);
-				
-				if(idUsuario != 0) {
-					daoUsuario.alterarSenha(idUsuario, novaSenha);
+				if(session.getAttribute("emailRecuperar") == null) {
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
-					rd.forward(request, response);
-				} else if (idAutonomo != 0) {
-					daoAut.alterarSenha(idAutonomo, novaSenha);
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
-					rd.forward(request, response);
-				} else {
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
 					rd.forward(request, response);	
+				} else {
+					String emailRecuperar = String.valueOf(session.getAttribute("emailRecuperar"));
+					String novaSenha = request.getParameter("senha");
+					
+					int idAutonomo = daoAut.buscarEmailAutonomo(emailRecuperar);
+					
+					int idUsuario = daoUsuario.buscarEmailUsuario(emailRecuperar);
+					
+					if(idUsuario != 0) {
+						daoUsuario.alterarSenha(idUsuario, novaSenha);
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
+						rd.forward(request, response);
+					} else if (idAutonomo != 0) {
+						daoAut.alterarSenha(idAutonomo, novaSenha);
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
+						rd.forward(request, response);
+					} else {
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
+						rd.forward(request, response);	
+					}
 				}
 						
 		}
@@ -1134,18 +1157,23 @@ public class Controller extends HttpServlet{
 		private void reenviarCodigo(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
 				
-				HttpSession session = request.getSession(true);				
-				String emailRecuperar = String.valueOf(session.getAttribute("emailRecuperar"));
+				HttpSession session = request.getSession(true);	
 				
-				Random gerador = new Random();
-				int codigo = gerador.nextInt((999999 - 100000) + 1) + 100000;
-			
-				session.setAttribute("codigoSessao", codigo);
+				if(session.getAttribute("emailRecuperar") == null) {
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
+					rd.forward(request, response);	
+				} else {
+					String emailRecuperar = String.valueOf(session.getAttribute("emailRecuperar"));
+					Random gerador = new Random();
+					int codigo = gerador.nextInt((999999 - 100000) + 1) + 100000;
 				
-				sendEmail.mandarEmail(emailRecuperar, codigo);				
-				
-				request.setAttribute("mensagemCodigo", "Foi enviado um novo código para o seu email.");
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
-				rd.forward(request, response);		
+					session.setAttribute("codigoSessao", codigo);
+					
+					sendEmail.mandarEmail(emailRecuperar, codigo);				
+					
+					request.setAttribute("mensagemCodigo", "Foi enviado um novo código para o seu email.");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
+					rd.forward(request, response);		
+				}
 		}
 }
