@@ -39,7 +39,3 @@ SELECT * FROM autonomo;
 SELECT * FROM contrato;
 
 SELECT * FROM avaliacao;
-
-UPDATE autonomo SET senha = '321' WHERE idAutonomo = 1;
-
-UPDATE usuario SET senha = ? WHERE idUsuario = ?;

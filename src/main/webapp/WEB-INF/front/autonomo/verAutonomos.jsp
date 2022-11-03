@@ -115,31 +115,31 @@ body{
 								class="form-control" name="nomeBuscar">
 				</div>
 				<div class="col-3">
-							<label for="filtro">Profissões</label> <select
+							<label for="filtro">Filtrar por</label> <select
 								class="form-select bg-dark text-white text-center"
 								name="tagBuscar" required>
-								<option value="nada">Filtrar por</option>
-								<option value="Pintor(a)">Pintor(a)</option>
-								<option value="Pedreiro">Pedreiro</option>
+								<option value="nada">Profissões</option>
+								<option value="Babá">Babá</option>
+								<option value="Barman">Barman</option>
+								<option value="Carpinteiro(a)">Carpinteiro(a)</option>
+								<option value="Costureiro(a)">Costureiro(a)</option>
+								<option value="Cumin">Cumin</option>
+								<option value="Dançarino(a)">Dançarino(a)</option>
+								<option value="Dj">Dj</option>
+								<option value="Editor(a)">Editor(a)</option>
 								<option value="Eletricista">Eletricista</option>
 								<option value="Encanador(a)">Encanador(a)</option>
-								<option value="Carpinteiro(a)">Carpinteiro(a)</option>
-								<option value="Jardineiro(a)">Jardineiro(a)</option>
 								<option value="Faxineiro(a)">Faxineiro(a)</option>
-								<option value="Costureiro(a)">Costureiro(a)</option>
-								<option value="Babá">Babá</option>
-								<option value="Programador(a)">Programador(a)</option>
-								<option value="Professor(a)">Professor(a)</option>
-								<option value="Barman">Barman</option>
-								<option value="Cumin">Cumin</option>
-								<option value="Dj">Dj</option>
-								<option value="Dançarino(a)">Dançarino(a)</option>
 								<option value="Fotógrafo(a)">Fotógrafo(a)</option>
-								<option value="Motorista">Motorista</option>
-								<option value="Editor(a)">Editor(a)</option>
+								<option value="Jardineiro(a)">Jardineiro(a)</option>
 								<option value="Manicure">Manicure</option>
 								<option value="Massagista">Massagista</option>
+								<option value="Motorista">Motorista</option>
+								<option value="Pedreiro">Pedreiro</option>
 								<option value="Personal">Personal</option>
+								<option value="Pintor(a)">Pintor(a)</option>
+								<option value="Professor(a)">Professor(a)</option>
+								<option value="Programador(a)">Programador(a)</option>
 							</select>
 							
 					
