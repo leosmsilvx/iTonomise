@@ -16,9 +16,9 @@ import javax.servlet.http.HttpSession;
 @WebFilter("/*")
 public class filtroUsuarios implements Filter {
 
-	private final String[] LOGADO_AUTONOMO_ACTIONS = {"logout","login","pagCadCont","cadastrarContrato","home","homeMensagem","verContratos","verAutonomos","detalhesAutonomo","detalhesUsuario","detalhesContrato","perfil","meuPerfilAut","pagAlterarPerfilAut","alterarPerfilAut","meusContratos","aceitarContrato","pagAtualizarContrato","proporContrato","atualizarContrato","finalizarContrato","removerContrato","buscarAutonomoPTag","buscarContratoPStatus"};
+	private final String[] LOGADO_AUTONOMO_ACTIONS = {"logout","login","pagCadCont","cadastrarContrato","home","homeMensagem","verContratos","verAutonomos","confirmarLogin","detalhesAutonomo","detalhesUsuario","detalhesContrato","perfil","meuPerfilAut","pagAlterarPerfilAut","alterarPerfilAut","meusContratos","aceitarContrato","pagAtualizarContrato","proporContrato","atualizarContrato","finalizarContrato","removerContrato","buscarAutonomoPTag","buscarContratoPStatus"};
 	
-	private final String[] LOGADO_COMUM_ACTIONS = {"logout","login","pagCadCont","cadastrarContrato","home","homeMensagem","verContratos","verAutonomos","detalhesAutonomo","detalhesUsuario","detalhesContrato","perfil","meuPerfilCom","pagAlterarPerfilCom","alterarPerfilCom","meusContratos","aceitarContrato","pagAtualizarContrato","atualizarContrato","proporContrato","finalizarContrato","avaliar","removerContrato","buscarAutonomoPTag","buscarContratoPStatus"};
+	private final String[] LOGADO_COMUM_ACTIONS = {"logout","login","pagCadCont","cadastrarContrato","home","homeMensagem","verContratos","verAutonomos","confirmarLogin","detalhesAutonomo","detalhesUsuario","detalhesContrato","perfil","meuPerfilCom","pagAlterarPerfilCom","alterarPerfilCom","meusContratos","aceitarContrato","pagAtualizarContrato","atualizarContrato","proporContrato","finalizarContrato","avaliar","removerContrato","buscarAutonomoPTag","buscarContratoPStatus"};
 	
 	private final String[] DESLOGADO_ACTIONS = {"index", "login", "pagCadAuto", "pagCadComum","cadastrarAutonomo","cadastrarComum","confirmarLogin","pagRecuperarSenha","recuperarSenha","conferirCodigoSenha","recuperarNovaSenha","reenviarCodigo"};
 

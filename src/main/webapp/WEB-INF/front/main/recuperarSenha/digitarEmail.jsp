@@ -19,19 +19,65 @@
 </style>
         </head>
         <body>
-            <nav class="py-2 bg-dark border-bottom">
-                <div class="d-flex flex-wrap">
-                    <ul class="nav me-auto">
-                        <li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
-                            <a href="controller?action=index"><img src="https://media.discordapp.net/attachments/911394611300270122/1021930948771721236/maleta2.0.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
-                            <a href="controller?action=index" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
-                            </div></li>
-                    </ul>
-					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-						<li class="nav-item"><a href="controller?action=login" class="nav-link px-2 text-muted text-center"><button class="w-1 btn btn-light" type="submit">Login</button></a></li>			
+            <!-- Header -->
+			<nav class="bg-dark border-bottom">
+				<div class="d-flex flex-wrap">
+					<ul class="nav me-auto">
+						<li class="nav-item">
+						<div Style="background-color: #212529; margin-left: 30px; height: 50px;" class="pt-1">
+							<a href="controller?action=home"><img src="/iTonomise/imgs/itonomise.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
+							<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
+							</div></li>
 					</ul>
-                </div>
-            </nav>
+					<ul class="nav" style="margin-right: 30px; margin-top: 5px">		
+						<li class="nav-item nav-link">
+							<div class="text-white">
+								<div class="text-center">
+									<a class="text-decoration-none text-white" data-bs-toggle="offcanvas" href="#barraLateral" role="button" aria-controls="barraLateral">
+									
+									
+									<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 15 15">
+									  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+									</svg>
+									</a>
+								</div>
+								
+							</div>
+						</li>
+					</ul>
+				</div>
+
+
+				<!-- OFFCANVAS -->
+				<div class="offcanvas offcanvas-end" style="width: 20%;" tabindex="-1" id="barraLateral">
+					<div class="offcanvas-header">
+					  <h5 class="offcanvas-title">iTonomise</h5>
+					  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+					  <a class="text-muted text-decoration-none">Início</a>
+					  <div class="py-1">
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=index">Retornar ao início</a>
+					  </div>
+					  <hr>
+					  <div>
+					  <a class="text-muted text-decoration-none">Não é usuário do nosso site?</a>
+					  <div class="py-1">
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=pagCadAuto">Seja um Autonomo</a>
+					  </div>
+					  <div class="py-1 pl-3">
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=pagCadComum">Seja um Contratante</a>
+					  </div>
+					  <hr>
+					  <a class="text-muted text-decoration-none">Já é usuário?</a>
+					  <div class="py-1">
+						<a class="btn" style="text-decoration: none; color: green;" href="controller?action=login">Fazer login</a>						
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=pagRecuperarSenha">Esqueci a senha</a>
+					  </div>
+
+					</div>
+				  </div>
+			</nav>
 			<div class="container">
 				<div class="caixinha mt-5 bg-white border border-secondary rounded-3">	
 								

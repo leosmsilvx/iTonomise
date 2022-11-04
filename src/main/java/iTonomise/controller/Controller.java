@@ -385,7 +385,8 @@ public class Controller extends HttpServlet{
 		{
 			if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getEmail()).equals(request.getParameter("email"))) {
 				session.setAttribute("usuario", "autonomo");	
-				session.setAttribute("id", autonomos.get(i).getIdAutonomo());			
+				session.setAttribute("id", autonomos.get(i).getIdAutonomo());
+				session.setAttribute("uUser", autonomos.get(i).getUser());			
 				home(request,response);
 				return;
 			}
@@ -395,6 +396,7 @@ public class Controller extends HttpServlet{
 			if((usuarios.get(i).getSenha()).equals(request.getParameter("senha")) && (usuarios.get(i).getEmail()).equals(request.getParameter("email"))) {
 				session.setAttribute("usuario", "comum");	
 				session.setAttribute("id", usuarios.get(i).getIdUsuario());
+				session.setAttribute("uUser", usuarios.get(i).getUser());
 				home(request,response);
 				return;
 			}
@@ -1112,10 +1114,7 @@ public class Controller extends HttpServlet{
 						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
 						rd.forward(request, response);
 						
-					}
-					
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/novaSenha.jsp");
-					rd.forward(request, response);		
+					}	
 				}
 		}
 		

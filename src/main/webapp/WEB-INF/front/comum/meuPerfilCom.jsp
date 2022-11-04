@@ -15,19 +15,69 @@
 </head>
 <body>
 			<!-- Header -->
-			<nav class="py-2 bg-dark border-bottom">
+			<nav class="bg-dark border-bottom">
 				<div class="d-flex flex-wrap">
 					<ul class="nav me-auto">
-						<li class="nav-item"><div Style="background-color: #212529; margin-left: 30px; padding: 0px; height: 50px;">
+						<li class="nav-item">
+						<div Style="background-color: #212529; margin-left: 30px; height: 50px;" class="pt-1">
 							<a href="controller?action=home"><img src="/iTonomise/imgs/itonomise.png" height="40px" width="40px" style="margin-bottom: 20px;"></a>
 							<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
 							</div></li>
 					</ul>
-					<ul class="nav" style="margin-right: 30px; margin-top: 5px">
-						<li class="nav-item text-white nav-link"><a href="controller?action=meusContratos" 	style="text-decoration: none; color: white; ">Meus Contratos</a></li>						
-						<li class="nav-item nav-link"><a href="controller?action=logout" style="text-decoration: none; color: red;">Logout</a></li>
+					<ul class="nav" style="margin-right: 30px; margin-top: 5px">		
+						<li class="nav-item nav-link">
+							<div class="text-white">
+								<div class="text-center">
+									<a class="text-decoration-none text-white" data-bs-toggle="offcanvas" href="#barraLateral" role="button" aria-controls="barraLateral">
+									
+									
+									<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 15 15">
+									  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+									</svg>
+								</div>
+								</a>
+							</div>
+						</li>
 					</ul>
 				</div>
+
+
+				<!-- OFFCANVAS -->
+				<div class="offcanvas offcanvas-end" style="width: 20%;" tabindex="-1" id="barraLateral">
+					<div class="offcanvas-header">
+					  <h5 class="offcanvas-title">Meu perfil</h5>
+					  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+					  <div class="">						
+						<p>Logado como: <span class="text-warning">${uUser}</span></p>
+					  </div>
+					  <div class="py-1">
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=home">Home</a>
+					  </div>
+					  <hr>
+					  <span class="text-muted">Meu perfil</span>
+					  <div class="py-1">
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=perfil">Visitar meu perfil</a>
+					  </div>
+					  <div class="py-1">
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=meusContratos">Meus contratos</a>
+					  </div>
+					  <hr>
+					  <span class="text-muted">Autonomos & Contratos</span>
+					  <div class="py-1">
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verAutonomos">Ver autonomos</a>
+					  </div>
+					  <div class="py-1">
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verContratos">Ver contratos</a>
+					  </div>
+					  <hr>
+					  <span class="text-muted">Sair</span>
+					  <div class="py-1">
+						<a class="btn" style="text-decoration: none; color: red;" href="controller?action=logout">Logout</a>
+					  </div>
+					</div>
+				  </div>
 			</nav>
 			<div class="container">
                 <main>
