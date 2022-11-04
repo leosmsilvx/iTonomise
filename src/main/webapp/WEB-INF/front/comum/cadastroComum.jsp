@@ -83,41 +83,41 @@
 							<div class="col-sm-6">
 								<label for="nome" class="form-label">Primeiro
 									Nome</label> <input type="text" class="form-control"
-									name="nome" placeholder="Nome">
+									name="nome" placeholder="Nome" required>
 							</div>
 
 							<div class="col-6">
 								<label for="sobrenome" class="form-label">Sobrenome</label> <input
 									type="text" class="form-control" name="sobrenome"
-									placeholder="Sobrenome">
+									placeholder="Sobrenome" required>
 							</div>
 
 							<div class="col-6">
 								<label for="cpf" class="form-label">CPF <span
 									class="text-muted">(Somente números)</span></label> <input
-									type="number" class="form-control" name="cpf"
-									placeholder="xxx.xxx.xxx-xx">
+									type="text" class="form-control" name="cpf" id="cpf"
+									placeholder="xxx.xxx.xxx-xx" pattern=".{14,14}" required>
 							</div>
 
 							<div class="col-6">
 								<label for="tel" class="form-label">Telefone <span
 									class="text-muted">(Somente números)</span></label> <input
-									type="number" class="form-control" name="tel"
-									placeholder="(37) 98877-6655">
+									type="tel" class="form-control" name="tel" id="telefone"
+									placeholder="(xx)xxxxx-xxxx"  pattern=".{16,16}" required>
 							</div>
 
 							<div class="col-8">
 								<label for="user" class="form-label">Usuário</label>
 								<div class="input-group">
 									<span class="input-group-text">@</span> <input type="text"
-										class="form-control" name="user" placeholder="Usúario">
+										class="form-control" name="user" placeholder="Usúario" required>
 								</div>
 							</div>
 
 							<div class="col-4">
 								<label for="senha" class="form-label">Senha</label>
 								<div class="input-group">
-									<input type="password" class="form-control" name="senha" id="senha" placeholder="*******">
+									<input type="password" class="form-control" name="senha" id="senha" placeholder="*******" required>
 									<button class="btn btn-outline-dark" type="button" onclick="mostrarSenha()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
 										  <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"></path>
 										  <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"></path>
@@ -129,7 +129,7 @@
 							<div class="col-8">
 								<label for="email" class="form-label">Email</label> <input
 									type="email" class="form-control" name="email"
-									placeholder="iTonomise@exemplo.com">
+									placeholder="iTonomise@exemplo.com" required>
 							</div>
 							<div class="col-4">
 				                <label for="foto" class="form-label">Foto</label> <input
@@ -139,7 +139,7 @@
 							<div class="col-12">
 								<label for="endereco" class="form-label">Endereço</label>
 								<textarea class="form-control" name="endereco"
-									placeholder="Rua Bonita - nº 691 - Bairro legal - Divinópolis"></textarea>
+									placeholder="Rua Bonita - nº 691 - Bairro legal - Divinópolis" required></textarea>
 							</div>
 
 							<hr class="my-4">
@@ -172,5 +172,13 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#telefone').mask('(00) 0 0000-0000');
+                $('#cpf').mask('000.000.000-00');
+            });
+        </script>
 </body>
 </html>

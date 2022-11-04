@@ -91,10 +91,10 @@
                                         <h6 class="text-body text-start px-1">@${comum.user}</h6>	
 										<div class="card">
 											<img src="${comum.nomeImg}" height="250" width="225" class="card-img-top">
-											<input type="hidden" class="form-control" value="${comum.nomeImg}" name="imagem">
+											<input type="hidden" class="form-control" value="${comum.nomeImg}" name="imagem" required>
 											<div class="card-body border-top">
 											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${comum.nome}</p>
-											  <input type="file" class="form-control" value="${comum.nomeImg}" name="nomeImg">
+											  <input type="file" class="form-control" value="${comum.nomeImg}" name="nomeImg" required>
 											</div>
 										</div>
 									</div>
@@ -102,29 +102,29 @@
                                     <div class="col-8">
                                         <label class="form-label">Primeiro Nome</label>
                                         <input type="text" class="form-control"
-                                            value="${comum.nome}" name="nome">
+                                            value="${comum.nome}" name="nome" required>
                                         <label class="form-label">Sobrenome</label>
                                             <input type="text" class="form-control"
-                                                value="${comum.sobrenome}" name="sobrenome"> 
+                                                value="${comum.sobrenome}" name="sobrenome" required> 
                                         <label class="form-label">CPF</label>
                                         <input type="text" class="form-control"
-                                            value="${comum.cpf}" name="cpf">
+                                            value="${comum.cpf}" name="cpf" id="cpf" pattern=".{14,14}" required>
                                         <label class="form-label">Telefone</label><input
                                             type="text" class="form-control"
-                                            value="${comum.tel}" name="tel">
+                                            value="${comum.tel}" name="tel" id="telefone" pattern=".{16,16}" required>
                                         <label class="form-label">Email</label> <input
                                             type="email" class="form-control"
-                                            value="${comum.email}" name="email">
+                                            value="${comum.email}" name="email" required>
                                         
                                     </div>     
         
                                     <div class="col-12">
                                         <label class="form-label">Endereço</label>
-                                        <textarea class="form-control" name="endereco">${comum.endereco}</textarea>
+                                        <textarea class="form-control" name="endereco" required>${comum.endereco}</textarea>
                                     </div>
                                     
-                                    <input type="hidden" value="${comum.user}" name="user">                                          
-                               		<input type="hidden" value="${comum.senha}" name="senha">
+                                    <input type="hidden" value="${comum.user}" name="user" required>                                          
+                               		<input type="hidden" value="${comum.senha}" name="senha" required>
                                		
                                     <div class="col-6 pt-4">
                                         <button class="w-100 btn btn-dark" type="submit">Alterar</button>
@@ -151,5 +151,17 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
+		<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#telefone').mask('(00) 0 0000-0000');
+                $('#cpf').mask('000.000.000-00');
+            });
+        </script>
 </body>
 </html>

@@ -129,7 +129,7 @@
 											
 											</div>
 											<div class="col-4" style="margin-left: 3%">
-												<a class="pt-2" aria-label="Chat on WhatsApp" href="https://wa.me/55${autonomo.tel}?text=Olá%20${autonomo.nome}!%20Estou%20entrando%20em%20contato%20pelo%20iTonomise,%20tenho%20interesse%20no%20seu%20serviço!" target="_blank"> <img alt="Chat on WhatsApp" src="/iTonomise/imgs/wpp.png" width="100%" /> </a>
+												<a class="pt-2" aria-label="Chat on WhatsApp" href="controller?action=numeroWPP&telefone=${autonomo.tel}" target="_blank"> <img alt="Chat on WhatsApp" src="/iTonomise/imgs/wpp.png" width="100%" /> </a>
 											</div>
 										
 											<div class="row col-12">

@@ -116,10 +116,12 @@ public class Controller extends HttpServlet{
 				recuperarNovaSenha(request, response);
 			} else if (action.equals("reenviarCodigo")) { 
 				reenviarCodigo(request, response);
+			} else if (action.equals("numeroWPP")) { 
+				numeroWPP(request, response);
 			} else {				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp"); 
 				rd.forward(request, response);
-			}			
+			}	
 		} catch (ServletException | IOException | DAOException e) {
 			e.printStackTrace();
 		}		
@@ -1174,5 +1176,16 @@ public class Controller extends HttpServlet{
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
 					rd.forward(request, response);		
 				}
+		}
+		
+		private void numeroWPP(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, DAOException {
+			
+			String telefoneC = request.getParameter("telefone");
+			
+			String telefone = telefoneC.replaceAll("\\D", "");
+			
+			response.sendRedirect("https://wa.me/55"+telefone+""); 
+			
 		}
 }
