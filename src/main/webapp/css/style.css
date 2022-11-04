@@ -57,9 +57,20 @@ body{
 .container{
 	max-width: 70%;
 }
+.offcanvas{
+		max-width: 20%;
+	}
+@media only screen and  ( max-width : 1200px) {
+	.offcanvas{
+		max-width: 30%;
+	}
+}
 @media only screen and  ( max-width : 600px) {
 	.container{
 		max-width: 95%;
+	}
+	.offcanvas{
+		max-width: 50%;
 	}
 }
 input[type=checkbox]{
