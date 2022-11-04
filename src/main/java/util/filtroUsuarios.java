@@ -46,6 +46,9 @@ public class filtroUsuarios implements Filter {
 			} else if(usuario == null && Arrays.asList(DESLOGADO_ACTIONS).contains(action)){
 				chain.doFilter(request, response);
 				return;								
+			} else if(usuario == null && action.equals("home")){
+				((HttpServletResponse) response).sendRedirect("controller?action=index");
+				return;								
 			} else {
 				((HttpServletResponse) response).sendRedirect("controller?action=erro");
 				return;
@@ -67,6 +70,9 @@ public class filtroUsuarios implements Filter {
 			} else if(usuario == null && Arrays.asList(DESLOGADO_ACTIONS).contains(action)){
 				chain.doFilter(request, response);
 				return;								
+			} else if(usuario == null && action.equals("home")){
+				((HttpServletResponse) response).sendRedirect("controller?action=index");
+				return;								
 			} else {
 				((HttpServletResponse) response).sendRedirect("controller?action=erro");
 				return;
@@ -77,6 +83,9 @@ public class filtroUsuarios implements Filter {
 			if(usuario == null) {
 				chain.doFilter(request, response);
 				return;
+			} else if(usuario != null && action.equals("index")){
+				((HttpServletResponse) response).sendRedirect("controller?action=home");
+				return;								
 			} else {
 				((HttpServletResponse) response).sendRedirect("controller?action=erro");
 				return;

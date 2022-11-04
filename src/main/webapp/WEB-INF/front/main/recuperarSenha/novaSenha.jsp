@@ -16,6 +16,11 @@
 .container{
 	max-width: 40%;
 }
+@media only screen and  ( max-width : 600px) {
+	.container{
+		max-width: 80%;
+	}
+}
 </style>
         </head>
         <body>
