@@ -20,7 +20,7 @@ public class filtroUsuarios implements Filter {
 	
 	private final String[] LOGADO_COMUM_ACTIONS = {"logout","login","pagCadCont","cadastrarContrato","home","homeMensagem","verContratos","verAutonomos","confirmarLogin","detalhesAutonomo","detalhesUsuario","detalhesContrato","perfil","meuPerfilCom","pagAlterarPerfilCom","alterarPerfilCom","meusContratos","aceitarContrato","pagAtualizarContrato","atualizarContrato","proporContrato","finalizarContrato","avaliar","removerContrato","buscarAutonomoPTag","buscarContratoPStatus"};
 	
-	private final String[] DESLOGADO_ACTIONS = {"index", "login", "pagCadAuto", "pagCadComum","cadastrarAutonomo","cadastrarComum","confirmarLogin","pagRecuperarSenha","recuperarSenha","conferirCodigoSenha","recuperarNovaSenha","reenviarCodigo"};
+	private final String[] DESLOGADO_ACTIONS = {"logout","index", "login", "pagCadAuto", "pagCadComum","cadastrarAutonomo","cadastrarComum","confirmarLogin","pagRecuperarSenha","recuperarSenha","conferirCodigoSenha","recuperarNovaSenha","reenviarCodigo"};
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		

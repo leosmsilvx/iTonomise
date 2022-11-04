@@ -30,21 +30,24 @@
 							<a href="controller?action=home" style="color: white; font-size: 25px; text-decoration: none; margin-left: 5px"> iTonomise</a>
 							</div></li>
 					</ul>
-					<ul class="nav" style="margin-right: 30px; margin-top: 5px">		
+					<ul class="nav" style="margin-right: 30px; margin-top: 5px">	
+						<li>
+							<div class="pt-2">
+								<a class="btn btn-light btn-sm" href="controller?action=login">Login</a>
+							</div>
+						</li>	
 						<li class="nav-item nav-link">
 							<div class="text-white">
 								<div class="text-center">
 									<a class="text-decoration-none text-white" data-bs-toggle="offcanvas" href="#barraLateral" role="button" aria-controls="barraLateral">
-									
-									
 									<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 15 15">
 									  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
 									</svg>
 									</a>
 								</div>
-								
-							</div>
+							</div>							
 						</li>
+						
 					</ul>
 				</div>
 
