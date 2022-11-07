@@ -321,6 +321,7 @@ public class DAOAutonomoImpl implements DAOAutonomo{
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
+				idAutonomo = rs.getInt("idAutonomo");
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				String cpf = rs.getString("cpf");
