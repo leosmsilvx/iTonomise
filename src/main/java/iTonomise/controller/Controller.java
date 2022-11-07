@@ -603,11 +603,19 @@ public class Controller extends HttpServlet{
 	        if(contrato.getIdAutonomo() != null)
 	        	idAutonomo = Integer.valueOf(contrato.getIdAutonomo());
 	        
+	        if(contrato.getStatus().equals("Não aceito")) {
+	        	request.setAttribute("contrato", contrato);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/detalhesContrato.jsp");
+				rd.forward(request, response);
+				return;
+	        }	        
+	        
 			if(idUsuario == id || idAutonomo == id) {
 				request.setAttribute("contrato", contrato);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/detalhesContrato.jsp");
-				rd.forward(request, response);				
+				rd.forward(request, response);
 			}else {
 				((HttpServletResponse) response).sendRedirect("controller?action=erro");
 				return;

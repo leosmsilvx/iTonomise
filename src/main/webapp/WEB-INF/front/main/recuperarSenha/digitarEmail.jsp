@@ -97,11 +97,11 @@
 					</div>				
 					<div class="py-3 row">
 						<div style="padding-left: 10%; padding-right: 10%;">
-								<form action="controller?action=recuperarSenha" method="post">
+								<form action="controller?action=recuperarSenha" method="post" id="formulario">
 									<input class="text-center border border-secondary rounded-3 form-control-lg w-100" type="email" name="email" placeholder="iTonomise@exemplo.com" required>
 									<div style="padding-top: 1%;">
 										<div style="padding-top: 3%;">
-											<button type="submit" class="btn btn-dark">Enviar</button>			
+											<button type="button" class="btn btn-dark" id="botaoEnvia" onClick="bloquearBotao()" >Enviar</button>			
 										</div>							
 									</div>
 								</form>
@@ -124,5 +124,13 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
             crossorigin="anonymous"></script>
+        <script>
+        function bloquearBotao(){
+        	var botao = document.getElementById("botaoEnvia");
+        	var form = document.getElementById("formulario");     	
+        	botao.disabled = true; 
+        	form.submit();
+        }
+        </script>
         </body>
 </html>
