@@ -130,310 +130,375 @@ public class Controller extends HttpServlet{
 	//Index
 	private void index(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
+			HttpSession session = request.getSession(true);	
+			session.setAttribute("msgConfirm", "");
+			session.setAttribute("msgErroCad", "");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+			rd.forward(request, response);
+		} catch( ServletException | IOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 		
-		HttpSession session = request.getSession(true);	
-		session.setAttribute("msgConfirm", "");
-		session.setAttribute("msgErroCad", "");
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
-		rd.forward(request, response);
 	}
 	
 	//Login
 	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
-		String usuario = (String) session.getAttribute("usuario");
-		if(usuario == null) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
-			rd.forward(request, response);
-		}
-		else {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+		try {
+			HttpSession session = request.getSession(true);
+			String usuario = (String) session.getAttribute("usuario");
+			if(usuario == null) {
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/login.jsp");
+				rd.forward(request, response);
+			}
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+				rd.forward(request, response);
+			}
+		} catch(ServletException | IOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
 			rd.forward(request, response);
 		}
 	}
 	
 	//Logout
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.invalidate();
+		try {
+			HttpSession session = request.getSession();
+			session.invalidate();
 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
-		rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/index.jsp");
+			rd.forward(request, response);
+		} catch(ServletException | IOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Pagina Cadastro Autonomo
 	private void pagCadAuto(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
-		rd.forward(request, response);
+			throws ServletException, IOException {		
+		try {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
+			rd.forward(request, response);
+		} catch(ServletException | IOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 		
 	//Pagina Cadastro Comum
 	private void pagCadComum(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
-		rd.forward(request, response);
+		try {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
+			rd.forward(request, response);
+		} catch(ServletException | IOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}		
 	}	
 	
 	//Pagina Cadastro Contrato
 	private void pagCadCont(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, DAOException {
-		
-		DAOContrato dao = new DAOContratoImpl();
-		HttpSession session = request.getSession(true);
-		String usuario = (String) session.getAttribute("usuario");
-		int id = (int) session.getAttribute("id");
-		String localizacao = dao.pegarLocalizacao(usuario, id);
-		session.setAttribute("localizacaoPerfil", localizacao);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/cadastroContrato.jsp");
-		rd.forward(request, response);
+			throws ServletException, IOException, DAOException {		
+		try {
+			DAOContrato dao = new DAOContratoImpl();
+			HttpSession session = request.getSession(true);
+			String usuario = (String) session.getAttribute("usuario");
+			int id = (int) session.getAttribute("id");
+			String localizacao = dao.pegarLocalizacao(usuario, id);
+			session.setAttribute("localizacaoPerfil", localizacao);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/cadastroContrato.jsp");
+			rd.forward(request, response);
+		} catch (ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}		
 	}
 	
 	//Cadastrar autonomo
 	private void cadastrarAutonomo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-		
-		HttpSession session = request.getSession(true);	
-		UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
-		upload.setEncoding("UTF-8");
-		
-		String nome = upload.getParameter(request,"nome");
-		String sobrenome = upload.getParameter(request,"sobrenome");
-		String cpf = upload.getParameter(request,"cpf");
-		String tel = upload.getParameter(request,"tel");
-		String user = upload.getParameter(request,"user");
-		String senha = upload.getParameter(request,"senha");
-		String email = upload.getParameter(request,"email");
-		String desc = upload.getParameter(request,"desc");
-		String tags = upload.getParameter(request,"tags");
-		String endereco = upload.getParameter(request,"endereco");
-		double aval = 0;
-		int idAutonomo = 0;	
+		try {
+			HttpSession session = request.getSession(true);	
+			UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
+			upload.setEncoding("UTF-8");
+			
+			String nome = upload.getParameter(request,"nome");
+			String sobrenome = upload.getParameter(request,"sobrenome");
+			String cpf = upload.getParameter(request,"cpf");
+			String tel = upload.getParameter(request,"tel");
+			String user = upload.getParameter(request,"user");
+			String senha = upload.getParameter(request,"senha");
+			String email = upload.getParameter(request,"email");
+			String desc = upload.getParameter(request,"desc");
+			String tags = upload.getParameter(request,"tags");
+			String endereco = upload.getParameter(request,"endereco");
+			double aval = 0;
+			int idAutonomo = 0;	
 
-		String nomeimg = null;
-		
-		ServletContext application = getServletContext(); 
+			String nomeimg = null;
+			
+			ServletContext application = getServletContext(); 
 
-		if(upload.doUploadParameter(request, application, "nomeImg", user)){
-			nomeimg = upload.getNomeArquivo();
-		}
-		
-		
-		DAOAutonomo dao = new DAOAutonomoImpl();
-		DAOUsuario dao2 = new DAOUsuarioImpl();
-		Autonomo autonomoUser = dao.buscarAutonomoPUser(request.getParameter("user"));
-		int emailAutonomo = dao.buscarEmailAutonomo(request.getParameter("email"));
-		int emailUser = dao2.buscarEmailUsuario(request.getParameter("email"));
-		
-		if(autonomoUser != null ) {
-			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já cadastrado!";
-			session.setAttribute("msgErroCad", msgErroCad);
+			if(upload.doUploadParameter(request, application, "nomeImg", user)){
+				nomeimg = upload.getNomeArquivo();
+			}
+			
+			
+			DAOAutonomo dao = new DAOAutonomoImpl();
+			DAOUsuario dao2 = new DAOUsuarioImpl();
+			Autonomo autonomoUser = dao.buscarAutonomoPUser(request.getParameter("user"));
+			int emailAutonomo = dao.buscarEmailAutonomo(request.getParameter("email"));
+			int emailUser = dao2.buscarEmailUsuario(request.getParameter("email"));
+			
+			if(autonomoUser != null ) {
+				String msgErroCad = "Não foi possivel concluir o cadastro, usuário já cadastrado!";
+				session.setAttribute("msgErroCad", msgErroCad);
 
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
+				rd.forward(request, response);
+				return;
+			}
+			if(emailUser != 0 || emailAutonomo != 0) {
+				String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
+				session.setAttribute("msgErroCad", msgErroCad);
+
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
+				rd.forward(request, response);
+				return;
+			}
+			
+			if(emailUser == 0 && emailAutonomo == 0 && autonomoUser == null) {
+				Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, nomeimg, idAutonomo);
+				
+				dao.cadastrar(novoAutonomo);
+				request.setAttribute("autonomo", novoAutonomo);
+				
+				String msgConfirm = "Usuario cadastrado com sucesso!";
+				session.setAttribute("msgConfirm", msgConfirm);
+				
+				String redirectURL = "controller?action=index";
+				response.sendRedirect(redirectURL);
+			}
+		} catch (ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
 			rd.forward(request, response);
-			return;
-		}
-		if(emailUser != 0 || emailAutonomo != 0) {
-			String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
-			session.setAttribute("msgErroCad", msgErroCad);
-
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/cadastroAutonomo.jsp");
-			rd.forward(request, response);
-			return;
-		}
-		
-		if(emailUser == 0 && emailAutonomo == 0 && autonomoUser == null) {
-			Autonomo novoAutonomo = new Autonomo(nome, sobrenome, cpf, tel, user, senha, email, desc, tags, endereco, aval, nomeimg, idAutonomo);
-			
-			dao.cadastrar(novoAutonomo);
-			request.setAttribute("autonomo", novoAutonomo);
-			
-			String msgConfirm = "Usuario cadastrado com sucesso!";
-			session.setAttribute("msgConfirm", msgConfirm);
-			
-			String redirectURL = "controller?action=index";
-			response.sendRedirect(redirectURL);
 		}		
-		
 	}
 	
 	//Cadastrar comum
 	private void cadastrarComum(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {	
-		
-		HttpSession session = request.getSession(true);	
-		UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
-		upload.setEncoding("UTF-8");
-		
-		String nome = upload.getParameter(request,"nome");
-		String sobrenome = upload.getParameter(request,"sobrenome");
-		String cpf = upload.getParameter(request,"cpf");
-		String tel = upload.getParameter(request,"tel");
-		String user = upload.getParameter(request,"user");
-		String senha = upload.getParameter(request,"senha");
-		String email = upload.getParameter(request,"email");
-		String endereco = upload.getParameter(request,"endereco");
-		int idUsuario = 0;
-
-		String nomeimg = null;
-		
-		ServletContext application = getServletContext(); 
-
-		if(upload.doUploadParameter(request, application, "nomeImg", user)){
-			nomeimg = upload.getNomeArquivo();
-		}
-		
-		DAOUsuario dao = new DAOUsuarioImpl();
-		DAOAutonomo dao2 = new DAOAutonomoImpl();
-		Usuario usuarioUser = dao.buscarUsuarioPUser(request.getParameter("user"));
-		int emailAutonomo = dao2.buscarEmailAutonomo(request.getParameter("email"));
-		int emailUser = dao.buscarEmailUsuario(request.getParameter("email"));
-		
-		if(usuarioUser != null) {
-			String msgErroCad = "Não foi possivel concluir o cadastro, usuário já cadastrado!";
-			session.setAttribute("msgErroCad", msgErroCad);
-
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
+		try {
+			HttpSession session = request.getSession(true);	
+			UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
+			upload.setEncoding("UTF-8");
+			
+			String nome = upload.getParameter(request,"nome");
+			String sobrenome = upload.getParameter(request,"sobrenome");
+			String cpf = upload.getParameter(request,"cpf");
+			String tel = upload.getParameter(request,"tel");
+			String user = upload.getParameter(request,"user");
+			String senha = upload.getParameter(request,"senha");
+			String email = upload.getParameter(request,"email");
+			String endereco = upload.getParameter(request,"endereco");
+			int idUsuario = 0;
+	
+			String nomeimg = null;
+			
+			ServletContext application = getServletContext(); 
+	
+			if(upload.doUploadParameter(request, application, "nomeImg", user)){
+				nomeimg = upload.getNomeArquivo();
+			}
+			
+			DAOUsuario dao = new DAOUsuarioImpl();
+			DAOAutonomo dao2 = new DAOAutonomoImpl();
+			Usuario usuarioUser = dao.buscarUsuarioPUser(request.getParameter("user"));
+			int emailAutonomo = dao2.buscarEmailAutonomo(request.getParameter("email"));
+			int emailUser = dao.buscarEmailUsuario(request.getParameter("email"));
+			
+			if(usuarioUser != null) {
+				String msgErroCad = "Não foi possivel concluir o cadastro, usuário já cadastrado!";
+				session.setAttribute("msgErroCad", msgErroCad);
+	
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
+				rd.forward(request, response);
+				return;
+			}		
+			if(emailUser != 0 || emailAutonomo != 0) {
+				String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
+				session.setAttribute("msgErroCad", msgErroCad);
+	
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
+				rd.forward(request, response);
+				return;
+			}
+			if(emailUser == 0 && emailAutonomo == 0 && usuarioUser == null) {
+				Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, nomeimg, idUsuario);		
+				
+				dao.cadastrar(novoUsuario);
+				request.setAttribute("comum", novoUsuario);
+				
+				String msgConfirm = "Usuario cadastrado com sucesso!";
+				session.setAttribute("msgConfirm", msgConfirm);
+				
+				String redirectURL = "controller?action=index";
+				response.sendRedirect(redirectURL);
+			}
+		}catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
 			rd.forward(request, response);
-			return;
-		}		
-		if(emailUser != 0 || emailAutonomo != 0) {
-			String msgErroCad = "Não foi possivel concluir o cadastro, e-mail já cadastrado!";
-			session.setAttribute("msgErroCad", msgErroCad);
-
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/cadastroComum.jsp");
-			rd.forward(request, response);
-			return;
-		}
-		if(emailUser == 0 && emailAutonomo == 0 && usuarioUser == null) {
-			Usuario novoUsuario = new Usuario(nome, sobrenome, cpf, tel, user, senha, email, endereco, nomeimg, idUsuario);		
-			
-			dao.cadastrar(novoUsuario);
-			request.setAttribute("comum", novoUsuario);
-			
-			String msgConfirm = "Usuario cadastrado com sucesso!";
-			session.setAttribute("msgConfirm", msgConfirm);
-			
-			String redirectURL = "controller?action=index";
-			response.sendRedirect(redirectURL);
 		}
 	}
 	
 	//Cadastrar contrato
 	private void cadastrarContrato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {		
-		
-		String titulo = request.getParameter("titulo");
-		String valor = request.getParameter("valor");
-		String descricao = request.getParameter("descricao");
-		String dataInicio = request.getParameter("dataInicio");
-		String duracaoT = request.getParameter("duracaoT");
-		String duracaoN = request.getParameter("duracaoN");
-		String localizacao = request.getParameter("localizacao");
-		String status = "Não aceito";
-		int idCont = 0;	
-		String idAutonomo = null;
-		String idUsuario = null;
-		String finalAut = null;
-		String finalUser = null;
-		String tipoCriador = request.getParameter("tipoCriador");
-		String foiAvaliado = "0";
-		
-		if(dataInicio == null) {			
-			dataInicio = "Indefinido";
+		try {
+			String titulo = request.getParameter("titulo");
+			String valor = request.getParameter("valor");
+			String descricao = request.getParameter("descricao");
+			String dataInicio = request.getParameter("dataInicio");
+			String duracaoT = request.getParameter("duracaoT");
+			String duracaoN = request.getParameter("duracaoN");
+			String localizacao = request.getParameter("localizacao");
+			String status = "Não aceito";
+			int idCont = 0;	
+			String idAutonomo = null;
+			String idUsuario = null;
+			String finalAut = null;
+			String finalUser = null;
+			String tipoCriador = request.getParameter("tipoCriador");
+			String foiAvaliado = "0";
+			
+			if(dataInicio == null) {			
+				dataInicio = "Indefinido";
+			}
+			if(valor == null) {			
+				valor = "Indefinido";
+			}
+			if(duracaoN == null) {
+				duracaoT = null;
+				duracaoN = "Indefinido";
+			}
+			
+			HttpSession session = request.getSession(true);	
+			if(session.getAttribute("usuario").equals("comum")) {
+				idUsuario = String.valueOf(session.getAttribute("id"));	
+				idAutonomo = request.getParameter("idAutonomo");
+				if(idAutonomo != null)
+					status = "Pendente";
+			} else{
+				idAutonomo = String.valueOf(session.getAttribute("id"));
+			}
+			
+			if (tipoCriador == null) {
+				tipoCriador = String.valueOf(session.getAttribute("usuario"));
+			}
+			
+			Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idCont, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
+			
+			DAOContrato dao = new DAOContratoImpl();
+			dao.cadastrar(novoContrato);
+			request.setAttribute("contrato", novoContrato);
+			
+			String redirectURL = "controller?action=homeMensagem";
+			response.sendRedirect(redirectURL);
+		} catch(IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
 		}
-		if(valor == null) {			
-			valor = "Indefinido";
-		}
-		if(duracaoN == null) {
-			duracaoT = null;
-			duracaoN = "Indefinido";
-		}
-		
-		HttpSession session = request.getSession(true);	
-		if(session.getAttribute("usuario").equals("comum")) {
-			idUsuario = String.valueOf(session.getAttribute("id"));	
-			idAutonomo = request.getParameter("idAutonomo");
-			if(idAutonomo != null)
-				status = "Pendente";
-		} else{
-			idAutonomo = String.valueOf(session.getAttribute("id"));
-		}
-		
-		if (tipoCriador == null) {
-			tipoCriador = String.valueOf(session.getAttribute("usuario"));
-		}
-		
-		Contrato novoContrato = new Contrato(titulo, valor, descricao, dataInicio, duracaoT, duracaoN, localizacao, status, idCont, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
-		
-		DAOContrato dao = new DAOContratoImpl();
-		dao.cadastrar(novoContrato);
-		request.setAttribute("contrato", novoContrato);
-		
-		String redirectURL = "controller?action=homeMensagem";
-		response.sendRedirect(redirectURL);
 	}
 	
 	//Confirmar login
 	private void confirmarLogin(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException{
-		HttpSession session = request.getSession(true);	
-		DAOUsuario daoU = new DAOUsuarioImpl();
-		List<Usuario> usuarios = daoU.todosUsuarios();
-		DAOAutonomo daoA = new DAOAutonomoImpl();
-		List<Autonomo> autonomos = daoA.todosAutonomos();	
-		for(int i = 0; i < autonomos.size(); i++)
-		{
-			if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getEmail()).equals(request.getParameter("email"))) {
-				session.setAttribute("usuario", "autonomo");	
-				session.setAttribute("id", autonomos.get(i).getIdAutonomo());
-				session.setAttribute("uUser", autonomos.get(i).getUser());			
-				home(request,response);
-				return;
+		try {
+			HttpSession session = request.getSession(true);	
+			DAOUsuario daoU = new DAOUsuarioImpl();
+			List<Usuario> usuarios = daoU.todosUsuarios();
+			DAOAutonomo daoA = new DAOAutonomoImpl();
+			List<Autonomo> autonomos = daoA.todosAutonomos();	
+			for(int i = 0; i < autonomos.size(); i++)
+			{
+				if((autonomos.get(i).getSenha()).equals(request.getParameter("senha")) && (autonomos.get(i).getEmail()).equals(request.getParameter("email"))) {
+					session.setAttribute("usuario", "autonomo");	
+					session.setAttribute("id", autonomos.get(i).getIdAutonomo());
+					session.setAttribute("uUser", autonomos.get(i).getUser());			
+					home(request,response);
+					return;
+				}
 			}
-		}
-		for(int i = 0; i < usuarios.size(); i++)
-		{
-			if((usuarios.get(i).getSenha()).equals(request.getParameter("senha")) && (usuarios.get(i).getEmail()).equals(request.getParameter("email"))) {
-				session.setAttribute("usuario", "comum");	
-				session.setAttribute("id", usuarios.get(i).getIdUsuario());
-				session.setAttribute("uUser", usuarios.get(i).getUser());
-				home(request,response);
-				return;
+			for(int i = 0; i < usuarios.size(); i++)
+			{
+				if((usuarios.get(i).getSenha()).equals(request.getParameter("senha")) && (usuarios.get(i).getEmail()).equals(request.getParameter("email"))) {
+					session.setAttribute("usuario", "comum");	
+					session.setAttribute("id", usuarios.get(i).getIdUsuario());
+					session.setAttribute("uUser", usuarios.get(i).getUser());
+					home(request,response);
+					return;
+				}
 			}
+			String msgErro = "Senha e/ou usuario incorretos!";
+			session.setAttribute("msgErro", msgErro);
+			((HttpServletResponse) response).sendRedirect("controller?action=login");
+			return;
+		} catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
 		}
-		String msgErro = "Senha e/ou usuario incorretos!";
-		session.setAttribute("msgErro", msgErro);
-		((HttpServletResponse) response).sendRedirect("controller?action=login");
-		return;
 		 		
 	}
 	
 	//Home page
 	private void home(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		HttpSession session = request.getSession(true);	
-		session.setAttribute("msgContrato", "");
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
-		rd.forward(request, response);
+		try {
+			HttpSession session = request.getSession(true);	
+			session.setAttribute("msgContrato", "");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+			rd.forward(request, response);
+		} catch(ServletException | IOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Home page
 	private void homeMensagem(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			
+		try {
 		HttpSession session = request.getSession(true);	
 		session.setAttribute("msgContrato", "Contrato cadastrado com sucesso!");
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
 		rd.forward(request, response);
+		} catch (ServletException |IOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 		
 	//Ver contratos
 	private void verContratos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException{
-		
+		try {
 		DAOContrato dao = new DAOContratoImpl();
 		List<Contrato> contratos = dao.todosContratos();
 
@@ -452,12 +517,17 @@ public class Controller extends HttpServlet{
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/verContratos.jsp");
 
 		rd.forward(request, response);
+		} catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Ver autonomos
 	private void verAutonomos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException{
-		
+		try {
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		List<Autonomo> autonomos = dao.todosAutonomos();
 
@@ -466,12 +536,17 @@ public class Controller extends HttpServlet{
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/verAutonomos.jsp");
 
 		rd.forward(request, response);
+		} catch (ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}	
 	
 	//Detalhes Autonomo
 	private void detalhesAutonomo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-		
+		try {
 		DAOAutonomo dao = new DAOAutonomoImpl();
 		Autonomo autonomo = dao.buscarAutonomo(Integer.valueOf(request.getParameter("idAutonomo")));
 		int todosContratos = dao.contarTodosContratos(Integer.valueOf(request.getParameter("idAutonomo")));
@@ -481,12 +556,17 @@ public class Controller extends HttpServlet{
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/detalhesAutonomo.jsp");
 		rd.forward(request, response);
+		} catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Detalhes Usuario
 	private void detalhesUsuario(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-		
+		try {
 		DAOUsuario dao = new DAOUsuarioImpl();
 		Usuario usuario = dao.buscarUsuario(Integer.valueOf(request.getParameter("idUsuario")));
 
@@ -498,25 +578,52 @@ public class Controller extends HttpServlet{
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/detalhesComum.jsp");
 		rd.forward(request, response);
+		} catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Detalhes contrato
 	private void detalhesContrato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-		
-		DAOContrato dao = new DAOContratoImpl();
-		Contrato contrato = dao.buscarContrato(Integer.valueOf(request.getParameter("idContrato")));
-
-		request.setAttribute("contrato", contrato);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/detalhesContrato.jsp");
-		rd.forward(request, response);
+		try {
+			DAOContrato dao = new DAOContratoImpl();
+			Contrato contrato = dao.buscarContrato(Integer.valueOf(request.getParameter("idContrato")));
+			
+			HttpSession session = request.getSession(true);
+	        int id = (int) session.getAttribute("id");
+	        
+	        int idUsuario = 0;
+	        if(contrato.getIdUsuario() != null)
+	        	idUsuario = Integer.valueOf(contrato.getIdUsuario());
+	        
+	        int idAutonomo = 0;
+	        if(contrato.getIdAutonomo() != null)
+	        	idAutonomo = Integer.valueOf(contrato.getIdAutonomo());
+	        
+			if(idUsuario == id || idAutonomo == id) {
+				request.setAttribute("contrato", contrato);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/detalhesContrato.jsp");
+				rd.forward(request, response);				
+			}else {
+				((HttpServletResponse) response).sendRedirect("controller?action=erro");
+				return;
+			}
+		} catch (ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			((HttpServletResponse) response).sendRedirect("controller?action=erro");
+			return;
+			
+		}
 	}
 	
 	//Checar perfil
 	private void perfil(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-		
+		try {
 		HttpSession session = request.getSession(true);
         String usuario = (String) session.getAttribute("usuario");
         
@@ -530,13 +637,18 @@ public class Controller extends HttpServlet{
         	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
     		rd.forward(request, response);
         }
+		} catch (ServletException| IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
  
 	}
 	
 	//Meu perfil Autonomo
 	private void meuPerfilAut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-		
+		try {
 		HttpSession session = request.getSession(true);
         int id = (int) session.getAttribute("id");
 		
@@ -547,12 +659,17 @@ public class Controller extends HttpServlet{
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/meuPerfilAut.jsp");
 		rd.forward(request, response);
+		} catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Meu perfil Comum
 	private void meuPerfilCom(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-		
+		try {
 		HttpSession session = request.getSession(true);
         int id = (int) session.getAttribute("id");
 		
@@ -563,12 +680,17 @@ public class Controller extends HttpServlet{
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/meuPerfilCom.jsp");
 		rd.forward(request, response);
+		} catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 	//Pagina alterar perfil autonomo
 	private void pagAlterarPerfilAut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-		
+		try {
 		HttpSession session = request.getSession(true);
         int id = (int) session.getAttribute("id");
 		
@@ -579,12 +701,17 @@ public class Controller extends HttpServlet{
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/alterarPerfilAut.jsp");
 		rd.forward(request, response);
+		} catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Alterar autonomo
 	private void alterarPerfilAut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-			
+			try {
 		HttpSession session = request.getSession(true);	
 		UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
 		upload.setEncoding("UTF-8");
@@ -639,13 +766,18 @@ public class Controller extends HttpServlet{
 			String redirectURL = "controller?action=perfil";
 			response.sendRedirect(redirectURL);
 		}		
+			} catch(ServletException |  IOException | DAOException e ) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 		
 	}	
 	
 	//Pagina alterar perfil comum
 	private void pagAlterarPerfilCom(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-		
+		try {
 		HttpSession session = request.getSession(true);
         int id = (int) session.getAttribute("id");
 		
@@ -656,12 +788,17 @@ public class Controller extends HttpServlet{
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/comum/alterarPerfilCom.jsp");
 		rd.forward(request, response);
+		} catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Alterar comum
 	private void alterarPerfilCom(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-			
+		try {
 		HttpSession session = request.getSession(true);			
 		UploadFile upload = new UploadFile("arquivo", 1, "jpg, jpeg, png");
 		upload.setEncoding("UTF-8");
@@ -710,13 +847,18 @@ public class Controller extends HttpServlet{
 			String redirectURL = "controller?action=perfil";
 			response.sendRedirect(redirectURL);
 		}
+		} catch(ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}	
 	
 	//Meus Contratos
 	private void meusContratos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-	        
-
+	       
+		try {
 		HttpSession session = request.getSession(true);			
 		int id = (int) session.getAttribute("id");
 		String tipoUsuario = String.valueOf(session.getAttribute("usuario"));
@@ -746,12 +888,17 @@ public class Controller extends HttpServlet{
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/meusContratos.jsp");
 		rd.forward(request, response);
+		} catch( ServletException | IOException | DAOException e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	//Aceitar Contrato
 	private void aceitarContrato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-			
+			try {
 		HttpSession session = request.getSession(true);	
 		if(request.getParameter("idContrato") == null) {
 			session.setAttribute("msgContrato", "É necessario um contrato aceitavel!");
@@ -790,25 +937,52 @@ public class Controller extends HttpServlet{
 			
 			meusContratos(request, response);
 		}
+			} catch(ServletException | IOException | DAOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 	}
 	
 	//Pagina Atualizar Contrato
 		private void pagAtualizarContrato(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
+			try {
+				DAOContrato dao = new DAOContratoImpl();
+				Contrato contrato = dao.buscarContrato(Integer.valueOf(request.getParameter("idContrato")));
+				
+				HttpSession session = request.getSession(true);
+		        int id = (int) session.getAttribute("id");
+		        
+		        int idUsuario = 0;
+		        if(contrato.getIdUsuario() != null)
+		        	idUsuario = Integer.valueOf(contrato.getIdUsuario());
+		        
+		        int idAutonomo = 0;
+		        if(contrato.getIdAutonomo() != null)
+		        	idAutonomo = Integer.valueOf(contrato.getIdAutonomo());
+	        
+				if((idUsuario == id || idAutonomo == id) && contrato.getStatus().equals("Não aceito")) {
+					request.setAttribute("contrato", contrato);
 						
-			DAOContrato dao = new DAOContratoImpl();
-			Contrato contrato = dao.buscarContrato(Integer.valueOf(request.getParameter("idContrato")));
-
-			request.setAttribute("contrato", contrato);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/alterarContrato.jsp");
-			rd.forward(request, response);
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/alterarContrato.jsp");
+						rd.forward(request, response);
+					} else {
+						((HttpServletResponse) response).sendRedirect("controller?action=erro");
+						return;
+						
+					}
+				} catch (ServletException | IOException | DAOException e) {
+					e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 		}
 	
 	//Atualizar Contrato
 		private void atualizarContrato(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
-				
+				try {
 			HttpSession session = request.getSession(true);	
 			String titulo = request.getParameter("titulo");
 			String valor = request.getParameter("valor");
@@ -849,12 +1023,17 @@ public class Controller extends HttpServlet{
 			dao.atualizar(novoContrato);
 			
 			meusContratos(request, response);
+				} catch(ServletException | IOException | DAOException e) {
+					e.printStackTrace();
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+					rd.forward(request, response);
+				}
 		}
 		
 		//Propor Contrato
 		private void proporContrato(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {			
-			
+			try {
 			HttpSession session = request.getSession(true);		
 			if(session.getAttribute("usuario").equals("autonomo")) {
 				String msgContrato = "Não é possível propor um contrato para um autonomo, pois você também é um autonomo.";
@@ -870,6 +1049,11 @@ public class Controller extends HttpServlet{
 			request.setAttribute("idAutonomoPropor", idAutonomo);
 			
 			pagCadCont(request,response);
+			} catch (ServletException | IOException | DAOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 			
 
 		}
@@ -877,7 +1061,7 @@ public class Controller extends HttpServlet{
 		// Finalizar Contrato
 		private void finalizarContrato(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
-
+			try {
 			HttpSession session = request.getSession(true);
 			if(request.getParameter("idContrato") == null) {
 				session.setAttribute("msgContrato", "É necessario um contrato finalizavel!");
@@ -928,12 +1112,17 @@ public class Controller extends HttpServlet{
 				dao.atualizar(novoContrato);				
 				meusContratos(request, response);
 			}
+			} catch(ServletException | IOException | DAOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 		}
 		
 		// Avaliar
 		private void avaliar(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
-
+			try {
 			HttpSession session = request.getSession(true);
 			if(request.getParameter("idAutonomo") == null || request.getParameter("idContrato") == null) {
 				session.setAttribute("msgContrato", "É necessário escolher um contrato avaliavel!");
@@ -969,24 +1158,34 @@ public class Controller extends HttpServlet{
 	
 				meusContratos(request, response);
 			}
+			} catch(ServletException | IOException | DAOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 		}
 		
 		// Excluir Contrato 
 		private void removerContrato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-
+			try {
 			int idContrato = Integer.valueOf(request.getParameter("idContrato"));
 								
 			DAOContrato dao = new DAOContratoImpl();
 			dao.remover(idContrato);
 			
 			meusContratos(request, response);
+			} catch(ServletException | IOException | DAOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 		}
 		
 		// Buscar autonomo por tag
 		private void buscarAutonomoPTag(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-
+			try {
 			String tagBuscar = request.getParameter("tagBuscar");
 			String nomeBuscar = request.getParameter("nomeBuscar");
 			
@@ -1007,12 +1206,17 @@ public class Controller extends HttpServlet{
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/autonomo/verAutonomos.jsp");
 			rd.forward(request, response);
+			} catch(ServletException | IOException | DAOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 		}
 		
 		// Buscar contrato por status
 		private void buscarContratoPStatus(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException {
-
+			try {
 			String status = request.getParameter("status");
 			request.setAttribute("status", status);			
 			
@@ -1051,23 +1255,33 @@ public class Controller extends HttpServlet{
 					
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/meusContratos.jsp");
 			rd.forward(request, response);
+			} catch (ServletException | IOException | DAOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 		}
 		
 		//Pagina recuperar senha
 		private void pagRecuperarSenha(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
-			
+			try {
 			HttpSession session = request.getSession(true);	
 			String msgErro = "";
 			session.setAttribute("msgErro", msgErro);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarEmail.jsp");
 			rd.forward(request, response);
+			} catch(ServletException | IOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 		}	
 		
 		private void recuperarSenha(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
-				
+			try {
 			String email = request.getParameter("email");
 			
 			DAOAutonomo daoAut = new DAOAutonomoImpl();
@@ -1093,11 +1307,16 @@ public class Controller extends HttpServlet{
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarEmail.jsp");
 				rd.forward(request, response);
 			}
+			} catch(ServletException | IOException | DAOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 		}
 		
 		private void conferirCodigoSenha(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
-				
+				try {
 				HttpSession session = request.getSession(true);	
 				
 				if(session.getAttribute("codigoSessao") == null) {
@@ -1118,11 +1337,16 @@ public class Controller extends HttpServlet{
 						
 					}	
 				}
+				} catch(ServletException | IOException e) {
+					e.printStackTrace();
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+					rd.forward(request, response);
+				}
 		}
 		
 		private void recuperarNovaSenha(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
-			
+				try {
 				DAOAutonomo daoAut = new DAOAutonomoImpl();
 				DAOUsuario daoUsuario = new DAOUsuarioImpl();				
 				
@@ -1152,12 +1376,17 @@ public class Controller extends HttpServlet{
 						rd.forward(request, response);	
 					}
 				}
+				} catch(ServletException | IOException | DAOException e) {
+					e.printStackTrace();
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+					rd.forward(request, response);
+				}
 						
 		}
 		
 		private void reenviarCodigo(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, DAOException {
-				
+				try {
 				HttpSession session = request.getSession(true);	
 				
 				if(session.getAttribute("emailRecuperar") == null) {
@@ -1176,16 +1405,26 @@ public class Controller extends HttpServlet{
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/recuperarSenha/digitarCodigo.jsp");
 					rd.forward(request, response);		
 				}
+				} catch(ServletException | IOException e) {
+					e.printStackTrace();
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+					rd.forward(request, response);
+				}
 		}
 		
 		private void numeroWPP(HttpServletRequest request, HttpServletResponse response)
-				throws ServletException, IOException, DAOException {
-			
+				throws ServletException, IOException {
+			try {
 			String telefoneC = request.getParameter("telefone");
 			
 			String telefone = telefoneC.replaceAll("\\D", "");
 			
 			response.sendRedirect("https://wa.me/55"+telefone+""); 
+			} catch(IOException e) {
+				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");
+				rd.forward(request, response);
+			}
 			
 		}
 }

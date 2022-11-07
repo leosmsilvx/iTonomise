@@ -96,7 +96,7 @@
 								<div class="card-body border-top">
 									<p class="card-text"
 										style="font-weight: bold; font-size: larger; text-align: center;">${autonomo.nome}</p>
-										<input type="hidden" class="form-control" value="${autonomo.nomeImg}" name="imagem">
+										<input type="hidden" class="form-control" value="${autonomo.nomeImg}" name="imagem" required>
 									<input type="file" class="form-control" value="${autonomo.nomeImg}" name="nomeImg">
 								</div>
 							</div>

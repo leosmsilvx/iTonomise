@@ -94,7 +94,7 @@
 											<input type="hidden" class="form-control" value="${comum.nomeImg}" name="imagem" required>
 											<div class="card-body border-top">
 											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${comum.nome}</p>
-											  <input type="file" class="form-control" value="${comum.nomeImg}" name="nomeImg" required>
+											  <input type="file" class="form-control" value="${comum.nomeImg}" name="nomeImg">
 											</div>
 										</div>
 									</div>
