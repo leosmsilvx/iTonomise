@@ -40,3 +40,9 @@ Selecione `Apache` e depois `Tomcat v9.0 Server` e adicione a pasta do tomcat.
 
 ## Rodando a aplicação
 Para rodar o iTonomise em seu navegador, pelo Eclipse, basta agora clicar com o botão direito no projeto e `Run as > Run on server`(Se necessário selecione o Tomcat)
+
+## Licença
+> Copyright (c) 2022 iTonomise
+
+Este projeto é licensiado sob a [MIT License](https://opensource.org/licenses/mit-license.php) - veja a [LICENSE](https://github.com/leosmsilvx/iTonomise/blob/main/LICENSE) para mais detalhes.
+
