@@ -44,5 +44,5 @@ Para rodar o iTonomise em seu navegador, pelo Eclipse, basta agora clicar com o 
 ## Licença
 > Copyright (c) 2022 iTonomise
 
-Este projeto é licensiado sob a [MIT License](https://opensource.org/licenses/mit-license.php) - veja a [LICENSE](https://github.com/leosmsilvx/iTonomise/blob/main/LICENSE) para mais detalhes.
+Este projeto é licenciado sob a [MIT License](https://opensource.org/licenses/mit-license.php) - veja a [LICENSE](https://github.com/leosmsilvx/iTonomise/blob/main/LICENSE) para mais detalhes.
 
