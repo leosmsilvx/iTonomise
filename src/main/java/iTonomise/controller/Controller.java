@@ -594,13 +594,14 @@ public class Controller extends HttpServlet{
 			
 			HttpSession session = request.getSession(true);
 	        int id = (int) session.getAttribute("id");
+	        String tipoUser = String.valueOf(session.getAttribute("usuario"));
 	        
 	        int idUsuario = 0;
-	        if(contrato.getIdUsuario() != null)
+	        if(contrato.getIdUsuario() != null && tipoUser.equals("comum"))
 	        	idUsuario = Integer.valueOf(contrato.getIdUsuario());
 	        
 	        int idAutonomo = 0;
-	        if(contrato.getIdAutonomo() != null)
+	        if(contrato.getIdAutonomo() != null && tipoUser.equals("autonomo"))
 	        	idAutonomo = Integer.valueOf(contrato.getIdAutonomo());
 	        
 	        if(contrato.getStatus().equals("Não aceito")) {
