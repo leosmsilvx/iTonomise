@@ -119,7 +119,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Principal atividade</label> <input
+                                        <label class="form-label">Área(s) de atuação</label> <input
                                             type="text" class="form-control"
                                             value="${autonomo.tags}" disabled>
                                     </div>

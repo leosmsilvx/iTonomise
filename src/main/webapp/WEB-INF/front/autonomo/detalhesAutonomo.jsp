@@ -153,7 +153,7 @@
 										<textarea class="form-control" rows="2" name="descricao" disabled readonly>${autonomo.desc}</textarea>
 									</div>
 									<div class="row col-12">
-										<label for="tags" class="form-label" style="padding-top: 2%;">Principal área de trabalho</label> <input
+										<label for="tags" class="form-label" style="padding-top: 2%;">Área(s) de atuação</label> <input
 											type="text" class="form-control" name="tags"
 											value="${autonomo.tags}" disabled readonly>
 									</div>

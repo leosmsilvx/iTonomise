@@ -323,7 +323,7 @@
 
 			  <span class="text-muted text-end">Não achou sua profissão?</span>
 			  <div class="pb-2 text-end" style="margin-top: 0px">	
-					<label class="form-check-label" for="outro"> Outro </label>						
+					<label class="form-check-label" for="outro"> Outro(s) </label>						
 					<input class="" type="checkbox" id="outro" name="tag"  onclick="outroA()">							
 			  </div>
               <div class="col-12" id="outroDiv" style="display: none;">
