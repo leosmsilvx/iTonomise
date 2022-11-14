@@ -111,7 +111,7 @@
 						<img src="/iTonomise/imgs/autonomo.jpg" width="95%">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Olá autonômo</p>
-						  <p class="card-text">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Faça parte da nossa equipe de trabalhadores autônomos, oferecendo seus serviços pelo nosso site!</p>
+						  <p class="card-text pb-4" style="text-align: justify">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Faça parte da nossa equipe de trabalhadores autônomos, oferecendo seus serviços pelo nosso site!</p>
 						  <div class="gap-4 d-flex justify-content-center pt-5">
 							<a href="controller?action=pagCadAuto" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
 	                            Cadastre-se
@@ -129,7 +129,7 @@
 						<img src="/iTonomise/imgs/contrato.jpg" width="95%">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Olá contrate</p>
-						  <p class="card-text">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
+						  <p class="card-text" style="text-align: justify">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
 						  <div class="gap-4 d-flex justify-content-center pt-5">
 							<a href="controller?action=pagCadComum" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
 								Cadastre-se
@@ -147,7 +147,7 @@
 						<img src="/iTonomise/imgs/painel.jpg" width="95%">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Um pouco sobre nós!</p>
-						  <p class="card-text">Como programadores, sabemos a dificuldade de encontrar trabalhos freelancer. A iTonomise começou como um projeto de TCC e se transformou neste site. Nosso objetivo é facilitar o acesso à informação entre os autonômos e contratantes.</p>
+						  <p class="card-text" style="text-align: justify">Como programadores, sabemos a dificuldade de encontrar trabalhos freelancer. A iTonomise começou como um projeto de TCC e se transformou neste site. Nosso objetivo é facilitar o acesso à informação entre os autonômos e contratantes.</p>
 						</div>
 						<div class="text-center row">
 							<a href="https://github.com/leosmsilvx/iTonomise" target="_blank" class="text-dark text-decoration-none">
