@@ -113,12 +113,9 @@
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Olá autonômo</p>
 						  <p class="card-text pb-4" style="text-align: justify">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Faça parte da nossa equipe de trabalhadores autônomos, oferecendo seus serviços pelo nosso site!</p>
 						  <div class="gap-4 d-flex justify-content-center pt-5">
-							<a href="controller?action=pagCadAuto" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
+							<a href="controller?action=pagCadAuto" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1.1em; text-decoration: none;">
 	                            Cadastre-se
 	                        </a> 
-							<a href="controller?action=login" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
-								login
-							</a>
 						  </div>
 						</div>
 					</div>
@@ -131,11 +128,8 @@
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Olá contrate</p>
 						  <p class="card-text" style="text-align: justify">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
 						  <div class="gap-4 d-flex justify-content-center pt-5">
-							<a href="controller?action=pagCadComum" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
+							<a href="controller?action=pagCadComum" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1.1em; text-decoration: none;">
 								Cadastre-se
-							</a>
-							<a href="controller?action=login" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1em; text-decoration: none;">
-								login
 							</a>
 						  </div>
 						</div>
@@ -163,7 +157,21 @@
 				</div>
 			  </div>
             </div>
-		</div>
+		</div>			              		
+	  <div>
+		<footer class="mt-auto">
+			<div class="container">
+				<ul class="nav justify-content-center mb-3">
+					<li class="nav-item">
+					<a class="nav-link px-2 text-center" style="font-size: 1.5em; font-weight: bold; color: #111">Já é usuário?</a>
+					<a href="controller?action=login"
+						class="nav-link px-2 text-muted text-center"><button class="w-100 btn btn-dark" type="submit">Login</button></a></li>
+				</ul>
+				<a href="controller?action=index" class="nav-link text-white px-2 border-top"><p class="text-center text-muted" style="padding-top: 2em;">© 2022 iTonomise</p></a>	
+			</div>
+		</footer>
+	</div>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
