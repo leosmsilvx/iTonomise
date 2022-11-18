@@ -7,7 +7,7 @@ Trabalho de Conclusão de Curso "iTonomise" CEFET-MG 2022
 - [Hugo Souza](https://github.com/Hugoxtoso)
 
 ## Como Instalar
-Para rodar o projeto iTonomise, é necessário instalar:
+Para rodar o projeto iTonomise, é necessário clonar o repositorio e instalar:
 - [Tomcat v9.0 Server](https://tomcat.apache.org/download-90.cgi)
 - [MySQL v8.0](https://dev.mysql.com/downloads/installer/)
 - [Eclipse IDE](https://www.eclipse.org/downloads/)
