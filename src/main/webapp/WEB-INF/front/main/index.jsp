@@ -17,6 +17,16 @@
 .container{
 	max-width: 80%;
 }
+@media only screen and  ( max-width : 600px) {
+	.container{
+		max-width: 90%;
+	}
+}
+@media only screen and  ( max-width : 800px) {
+	.col{
+		min-width: 90%;
+	}
+}
 </style>
 </head>
 <body>
