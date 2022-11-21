@@ -55,7 +55,7 @@ public class sendEmail {
 			HtmlEmail javax = new HtmlEmail();
 			javax.setHostName("smtp.office365.com");
 			javax.setSmtpPort(587);
-			javax.setAuthentication("iTonomise@hotmail.com", "A%3x!GYRqUt|Gy7N");
+			javax.setAuthentication("iTonomise@hotmail.com", "E9]TiLZxaQ8Q");
 			javax.setCharset("UTF-8");
 			javax.setStartTLSEnabled(true);
 			javax.setFrom("iTonomise@hotmail.com");
