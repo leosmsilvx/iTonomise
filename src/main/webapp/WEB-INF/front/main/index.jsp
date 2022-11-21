@@ -73,7 +73,7 @@
 					  <div>
 					  <a class="text-muted text-decoration-none">Não é usuário do nosso site?</a>
 					  <div class="py-1">
-						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=pagCadAuto">Seja um Autonomo</a>
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=pagCadAuto">Seja um Autônomo</a>
 					  </div>
 					  <div class="py-1 pl-3">
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=pagCadComum">Seja um Contratante</a>
@@ -137,7 +137,7 @@
 						<img src="/iTonomise/imgs/contrato.jpg" width="95%">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Olá contrate</p>
-						  <p class="card-text" style="text-align: justify">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Desfrute dos serviços ofertados pelos trabalhadores autonomos de sua região, oferecidos pelo nosso site!</p>
+						  <p class="card-text" style="text-align: justify">Clique no link abaixo para ser redirecionado à nossa página de cadastro ou login. Desfrute dos serviços ofertados pelos trabalhadores autônomos de sua região, oferecidos pelo nosso site!</p>
 						  <div class="gap-4 d-flex justify-content-center pt-5">
 							<a href="controller?action=pagCadComum" class="btn btn-dark icon-link d-inline-flex align-items-center" style="font-size: 1.1em; text-decoration: none;">
 								Cadastre-se

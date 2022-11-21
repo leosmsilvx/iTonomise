@@ -65,9 +65,9 @@
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=meusContratos">Meus contratos</a>
 					  </div>
 					  <hr>
-					  <span class="text-muted">Autonomos & Contratos</span>
+					  <span class="text-muted">Autônomos & Contratos</span>
 					  <div class="py-1">
-						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verAutonomos">Ver autonomos</a>
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verAutonomos">Ver autônomos</a>
 					  </div>
 					  <div class="py-1">
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verContratos">Ver contratos</a>
@@ -173,7 +173,7 @@
 							      </div>
 							      <div class="modal-body">
 							        <p>
-							        O iTonomise só faz a <span class="text-primary">intermediação de contato</span> entre o Autonomo e o Contratante,
+							        O iTonomise só faz a <span class="text-primary">intermediação de contato</span> entre o Autônomo e o Contratante,
 							        não temos qualquer ligação com as pessoas relacionadas ao contrato, e não nos responsabilizamos
 							        por qualquer <span class="text-danger">dano ou imprevisto</span> que possa ocorrer.
 							        </p>
@@ -188,7 +188,7 @@
 
               <div class="col-12">
                                 <label for="descricao" class="form-label">Descrição do contrato</label>
-                                <textarea class="form-control" name="descricao" rows="7" placeholder="Escreva o serviço que o Autonomo deve realizar, assim como observações, e coisas que você quer pontuar." required></textarea>
+                                <textarea class="form-control" name="descricao" rows="7" placeholder="Escreva o serviço que o Autônomo deve realizar, assim como observações, e coisas que você quer pontuar." required></textarea>
                             </div>
                             <div class="col-6">
                             <!-- Botao modal Aceitar-->

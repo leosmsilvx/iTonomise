@@ -61,7 +61,7 @@
 					  <div>
 					  <a class="text-muted text-decoration-none">Não é usuário do nosso site?</a>
 					  <div class="py-1">
-						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=pagCadAuto">Seja um Autonomo</a>
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=pagCadAuto">Seja um Autônomo</a>
 					  </div>
 					  <div class="py-1 pl-3">
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=pagCadComum">Seja um Contratante</a>

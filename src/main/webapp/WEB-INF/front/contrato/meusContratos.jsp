@@ -70,9 +70,9 @@
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=meusContratos">Meus contratos</a>
 					  </div>
 					  <hr>
-					  <span class="text-muted">Autonomos & Contratos</span>
+					  <span class="text-muted">Autônomos & Contratos</span>
 					  <div class="py-1">
-						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verAutonomos">Ver autonomos</a>
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verAutonomos">Ver autônomos</a>
 					  </div>
 					  <div class="py-1">
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verContratos">Ver contratos</a>
@@ -242,7 +242,7 @@
 	                        <div class="col-6">					
 		                        <div class="py-2"><a class="btn btn-danger w-25" onclick="statusClick('Não aceito')">Não aceito</a><a class="px-2" style="text-decoration: none; color: black;">Ninguém ainda aceitou o seu contrato :(</a></div>
 		                        <div class="py-2"><a class="btn btn-warning w-25" onclick="statusClick('Pendente')">Pendente</a><a class="px-2" style="text-decoration: none; color: black;">Ainda não aceitaram a proposta do seu contrato</a></div>
-		                        <div class="py-2"><a class="btn btn-primary w-25" onclick="statusClick('Aceito')">Aceito</a><a class="px-2" style="text-decoration: none; color: black;">O autonomo já aceitou seu contrato e já poderá realizar o serviço como combinado</a></div>
+		                        <div class="py-2"><a class="btn btn-primary w-25" onclick="statusClick('Aceito')">Aceito</a><a class="px-2" style="text-decoration: none; color: black;">O autônomo já aceitou seu contrato e já poderá realizar o serviço como combinado</a></div>
 		                    </div>
 		                    <div class="col-6">
 		                       	<div class="py-2"><a class="btn btn-info" onclick="statusClick('Finalizado')">Finalizado 1/2</a><a class="px-2" style="text-decoration: none; color: black;">Somente uma pessoa finalizou o contrato</a></div>

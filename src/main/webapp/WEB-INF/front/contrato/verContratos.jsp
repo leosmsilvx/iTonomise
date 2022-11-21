@@ -72,9 +72,9 @@
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=meusContratos">Meus contratos</a>
 					  </div>
 					  <hr>
-					  <span class="text-muted">Autonomos & Contratos</span>
+					  <span class="text-muted">Autônomos & Contratos</span>
 					  <div class="py-1">
-						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verAutonomos">Ver autonomos</a>
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verAutonomos">Ver autônomos</a>
 					  </div>
 					  <div class="py-1">
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verContratos">Ver contratos</a>

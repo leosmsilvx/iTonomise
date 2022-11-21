@@ -70,9 +70,9 @@
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=meusContratos">Meus contratos</a>
 					  </div>
 					  <hr>
-					  <span class="text-muted">Autonomos & Contratos</span>
+					  <span class="text-muted">Autônomos & Contratos</span>
 					  <div class="py-1">
-						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verAutonomos">Ver autonomos</a>
+						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verAutonomos">Ver autônomos</a>
 					  </div>
 					  <div class="py-1">
 						<a class="btn" style="text-decoration: none; color: black;" href="controller?action=verContratos">Ver contratos</a>
@@ -106,10 +106,10 @@
 						<img src="/iTonomise/imgs/lista.jpg" height="400" width="225" class="card-img-top">
 						<div class="card-body border-top">
 						  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">Lista</p>
-						  <p class="card-text">Clique e veja a lista completa de trabalhadores autonomos e contratos!</p>
+						  <p class="card-text">Clique e veja a lista completa de trabalhadores autônomos e contratos!</p>
 						  <div class="gap-4 d-flex justify-content-center">
 							<a href="controller?action=verContratos" class="btn btn-dark">Ver contratos</a>
-							<a href="controller?action=verAutonomos" class="btn btn-dark">Ver Autonomos</a>
+							<a href="controller?action=verAutonomos" class="btn btn-dark">Ver Autônomos</a>
 						  </div>
 						</div>
 					</div>
