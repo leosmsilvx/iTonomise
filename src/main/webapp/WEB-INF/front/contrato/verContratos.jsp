@@ -101,13 +101,12 @@
                         </thead>
                         <c:forEach var="contratosCadastrados" items="${contratos}">
                         <tbody class="table-group-divider">
-                        <c:if test="${usuario == 'comum'}">
-                        	<c:if test="${contratosCadastrados.idUsuario == null}">
+                        <c:if test="${usuario == 'comum' and contratosCadastrados.idUsuario == null}">
                         	<tr>
 	                            <td>
 	                            <c:forEach var="autonomosCadastrados" items="${autonomos}">
 	                            		<c:if test="${contratosCadastrados.idAutonomo == autonomosCadastrados.idAutonomo}">
-											@<c:out value="${autonomosCadastrados.user}"/>
+											<a style="text-decoration: none; color: white;" href="controller?action=detalhesAutonomo&idAutonomo=${contratosCadastrados.idAutonomo}">@<c:out value="${autonomosCadastrados.user}"/></a>
 										</c:if>
 									</c:forEach>
 								</td>
@@ -115,16 +114,13 @@
 	                            <td>R$ ${contratosCadastrados.valor}</td>
 	                            <td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Ver contrato</a></td>
                           	</tr>
-                        
                       	  </c:if>                 
-                        </c:if>
-                        <c:if test="${usuario == 'autonomo'}">
-                        	<c:if test="${contratosCadastrados.idAutonomo == null}">
+                        <c:if test="${usuario == 'autonomo' and contratosCadastrados.idAutonomo == null}">
                         	<tr>
 	                            <td>
 	                            <c:forEach var="usuariosCadastrados" items="${usuarios}">
 	                            		<c:if test="${contratosCadastrados.idUsuario == usuariosCadastrados.idUsuario}">
-											@<c:out value="${usuariosCadastrados.user}"/>
+											<a style="text-decoration: none; color: white;" href="controller?action=detalhesUsuario&idUsuario=${contratosCadastrados.idUsuario}">@<c:out value="${usuariosCadastrados.user}"/></a>
 										</c:if>
 									</c:forEach>
 								</td>
@@ -132,10 +128,7 @@
 	                            <td style="padding-left: 5%">R$ ${contratosCadastrados.valor}</td>
 	                            <td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">Ver contrato</a></td>
                           	</tr>
-                        
-                      	  </c:if>                 
-                        </c:if>
-                          
+                          </c:if>                 
                         </c:forEach>
                         </tbody>
                       </table>

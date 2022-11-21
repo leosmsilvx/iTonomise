@@ -154,7 +154,7 @@
 							
 									</c:if>
 									<c:if test="${contratosCadastrados.status == 'Pendente'}">
-											<td class="text-warning"><c:out value="Pendente"/></td>
+											<td class="text-warning">${contratosCadastrados.status }</td>
 											<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">
 													<c:if test="${usuario == 'comum'}">Rever Contrato</c:if>
 													<c:if test="${usuario == 'autonomo'}">Aceitar Contrato</c:if>
@@ -229,7 +229,7 @@
 										</c:if>
 									</c:if>
 									<c:if test="${contratosCadastrados.status == 'Avaliado'}">
-										<td style="color: #9865db;"><c:out value="Avaliado"/></td>
+										<td style="color: #9865db;">${contratosCadastrados.status}</td>
 										<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>	
 									</c:if>									
                           </tr>

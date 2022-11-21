@@ -499,24 +499,24 @@ public class Controller extends HttpServlet{
 	private void verContratos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, DAOException{
 		try {
+		List<Contrato> contratos = null;
+		
 		DAOContrato dao = new DAOContratoImpl();
-		List<Contrato> contratos = dao.todosContratos();
-
+		DAOAutonomo dao2 = new DAOAutonomoImpl();
+		DAOUsuario dao3 = new DAOUsuarioImpl();
+		
+		contratos = dao.verContratos();
 		request.setAttribute("contratos", contratos);
 		
-		DAOAutonomo dao2 = new DAOAutonomoImpl();
-		List<Autonomo> autonomos = dao2.todosAutonomos();
-
-		request.setAttribute("autonomos", autonomos);
+		List<Autonomo> autonomos = dao2.todosUsuariosAutonomo();
+		request.setAttribute("autonomos", autonomos);		
 		
-		DAOUsuario dao3 = new DAOUsuarioImpl();
-		List<Usuario> usuarios = dao3.todosUsuarios();
-
+		List<Usuario> usuarios = dao3.todosUsuariosComuns();
 		request.setAttribute("usuarios", usuarios);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/contrato/verContratos.jsp");
-
 		rd.forward(request, response);
+		
 		} catch(ServletException | IOException | DAOException e) {
 			e.printStackTrace();
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/erro.jsp");

@@ -296,4 +296,58 @@ public class DAOContratoImpl implements DAOContrato{
 		}
 	}
 	
+	
+	public List<Contrato> verContratos() throws DAOException{
+		List<Contrato> contratos = new ArrayList<Contrato>();
+		try {
+			
+			String sql = "SELECT * FROM contrato WHERE stats = 'Não aceito'";
+
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				int idContrato = rs.getInt("idContrato");
+				String idAutonomo = rs.getString("idAutonomo");
+				String idUsuario = rs.getString("idUsuario");
+				String titulo = rs.getString("titulo");
+				String valor = rs.getString("valor");
+				String descricao = rs.getString("descricao");
+				String dataInicio = rs.getString("dataInicio");
+				String duracaoT = rs.getString("duracaoT");
+				String duracaoN = rs.getString("duracaoN");
+				String localizacao = rs.getString("localizacao");
+				String stats = rs.getString("stats");
+				String tipoCriador = rs.getString("tipoCriador");
+				String finalAut = rs.getString("finalAut");
+				String finalUser = rs.getString("finalUser");
+				String foiAvaliado = rs.getString("foiAvaliado");
+
+				Contrato contrato = new Contrato(descricao, valor, titulo, dataInicio, duracaoT, duracaoN, localizacao, stats, idContrato, idAutonomo, idUsuario, tipoCriador, finalAut, finalUser, foiAvaliado);
+				contrato.setIdContrato(idContrato);
+				contrato.setDescricao(descricao);
+				contrato.setValor(valor);
+				contrato.setTitulo(titulo);
+				contrato.setDataInicio(dataInicio);
+				contrato.setDuracaoT(duracaoT);
+				contrato.setDuracaoN(duracaoN);
+				contrato.setLocalizacao(localizacao);
+				contrato.setStatus(stats);
+				contrato.setTipoCriador(tipoCriador);
+				contrato.setFinalAut(finalAut);
+				contrato.setFinalUser(finalUser);
+				contrato.setFoiAvaliado(foiAvaliado);
+
+				contratos.add(contrato);
+			}
+			
+			rs.close();
+			stmt.close();
+			return contratos;
+			
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar contrato p/ status: " + e.getMessage());
+		}
+	}	
 }
