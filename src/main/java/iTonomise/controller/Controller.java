@@ -873,24 +873,29 @@ public class Controller extends HttpServlet{
 		String tipoUsuario = String.valueOf(session.getAttribute("usuario"));
 		DAOAutonomo daoAut = new DAOAutonomoImpl();
 		DAOUsuario daoUsuario = new DAOUsuarioImpl();
+		DAOAvaliacao daoAval = new DAOAvaliacaoImpl();
 		
 		if(tipoUsuario.equals("comum")) {			
 			List<Contrato> contratos = daoUsuario.meusContratos(id);			
 			List<Autonomo> autonomos = daoAut.todosUsuariosAutonomo();
 			List<Usuario> usuarios = daoUsuario.todosUsuariosComuns();
+			List<Avaliacao> avaliacoes = daoAval.todasAvaliacoes();
 			
 			request.setAttribute("contratos", contratos);
 			request.setAttribute("usuarios", usuarios);
 			request.setAttribute("autonomos", autonomos);
+			request.setAttribute("avaliacoes", avaliacoes);
 			
 		} else if(tipoUsuario.endsWith("autonomo")) {			
 			List<Contrato> contratos = daoAut.meusContratos(id);
 			List<Autonomo> autonomos = daoAut.todosUsuariosAutonomo();
 			List<Usuario> usuarios = daoUsuario.todosUsuariosComuns();
+			List<Avaliacao> avaliacoes = daoAval.todasAvaliacoes();
 			
 			request.setAttribute("contratos", contratos);
 			request.setAttribute("usuarios", usuarios);
 			request.setAttribute("autonomos", autonomos);
+			request.setAttribute("avaliacoes", avaliacoes);
 		} else {
 			return;
 		}

@@ -229,7 +229,14 @@
 										</c:if>
 									</c:if>
 									<c:if test="${contratosCadastrados.status == 'Avaliado'}">
-										<td style="color: #9865db;">${contratosCadastrados.status}</td>
+										<td style="color: #9865db;">${contratosCadastrados.status}
+											<c:forEach var="todasAval" items="${avaliacoes}"> 
+												<c:if test="${todasAval.idContrato == contratosCadastrados.idContrato}">
+													<a class="text-decoration-none" style="color: #9865db;">em ${todasAval.valor}
+													<svg class="bi pl-2" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a>
+												</c:if>
+											</c:forEach>
+										</td>
 										<td class="text-end"><a href="controller?action=detalhesContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light px-3" style="text-decoration: none;">Rever contrato</a></td>	
 									</c:if>									
                           </tr>
