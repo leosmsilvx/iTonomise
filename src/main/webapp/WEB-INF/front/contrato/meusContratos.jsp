@@ -130,18 +130,18 @@
                             <td>                            
 										<c:forEach var="usuariosCadastrados" items="${usuarios}">
                             				<c:if test="${usuariosCadastrados.idUsuario == contratosCadastrados.idUsuario}">
-												<a style="text-decoration: none; color: white;" href="controller?action=detalhesUsuario&idUsuario=${contratosCadastrados.idUsuario}">@<c:out value="${usuariosCadastrados.user}"/></a>
+												<a style="text-decoration: none; color: #77b5fe" href="controller?action=detalhesUsuario&idUsuario=${contratosCadastrados.idUsuario}">@<c:out value="${usuariosCadastrados.user}"/></a>
 											</c:if>
 										</c:forEach>  	
 										<c:forEach var="autonomosCadastrados" items="${autonomos}">
 	                            			<c:if test="${autonomosCadastrados.idAutonomo == contratosCadastrados.idAutonomo}">
-												<a style="text-decoration: none; color: white;" href="controller?action=detalhesAutonomo&idAutonomo=${contratosCadastrados.idAutonomo}">@<c:out value="${autonomosCadastrados.user}"/></a>
+												<a style="text-decoration: none; color: #77b5fe" href="controller?action=detalhesAutonomo&idAutonomo=${contratosCadastrados.idAutonomo}">@<c:out value="${autonomosCadastrados.user}"/></a>
 											</c:if>
 										</c:forEach>						
 								
 							</td>
                             <td>${contratosCadastrados.titulo}</td>
-                            <td>R$ ${contratosCadastrados.valor}</td>
+                            <td style="color: #c9e1e6;">R$ ${contratosCadastrados.valor}</td>
                             		<c:if test="${contratosCadastrados.status == 'Não aceito'}">
 										<td class="text-danger">${contratosCadastrados.status}</td>
 										<td class="text-end"><a href="controller?action=pagAtualizarContrato&idContrato=${contratosCadastrados.idContrato}" class="btn btn-light" style="text-decoration: none;">
@@ -232,8 +232,8 @@
 										<td style="color: #9865db;">${contratosCadastrados.status}
 											<c:forEach var="todasAval" items="${avaliacoes}"> 
 												<c:if test="${todasAval.idContrato == contratosCadastrados.idContrato}">
-													<a class="text-decoration-none" style="color: #9865db;">em ${todasAval.valor}
-													<svg class="bi pl-2" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></a>
+													<a class="text-decoration-none" style="color: #9865db;">em ${todasAval.valor} <svg class="bi" width="0.9em" height="0.9em">
+																		<use xlink:href="#estrelilha"></use></svg></a>
 												</c:if>
 											</c:forEach>
 										</td>

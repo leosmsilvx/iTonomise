@@ -155,10 +155,10 @@
                         <c:forEach var="autonomosCadastrados" items="${autonomos}">                       				
                         <tbody class="table-group-divider">                        
                           <tr>
-                            <td>@${autonomosCadastrados.user}</td>
+                            <td style="color: #77b5fe">@${autonomosCadastrados.user}</td>
                             <td>${autonomosCadastrados.nome} ${autonomosCadastrados.sobrenome}</td>
-                            <td class="text-warning">${autonomosCadastrados.tags}</td>
-                            <td>${autonomosCadastrados.aval} <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></td>
+                            <td style="color: #a8dde9">${autonomosCadastrados.tags}</td>
+                            <td style="color: #c9e1e6">${autonomosCadastrados.aval} <svg class="bi" width="1.1em" height="1.1em"><use xlink:href="#estrelilha"></use></svg></td>
                             <td class="text-end"><a href="controller?action=detalhesAutonomo&idAutonomo=${autonomosCadastrados.idAutonomo}" class="btn btn-light" style="text-decoration: none;">Visitar Perfil</a></td>
                           </tr>                                  
                         </c:forEach>   					
