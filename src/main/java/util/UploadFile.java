@@ -298,7 +298,8 @@ public class UploadFile {
 							}
 
 							// Caminho onde o arquivo vai ser salvo, o que inclui o diretório passado
-							String caminhoArquivo = caminhoDiretorio + File.separator + user + nomeArquivo;
+							String formatUser = user.replaceAll("\\W", "");
+							String caminhoArquivo = caminhoDiretorio + File.separator + formatUser + nomeArquivo;
 
 							File arquivo = new File(caminhoArquivo);
 
