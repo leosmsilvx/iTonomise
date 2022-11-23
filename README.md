@@ -43,6 +43,21 @@ Para rodar o iTonomise em seu navegador, pelo Eclipse,
 
 basta agora clicar com o botão direito no projeto e `Run as > Run on server`(Se necessário selecione o Tomcat instalado anteriormente)
 
+## Configurando o SMTP
+Para configurar o **SMTP para o envio de emails** devemos abrir o Eclipse IDE.
+
+Agora altere os dados para o seu servidor SMTP no arquivo [`sendEmail.java`](https://github.com/leosmsilvx/iTonomise/blob/main/src/main/java/util/sendEmail.java)
+
+Para conseguir os seus dados procure nas informações do seu servidor
+- `HostName`
+- `Port`
+- Dados de autenticação `Email` e `Senha`
+
+## Rodando a aplicação
+Para rodar o iTonomise em seu navegador, pelo Eclipse,
+
+basta agora clicar com o botão direito no projeto e `Run as > Run on server`(Se necessário selecione o Tomcat instalado anteriormente)
+
 ## Licença
 > Copyright (c) 2022 iTonomise
 
