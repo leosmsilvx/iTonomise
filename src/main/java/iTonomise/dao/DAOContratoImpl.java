@@ -349,5 +349,29 @@ public class DAOContratoImpl implements DAOContrato{
 		} catch (Exception e) {
 			throw new DAOException("Erro ao buscar contrato p/ status: " + e.getMessage());
 		}
-	}	
+	}
+	
+	public boolean contratoFoiAvaliado(int idContrato) throws DAOException {
+		try {
+			boolean foiAvaliado = false;
+			String sql = "SELECT foiAvaliado FROM contrato WHERE idContrato = ?";				
+			
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			
+			stmt.setInt(1, idContrato);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				foiAvaliado = rs.getBoolean("foiAvaliado");
+			}
+			
+			rs.close();
+			stmt.close();
+			return foiAvaliado;
+			
+		} catch (Exception e) {
+			throw new DAOException("Erro ao buscar localizacao: " + e.getMessage());
+		}
+	}
 }

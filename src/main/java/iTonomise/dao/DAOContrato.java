@@ -20,5 +20,8 @@ public interface DAOContrato {
 	public String pegarLocalizacao(String tipoPessoa, int idPessoa) throws DAOException;
 	
 	public List<Contrato> verContratos() throws DAOException;
+	
+
+	public boolean contratoFoiAvaliado(int idContrato) throws DAOException;
 }
 

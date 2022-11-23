@@ -1144,33 +1144,41 @@ public class Controller extends HttpServlet{
 				rd.forward(request, response);
 				return;
 			} else {
-				int idAvaliacao = 0;
-				int idAutonomo = Integer.valueOf(request.getParameter("idAutonomo"));
-				int idUsuario = (int) session.getAttribute("id");
-				int idContrato = Integer.valueOf(request.getParameter("idContrato"));
-				String valor = request.getParameter("valor");
-				
-				Avaliacao novaAvaliacao = new Avaliacao(idAvaliacao, idAutonomo, idUsuario, idContrato, valor);
-				
-				DAOAvaliacao dao = new DAOAvaliacaoImpl();
-				dao.cadastrar(novaAvaliacao);
-				
 				DAOContrato dao2 = new DAOContratoImpl();
-			    List<Contrato> contratos = dao2.todosContratos();
-				request.setAttribute("contratos", contratos);
+				boolean foiAvaliado = dao2.contratoFoiAvaliado(Integer.valueOf(request.getParameter("idContrato")));
+				if(foiAvaliado){
+					session.setAttribute("msgContrato", "É necessário escolher um contrato avaliavel!");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/front/main/home/homepage.jsp");
+					rd.forward(request, response);
+					return;
+				} else {
+					int idAvaliacao = 0;
+					int idAutonomo = Integer.valueOf(request.getParameter("idAutonomo"));
+					int idUsuario = (int) session.getAttribute("id");
+					int idContrato = Integer.valueOf(request.getParameter("idContrato"));
+					String valor = request.getParameter("valor");
 					
-				DAOAutonomo dao3 = new DAOAutonomoImpl();
-				List<Autonomo> autonomos = dao3.todosAutonomos();
-				request.setAttribute("autonomos", autonomos);
+					Avaliacao novaAvaliacao = new Avaliacao(idAvaliacao, idAutonomo, idUsuario, idContrato, valor);
 					
-				DAOUsuario dao4 = new DAOUsuarioImpl();
-				List<Usuario> usuarios = dao4.todosUsuarios();
-				request.setAttribute("usuarios", usuarios);
-							
-				dao3.atualizarMedia(idAutonomo);
-				dao2.atualizarAval(idContrato);
-	
-				meusContratos(request, response);
+					DAOAvaliacao dao = new DAOAvaliacaoImpl();
+					dao.cadastrar(novaAvaliacao);
+					
+				    List<Contrato> contratos = dao2.todosContratos();
+					request.setAttribute("contratos", contratos);
+						
+					DAOAutonomo dao3 = new DAOAutonomoImpl();
+					List<Autonomo> autonomos = dao3.todosAutonomos();
+					request.setAttribute("autonomos", autonomos);
+						
+					DAOUsuario dao4 = new DAOUsuarioImpl();
+					List<Usuario> usuarios = dao4.todosUsuarios();
+					request.setAttribute("usuarios", usuarios);
+								
+					dao3.atualizarMedia(idAutonomo);
+					dao2.atualizarAval(idContrato);
+		
+					meusContratos(request, response);
+				}
 			}
 			} catch(ServletException | IOException | DAOException e) {
 				e.printStackTrace();
