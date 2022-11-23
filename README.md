@@ -38,6 +38,16 @@ Na parte inferior clique em `Servers` e na parte vazia clique com o botão direi
 
 Selecione `Apache` e depois `Tomcat v9.0 Server` e adicione a pasta do tomcat.
 
+## Configurando o SMTP
+Para configurar o **SMTP para o envio de emails** devemos abrir o Eclipse IDE.
+
+Agora altere os dados para o seu servidor SMTP no arquivo [`sendEmail.java`](https://github.com/leosmsilvx/iTonomise/blob/main/src/main/java/util/sendEmail.java)
+
+Para conseguir os seus dados procure nas informações do seu servidor
+- `HostName`
+- `Port`
+- Dados de autenticação `Email` e `Senha`
+
 ## Rodando a aplicação
 Para rodar o iTonomise em seu navegador, pelo Eclipse,
 
