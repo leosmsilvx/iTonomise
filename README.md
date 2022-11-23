@@ -38,11 +38,6 @@ Na parte inferior clique em `Servers` e na parte vazia clique com o botão direi
 
 Selecione `Apache` e depois `Tomcat v9.0 Server` e adicione a pasta do tomcat.
 
-## Rodando a aplicação
-Para rodar o iTonomise em seu navegador, pelo Eclipse,
-
-basta agora clicar com o botão direito no projeto e `Run as > Run on server`(Se necessário selecione o Tomcat instalado anteriormente)
-
 ## Configurando o SMTP
 Para configurar o **SMTP para o envio de emails** devemos abrir o Eclipse IDE.
 
