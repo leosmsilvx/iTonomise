@@ -91,7 +91,7 @@
                                     <div class="col-4">
                                         <h6 class="text-body text-start px-1">@${comum.user}</h6>	
 										<div class="card">
-											<img src="${comum.nomeImg}" height="250" width="225" class="card-img-top">
+											<img src="${comum.nomeImg}" onerror="this.onerror=null; this.src='/iTonomise/imgs/pessoa.png'" height="250" width="225" class="card-img-top">
 											<input type="hidden" class="form-control" value="${comum.nomeImg}" name="imagem" required>
 											<div class="card-body border-top">
 											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${comum.nome}</p>

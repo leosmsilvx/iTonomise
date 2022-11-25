@@ -89,7 +89,7 @@
                                     <div class="col-4">
                                         <h6 class="text-body text-start px-1">@${autonomo.user}</h6>	
 										<div class="card">
-											<img src="${autonomo.nomeImg}" height="250" width="225" class="card-img-top">
+											<img src="${autonomo.nomeImg}" onerror="this.onerror=null; this.src='/iTonomise/imgs/pessoa.png'" height="250" width="225" class="card-img-top">
 											<div class="card-body border-top">
 											  <p class="card-text" style="font-weight: bold; font-size: larger; text-align: center;">${autonomo.nome}</p>
 											</div>

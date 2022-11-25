@@ -93,6 +93,7 @@
 							<div class="card">
 								<img
 									src="${autonomo.nomeImg}"
+									onerror="this.onerror=null; this.src='/iTonomise/imgs/pessoa.png'"
 									height="250" width="225" class="card-img-top">
 								<div class="card-body border-top">
 									<p class="card-text"
