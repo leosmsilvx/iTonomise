@@ -54,16 +54,16 @@ public class sendEmail {
 		try {
 			HtmlEmail javax = new HtmlEmail();
 			//Completar com as informações do seu servidor de envio de email
-			javax.setHostName("smtp.gmail.com"); //Hostname Exemplo
-			javax.setSmtpPort(587); //Porta exemplo
-			javax.setAuthentication("email@email.com", "senha"); //Credencias exemplo: "email@email.com", "senha"
+			javax.setHostName("smtp.gmail.com");
+			javax.setSmtpPort(587);
+			javax.setAuthentication("itonomise@gmail.com", "llixrkbyfxfxnmsq");
 			javax.setCharset("UTF-8");
 			javax.setStartTLSEnabled(true);
-			javax.setFrom("email@email.com"); //Nome de quem envia o email: email@email.com
+			javax.setFrom("itonomise@gmail.com");
 			javax.addTo(email);
 			javax.setSubject("Código de recuperação de senha");
 			javax.setHtmlMsg(pagHtml);
-			javax.send();			
+			javax.send();				
 		} catch(EmailException e) {
 			e.printStackTrace();
 		}
