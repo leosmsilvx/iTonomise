@@ -71,7 +71,7 @@ Este projeto é licenciado sob a [MIT License](https://opensource.org/licenses/m
 - ### Meus contratos
 ![alt text](/prints/myC.png)
 
-- Autônomos
+- ### Autônomos
 ![alt text](/prints/auts.png)
 
 
