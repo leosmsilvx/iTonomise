@@ -59,16 +59,16 @@ basta agora clicar com o botão direito no projeto e `Run as > Run on server`(Se
 Este projeto é licenciado sob a [MIT License](https://opensource.org/licenses/mit-license.php) - veja a [LICENSE](https://github.com/leosmsilvx/iTonomise/blob/main/LICENSE) para mais detalhes.
 
 ## Preview
-- Index
+- ### Index
 ![alt text](/prints/index.png)
 
-- Home
+- ### Home
 ![alt text](/prints/home.png)
 
-- Formulário de contrato
+- ### Formulário de contrato
 ![alt text](/prints/formC.png)
 
-- Meus contratos
+- ### Meus contratos
 ![alt text](/prints/myC.png)
 
 - Autônomos
